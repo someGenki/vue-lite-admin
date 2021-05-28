@@ -1,4 +1,5 @@
 <template>
+<div class="clearfix">
   <div class="about-me">
     <img class="avatar-me" :src="DioAvatar" alt="avatar" />
     <p class="name-me">
@@ -7,7 +8,7 @@
     </p>
     <p style="text-align: center">禾+几=秃 😭😭😭</p>
     <ul class="about-me-detail">
-      <li v-for="item in introduce">
+      <li v-for="(item,index) in introduce" :key="index">
         <app-icon :icon="item.i" />
         {{ item.t }}
       </li>
@@ -35,6 +36,7 @@
       <el-tab-pane label="其他">其他</el-tab-pane>
     </el-tabs>
   </div>
+</div>
 </template>
 
 <script>

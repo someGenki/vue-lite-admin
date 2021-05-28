@@ -1,39 +1,41 @@
 <template>
-  <div class="about-me">
-    <img class="avatar-me" :src="DioAvatar" alt="avatar" />
-    <p class="name-me">
-      禾几元
-      <app-icon icon="el-icon-male" />
-    </p>
-    <p style="text-align: center">禾+几=秃 😭😭😭</p>
-    <ul class="about-me-detail">
-      <li v-for="item in introduce">
-        <app-icon :icon="item.i" />
-        {{ item.t }}
-      </li>
-    </ul>
-    <el-divider content-position="left">标签</el-divider>
-    <el-tag type="info" v-for="t in myTags" :key="t" v-text="t" />
-    <el-divider content-position="left">技能</el-divider>
-    <ul class="about-me-skills">
-      <li>
-        替身技能：浪费时间
-        <app-icon icon="el-icon-time" />
-      </li>
-      <li>掌握Java语言，有SpringBoot项目(玩具)开发经验</li>
-      <li>对JVM有基本的了解，包括内存结构以及JMM和GC</li>
-      <li>了解Redis、Mysql、Mybatis、Maven等后端相关技术</li>
-      <li>Linux会一些，比如配置环境、部署项目、编写简易脚本</li>
-      <li>前端三大js框架只会vue， --TODO--</li>
-      <li>其他技术如Git，Nginx，Docker也会，但不是特别会</li>
-    </ul>
-  </div>
-  <div class="detail-info">
-    <el-tabs type="border-card">
-      <el-tab-pane label="文章">文章</el-tab-pane>
-      <el-tab-pane label="项目">项目</el-tab-pane>
-      <el-tab-pane label="其他">其他</el-tab-pane>
-    </el-tabs>
+  <div class="clearfix">
+    <div class="about-me">
+      <img class="avatar-me" :src="DioAvatar" alt="avatar" />
+      <p class="name-me">
+        禾几元
+        <app-icon icon="el-icon-male" />
+      </p>
+      <p style="text-align: center">禾+几=秃 😭😭😭</p>
+      <ul class="about-me-detail">
+        <li v-for="(item, index) in introduce" :key="index">
+          <app-icon :icon="item.i" />
+          {{ item.t }}
+        </li>
+      </ul>
+      <el-divider content-position="left">标签</el-divider>
+      <el-tag type="info" v-for="t in myTags" :key="t" v-text="t" />
+      <el-divider content-position="left">技能</el-divider>
+      <ul class="about-me-skills">
+        <li>
+          替身技能：浪费时间
+          <app-icon icon="el-icon-time" />
+        </li>
+        <li>掌握Java语言，有SpringBoot项目(玩具)开发经验</li>
+        <li>对JVM有基本的了解，包括内存结构以及JMM和GC</li>
+        <li>了解Redis、Mysql、Mybatis、Maven等后端相关技术</li>
+        <li>Linux会一些，比如配置环境、部署项目、编写简易脚本</li>
+        <li>前端三大js框架只会vue， --TODO--</li>
+        <li>其他技术如Git，Nginx，Docker也会，但不是特别会</li>
+      </ul>
+    </div>
+    <div class="detail-info">
+      <el-tabs type="border-card">
+        <el-tab-pane label="文章">文章</el-tab-pane>
+        <el-tab-pane label="项目">项目</el-tab-pane>
+        <el-tab-pane label="其他">其他</el-tab-pane>
+      </el-tabs>
+    </div>
   </div>
 </template>
 

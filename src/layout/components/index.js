@@ -1,0 +1,5 @@
+export { default as Settings } from './Settings/index.vue'
+export { default as Sidebar } from './Sidebar/index.vue'
+export { default as AppMain } from './AppMain/index.vue'
+export { default as TabBar } from './TabBar/index.vue'
+export { default as NavBar } from './Navbar/index.vue'

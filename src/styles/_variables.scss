@@ -1,0 +1,17 @@
+/* 定义全局scss变量 */
+
+// useLayout.js的state对象里也有一份，element-variables.scss也有一份，用来更换主题色
+$primary-color: #02BF6F;
+$primary-color-tinge: #75d2de;
+$primary-text-color: #000000a6;
+$primary-text-color-tinge: #00000070;
+// 由于部分js中使用了该数值，若要更改，需与js用到的地方同步修改
+$hover-background-color:#F6F6F6;
+$sidebar-logo-height: 42px;
+$navbar-height: 42px;
+$tabBar-height: 34px;
+
+$lg-width: 1200px; //响应式布局 大屏幕桌面尺寸
+$sm-width: 768px; //响应式布局 小屏幕平板尺寸
+
+

@@ -1,0 +1,25 @@
+@import './_variables.scss';
+/* 覆盖element-plus的部分样式 */
+.el-breadcrumb__item:last-child .el-breadcrumb__inner {
+  color: #afafaf;
+}
+
+.el-breadcrumb__inner a,
+.el-breadcrumb__inner.is-link {
+  font-weight: 500;
+}
+
+.el-dropdown-menu {
+  user-select: none;
+}
+
+.el-input-number--mini {
+  width: 100px;
+}
+.el-upload.el-upload--text{
+  max-width: 360px;
+  width: 100%;
+  >.el-upload-dragger{
+    width: 100%;
+  }
+}

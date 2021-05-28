@@ -1,0 +1,11 @@
+// 这里 路径加 ~  会有错误。而且使用这个更换主题色，加载速度会变慢
+// 跟换主题色指南：https://element-plus.gitee.io/#/zh-CN/component/custom-theme
+// 推荐在这预览主题色并下载和导入css文件 https://element-plus.github.io/theme-chalk-preview/
+
+/* 改变主题色变量,需要取消main.js中的注释 */
+$--color-primary: #02BF6F;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: 'element-plus/lib/theme-chalk/fonts';
+
+@import "element-plus/packages/theme-chalk/src/index";

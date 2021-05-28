@@ -56,12 +56,12 @@
 
 - 获取项目代码
 ````sh
-git clone  
+git clone  https://github.com/someGenki/vue-lite-admin.git
 ````
 
 - 安装项目依赖
 ````sh
-cd 
+cd vue-lite-admin/
 npm install
 ````
 

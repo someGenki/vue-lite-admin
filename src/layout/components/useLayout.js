@@ -2,7 +2,8 @@ import { computed, reactive, readonly, toRef, watch } from 'vue'
 import { getSetting, saveSetting } from '/src/utils/storage'
 import { debounce } from '/src/utils/util'
 import router from '/src/router'
-/* 数据定义和初始区 unfold:展开、collapse:折叠 */
+
+/* 数据定义和初始区 暂时没抽离先写一堆 unfold:展开、collapse:折叠... */
 const state = reactive({
   sUnfoldWidth: getSetting('sUnfoldWidth', 'int', 210),
   unfoldSidebar: getSetting('unfoldSidebar', 'bool', true),
@@ -37,7 +38,7 @@ const dropdownItems = readonly([
 ])
 
 window.addEventListener(
-  'resize' /* 监听页面尺寸调整 */,
+  'resize' /* 监听页面尺寸调整 动态改变state.isMobile的值判断是否是移动设备  */,
   debounce(() => (state.isMobile = document.body.clientWidth < 1001), 100)
 )
 
@@ -50,6 +51,7 @@ const sidebarWidth = computed(() => {
 })
 
 /* 方法区 */
+
 const handleSidebarToggle = (bool) => {
   if (bool !== undefined) state.unfoldSidebar = bool
   else state.unfoldSidebar = !state.unfoldSidebar

@@ -75,7 +75,7 @@ export default [
       {
         path: 'https://github.com/someGenki',
         name: 'ex-link-github',
-        component: () => import('/src/views/Profile/index.vue'),
+        component: () => import('/src/views/profile/index.vue'),
         meta: {
           title: 'Github',
         },

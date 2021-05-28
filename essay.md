@@ -1,6 +1,6 @@
 # 这是个随笔记录
 简直就是vue-element-admin 改
-不需要python依赖
+不需要python依赖!
 ## 开发步骤
 
 1. 实现动态路由和权限管理

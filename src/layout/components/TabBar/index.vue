@@ -128,7 +128,7 @@ export default {
   height: $tabBar-height;
   padding-left: 10px;
   background: #fff;
-  border-bottom: 1px solid #d8dce5;
+  //border-bottom: 1px solid #d8dce5;
   box-shadow: 0 1px 3px 0 #0000001e;
 }
 
@@ -195,7 +195,7 @@ export default {
   font-size: 1.2rem;
   color: #6a6a6a;
   cursor: pointer;
-
+  background-color: inherit;
   &:hover {
     color: black;
   }

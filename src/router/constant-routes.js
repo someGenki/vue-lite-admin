@@ -77,7 +77,7 @@ export default [
       {
         path: 'index',
         name: 'Profile',
-        component: () => import('/src/views/Profile/index.vue'),
+        component: () => import('/src/views/profile/index.vue'),
         meta: {
           title: '个人中心',
         },

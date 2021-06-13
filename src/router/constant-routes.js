@@ -17,31 +17,9 @@ export default [
         path: '/redirect/:path(.*)',
         name: 'redirect',
         component: Redirect,
-        meta: {
-          noCache: true,
-        },
+        meta: { noCache: true },
       },
     ],
-  },
-
-  {
-    path: '/login',
-    component: Login,
-    meta: {
-      noCache: true,
-      title: 'Vue Admin 登录页',
-    },
-    hidden: true,
-  },
-  {
-    path: '/404',
-    component: () => import('/src/views/error-page/404.vue'),
-    hidden: true,
-  },
-  {
-    path: '/401',
-    component: () => import('/src/views/error-page/401.vue'),
-    hidden: true,
   },
   {
     path: '/',
@@ -55,6 +33,22 @@ export default [
         meta: { title: '首页', icon: 'el-icon-info' },
       },
     ],
+  },
+  {
+    path: '/login',
+    hidden: true,
+    component: Login,
+    meta: { noCache: true, title: 'Vue Admin 登录页' },
+  },
+  {
+    path: '/404',
+    component: () => import('/src/views/error-page/404.vue'),
+    hidden: true,
+  },
+  {
+    path: '/401',
+    component: () => import('/src/views/error-page/401.vue'),
+    hidden: true,
   },
   {
     path: '/icons',
@@ -78,9 +72,7 @@ export default [
         path: 'index',
         name: 'Profile',
         component: () => import('/src/views/profile/index.vue'),
-        meta: {
-          title: '个人中心',
-        },
+        meta: { title: '个人中心' },
       },
     ],
   },
@@ -91,64 +83,43 @@ export default [
     path: '/example',
     component: Layout,
     redirect: '/example/file-upload',
-    meta: {
-      title: '功能示例',
-      icon: 'el-icon-copy-document',
-    },
+    meta: { title: '功能示例', icon: 'el-icon-copy-document' },
     children: [
       {
         path: 'file-upload',
         component: () => import('/src/views/example/file-upload/index.vue'),
         name: 'FileUpload',
-        meta: {
-          title: '文件上传',
-          icon: 'el-icon-upload2',
-        },
+        meta: { title: '文件上传', icon: 'el-icon-upload2' },
       },
       {
         path: 'file-download',
         component: () => import('/src/views/example/file-download/index.vue'),
         name: 'FileDownload',
-        meta: {
-          title: '文件下载',
-          icon: 'el-icon-download',
-        },
+        meta: { title: '文件下载', icon: 'el-icon-download' },
       },
       {
         path: 'text-editor',
         component: () => import('/src/views/error-page/404.vue'),
         name: 'TextEditor',
-        meta: {
-          title: '文本编辑器',
-          icon: 'el-icon-edit',
-        },
+        meta: { title: '文本编辑器', icon: 'el-icon-edit' },
       },
       {
         path: 'emotion-demo',
         component: () => import('/src/views/example/emotion-demo/index.vue'),
         name: 'EmotionDemo',
-        meta: {
-          title: '输入框表情',
-          icon: 'el-icon-box',
-        },
+        meta: { title: '输入框表情', icon: 'el-icon-box' },
       },
       {
         path: 'image-cropper',
         component: () => import('/src/views/error-page/404.vue'),
         name: 'ImageCropper',
-        meta: {
-          title: '图片裁剪',
-          icon: 'el-icon-picture-outline-round',
-        },
+        meta: { title: '图片裁剪', icon: 'el-icon-picture-outline-round' },
       },
       {
         path: 'silk-ribbon',
         component: () => import('/src/views/error-page/404.vue'),
         name: 'SilkRibbon',
-        meta: {
-          title: '缎带组件',
-          icon: 'el-icon-collection-tag',
-        },
+        meta: { title: '缎带组件', icon: 'el-icon-collection-tag' },
       },
     ],
   },
@@ -157,64 +128,43 @@ export default [
     path: '/example-page',
     component: Layout,
     redirect: '/example-page/404',
-    meta: {
-      title: '页面示例',
-      icon: 'el-icon-document',
-    },
+    meta: { title: '页面示例', icon: 'el-icon-document' },
     children: [
       {
         path: '404',
         component: () => import('/src/views/error-page/404.vue'),
         name: '404',
-        meta: {
-          title: '404页面',
-          icon: 'el-icon-close',
-        },
+        meta: { title: '404页面', icon: 'el-icon-close' },
       },
       {
         path: '401',
         component: () => import('/src/views/error-page/401.vue'),
         name: '401',
-        meta: {
-          title: '401页面',
-          icon: 'el-icon-close',
-        },
+        meta: { title: '401页面', icon: 'el-icon-close' },
       },
       {
         path: 'example-table',
         name: 'ExampleTable',
         component: () => import('/src/views/error-page/404.vue'),
-        meta: {
-          title: '表格 Table',
-          icon: 'el-icon-date',
-        },
+        meta: { title: '表格 Table', icon: 'el-icon-date' },
       },
       {
         path: 'example-echarts',
         name: 'ExampleEcharts',
         component: () => import('/src/views/error-page/404.vue'),
-        meta: {
-          title: '图表 Echarts',
-          icon: 'el-icon-pie-chart',
-        },
+        meta: { title: '图表 Echarts', icon: 'el-icon-pie-chart' },
       },
       {
         path: 'example-drag',
         name: 'ExampleDrag',
         component: () => import('/src/views/error-page/404.vue'),
-        meta: {
-          title: '拖拽 Drag',
-          icon: 'el-icon-thumb',
-        },
+        meta: { title: '拖拽 Drag', icon: 'el-icon-thumb' },
       },
       {
         path: 'online-chat',
         name: 'OnlineChat',
         component: () => import('/src/views/error-page/404.vue'),
-        meta: {
-          title: '即时通讯聊天',
-          icon: 'el-icon-microphone',
-        },
+        meta: { title: '即时通讯聊天', icon: 'el-icon-microphone' },
       },
     ],
   },

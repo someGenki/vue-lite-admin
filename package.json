@@ -10,20 +10,20 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "echarts": "^5.1.1",
-    "element-plus": "^1.0.2-beta.44",
+    "echarts": "^5.1.2",
+    "element-plus": "^1.0.2-beta.48",
     "js-cookie": "^3.0.0-rc.1",
     "mockjs": "^1.1.0",
-    "vue": "^3.0.11",
-    "vue-router": "^4.0.6"
+    "vue": "^3.1.1",
+    "vue-router": "^4.0.8"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.2.2",
-    "@vitejs/plugin-vue-jsx": "^1.1.4",
-    "@vue/compiler-sfc": "^3.0.11",
-    "prettier": "^2.3.0",
-    "sass": "^1.34.0",
-    "vite": "^2.3.4",
-    "vite-plugin-mock": "^2.5.4"
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vitejs/plugin-vue-jsx": "^1.1.5",
+    "@vue/compiler-sfc": "^3.1.1",
+    "prettier": "^2.3.1",
+    "sass": "^1.34.1",
+    "vite": "^2.3.7",
+    "vite-plugin-mock": "^2.7.2"
   }
 }

@@ -1,7 +1,7 @@
+import { login as _login, getInfo as _getInfo } from '../api/user'
 import { getToken, setToken } from '/src/utils/storage'
 import constantRoutes from '/src/router/constant-routes'
 import asyncRoutes from '/src/router/async-routes'
-import { login as _login, getInfo as _getInfo } from '../api/user'
 import { reactive } from 'vue'
 import router from '/src/router'
 
@@ -65,7 +65,7 @@ function hasPermission(roles, route) {
  * 递归的根据已登录用户的roles来过滤异步路由表来生成专属的路由表
  * @author PanJiaChen
  * @param routes asyncRoutes
- * @param roles
+ * @param roles 用户所有的角色数组
  */
 export function filterAsyncRoutes(routes, roles) {
   const res = []

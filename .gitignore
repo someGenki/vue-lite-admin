@@ -8,19 +8,14 @@ dist-ssr
 HELP.md
 **/target/
 **/dist/
-
 /dist
 /target
-
-auto-upload.js
-
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
-
 
 ### VS Code ###
 .vscode/

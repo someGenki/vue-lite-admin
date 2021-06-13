@@ -18,7 +18,7 @@
       </el-dropdown-menu>
     </template>
   </el-dropdown>
-  <p class="menu-nickname" v-show="nickname">禾几元</p>
+  <p class="menu-nickname" v-show="nickname">{{nickname}}</p>
 </template>
 
 <script>

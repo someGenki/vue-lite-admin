@@ -16,25 +16,28 @@
 </template>
 
 <script>
-import { toRaw, toRefs } from 'vue'
 import { state as userState } from '/src/store/user'
 import SidebarLogo from './SidebarLogo.vue'
 import SidebarItem from './SidebarItem.vue'
 import useLayout from '../useLayout.js'
+import { toRaw, toRefs } from 'vue'
 
+/**
+ * 根据权限以及路由表动态生成侧边菜单栏 以及配置菜单栏相关样式
+ */
 export default {
   name: 'Sidebar',
   components: { SidebarLogo, SidebarItem },
   setup() {
-    const { state, sidebarWidth } = useLayout(),
-      { showLogo, unfoldSidebar } = toRefs(state)
-    // 根据routers(已根据roles处理过的路由表  )来动态生成侧边菜单栏
+    const { state, sidebarWidth } = useLayout()
+    const { showLogo, unfoldSidebar } = toRefs(state)
     const routers = toRaw(userState.addRoutes)
     const elMenuStyle = {
       text: '#dcdcdc',
       background: '#304156',
       activeText: state.themeColor,
     }
+
     return {
       routers,
       showLogo,

@@ -31,22 +31,18 @@ import { computed, toRefs } from 'vue'
 
 export default {
   name: 'Layout',
-  components: {
-    Settings,
-    AppMain,
-    Sidebar,
-    NavBar,
-    TabBar,
-  },
+  components: { Settings, AppMain, Sidebar, NavBar, TabBar },
   setup() {
     const { state, sidebarWidth, handleSidebarToggle } = useLayout()
     const { fixedHeader, isMobile, unfoldSidebar, showTabBar } = toRefs(state)
+
     // 当固定头部时，main-container的上边距值
     const mainPaddingTopOnFixed = computed(() => {
       if (!fixedHeader.value) return '0'
       else if (fixedHeader.value && showTabBar.value) return 42 + 34 + 'px'
       else return 42 + 'px'
     })
+
     return {
       isMobile,
       showTabBar,
@@ -88,6 +84,5 @@ export default {
 // `and` 操作符用于将多个媒体查询规则组合成单条媒体查询(需要都为真是该规则才起作用）
 // max-width：screen宽度小于等于max-width生效
 @media screen and (max-width: $lg-width) {
-
 }
 </style>

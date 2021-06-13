@@ -22,13 +22,14 @@ axios.interceptors.response.use(
   },
 
   (error) => {
+    // ... doing something
     // 这里的可选运算符'?.'可能低版本的浏览器不支持
     ElMessage({ message: error.response?.data?.msg || 'null!' })
     return Promise.reject(error.response)
   }
 )
 
-/*// 学了fetch再来搞 先放着
+/*// 细学了fetch再来搞 先放着
 axios.fetch = async (url, config = {}) => {
   return fetch(BASEURL + url, {
     method: config.method || 'GET',

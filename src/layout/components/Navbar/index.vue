@@ -13,10 +13,10 @@
             </el-badge>
           </span>
         </template>
-        <p>TODO 这里放消息通知List</p>
+        <p>TODO 消息通知</p>
       </el-popover>
       <avatar-menu
-        :nickname="'超级管理员'"
+        :nickname="'管理员'"
         :items="dropdownItems"
         :avatar="DioAvatar"
       />
@@ -46,7 +46,7 @@ export default {
       useLayout()
 
     return {
-      DioAvatar /* 来自assets文件夹,vite会自动解析返回公共路径 */,
+      DioAvatar /* 项目默认头像,来自assets文件夹,vite会自动解析返回公共路径 */,
       dropdownItems,
       handleSidebarToggle,
       handleSettingsToggle,
@@ -87,7 +87,6 @@ export default {
 }
 @media screen and (max-width: $sm-width) {
   .app-breadcrumb {
-    //background-color: pink;
     display: none;
   }
 }

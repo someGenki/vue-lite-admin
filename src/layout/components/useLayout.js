@@ -3,7 +3,7 @@ import { getSetting, saveSetting } from '/src/utils/storage'
 import { debounce } from '/src/utils/util'
 import router from '/src/router'
 
-/* 数据定义和初始区 暂时没抽离先写一堆 unfold:展开、collapse:折叠... */
+// ===数据定义和初始化区=== 暂时没抽离先写一堆 unfold:展开、collapse:折叠...
 const state = reactive({
   sUnfoldWidth: getSetting('sUnfoldWidth', 'int', 210),
   unfoldSidebar: getSetting('unfoldSidebar', 'bool', true),
@@ -18,6 +18,7 @@ const state = reactive({
   visitedViews: [],
   cachedViews: [],
 })
+
 // 用一个数组来定义需要保存的local storage 的state.key，watch监听变动来存储
 const needSaveToLocalStorage = [
   'unfoldSidebar',
@@ -28,6 +29,9 @@ const needSaveToLocalStorage = [
 needSaveToLocalStorage.forEach((item) =>
   watch(toRef(state, item), (n) => saveSetting(item, n))
 )
+
+//排除不需要显示到tab-bar的页面
+const noRecordViewPath = ['/login']
 
 // 头像下拉菜单项
 const dropdownItems = readonly([
@@ -42,7 +46,7 @@ window.addEventListener(
   debounce(() => (state.isMobile = document.body.clientWidth < 1001), 100)
 )
 
-/*  计算属性区 */
+/*  ===计算属性区=== */
 const sidebarWidth = computed(() => {
   return state.unfoldSidebar
     ? state.sUnfoldWidth + 'px'
@@ -50,8 +54,7 @@ const sidebarWidth = computed(() => {
       (state.isMobile ? 0 : state.sCollapseWidth) + 'px'
 })
 
-/* 方法区 */
-
+/* ===方法区=== */
 const handleSidebarToggle = (bool) => {
   if (bool !== undefined) state.unfoldSidebar = bool
   else state.unfoldSidebar = !state.unfoldSidebar
@@ -62,14 +65,13 @@ const handleSettingsToggle = (bool) => {
 }
 
 // 记录访问过的页面，用于生成tab-bar
-const noRecordViewPath = ['/login'] //排除不需要显示到tab-bar的页面
 const addVisitedView = (view) => {
   if (
     !view.meta.title ||
     state.visitedViews.some((v) => v.path === view.path) ||
     noRecordViewPath.some((v) => view.path.includes(v))
   )
-    return
+    return // 没有标题或者已访问过或者不满足记录条件则不记录该页面
   state.visitedViews.push({
     name: view.name,
     path: view.path,
@@ -78,7 +80,7 @@ const addVisitedView = (view) => {
     fullPath: view.fullPath,
   })
 }
-
+// 根据条件缓存访问过的页面
 const cachedVisitedView = (view) => {
   if (
     //  未设置不缓存 且 还没被缓存过 才缓存起来
@@ -89,7 +91,7 @@ const cachedVisitedView = (view) => {
     state.cachedViews.push(view.name)
   }
 }
-
+// 移除被缓存的页面
 const removeCachedView = (route) => {
   const index = state.cachedViews.indexOf(route.name)
   index > -1 && state.cachedViews.splice(index, 1)
@@ -141,7 +143,7 @@ const delTabBarItem = (tabItem, operate = 'self') => {
  * 1. 获取匹配的路由来生成面包屑导航
  * 2. 更新当前激活的路由
  */
-export const globalRouteUpdateHook = (to, from) => {
+export const globalRouteUpdateHook = (to) => {
   const matched = to.matched.filter((item) => item.meta && item.meta.title)
   state.breadcrumbList.length = 0
   state.breadcrumbList.push(...matched)

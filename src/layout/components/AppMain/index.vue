@@ -19,7 +19,7 @@
  * https://next.router.vuejs.org/zh/api/#router-view-props
  * <router-view>、<keep-alive> 和 <transition> 变化：https://github.com/vuejs/rfcs/blob/master/active-rfcs/0034-router-view-keep-alive-transitions.md
  *
- * 这里是第二层<router-view>
+ * 这里是第二层 <router-view>
  */
 import useLayout from '../useLayout'
 import { toRef } from 'vue'

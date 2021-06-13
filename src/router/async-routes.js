@@ -1,5 +1,6 @@
 import Layout from '/src/layout/index.vue'
 import nestedRouter from './modules/nested'
+
 /**
  * 异步路由表，由前端控制。 结合用户的roles过滤后添加到router中
  *
@@ -24,9 +25,7 @@ export default [
         path: 'test1',
         name: 'Test1',
         component: () => import('/src/views/test/test1.vue'),
-        meta: {
-          title: '测试-1',
-        },
+        meta: { title: '测试-1' },
       },
     ],
   },
@@ -34,51 +33,37 @@ export default [
     path: '/permission',
     redirect: '/permission/page',
     component: Layout,
-    meta: {
-      title: '权限页面',
-      roles: ['admin', 'editor', 'test'],
-    },
+    meta: { title: '权限页面', roles: ['admin', 'editor', 'test'] },
     children: [
       {
         path: 'page',
         component: () => import('/src/views/permission/page.vue'),
         name: 'PagePermission',
-        meta: {
-          title: '权限-页面',
-          roles: ['admin'],
-        },
+        meta: { title: '权限-页面', roles: ['admin'] },
       },
       {
         path: 'test',
         component: () => import('/src/views/permission/test.vue'),
         name: 'TestPermission',
-        meta: {
-          title: '权限-测试',
-          roles: ['admin', 'test'],
-        },
+        meta: { title: '权限-测试', roles: ['admin', 'test'] },
       },
     ],
   },
   nestedRouter /* 导入其他模块的路由 */,
   // 404页面需要放在最后，确保没有路由被匹配时能正确跳转到404.vue
   {
-    path: '/:catchAll(.*)',
-    name: 'catch',
+    path: '/:catchAll(.*)*',
+    name: 'NotFound',
     hidden: true,
     component: () => import('/src/views/error-page/404.vue'),
   },
-
   {
     path: '/ex-link',
-    component: Layout,
     children: [
       {
         path: 'https://github.com/someGenki',
         name: 'ex-link-github',
-        component: () => import('/src/views/profile/index.vue'),
-        meta: {
-          title: 'Github',
-        },
+        meta: { title: 'Github' },
       },
     ],
   },

@@ -3,21 +3,19 @@ import vue from '@vitejs/plugin-vue'
 // vue-jsx 插件说明
 // https://github.com/vuejs/jsx-next/blob/dev/packages/babel-plugin-jsx/README-zh_CN.md
 import vueJsx from '@vitejs/plugin-vue-jsx'
-//  mockjs 首次运行错误可输入: node .\node_modules\vite-plugin-mock\node_modules\esbuild\install.js
+//  mockjs插件 首次运行错误可输入: node .\node_modules\vite-plugin-mock\node_modules\esbuild\install.js
 //  使用说明 https://github.com/anncwb/vite-plugin-mock/blob/main/README.zh_CN.md
 import { viteMockServe } from 'vite-plugin-mock'
 import { svgLoader } from './src/plugin/svg-loader'
 
-// 官方设置文档 https://cn.vitejs.dev/config/
+// 官方文档 https://cn.vitejs.dev/config/
 export default ({ command }) => {
   return {
     base: '/vite/',
 
     server: {
       port: 8008,
-      open: false,
-      // ↑ true:启动后打开浏览器，默认打开是127.0.0.1[2.3.0]而非localhost,
-      // 当ipv6优先级高时，localhost!=127.0.0.1,向mock发送请求会存在跨域问题
+      open: true,
     },
 
     build: {
@@ -43,8 +41,7 @@ export default ({ command }) => {
 
     resolve: {
       alias: {
-        // 设置别名后，IDEA编辑器还是不能识别
-        '@': resolve(__dirname, 'src'), // 别名 `@` 指向 `src` 目录
+        '@': resolve(__dirname, 'src'), // 别名 `@` 指向 `src` 目录 PS:IDEA编辑器还是不能识别
         assets: '/src/assets',
         comp: '/src/components',
       },

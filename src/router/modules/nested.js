@@ -5,9 +5,7 @@ export default {
   component: Layout,
   redirect: '/nested/menu1/menu1-1',
   name: 'Nested',
-  meta: {
-    title: '嵌套路由',
-  },
+  meta: { title: '嵌套路由' },
   children: [
     {
       path: 'menu1',

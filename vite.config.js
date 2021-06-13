@@ -1,10 +1,9 @@
 import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
-// vue-jsx 插件说明
-// https://github.com/vuejs/jsx-next/blob/dev/packages/babel-plugin-jsx/README-zh_CN.md
+// vue-jsx 插件说明 https://github.com/vuejs/jsx-next/blob/dev/packages/babel-plugin-jsx/README-zh_CN.md
 import vueJsx from '@vitejs/plugin-vue-jsx'
-//  mockjs插件 首次运行错误可输入: node .\node_modules\vite-plugin-mock\node_modules\esbuild\install.js
-//  使用说明 https://github.com/anncwb/vite-plugin-mock/blob/main/README.zh_CN.md
+// mockjs插件使用说明 https://github.com/anncwb/vite-plugin-mock/blob/main/README.zh_CN.md
+// 首次运行错误可输入: node .\node_modules\vite-plugin-mock\node_modules\esbuild\install.js
 import { viteMockServe } from 'vite-plugin-mock'
 import { svgLoader } from './src/plugin/svg-loader'
 

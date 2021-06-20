@@ -1,8 +1,8 @@
 <template>
   <div class="login-container">
+    <span style="cursor: pointer" @click="changeLoginStyle">toggle</span>
     <login01 v-if="pageNo === '1'" />
     <login02 v-else-if="pageNo === '2'" />
-    <login01 v-else />
   </div>
 </template>
 
@@ -10,14 +10,19 @@
 import Login01 from './Login01.vue'
 import Login02 from './Login02.vue'
 import { useRoute } from 'vue-router'
+import { ref } from 'vue'
 // https://element-plus.gitee.io/#/zh-CN/component/form
 export default {
   name: 'login',
   components: { Login01, Login02 },
   setup() {
-    // 测试用，根据page参数来显示对应的登录页
-    const pageNo = useRoute().query.page
-    return { pageNo }
+    // 测试用，根据page参数来显示对应的登录页1
+    const pageNo = ref(useRoute().query.page || '1')
+    const changeLoginStyle = () => {
+      if (pageNo.value === '1') pageNo.value = '2'
+      else pageNo.value = '1'
+    }
+    return { pageNo, changeLoginStyle }
   },
 }
 </script>
@@ -32,7 +37,7 @@ $bg-button: #cfd3d7;
   overflow: hidden;
   width: 100%;
   min-height: 100vh;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .login-button {

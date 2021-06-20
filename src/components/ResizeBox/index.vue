@@ -23,8 +23,9 @@
 </template>
 
 <script>
-import { computed, ref, toRefs } from 'vue'
+import { computed, onMounted, ref, toRefs } from 'vue'
 /**
+ * 这个破组件写的有点复杂了。。。
  * 关于元素位置/大小 可看文章 http://www.ruanyifeng.com/blog/2009/09/find_element_s_position_using_javascript.html
  基础用法 ↓
 <resize-box>
@@ -71,6 +72,7 @@ export default {
     // 方便移动时(resizeStart函数调用)快速判断方向
     let isHorizontal
 
+    // resize开始 修改leftBox的宽度
     const resizeStart = (e) => {
       e.stopPropagation()
       /* 盲猜这样的性能比<字符串之间的比较好些些> if (e.type === 'touchmove') e = e.changedTouches[0]*/
@@ -79,6 +81,7 @@ export default {
       else leftBox.value.style.height = e.pageY - rbInfo.top + 'px'
     }
 
+    // resize结束 回复原来的样式，删除相关事件
     const resizeEnd = () => {
       const rb = resizeBox.value
       rb.style.cursor = rb.style.userSelect = null
@@ -184,6 +187,7 @@ export default {
 }
 .resize-box__left {
   overflow: auto;
+  flex-shrink: 0;
 }
 .resize-box__right {
   overflow: auto;

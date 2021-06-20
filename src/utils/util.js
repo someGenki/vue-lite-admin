@@ -9,9 +9,10 @@ export function debounce(fn, wait = 100) {
 }
 
 /**
+ * 合并树型对象的数组 （合并两棵树）
  * @example
  *   let result = recursionMerge( duplicateArray,
- *    (v1, v2) => v1.mid === v2.mid,  ///*对象的equal方法
+ *    (v1, v2) => v1.mid === v2.mid,  //对象之间的比较方法
  *    (c, p) => c.pid === p.mid )    //父子关系的判断方法
  *
  * @param { Array } objArr  需要合并的树型对象的数组

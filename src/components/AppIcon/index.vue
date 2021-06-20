@@ -15,9 +15,8 @@ export default {
     size: { default: 16 },
   },
   setup(props) {
-    // 如果是外联 则使用外联
-    // 如果以特定前缀 则使用i 如自带的el-icon
-    // 否则根据名字生成id使用svg>symbol里的svg
+    // 如果以特定前缀 则使用i标签 如自带的el-icon
+    // 否则根据名字生成id使用svg>symbol里的svg(注入到index.html中body下的svg标签)
     const { icon, color, size } = props
     const sizePx = size + 'px'
     if (icon.startsWith('el-'))

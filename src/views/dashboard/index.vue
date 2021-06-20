@@ -18,8 +18,17 @@
           class="quick-nav__card"
         >
           <img width="80" src="https://v3.cn.vuejs.org/logo.png" />
-          <p>Vue.js3官方中文文档</p>
+          <p>Vue.js3中文文档</p>
           <span>渐进式 JavaScript 框架</span>
+        </a>
+        <a
+          target="_blank"
+          href="https://element-plus.gitee.io/#/zh-CN/"
+          class="quick-nav__card"
+        >
+          <img width="80" src="/src/assets/element-logo.svg" />
+          <p>Element Plus文档</p>
+          <span>Vue 3的桌面端组件库</span>
         </a>
       </el-col>
     </el-row>
@@ -44,7 +53,7 @@ export default {
 
     onMounted(() => {
       // 根据父元素的宽度来设置图表的宽度 （未添加resize事件处理）
-      const parentWidth = shop.value.parentElement.clientWidth
+      const parentWidth = shop.value.parentElement.clientWidth - 10
       shop.value.style.width = parentWidth + 'px'
       let myChart = echarts.init(shop.value)
       // 指定图表的配置项和数据
@@ -92,9 +101,10 @@ export default {
   &__card {
     border: 1px solid #ccc;
     display: inline-flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     align-items: center;
     text-align: center;
+    margin: 6px;
     padding: 4px;
     > p {
       font-size: 1.1rem;

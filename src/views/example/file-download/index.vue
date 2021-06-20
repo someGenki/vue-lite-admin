@@ -6,7 +6,7 @@
       下载Dio.jpg，适用于静态资源，兼容性一般
     </el-alert>
     <el-alert type="success" title="使用文件流下载,生产模式生效">
-      <a download="dio" @click="blobDownload">点我</a>
+      <a download="dio" style="cursor: pointer" @click="blobDownload">点我</a>
       下载bb.txt
     </el-alert>
     <el-alert type="success" title="使用download.js库">

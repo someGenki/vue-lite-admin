@@ -98,16 +98,22 @@ export default [
         meta: { title: '文件下载', icon: 'el-icon-download' },
       },
       {
-        path: 'text-editor',
-        component: () => import('/src/views/error-page/404.vue'),
-        name: 'TextEditor',
-        meta: { title: '文本编辑器', icon: 'el-icon-edit' },
-      },
-      {
         path: 'emotion-demo',
         component: () => import('/src/views/example/emotion-demo/index.vue'),
         name: 'EmotionDemo',
         meta: { title: '输入框表情', icon: 'el-icon-box' },
+      },
+      {
+        path: 'compare-demo',
+        component: () => import('/src/views/example/compare-demo/index.vue'),
+        name: 'CompareDemo',
+        meta: { title: '图片对比', icon: 'el-icon-picture-outline' },
+      },
+      {
+        path: 'text-editor',
+        component: () => import('/src/views/error-page/404.vue'),
+        name: 'TextEditor',
+        meta: { title: '文本编辑器', icon: 'el-icon-edit' },
       },
       {
         path: 'image-cropper',
@@ -141,6 +147,12 @@ export default [
         component: () => import('/src/views/error-page/401.vue'),
         name: '401',
         meta: { title: '401页面', icon: 'el-icon-close' },
+      },
+      {
+        path: 'scroll-page',
+        component: () => import('/src/views/example-page/scroll-page.vue'),
+        name: 'ScrollPage',
+        meta: { title: '滚动页面', icon: 'el-icon-d-caret' },
       },
       {
         path: 'example-table',

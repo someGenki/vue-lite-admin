@@ -96,7 +96,7 @@ $login-btn-size: 64px;
   cursor: pointer;
   font-weight: bolder;
   &.enable {
-    background: linear-gradient(#6190e8, #a7bfe8);
+    background: linear-gradient(#1768ff, #a7bfe8);
   }
 }
 

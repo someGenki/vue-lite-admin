@@ -1,4 +1,4 @@
-import { login as _login, getInfo as _getInfo } from '../api/user'
+import { login as _login, getInfo as _getInfo } from '/src/api/user'
 import { getToken, setToken } from '/src/utils/storage'
 import constantRoutes from '/src/router/constant-routes'
 import asyncRoutes from '/src/router/async-routes'

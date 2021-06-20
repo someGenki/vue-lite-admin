@@ -1,5 +1,5 @@
 <template>
-  <span style="z-index: 110; color: white" :class="ribbonClass">
+  <span style="z-index: 1; color: white" :class="ribbonClass">
     <span style="cursor: pointer">{{ content }}</span>
   </span>
 </template>
@@ -9,15 +9,9 @@ export default {
   name: 'SilkRibbon',
   props: {
     // 缎带的花样
-    pattern: {
-      type: Number,
-      default: 1,
-    },
+    pattern: { type: Number, default: 1 },
     // 缎带的文字
-    content: {
-      type: String,
-      default: '文字',
-    },
+    content: { type: String, default: '文字' },
   },
   computed: {
     ribbonClass() {

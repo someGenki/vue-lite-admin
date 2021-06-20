@@ -13,7 +13,7 @@
 </template>
 
 <script>
-// 交互式的图片对比控件 from：https://juejin.cn/post/6924206099193135111#heading-18
+// 交互式的图片对比控件 参考自 https://juejin.cn/post/6924206099193135111#heading-18
 import { ref } from 'vue'
 
 export default {

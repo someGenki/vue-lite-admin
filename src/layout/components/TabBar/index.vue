@@ -21,6 +21,7 @@
           v-text="tab.title"
         />
         <app-icon
+          @contextmenu.prevent="openMenu(tab, $event)"
           @click="delTabBarItem(tab)"
           class="tab-close"
           icon="el-icon-close"

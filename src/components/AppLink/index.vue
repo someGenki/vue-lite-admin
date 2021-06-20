@@ -5,8 +5,8 @@
 </template>
 
 <script>
-// https://v3.cn.vuejs.org/api/built-in-components.html#component
-// https://github.com/PanJiaChen/vue-element-admin/blob/master/src/layout/components/Sidebar/Link.vue
+// vue内置组件component说明 https://v3.cn.vuejs.org/api/built-in-components.html#component
+// 参考自 https://github.com/PanJiaChen/vue-element-admin/blob/master/src/layout/components/Sidebar/Link.vue
 
 /**
  *   <app-link  :to="i.path">

@@ -8,7 +8,7 @@
         placeholder="请输入内容"
         v-model="text1"
       />
-      <emotion-box position="top" @emotion-add="(e) => (text1 += e)" />
+      <emotion-box @emotion-add="(e) => (text1 += e)" />
     </template>
     <template #right>
       <div v-html="processText" />
@@ -17,21 +17,19 @@
       <app-icon icon="el-icon-right" />
     </template>
   </resize-box>
-  <compare-box/>
 </template>
 
 <script>
 import EmotionBox from '/src/components/EmotionBox/index.vue'
-import CompareBox from '/src/components/CompareBox/index.vue'
 import ResizeBox from '/src/components/ResizeBox/index.vue'
-import { useProcessEmotion } from '/src/components/EmotionBox/useEmotions'
+import { processEmotionText } from '/src/components/EmotionBox/useEmotions'
 import { computed, ref } from 'vue'
 export default {
   name: 'EmotionDemo',
-  components: { EmotionBox, ResizeBox,CompareBox },
+  components: { EmotionBox, ResizeBox },
   setup() {
     const text1 = ref('')
-    const processText = computed(() => useProcessEmotion(text1.value))
+    const processText = computed(() => processEmotionText(text1.value))
     return { text1, processText }
   },
 }

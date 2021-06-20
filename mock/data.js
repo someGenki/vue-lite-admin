@@ -34,7 +34,6 @@ export default [
     url: '/api/demo/download1', // 文件流下载 dev模式下可以地址栏直接访问
     method: 'get',
     rawResponse: async (req, res) => {
-      console.log(req)
       // 没什么意义的延迟半秒才返回数据
       await new Promise((resolve) => setTimeout(() => resolve(), 500))
       // 告知客户端资源的类型 octet-stream为未知

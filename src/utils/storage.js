@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-// https://www.npmjs.com/package/js-cookie
+//docs https://www.npmjs.com/package/js-cookie
 
 const KEY_PREFIX = 'YUAN-'
 const KEY_TOKEN = 'ADMIN-TOKEN'

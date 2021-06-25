@@ -9,7 +9,7 @@
       <div v-if="showQrCode">
         <img
           style="margin: auto; height: 150px; display: block"
-          src="~@/assets/wechat-receiving.jpg"
+          src="./wechat-receiving.jpg"
           alt="收款码"
         />
       </div>

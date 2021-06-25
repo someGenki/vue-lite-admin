@@ -116,8 +116,9 @@ $card-height: 160px;
 }
 .github-link {
   position: absolute;
-  left: 8px;
-  bottom: 6px;
+  left: 10px;
+  bottom: 8px;
+  padding: 1px;
   color: #eee;
   font-size: 0.8rem;
   &:hover {

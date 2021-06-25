@@ -11,7 +11,7 @@
         <div style="height: 280px" ref="shop" />
       </el-col>
       <el-col class="quick-nav" :xs="24" :sm="12" :lg="6">
-        <p>快捷导航</p>
+        <p style="font-weight: bold">快捷导航</p>
         <a
           target="_blank"
           href="https://v3.cn.vuejs.org/"
@@ -38,7 +38,7 @@
 <script>
 // https://element-plus.gitee.io/#/zh-CN/component/layout
 // element-plus响应式布局分24栏, 为简化只关注xs,sm和lg。分别是小于768px,大于768px和大于1200px
-//  数字增加 https://blog.csdn.net/sunny123x/article/details/102589067
+// 数字增加 https://blog.csdn.net/sunny123x/article/details/102589067
 // 请求动画帧 https://github.com/PanJiaChen/vue-countTo/blob/master/src/requestAnimationFrame.js
 
 import { Earning, WeChat, Bilibili, Github } from './components/cards.js'

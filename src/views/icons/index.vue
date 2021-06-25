@@ -21,52 +21,43 @@
       </a>
     </h3>
     <ul class="icon-set clearfix">
-      <li v-for="e in elIcon" :key="e">
-        <app-icon size="36" :icon="e" />
-        <span @click="copyTag(e)">{{ e }}</span>
+      <li v-for="name in showElIcons" :key="name">
+        <app-icon size="36" :icon="'el-icon-' + name" />
+        <span @click="copyTag('el-icon-' + name)">{{ 'el-icon-' + name }}</span>
       </li>
+      <el-button @click="loadMoreElIcon" :disabled="noMoreElIcon" type="text">
+        加载更多
+        <i class="el-icon-arrow-right" />
+      </el-button>
     </ul>
   </div>
 </template>
 
 <script>
+// 相关参考 https://juejin.cn/post/6966491047257964575#heading-3
 import { ElMessage } from 'element-plus'
+import icons from './icons.json'
+import { reactive, ref } from 'vue'
 export default {
   name: 'Icons',
   setup() {
     const svgArr = []
-    const elIcon = [
-      'el-icon-platform-eleme',
-      'el-icon-eleme',
-      'el-icon-delete-solid',
-      'el-icon-delete',
-      'el-icon-s-tools',
-      'el-icon-setting',
-      'el-icon-user-solid',
-      'el-icon-user',
-      'el-icon-phone',
-      'el-icon-phone-outline',
-      'el-icon-more',
-      'el-icon-more-outline',
-      'el-icon-star-on',
-      'el-icon-star-off',
-      'el-icon-s-goods',
-      'el-icon-goods',
-      'el-icon-warning',
-      'el-icon-warning-outline',
-      'el-icon-question',
-      'el-icon-info',
-      'el-icon-s-unfold',
-      'el-icon-s-grid',
-      'el-icon-refresh',
-      'el-icon-loading',
-    ]
-    let child = document.getElementById('svgSpriteStats').children
+    const noMoreElIcon = ref(false)
+    const iconsSpliceLength = icons.length / 4
+    const showElIcons = reactive(icons.splice(0, iconsSpliceLength))
+    const child = document.getElementById('svgSpriteStats').children
     for (const c of child) {
       svgArr.push(c.id.replace('icon-', ''))
     }
+
+    function loadMoreElIcon() {
+      icons.length > 0
+        ? showElIcons.push(...icons.splice(0, iconsSpliceLength))
+        : (noMoreElIcon.value = true)
+    }
+
     // 优秀的复制内容到剪切板的库👉 https://clipboardjs.com/
-    const copyTag = (str) => {
+    function copyTag(str) {
       const el = document.createElement('textarea')
       const content = `<app-icon  :icon="${str}" />`
       el.value = content
@@ -76,12 +67,13 @@ export default {
       el.remove()
       el.setAttribute('readonly', '') //利用只读属性来防止弹出虚拟键盘
       ElMessage.success({
-        message: `复制到剪切板:${content}`,
+        message: `已复制到剪切板:${content}`,
         type: 'success',
         center: true,
       })
     }
-    return { svgArr, elIcon, copyTag }
+
+    return { svgArr, showElIcons, copyTag, loadMoreElIcon, noMoreElIcon }
   },
 }
 </script>
@@ -111,7 +103,8 @@ export default {
       color: $primary-color;
     }
     > span {
-      margin-top: 4px;
+      color: #99a9bb;
+      margin-top: 8px;
     }
   }
   @media screen and (max-width: $lg-width) {

@@ -53,7 +53,7 @@
 
 ## 常见报错
 
-esbuild.exe没找到
+1. esbuild.exe没找到
 
 > events.js:292
 >       throw er; // Unhandled 'error' event
@@ -74,7 +74,7 @@ esbuild.exe没找到
 >   spawnargs: [ '--service=0.12.9', '--ping' ]
 > }
 
-解决
+​	解决如下
 
 > 手动执行 `node node_modules/esbuild/install.js` ，vite-plugin-mock报错也使用同样方法解决
 >

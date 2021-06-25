@@ -2,7 +2,7 @@
   <div>
     <div>权限相关页面</div>
     <div>
-      <p>当前权限用户拥有权限:{{null}}</p>
+      <p>当前权限用户拥有权限:{{$store.state.user.roles}}</p>
     </div>
   </div>
 </template>

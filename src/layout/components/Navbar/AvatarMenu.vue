@@ -30,6 +30,7 @@ export default {
   // 数组中的对象要有 title 属性，如果有path属性则会渲染成链接
   // 如果没有path属性，则会渲染成普通的item项，并在点击时触发item.handle函数
   props: { items: { type: Array, required: true }, avatar: {}, nickname: {} },
+
 }
 </script>
 

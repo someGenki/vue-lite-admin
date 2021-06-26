@@ -1,5 +1,5 @@
 <template>
-  <div>当前页面只有拥有【{{ null }}】角色可以查看</div>
+  <div>尚未实现相应演示</div>
   <p>TODO</p>
 </template>
 

@@ -1,4 +1,5 @@
-/** @From https://github.com/JetBrains/svg-sprite-loader/issues/434
+/**
+ *  @From https://github.com/JetBrains/svg-sprite-loader/issues/434
  *  @Better https://github.com/anncwb/vite-plugin-svg-icons
  */
 import { readFileSync, readdirSync } from 'fs'
@@ -62,7 +63,7 @@ function findSvgFile(dir) {
 export const svgLoader = (path, prefix = 'icon') => {
   if (path === '') return
   idPrefix = prefix
-  const res = findSvgFile(path)
+  const res = findSvgFile(process.cwd() + path)
   return {
     name: 'svg-transform',
     transformIndexHtml(html) {

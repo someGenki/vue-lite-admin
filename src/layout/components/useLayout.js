@@ -1,7 +1,6 @@
-import { computed, reactive, readonly, toRef, watch } from 'vue'
+import { computed, reactive, toRef, watch } from 'vue'
 import { getSetting, saveSetting } from '/src/utils/storage'
 import { debounce } from '/src/utils/util'
-import router from '/src/router'
 
 // ===数据定义和初始化区=== 暂时没抽离先写一堆 unfold:展开、collapse:折叠...
 const state = reactive({
@@ -12,7 +11,7 @@ const state = reactive({
   showLogo: getSetting('showLogo', 'bool', true),
   sCollapseWidth: 64, // sidebar折叠后宽度
   showSettings: false, // 是否显示设置面板
-  isMobile: document.body.clientWidth < 1001, // 简易响应式设计应用
+  isMobile: document.body.clientWidth < 768,
   themeColor: '#02BF6F',
   breadcrumbList: [],
   visitedViews: [],
@@ -20,30 +19,17 @@ const state = reactive({
 })
 
 // 用一个数组来定义需要保存的local storage 的state.key，watch监听变动来存储
-const needSaveToLocalStorage = [
-  'unfoldSidebar',
-  'sUnfoldWidth',
-  'fixedHeader',
-  'showLogo',
-]
-needSaveToLocalStorage.forEach((item) =>
-  watch(toRef(state, item), (n) => saveSetting(item, n))
+!['unfoldSidebar', 'sUnfoldWidth', 'fixedHeader', 'showLogo'].forEach((item) =>
+  watch(toRef(state, item), (newVal) => saveSetting(item, newVal))
 )
 
 //排除不需要显示到tab-bar的页面
 const noRecordViewPath = ['/login']
 
-// 头像下拉菜单项
-const dropdownItems = readonly([
-  { title: '个人中心', path: 'profile' },
-  { title: '项目地址', path: 'https://github.com/someGenki' },
-  { title: '不可点击', path: '/', disabled: true },
-  { title: '退出登录', divided: true, handle: () => alert('登出!') },
-])
-
+// 监听页面尺寸调整 动态改变state.isMobile的值判断是否是移动设备
 window.addEventListener(
-  'resize' /* 监听页面尺寸调整 动态改变state.isMobile的值判断是否是移动设备  */,
-  debounce(() => (state.isMobile = document.body.clientWidth < 1001), 100)
+  'resize',
+  debounce(() => (state.isMobile = document.body.clientWidth < 768), 100)
 )
 
 /*  ===计算属性区=== */
@@ -80,10 +66,11 @@ const addVisitedView = (view) => {
     fullPath: view.fullPath,
   })
 }
+
 // 根据条件缓存访问过的页面
 const cachedVisitedView = (view) => {
+  //  未设置不缓存 且 还没被缓存过 才缓存起来
   if (
-    //  未设置不缓存 且 还没被缓存过 才缓存起来
     !view.meta.noCache &&
     view.name &&
     !state.cachedViews.includes(view.name)
@@ -95,46 +82,6 @@ const cachedVisitedView = (view) => {
 const removeCachedView = (route) => {
   const index = state.cachedViews.indexOf(route.name)
   index > -1 && state.cachedViews.splice(index, 1)
-}
-
-/**
- * 根据操作来删除符合的tab项
- * @param tabItem 被选中要操作tab项，
- * @param operate 要进行的操作
- */
-const delTabBarItem = (tabItem, operate = 'self') => {
-  const arr = state.visitedViews
-  let rest = null // 记录被 关闭/移除 的路由标签
-  for (const [i, v] of arr.entries()) {
-    if (v.path === tabItem.path) {
-      switch (operate) {
-        case 'self':
-          rest = arr.splice(i, 1)
-          break
-        case 'all':
-          rest = arr.splice(0, arr.length)
-          break
-        case 'left':
-          rest = arr.splice(0, i)
-          break
-        case 'other':
-          rest = arr.splice(0, arr.length, v)
-          break
-        case 'right':
-          rest = arr.splice(i + 1, arr.length)
-          break
-        default:
-          rest = arr.splice(i, 1) //  // 默认 'self' 只删除自身
-      }
-      break
-    }
-  }
-  // 如果当前的路由被关闭了，应该跳转到最后一页或者首页
-  if (rest && rest.some((e) => e.name === router.currentRoute.value.name)) {
-    // 尝试获取被删的除view之外最新访问的view，如果它存在则跳转到这个页面，否则跳转到首页（默认）
-    const latestView = state.visitedViews.slice(-1)[0]
-    latestView ? router.push(latestView.fullPath) : router.push('/')
-  }
 }
 
 /**
@@ -155,12 +102,9 @@ export default function useLayout() {
   return {
     state,
     sidebarWidth,
-    dropdownItems,
-    delTabBarItem,
     removeCachedView,
     cachedVisitedView,
     handleSidebarToggle,
     handleSettingsToggle,
-    globalRouteUpdateHook,
   }
 }

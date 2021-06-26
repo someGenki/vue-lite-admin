@@ -24,9 +24,8 @@ export default ({ command }) => {
     plugins: [
       vue(),
       vueJsx({}),
-      svgLoader(process.cwd() + '/src/icons/'),
+      svgLoader('/src/icons/'),
       viteMockServe({
-        supportTs: false,
         mockPath: 'mock',
         localEnabled: command === 'serve',
         prodEnabled: command !== 'serve' && true,

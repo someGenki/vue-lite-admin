@@ -49,7 +49,7 @@ vue3 teleport组件 https://v3.cn.vuejs.org/api/built-in-components.html#telepor
 按键修饰符 https://v3.cn.vuejs.org/guide/events.html#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6
  */
 import useLayout from '../useLayout'
-import { toRefs } from 'vue'
+import { toRefs, watch } from 'vue'
 import SettingItem from './SettingItem.vue'
 
 export default {
@@ -57,13 +57,19 @@ export default {
   components: { SettingItem },
   setup() {
     const { handleSettingsToggle, state } = useLayout()
-    const {
-      showSettings,
-      fixedHeader,
-      sUnfoldWidth,
-      showLogo,
-      showTabBar,
-    } = toRefs(state)
+
+    const { showSettings, fixedHeader, sUnfoldWidth, showLogo, showTabBar } =
+      toRefs(state)
+
+    function closeSettings(e) {
+      if (e.keyCode === 27) showSettings.value = false
+    }
+
+    // 当settings面板打开时，监听ESC按下事件，以此关闭settings面板
+    watch(showSettings, (newVal) => {
+      if (newVal === true) document.addEventListener('keydown', closeSettings)
+      else document.removeEventListener('keydown', closeSettings)
+    })
 
     return {
       handleSettingsToggle,

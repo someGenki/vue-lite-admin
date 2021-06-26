@@ -9,7 +9,7 @@
 /*
 $attrs的使用     https://v3.cn.vuejs.org/api/instance-properties.html#attrs
 在组件上使用emit  https://v3.cn.vuejs.org/guide/component-basics.html#%E5%9C%A8%E7%BB%84%E4%BB%B6%E4%B8%8A%E4%BD%BF%E7%94%A8-v-model
-Switch 开关     https://element-plus.gitee.io/#/zh-CN/component/switch
+Switch开关      https://element-plus.gitee.io/#/zh-CN/component/switch
 */
 import { computed } from 'vue'
 
@@ -17,15 +17,9 @@ export default {
   name: 'SettingItem',
   props: {
     desc: { type: String, required: true },
-    modelValue: {
-      type: [Boolean, String, Number],
-      required: true,
-    },
-    type: {
-      type: String,
-      // 暂时不知道怎么判断组件已注册
-      default: 'el-switch',
-    },
+    modelValue: { type: [Boolean, String, Number], required: true },
+    type: { type: String, default: 'el-switch' },
+    /* 暂不知道如何判断该组件已注册 */
   },
   emits: ['update:modelValue', 'change'],
 

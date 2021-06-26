@@ -30,10 +30,9 @@
         </template>
       </el-upload>
       <p>
-        当前action：
+        当前action(请求路径)：
         <span>{{ action }}</span>
       </p>
-      <silk-ribbon/>
     </div>
     <div class="custom-upload-demo">
       <h1>自定义上传功能</h1>
@@ -84,10 +83,8 @@
 
 <script>
 import { ref } from 'vue'
-import SilkRibbon from '/src/components/SilkRibbon/index.vue'
 export default {
   name: 'FileUpload',
-  components:{SilkRibbon},
   setup() {
     // 获取实例的引用，用于调用upload1.submit进行手动上传
     const upload1 = ref(null)
@@ -109,6 +106,7 @@ export default {
       console.log(files)
       alert(`你选择了${files.length}个文件，第一个文件名为${files[0].name}`)
     }
+
     /**
      * 把要el-upload要绑定的属性写成一个对象(还能加上注释!!)，同时避免el-upload标签属性太多
      * 回调函数用箭头函数更简洁的同时也确保this的执行(用普通函数this为Proxy包裹的el-upload的属性)

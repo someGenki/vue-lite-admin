@@ -42,7 +42,7 @@
         class="tabBar-contextmenu"
       >
         <li @click="delTabBarItem(contextMenuProp.selectedTab, 'self')">
-          关闭当前标签页🤏
+          关闭所选标签页🤏
         </li>
         <li @click="delTabBarItem(contextMenuProp.selectedTab, 'left')">
           关闭左侧标签页👈
@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import useLayout from '../useLayout.js'
+import useTabBar from './useTabBar'
 import { useRouter } from 'vue-router'
 import { reactive, toRef, watch } from 'vue'
 
@@ -78,14 +78,14 @@ export default {
   setup() {
     const router = useRouter()
 
-    const { state, delTabBarItem, removeCachedView } = useLayout(),
-      visitedViews = state.visitedViews,
-      contextMenuProp = reactive({
-        top: 0,
-        left: 0,
-        show: false,
-        selectedTab: null,
-      })
+    const { delTabBarItem, removeCachedView, visitedViews } = useTabBar()
+
+    const contextMenuProp = reactive({
+      top: 0,
+      left: 0,
+      show: false,
+      selectedTab: null,
+    })
 
     const openMenu = (tab, $event) => {
       // 由于是插入到body元素上，所以根据page来定位

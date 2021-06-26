@@ -1,5 +1,5 @@
 <template>
-  <div class=" hamburger-container" @click="$emit('toggleClick')">
+  <div class="hamburger-container" @click="$emit('toggleClick')">
     <svg
       :class="{ unfold }"
       class="hamburger"
@@ -18,12 +18,7 @@
 <script>
 export default {
   name: 'Hamburger',
-  props: {
-    unfold: {
-      type: Boolean,
-      require: true,
-    },
-  },
+  props: { unfold: { type: Boolean, require: true } },
   emits: ['toggleClick'],
 }
 </script>

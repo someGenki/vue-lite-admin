@@ -9,7 +9,7 @@
       </svg>
     </template>
     <template #extra>
-      <el-button type="primary" @click.prevent="$router.push('/')">
+      <el-button type="primary" size="small" @click.prevent="$router.push('/')">
         返回首页
       </el-button>
     </template>

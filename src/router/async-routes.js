@@ -67,4 +67,17 @@ export default [
       },
     ],
   },
+  {
+    path: '/about',
+    redirect: '/about/index',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'about',
+        component: () => import('/src/views/about/index.vue'),
+        meta: { title: '关于',icon:'el-icon-place' },
+      },
+    ],
+  },
 ]

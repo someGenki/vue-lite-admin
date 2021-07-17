@@ -43,14 +43,15 @@
 
 import { Earning, WeChat, Bilibili, Github } from './components/cards.js'
 import * as echarts from 'echarts'
-import { onMounted, ref } from 'vue'
+import { onMounted, reactive, ref} from 'vue'
 
 export default {
   name: 'Dashboard',
   components: { Earning, WeChat, Bilibili, Github },
+
   setup() {
     const shop = ref(null)
-
+    const arr = reactive([1, 2])
     onMounted(() => {
       // 根据父元素的宽度来设置图表的宽度 （未添加resize事件处理）
       const parentWidth = shop.value.parentElement.clientWidth - 10
@@ -72,7 +73,7 @@ export default {
       myChart.setOption(option)
     })
 
-    return { shop }
+    return { shop, arr }
   },
 }
 </script>

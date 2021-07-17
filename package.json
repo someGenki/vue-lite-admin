@@ -1,6 +1,6 @@
 {
   "name": "vue-yuan-admin",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -11,19 +11,19 @@
   "dependencies": {
     "axios": "^0.21.1",
     "echarts": "^5.1.2",
-    "element-plus": "^1.0.2-beta.53",
-    "js-cookie": "^3.0.0-rc.1",
+    "element-plus": "^1.0.2-beta.55",
+    "js-cookie": "^3.0.0-rc.4",
     "mockjs": "^1.1.0",
-    "vue": "^3.1.2",
-    "vue-router": "^4.0.9"
+    "vue": "^3.1.5",
+    "vue-router": "^4.0.10"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.2.3",
-    "@vitejs/plugin-vue-jsx": "^1.1.5",
-    "@vue/compiler-sfc": "^3.1.2",
-    "prettier": "^2.3.1",
-    "sass": "^1.35.1",
-    "vite": "2.3.7",
-    "vite-plugin-mock": "^2.8.0"
+    "@vitejs/plugin-vue": "^1.2.5",
+    "@vitejs/plugin-vue-jsx": "^1.1.6",
+    "@vue/compiler-sfc": "^3.1.5",
+    "prettier": "^2.3.2",
+    "sass": "^1.35.2",
+    "vite": "^2.4.2",
+    "vite-plugin-mock": "^2.9.1"
   }
 }

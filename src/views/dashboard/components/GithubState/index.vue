@@ -9,7 +9,7 @@
     </div>
     <div class="github-star">
       <i class="el-icon-star-off" />
-      <span>2</span>
+      <span>27</span>
     </div>
     <div class="github-cat">
       <svg

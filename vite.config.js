@@ -1,4 +1,5 @@
 import { resolve } from 'path'
+import pkg from './package.json'
 import vue from '@vitejs/plugin-vue'
 // vue-jsx 插件说明 https://github.com/vuejs/jsx-next/blob/dev/packages/babel-plugin-jsx/README-zh_CN.md
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -6,6 +7,14 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 // 首次运行错误可输入: node .\node_modules\vite-plugin-mock\node_modules\esbuild\install.js
 import { viteMockServe } from 'vite-plugin-mock'
 import { svgLoader } from './src/plugin/svg-loader'
+
+
+const { dependencies, devDependencies, name, version } = pkg
+
+const __APP_INFO__ = {
+  pkg: { dependencies, devDependencies, name, version },
+  lastBuildTime: new Date().toLocaleString(),
+}
 
 // 官方文档 https://cn.vitejs.dev/config/
 export default ({ command }) => {
@@ -43,6 +52,11 @@ export default ({ command }) => {
         assets: '/src/assets',
         comp: '/src/components',
       },
+    },
+
+    // 定义全局常量替换方式,其中每项在开发环境下会被定义在全局，而在构建时被静态替换
+    define: {
+      __APP_INFO__: JSON.stringify(__APP_INFO__),
     },
 
     css: {

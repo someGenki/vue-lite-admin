@@ -81,7 +81,7 @@ export default {
 <style lang="scss" scoped>
 .dashboard-container {
   position: relative;
-  margin-right: 10px;
+  //margin-right: 10px;
 }
 .el-row > .el-col {
   padding-bottom: 10px;

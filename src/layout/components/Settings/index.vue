@@ -1,41 +1,41 @@
 <template>
-  <teleport to="body">
+  <teleport to='body'>
     <div
-      v-if="showSettings"
-      class="mask-zIndex99"
-      @click.stop.prevent.self="handleSettingsToggle(false)"
+      v-if='showSettings'
+      class='mask-zIndex99'
+      @click.stop.prevent.self='handleSettingsToggle(false)'
     />
-    <transition name="show-transform">
-      <div v-if="showSettings" class="settings-panel-content">
-        <div class="settings-panel-header">
+    <transition name='show-transform'>
+      <div v-if='showSettings' class='settings-panel-content'>
+        <div class='settings-panel-header'>
           <span>项目配置</span>
           <button
-            @click="handleSettingsToggle(false)"
-            class="close-btn"
+            @click='handleSettingsToggle(false)'
+            class='close-btn'
             v-text="'❌'"
           />
         </div>
-        <div class="settings-panel-body">
-          <el-divider>界面显示</el-divider>
+        <div class='settings-panel-body'>
+          <el-divider><span style='font-size: 16px'>界面显示</span></el-divider>
           <setting-item
-            v-model="fixedHeader"
-            type="el-switch"
-            desc="固定头部"
+            v-model='fixedHeader'
+            type='el-switch'
+            desc='固定头部'
           />
-          <setting-item v-model="showLogo" type="el-switch" desc="侧边栏Logo" />
+          <setting-item v-model='showLogo' type='el-switch' desc='侧边栏Logo' />
           <setting-item
-            v-model="showTabBar"
-            type="el-switch"
-            desc="标签栏导航"
+            v-model='showTabBar'
+            type='el-switch'
+            desc='标签栏导航'
           />
           <setting-item
-            v-model="sUnfoldWidth"
-            :step="5"
-            :min="160"
-            :max="260"
-            type="el-input-number"
-            desc="侧边栏宽度"
-            size="mini"
+            v-model='sUnfoldWidth'
+            :step='5'
+            :min='160'
+            :max='260'
+            type='el-input-number'
+            desc='侧边栏宽度'
+            size='mini'
           />
         </div>
       </div>
@@ -83,7 +83,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 $setting-panel-width: 300px;
 
 .settings-panel-content {

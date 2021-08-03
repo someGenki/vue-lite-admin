@@ -1,6 +1,6 @@
 <template>
   <div class="setting-item">
-    <span>{{ desc }}</span>
+    <span style="font-size: 14px">{{ desc }}</span>
     <component :is="type" v-bind="$attrs" v-model="value" />
   </div>
 </template>

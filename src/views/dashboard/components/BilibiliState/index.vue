@@ -49,10 +49,10 @@ export default {
   name: 'BilibiliState',
   setup() {
     const biliInfo = {
-      following: 78,
-      follower: 375,
+      following: 63,
+      follower: 381,
       likes: '1.3万',
-      plays: '46.3万',
+      plays: '47万',
     }
     return { ...biliInfo }
   },

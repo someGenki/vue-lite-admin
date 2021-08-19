@@ -5,28 +5,32 @@
  * @tips:
  * 1. 渲染成<i/>标签时，图标是和具体宽度在::before中，需要时可以对app-icon使用style="width: 16px" 设置宽度
  */
-import { h } from 'vue'
+import {h} from 'vue'
+
 export default {
   name: 'AppIcon',
   props: {
-    icon: { type: String, required: true },
+    icon: {type: String, required: true},
     // 如果svg标签的path标签已设置fill="color" 则该path的颜色也不会被更改
-    color: { type: String },
-    size: { default: 16 },
+    color: {type: String},
+    size: {default: 16},
   },
   setup(props) {
     // 如果以特定前缀 则使用i标签 如自带的el-icon
     // 否则根据名字生成id使用svg>symbol里的svg(注入到index.html中body下的svg标签)
-    const { icon, color, size } = props
+    const {icon, color, size} = props
     const sizePx = size + 'px'
+
+    // ElementPlus:Font Icon 将会在第一个正式发布被废弃，请尽快迁移
     if (icon.startsWith('el-'))
       return () =>
         h('i', {
           class: icon + ' app-icon',
-          style: { fontSize: sizePx, color },
+          style: {fontSize: sizePx, color},
         })
+
     else {
-      const style = { width: sizePx, height: sizePx }
+      const style = {width: sizePx, height: sizePx}
 
       if (color) {
         style.color = color
@@ -34,11 +38,11 @@ export default {
       }
 
       return () =>
-        h(
+        h('i', null, h(
           'svg',
-          { style, class: 'svg-icon app-icon' },
-          h('use', { 'xlink:href': '#icon-' + icon })
-        )
+          {style, class: 'svg-icon app-icon'},
+          h('use', {'xlink:href': '#icon-' + icon})
+        ))
     }
   },
 }

@@ -2,6 +2,20 @@ import Layout from '/src/layout/index.vue'
 import Login from '/src/views/login/index.vue'
 import Redirect from '/src/views/redirect/index.vue'
 
+function dynamicLayoutWrapper(e) {
+  // TODO 改成正则表达式提取并添加错误判断提示用户
+  let path = '/' + /\/(.*)\//.exec(e.defaultPath)[1]
+  let children = Array.isArray(e.children) ? e.children : [].concat(e.children)
+  return {
+    path,
+    meta: e.meta,
+    hidden: e.hidden,
+    redirect: e.defaultPath,
+    component: Layout,
+    children,
+  }
+}
+
 /**
  * 通用路由表，不需要动态获取的默认路由
  * 所有被展示到sidebar的路由都要有唯一的name属性
@@ -30,7 +44,7 @@ export default [
         path: 'dashboard',
         name: 'Dashboard',
         component: () => import('/src/views/dashboard/index.vue'),
-        meta: { title: '首页', icon: 'el-icon-info' },
+        meta: { title: '首页', icon: 'el-icon-s-home' },
       },
     ],
   },
@@ -50,19 +64,15 @@ export default [
     component: () => import('/src/views/error-page/401.vue'),
     hidden: true,
   },
-  {
-    path: '/icons',
-    component: Layout,
-    redirect: '/icons/index',
-    children: [
-      {
-        path: 'index',
-        name: 'Icons',
-        component: () => import('/src/views/icons/index.vue'),
-        meta: { title: '图标展示', icon: 'el-icon-shopping-cart-full' },
-      },
-    ],
-  },
+  dynamicLayoutWrapper({
+    defaultPath: '/icons/index',
+    children: {
+      path: 'index',
+      name: 'Icons',
+      component: () => import('/src/views/icons/index.vue'),
+      meta: { title: '图标展示', icon: 'el-icon-shopping-cart-full' },
+    },
+  }),
   {
     path: '/profile',
     component: Layout,
@@ -77,7 +87,6 @@ export default [
     ],
   },
   // TODO 添加留言板页面
-  // {},
   /** 示例功能 当页面的name和组件的name重复时，会引发栈溢出ERROR */
   {
     path: '/example',
@@ -111,19 +120,19 @@ export default [
       },
       {
         path: 'text-editor',
-        component: () => import('/src/views/error-page/404.vue'),
+        component: () => import('/src/views/error-page/building.vue'),
         name: 'TextEditor',
         meta: { title: '文本编辑器', icon: 'el-icon-edit' },
       },
       {
         path: 'image-cropper',
-        component: () => import('/src/views/error-page/404.vue'),
+        component: () => import('/src/views/error-page/building.vue'),
         name: 'ImageCropper',
         meta: { title: '图片裁剪', icon: 'el-icon-picture-outline-round' },
       },
       {
         path: 'silk-ribbon',
-        component: () => import('/src/views/error-page/404.vue'),
+        component: () => import('/src/views/error-page/building.vue'),
         name: 'SilkRibbon',
         meta: { title: '缎带组件', icon: 'el-icon-collection-tag' },
       },
@@ -157,25 +166,25 @@ export default [
       {
         path: 'example-table',
         name: 'ExampleTable',
-        component: () => import('/src/views/error-page/404.vue'),
+        component: () => import('/src/views/error-page/building.vue'),
         meta: { title: '表格 Table', icon: 'el-icon-date' },
       },
       {
         path: 'example-echarts',
         name: 'ExampleEcharts',
-        component: () => import('/src/views/error-page/404.vue'),
+        component: () => import('/src/views/error-page/building.vue'),
         meta: { title: '图表 Echarts', icon: 'el-icon-pie-chart' },
       },
       {
         path: 'example-drag',
         name: 'ExampleDrag',
-        component: () => import('/src/views/error-page/404.vue'),
+        component: () => import('/src/views/error-page/building.vue'),
         meta: { title: '拖拽 Drag', icon: 'el-icon-thumb' },
       },
       {
         path: 'online-chat',
         name: 'OnlineChat',
-        component: () => import('/src/views/error-page/404.vue'),
+        component: () => import('/src/views/error-page/building.vue'),
         meta: { title: '即时通讯聊天', icon: 'el-icon-microphone' },
       },
     ],

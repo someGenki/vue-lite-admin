@@ -11,6 +11,8 @@ const PUBLIC_PATH = new Set(['/login', '/401', '/404', '/about'])
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: constantRoutes,
+  strict: true, // 禁止尾随斜杠
+  scrollBehavior: () => ({ left: 0, top: 0 }),
 })
 
 /**

@@ -49,7 +49,7 @@
 
 **TODO**
 
-### 待加入
+### 待加入 -2021.8.19
 - [ ] 组件-页面内标题
 - [ ] 核心-路由重置
 - [ ] 组件-消息滚动通知
@@ -60,41 +60,10 @@
 - [ ] 案例-表格合并示例
 - [ ] 案例-文本编辑器
 - [ ] 功能-记录滚动位置
-
-
-## 常见报错
-
-1. esbuild.exe没找到
-
-> events.js:292
->       throw er; // Unhandled 'error' event
->       ^
->
-> Error: spawn project\node_modules\esbuild\esbuild.exe ENOENT
->     at Process.ChildProcess._handle.onexit (internal/child_process.js:269:19)
->     at onErrorNT (internal/child_process.js:465:16)
->     at processTicksAndRejections (internal/process/task_queues.js:80:21)
-> Emitted 'error' event on ChildProcess instance at:
->     at Process.ChildProcess._handle.onexit (internal/child_process.js:275:12)
->     at onErrorNT (internal/child_process.js:465:16)
->     at processTicksAndRejections (internal/process/task_queues.js:80:21) {
->   errno: -4058,
->   code: 'ENOENT',
->   syscall: 'spawn project\\node_modules\\esbuild\\esbuild.exe',
->   path: 'project\\node_modules\\esbuild\\esbuild.exe',
->   spawnargs: [ '--service=0.12.9', '--ping' ]
-> }
-
-​	解决如下
-
-> 手动执行 `node node_modules/esbuild/install.js` ，vite-plugin-mock报错也使用同样方法解决
->
-> 手动执行` node .\node_modules\vite-plugin-mock\node_modules\esbuild/install.js `
->
-> 或者一行命令执行完👇
->
-> node node_modules/esbuild/install.js && node .\node_modules\vite-plugin-mock\node_modules\esbuild/install.js
-
+- [ ] 核心-按钮级权限控制
+- [ ] 功能-tabbar-item固定
+- [ ] 页面-未实现改为施工中
+- [ ] 页面-多功能表单组件封装
 
 
 ## 更新日志
@@ -110,11 +79,7 @@
 - 获取项目代码
 ````sh
 git clone https://github.com/someGenki/vue-lite-admin.git
-````
-
-- 安装项目依赖
-````sh
-cd vue-lite-admin/
-npm install
+# 对于上不了github的用户可以使用fastgit
+git clone https://hub.fastgit.org/someGenki/vue-lite-admin.git
 ````
 

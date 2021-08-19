@@ -122,7 +122,7 @@ $setting-panel-width: 300px;
 .show-transform-enter-active,
 .show-transform-leave-active {
   opacity: 0;
-  transition: all 0.6s;
+  transition: all 0.4s;
 }
 
 .show-transform-enter-to {

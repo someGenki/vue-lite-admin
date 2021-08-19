@@ -17,5 +17,6 @@ export default {
 .app-breadcrumb {
   display: inline-block;
 }
+
 /* 修改el-breadcrumb的样式位于/src/style/element-plus.css */
 </style>

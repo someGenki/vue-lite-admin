@@ -29,11 +29,13 @@ export default {
   padding: 5px 10px;
   cursor: pointer;
 }
+
 .hamburger {
   vertical-align: middle;
   width: 22px;
   height: 22px;
 }
+
 .unfold {
   transform: rotate(180deg);
 }

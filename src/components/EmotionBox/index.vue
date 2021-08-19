@@ -62,6 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 $hover-color: #aaa;
+
 .emotion-box {
   //默认展开表情盒子的按钮 or 触发Popover的按钮
   &__open-btn {
@@ -73,6 +74,7 @@ $hover-color: #aaa;
     user-select: none;
     border: 1px solid #9c9a9a;
     border-radius: 7px;
+
     &:hover {
       background-color: $primary-color;
     }
@@ -96,6 +98,7 @@ $hover-color: #aaa;
     display: inline-block;
     margin: 2px;
     padding: 2px;
+
     &:hover {
       border-radius: 5px;
       background-color: $hover-color;
@@ -106,15 +109,18 @@ $hover-color: #aaa;
   &__tabs {
     font-size: 0.95rem;
     padding: 5px;
+
     > span {
       cursor: pointer;
       padding: 3px;
       margin-right: 3px;
       border-radius: 4px;
+
       &:hover {
         background-color: $hover-color;
       }
     }
+
     &--active {
       background-color: $hover-color;
     }

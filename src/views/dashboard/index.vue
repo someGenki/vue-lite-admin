@@ -83,6 +83,7 @@ export default {
   position: relative;
   //margin-right: 10px;
 }
+
 .el-row > .el-col {
   padding-bottom: 10px;
 }
@@ -94,10 +95,12 @@ export default {
   align-items: center;
   justify-content: space-between;
 }
+
 :deep(.el-card__body) {
   padding: 0;
   height: 120px;
 }
+
 .quick-nav {
   &__card {
     border: 1px solid #ccc;
@@ -107,34 +110,41 @@ export default {
     text-align: center;
     margin: 6px;
     padding: 4px;
+
     > p {
       font-size: 1.1rem;
       font-weight: bold;
       color: #337ab7;
     }
+
     > span {
       font-size: 0.9rem;
     }
+
     &:hover {
       box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
     }
   }
 }
+
 .visited-panel {
   > .show-visited {
     font-weight: bold;
+
     .visited-num {
       font-size: 1.1rem;
       color: $primary-text-color-tinge;
     }
   }
+
   > .icon-wrapper {
     cursor: pointer;
     color: $primary-text-color;
     transition: 0.3s;
     font-size: 4rem;
+
     &:hover {
-      color: #ffffff;
+      color: #fff;
       border-radius: 8px;
       background-color: $primary-color-tinge;
     }

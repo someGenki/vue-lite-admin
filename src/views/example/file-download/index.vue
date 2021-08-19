@@ -51,8 +51,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.file-download-demo {
-}
 .box-card {
   display: inline-block;
   min-width: 300px;
@@ -67,6 +65,7 @@ export default {
 
 .el-alert {
   margin-bottom: 10px;
+
   a {
     font-weight: bold;
   }

@@ -33,13 +33,16 @@ export default {
   justify-content: space-between;
   padding-left: 0;
   margin-top: 20px;
+
   li {
     cursor: pointer;
     display: flex;
     align-items: center;
+
     :first-child{
       margin-right: 10px;
     }
+
     &:hover {
       color: $primary-color;
     }

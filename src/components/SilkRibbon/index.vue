@@ -29,7 +29,8 @@ export default {
   top: -6px;
   right: 10px;
 }
-.silk-ribbon1:after {
+
+.silk-ribbon1::after {
   position: absolute;
   content: '';
   display: block;
@@ -39,6 +40,7 @@ export default {
   border-right: 40px solid transparent;
   border-top: 10px solid #f8463f;
 }
+
 .silk-ribbon1 span {
   position: relative;
   display: inline-block;
@@ -50,20 +52,23 @@ export default {
   border-top-right-radius: 8px;
   width: 90px;
 }
-.silk-ribbon1 span:before,
-.silk-ribbon1 span:after {
+
+.silk-ribbon1 span::before,
+.silk-ribbon1 span::after {
   position: absolute;
   content: '';
   display: block;
 }
-.silk-ribbon1 span:before {
+
+.silk-ribbon1 span::before {
   background: #f8463f;
   height: 6px;
   width: 6px;
   left: -6px;
   top: 0;
 }
-.silk-ribbon1 span:after {
+
+.silk-ribbon1 span::after {
   background: #c02031;
   height: 6px;
   width: 8px;
@@ -83,7 +88,8 @@ export default {
   text-align: center;
   border-top-left-radius: 3px;
 }
-.silk-ribbon2:before {
+
+.silk-ribbon2::before {
   height: 0;
   width: 0;
   border-bottom: 6px solid #8d5a20;
@@ -91,12 +97,14 @@ export default {
   right: -6px;
   top: 0;
 }
-.silk-ribbon2:before,
-.silk-ribbon2:after {
+
+.silk-ribbon2::before,
+.silk-ribbon2::after {
   content: '';
   position: absolute;
 }
-.silk-ribbon2:after {
+
+.silk-ribbon2::after {
   height: 0;
   width: 0;
   border-left: 30px solid #f47530;
@@ -117,12 +125,14 @@ export default {
   left: -8px;
   top: 20px;
 }
-.silk-ribbon3:before,
-.silk-ribbon3:after {
+
+.silk-ribbon3::before,
+.silk-ribbon3::after {
   content: '';
   position: absolute;
 }
-.silk-ribbon3:before {
+
+.silk-ribbon3::before {
   height: 0;
   width: 0;
   border-bottom: 8px solid black;
@@ -130,7 +140,8 @@ export default {
   top: -8px;
   left: 0;
 }
-.silk-ribbon3:after {
+
+.silk-ribbon3::after {
   height: 0;
   width: 0;
   border-top: 25px solid transparent;
@@ -147,13 +158,15 @@ export default {
   background: #00b3ed;
   box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.5);
 }
-.silk-ribbon4:before,
-.silk-ribbon4:after {
+
+.silk-ribbon4::before,
+.silk-ribbon4::after {
   position: absolute;
   content: '';
   display: block;
 }
-.silk-ribbon4:before {
+
+.silk-ribbon4::before {
   width: 7px;
   height: 100%;
   padding: 0 0 7px;
@@ -162,7 +175,8 @@ export default {
   background: inherit;
   border-radius: 5px 0 0 5px;
 }
-.silk-ribbon4:after {
+
+.silk-ribbon4::after {
   width: 5px;
   height: 5px;
   background: rgba(0, 0, 0, 0.35);

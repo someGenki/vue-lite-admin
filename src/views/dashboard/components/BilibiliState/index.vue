@@ -69,7 +69,6 @@ $card-height: 160px;
   border-radius: 8px;
   background-color: $theme-color;
   position: relative;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -87,7 +86,7 @@ $card-height: 160px;
 
   img {
     border-radius: 50%;
-    border: 2px solid #ffffff66;
+    border: 2px solid #fff6;
     height: 100%;
   }
 
@@ -101,7 +100,7 @@ $card-height: 160px;
     line-height: 80px;
     text-align: center;
     color: #eee;
-    background-color: #00000099;
+    background-color: #0009;
     font-size: 0.8rem;
     opacity: 0;
     transition: opacity 0.3s;

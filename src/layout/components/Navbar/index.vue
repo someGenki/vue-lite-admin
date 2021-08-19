@@ -110,6 +110,7 @@ export default {
   padding: 15px 10px;
   cursor: pointer;
   user-select: none;
+
   &:hover {
     background-color: $hover-background-color;
   }

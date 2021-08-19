@@ -4,18 +4,8 @@ module.exports = {
   plugins: ['stylelint-order'],
   extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
   rules: {
-    'selector-pseudo-class-no-unknown': [
-      true,
-      {
-        ignorePseudoClasses: ['global'],
-      },
-    ],
-    'selector-pseudo-element-no-unknown': [
-      true,
-      {
-        ignorePseudoElements: ['v-deep'],
-      },
-    ],
+    'selector-pseudo-class-no-unknown': null,
+    'selector-pseudo-element-no-unknown': null,
     'at-rule-no-unknown': [
       true,
       {
@@ -27,6 +17,7 @@ module.exports = {
           'screen',
           'function',
           'if',
+          'else',
           'each',
           'include',
           'mixin',
@@ -37,6 +28,7 @@ module.exports = {
     'named-grid-areas-no-invalid': null,
     'unicode-bom': 'never',
     'no-descending-specificity': null,
+    'media-feature-name-no-vendor-prefix': true,
     'font-family-no-missing-generic-family-keyword': null,
     'declaration-colon-space-after': 'always-single-line',
     'declaration-colon-space-before': 'never',
@@ -68,4 +60,4 @@ module.exports = {
     ],
   },
   ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts'],
-};
+}

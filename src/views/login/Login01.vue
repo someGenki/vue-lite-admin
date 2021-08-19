@@ -71,6 +71,9 @@ export default {
 <style lang="scss" scoped>
 $bg-input: #f1f2f3;
 $bg-button: #cfd3d7;
+
+$login-btn-size: 64px;
+
 .login-form {
   display: flex;
   flex-direction: column;
@@ -80,12 +83,10 @@ $bg-button: #cfd3d7;
   max-width: 300px;
 }
 
-$login-btn-size: 64px;
 .login-button {
   width: $login-btn-size;
   height: $login-btn-size;
   line-height: $login-btn-size;
-
   font-size: 2rem;
   border-radius: 50%;
   background-color: $bg-button;
@@ -95,29 +96,26 @@ $login-btn-size: 64px;
   outline: none;
   cursor: pointer;
   font-weight: bolder;
+
   &.enable {
     background: linear-gradient(#1768ff, #a7bfe8);
   }
 }
 
-.header-container {
-}
 
 .body-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.footer-container {
-}
+
 // 密码可见图标 el-view
 .password-see {
   position: absolute;
   top: 12px;
   right: 14px;
-
   cursor: pointer;
-  color: #666666;
+  color: #666;
   font-size: 1.4rem;
 }
 // 给图标画一条斜线
@@ -127,7 +125,7 @@ $login-btn-size: 64px;
   right: 10px;
   width: 2px;
   height: 22px;
-  background-color: #666666;
+  background-color: #666;
   transform: rotate(45deg);
 }
 // 原生输入框样式
@@ -136,12 +134,10 @@ $login-btn-size: 64px;
   height: 48px;
   padding: 10px 30px;
   position: relative;
-
   outline: none;
   border: none;
   border-radius: 1000px;
   background-color: $bg-input;
-
   text-align: center; // 让光标和内容居中
   font-size: 1.3rem;
   caret-color: $primary-color;

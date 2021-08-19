@@ -92,6 +92,7 @@ export default {
 <style lang="scss" scoped>
 $theme-color: #161b22;
 $card-height: 160px;
+
 .github-state {
   height: $card-height;
   padding: 10px;
@@ -99,9 +100,11 @@ $card-height: 160px;
   background-color: $theme-color;
   position: relative;
 }
+
 .github-logo {
   display: flex;
   align-items: center;
+
   > div {
     display: inline-flex;
     flex-direction: column;
@@ -109,11 +112,13 @@ $card-height: 160px;
     margin-left: 10px;
   }
 }
+
 .github-cat {
   position: absolute;
   right: 6px;
   bottom: 0;
 }
+
 .github-link {
   position: absolute;
   left: 10px;
@@ -121,16 +126,19 @@ $card-height: 160px;
   padding: 1px;
   color: #eee;
   font-size: 0.8rem;
+
   &:hover {
     border-bottom: 1px solid #eee;
   }
 }
+
 .github-star {
   position: absolute;
   top: 10px;
   right: 20px;
   color: #eee;
   font-size: 1.2rem;
+
   span {
     margin-left: 6px;
   }

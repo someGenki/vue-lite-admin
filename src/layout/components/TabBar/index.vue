@@ -144,6 +144,7 @@ export default {
   border: 1px solid #d4d4d4;
   background-color: #fafafa;
   user-select: none;
+
   &.mark::after {
     content: '😅';
     position: absolute;
@@ -151,14 +152,17 @@ export default {
     top: -8px;
     right: -9px;
   }
+
   &.active {
     color: #fff;
     background-color: $primary-color;
   }
+
   .tab-close {
     transform: scale(0.8);
     margin-left: 3px;
   }
+
   .tab-close:hover {
     transform: scale(1.2);
   }
@@ -169,15 +173,16 @@ export default {
   padding: 5px;
   min-width: 110px;
   border-radius: 5px;
-
   z-index: 1000;
   font-size: 12px;
   list-style-type: none;
-  background-color: #ffffff;
-  box-shadow: 2px 2px 2px 0 #00000044;
+  background-color: #fff;
+  box-shadow: 2px 2px 2px 0 #0004;
+
   > li {
     padding: 5px;
     cursor: pointer;
+
     &:hover {
       background-color: #eee;
     }
@@ -197,6 +202,7 @@ export default {
   color: #6a6a6a;
   cursor: pointer;
   background-color: inherit;
+
   &:hover {
     color: black;
   }

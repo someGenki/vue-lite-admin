@@ -7,7 +7,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "upload": "node auto-upload",
-    "lint:css": "stylelint **/*.{html,vue,css,sass,scss} --fix"
+    "lint:css": "stylelint **/*.{html,vue,css,sass,scss}"
   },
   "dependencies": {
     "@vueuse/core": "^6.0.0",

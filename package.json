@@ -11,18 +11,18 @@
   "dependencies": {
     "axios": "^0.21.1",
     "echarts": "^5.1.2",
-    "element-plus": "^1.0.2-beta.65",
+    "element-plus": "^1.0.2-beta.70",
     "js-cookie": "^3.0.0",
     "mockjs": "^1.1.0",
-    "vue": "^3.1.5",
+    "vue": "^3.2.1",
     "vue-router": "^4.0.10"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.3.0",
+    "@vitejs/plugin-vue": "^1.4.0",
     "@vitejs/plugin-vue-jsx": "^1.1.7",
-    "@vue/compiler-sfc": "^3.1.5",
+    "@vue/compiler-sfc": "^3.2.2",
     "prettier": "^2.3.2",
-    "sass": "^1.37.2",
+    "sass": "^1.37.5",
     "vite": "^2.4.4",
     "vite-plugin-mock": "^2.9.4"
   }

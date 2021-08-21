@@ -1,4 +1,5 @@
 @import './_variables.scss';
+
 /* 覆盖element-plus的部分样式 */
 .el-breadcrumb__item:last-child .el-breadcrumb__inner {
   color: #afafaf;
@@ -16,10 +17,20 @@
 .el-input-number--mini {
   width: 100px;
 }
+
 .el-upload.el-upload--text{
   max-width: 360px;
   width: 100%;
+
   >.el-upload-dragger{
     width: 100%;
   }
+}
+
+.el-menu-item .svg-icon{
+  width: 24px !important;
+  margin-right: 4px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16px;
 }

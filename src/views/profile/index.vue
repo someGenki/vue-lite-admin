@@ -115,6 +115,23 @@ export default {
 
 <style lang="scss" scoped>
 $card-gap: 20px;
+
+@media screen and (max-width: $sm-width) {
+  .about-me {
+    width: 100%;
+    max-width: $sm-width;
+    margin-bottom: $card-gap;
+  }
+
+  .detail-info {
+    width: 100%;
+  }
+
+  .article-text > span {
+    display: none;
+  }
+}
+
 .about-me {
   float: left;
   width: 35%;
@@ -133,6 +150,7 @@ $card-gap: 20px;
       font-weight: bold;
       margin: 6px 16px;
     }
+
     > span {
       font-size: 0.9rem;
       margin: 0 16px;
@@ -150,6 +168,7 @@ $card-gap: 20px;
 .name-me {
   text-align: center;
   font-weight: bold;
+
   > i {
     font-weight: bold;
     color: #5284ad;
@@ -160,36 +179,27 @@ $card-gap: 20px;
   list-style: none;
   padding-left: 0;
   color: $primary-text-color;
+
   > li {
     margin-bottom: 10px;
+
     > i {
       margin-right: 10px;
     }
   }
 }
+
 .about-me-skills {
   color: $primary-text-color;
   padding-left: 18px;
+
   > li {
     margin-bottom: 10px;
   }
 }
+
 .el-tag {
   margin-right: 10px;
   margin-bottom: 10px;
-}
-
-@media screen and (max-width: $sm-width) {
-  .about-me {
-    width: 100%;
-    max-width: $sm-width;
-    margin-bottom: $card-gap;
-  }
-  .detail-info {
-    width: 100%;
-  }
-  .article-text > span {
-    display: none;
-  }
 }
 </style>

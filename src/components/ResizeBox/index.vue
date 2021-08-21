@@ -137,6 +137,7 @@ export default {
 
 .resize-box--horizontal {
   flex-direction: row;
+
   > .line--horizontal {
     flex-direction: column;
     width: 2px;
@@ -154,6 +155,7 @@ export default {
       left: -6px;
     }
   }
+
   > .resize-box__left {
     width: 50%; /* 初始宽度 */
   }
@@ -161,6 +163,7 @@ export default {
 
 .resize-box--vertical {
   flex-direction: column;
+
   > .line--vertical {
     flex-direction: row;
     min-width: 100%;
@@ -176,19 +179,22 @@ export default {
       left: 0;
     }
   }
+
   /*  > .resize-box__left {
     height: 50%; !* 初始高度 *!
-  }*/
+  } */
 }
 
 .resize-box__line {
   display: flex;
   position: relative;
 }
+
 .resize-box__left {
   overflow: auto;
   flex-shrink: 0;
 }
+
 .resize-box__right {
   overflow: auto;
   flex-grow: 1; /* 占满右边剩下宽度 */
@@ -200,6 +206,7 @@ export default {
   width: 16px;
   transform: translateX(-40%);
 }
+
 .line--vertical > .app-icon {
   height: 16px;
   transform: translateY(-40%);

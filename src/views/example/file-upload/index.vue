@@ -147,6 +147,7 @@ export default {
 <style lang="scss" scoped>
 .upload-demo {
   display: flex;
+
   > * {
     background-color: white;
     position: relative;

@@ -43,6 +43,7 @@ export default {
   border-radius: 8px;
   cursor: pointer;
 }
+
 .menu-nickname {
   margin: 0 8px;
   font-size: 14px;

@@ -87,6 +87,17 @@ export default {
   background-color: white;
   border-top: 1px solid #eee;
   border-left: 1px solid #eee;
+  @media screen and (max-width: $lg-width) {
+    & > li {
+      width: 16.6%;
+    }
+  }
+  @media screen and (max-width: $sm-width) {
+    & > li {
+      width: 25%;
+    }
+  }
+
   li {
     float: left;
     display: flex;
@@ -99,22 +110,14 @@ export default {
     border-right: 1px solid #eee;
     border-bottom: 1px solid #eee;
     transition: color 0.5s;
+
     &:hover {
       color: $primary-color;
     }
+
     > span {
       color: #99a9bb;
       margin-top: 8px;
-    }
-  }
-  @media screen and (max-width: $lg-width) {
-    & > li {
-      width: 16.6%;
-    }
-  }
-  @media screen and (max-width: $sm-width) {
-    & > li {
-      width: 25%;
     }
   }
 }

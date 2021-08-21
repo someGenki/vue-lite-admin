@@ -107,7 +107,6 @@ $setting-panel-width: 300px;
     top: 0;
     right: 0;
     padding: 16px;
-
     border: none;
     outline: none;
     cursor: pointer;
@@ -115,14 +114,13 @@ $setting-panel-width: 300px;
   }
 }
 
-.settings-panel-body {
-}
+
 
 /* 过度动画 */
 .show-transform-enter-active,
 .show-transform-leave-active {
   opacity: 0;
-  transition: all 0.6s;
+  transition: all 0.4s;
 }
 
 .show-transform-enter-to {

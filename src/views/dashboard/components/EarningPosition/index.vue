@@ -66,31 +66,37 @@ export default {
 $theme-color: #1577fe;
 $theme-text-color: #69a8ef;
 $card-height: 160px;
+
 .earning-position {
   height: $card-height;
   padding: 10px;
   border-radius: 8px;
   background-color: $theme-color;
 }
+
 .earning-position__header {
   display: flex;
   justify-content: space-between;
 }
+
 .funds-totalAmount-title {
   text-align: center;
   font-size: 0.8rem;
   color: $theme-text-color;
 }
+
 .funds-totalAmount {
   font-size: 1.5rem;
   margin: 10px;
   text-align: center;
   color: #eee;
 }
+
 .funds-details {
   display: flex;
   justify-content: space-between;
   font-size: 0.8rem;
+
   > div {
     display: flex;
     flex-flow: column nowrap;

@@ -79,10 +79,3 @@ export default {
 }
 </style>
 
-<style lang="scss">
-// 简单的响应式设计 逻辑操作符可用于联合构造复杂的媒体查询
-// `and` 操作符用于将多个媒体查询规则组合成单条媒体查询(需要都为真是该规则才起作用）
-// max-width：screen宽度小于等于max-width生效
-@media screen and (max-width: $lg-width) {
-}
-</style>

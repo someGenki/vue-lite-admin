@@ -32,6 +32,7 @@ export default {
 <style lang="scss" scoped>
 $theme-color: #29ac66;
 $card-height: 160px;
+
 .wechat-wallet {
   height: $card-height;
   padding: 10px;
@@ -41,20 +42,24 @@ $card-height: 160px;
   position: relative;
   user-select: none;
   overflow: hidden;
+
   /* ---------- */
   p {
     text-align: center;
   }
 }
+
 .icon-wrapper {
   margin: 0;
   color: #eee;
   font-size: 3rem;
 }
+
 .wechat-wallet-title {
   color: white;
   margin-bottom: 0;
 }
+
 .wechat-wallet-money {
   margin-top: 5px;
   color: #7fdeac;

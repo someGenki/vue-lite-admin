@@ -30,6 +30,7 @@ export default {
 <style lang="scss" scoped>
 $bg-input: #f1f2f3;
 $bg-button: #cfd3d7;
+
 .login-container {
   display: flex;
   align-items: center;
@@ -44,10 +45,12 @@ $bg-button: #cfd3d7;
   width: 100%;
   margin-top: 10px;
 }
+
 .login-help {
   display: flex;
   justify-content: space-between;
 }
+
 .forget-password {
   font-size: 0.9rem;
   color: $primary-text-color;

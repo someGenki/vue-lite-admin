@@ -48,7 +48,9 @@ export default {
 .el-descriptions {
   margin-bottom: 20px;
 }
+
 :deep(.el-descriptions__label.is-bordered-label) {
   color: $primary-text-color;
+  font-size: 14px;
 }
 </style>

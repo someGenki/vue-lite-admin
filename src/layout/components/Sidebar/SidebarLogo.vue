@@ -30,6 +30,7 @@ export default {
   height: $sidebar-logo-height;
   overflow: hidden;
   cursor: pointer;
+
   img {
     height: 36px;
     width: 36px;

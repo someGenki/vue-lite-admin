@@ -38,13 +38,14 @@
 import { ElMessage } from 'element-plus'
 import icons from './icons.json'
 import { reactive, ref } from 'vue'
+
 export default {
   name: 'Icons',
   setup() {
     const svgArr = []
     const noMoreElIcon = ref(false)
     const iconsSpliceLength = icons.length / 4
-    const showElIcons = reactive(icons.splice(0, iconsSpliceLength))
+    const showElIcons = reactive(icons.slice(0, iconsSpliceLength))
     const child = document.getElementById('svgSpriteStats').children
     for (const c of child) {
       svgArr.push(c.id.replace('icon-', ''))

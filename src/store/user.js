@@ -13,52 +13,39 @@ export const state = reactive({
   // 所以再每次刷新后要 重新获取 角色并再次生成动态路由
   roles: [],
   // 存放一级路由的集合
-  addRoutes: null,
+  addRoutes: [],
 })
 
 // 登录请求后保存信息并动态添加路由 use in view/login
-export function login(loginForm) {
-  let { username, password } = loginForm
-  return _login({ username, password }).then((res) => {
-    state.token = res.data.token
-    state.roles.push(...res.data.roles)
-    state.name = res.data.name || 'Yuan'
-    setToken(res.data.token)
-    generateRoutes()
-    return res.data
-  })
+export async function login({ username, password }) {
+  const res = await _login({ username, password })
+  state.token = res.data.token
+  state.roles.push(...res.data.roles)
+  state.name = res.data.name || 'Yuan'
+  setToken(res.data.token)
+  generateRoutes()
+  return res.data
 }
 
 // 获取用户信息并动态添加路由  use in router/beforeEach()
-export function getInfo() {
-  return _getInfo().then((res) => {
-    state.roles = res.data.roles
-    generateRoutes()
-  })
+export async function getInfo() {
+  const res = await _getInfo()
+  state.roles.push(...res.data.roles)
+  generateRoutes()
 }
 
 function generateRoutes() {
-  let accessedRoutes
-  if (state.roles.includes('admin')) {
-    accessedRoutes = asyncRoutes || []
-  } else {
-    accessedRoutes = filterAsyncRoutes(asyncRoutes, state.roles)
-  }
+  const accessedRoutes = state.roles.includes('admin')
+    ? asyncRoutes || [] // 如果是最高权限的admin则直接加入所有异步路由
+    : filterAsyncRoutes(asyncRoutes, state.roles)
+
   accessedRoutes.forEach((route) => {
     // https://next.router.vuejs.org/zh/guide/advanced/dynamic-routing.html
     router.addRoute(route)
   })
-  state.addRoutes = constantRoutes.concat(accessedRoutes)
-  // console.log(router.getRoutes())
-  // console.log(state.addRoutes)
-}
 
-function hasPermission(roles, route) {
-  if (route.meta && route.meta.roles) {
-    return roles.some((role) => route.meta.roles.includes(role))
-  } else {
-    return true
-  }
+  state.addRoutes.length = 0
+  state.addRoutes.push(...constantRoutes.concat(accessedRoutes))
 }
 
 /**
@@ -67,19 +54,23 @@ function hasPermission(roles, route) {
  * @param routes asyncRoutes
  * @param roles 用户所有的角色数组
  */
-export function filterAsyncRoutes(routes, roles) {
+function filterAsyncRoutes(routes, roles) {
   const res = []
 
   routes.forEach((route) => {
     // 防止对象被修改
     const tmp = { ...route }
     if (hasPermission(roles, tmp)) {
-      if (tmp.children) {
-        tmp.children = filterAsyncRoutes(tmp.children, roles)
-      }
+      if (tmp.children) tmp.children = filterAsyncRoutes(tmp.children, roles)
       res.push(tmp)
     }
   })
 
   return res
+}
+
+function hasPermission(roles, route) {
+  return route.meta && route.meta.roles
+    ? roles.some((role) => route.meta.roles.includes(role))
+    : true // 当某个路由record没有设置roles属性则默认所有都可以访问，所以返回true
 }

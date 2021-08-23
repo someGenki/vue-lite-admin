@@ -31,12 +31,10 @@ const loginBtnEnable = computed(() => {
 
 // 点击登录按钮调用的函数
 function handleLogin() {
-
   loginFormRef.value.validate((valid) => {
     if (valid) {
-      console.log('login success')
       // 表单校验通过，发起ajax请求然后保存必要的token、roles最后路由跳转
-      userLogin(loginFormRef).then(() => {
+      userLogin(form).then(() => {
         router.push({
           path: router.currentRoute.value.query.redirect || '/',
         })
@@ -46,7 +44,6 @@ function handleLogin() {
       return false
     }
   })
-
 }
 
 export default function useLogin(config) {

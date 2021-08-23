@@ -78,4 +78,3 @@ export default {
   z-index: 10;
 }
 </style>
-

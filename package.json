@@ -31,6 +31,6 @@
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.20.1",
     "vite": "^2.5.0",
-    "vite-plugin-mock": "^2.9.4"
+    "vite-plugin-mock": "^2.9.5"
   }
 }

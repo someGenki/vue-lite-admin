@@ -4,8 +4,8 @@
     class="MutableLogo-wrapper"
     :style="{ backgroundColor, color: textColor }"
   >
-    <img src="~@/assets/logo.png" alt="logo" />
-    <h4 style="margin-left: 10px" v-show="isCollapse">{{ title }}</h4>
+    <img src="~@/assets/logo2.ico" alt="logo" />
+    <h4 style="margin-left: 6px" v-show="isCollapse">{{ title }}</h4>
   </router-link>
 </template>
 
@@ -23,6 +23,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '/src/styles/_mixins.scss';
+
 .MutableLogo-wrapper {
   display: flex;
   align-items: center;
@@ -34,6 +36,10 @@ export default {
   img {
     height: 36px;
     width: 36px;
+  }
+
+  h4 {
+    @include ellipsis(1);
   }
 }
 </style>

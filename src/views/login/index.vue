@@ -32,6 +32,7 @@ $bg-input: #f1f2f3;
 $bg-button: #cfd3d7;
 
 .login-container {
+  background: linear-gradient(226deg, #E0EAFC, #c6d5ec);
   display: flex;
   align-items: center;
   flex-direction: column;

@@ -9,9 +9,9 @@ import nestedRouter from './modules/nested'
  *  一个父级路由只带有 1 个子路且这个子路由在只带1个子路由，只会显示最后一个子路由
  *
  *  需要被面包屑和侧边菜单栏显示，则路由和子路由的meta.title是必须的
- *
- *  FIXME 由于异步路由是创建同步路由后异步添加的，当访问的是这里面的某个路由时，在浏览器刷新时，url不变，↙
- *  但是还没有这还没被加进去，会出现 [Vue Router warn]: No match found for location with path "/test/test1"
+ *  FIXME:
+ *    由于异步路由是创建同步路由后异步添加的，当访问的是这里面的某个路由时，在浏览器刷新时，url不变，↙
+ *    但是还没有这还没被加进去，会出现 [Vue Router warn]: No match found for location with path "/test/test1"
  *  https://blog.csdn.net/weixin_43835425/article/details/116708448
  */
 export default [
@@ -49,7 +49,8 @@ export default [
       },
     ],
   },
-  nestedRouter /* 导入其他模块的路由 */,
+  /* 导入其他模块的路由 */
+  nestedRouter,
   // 404页面需要放在最后，确保没有路由被匹配时能正确跳转到404.vue
   {
     path: '/:catchAll(.*)*',
@@ -76,7 +77,7 @@ export default [
         path: 'index',
         name: 'about',
         component: () => import('/src/views/about/index.vue'),
-        meta: { title: '关于',icon:'el-icon-place' },
+        meta: { title: '关于', icon: 'el-icon-place' },
       },
     ],
   },

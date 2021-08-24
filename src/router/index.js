@@ -2,11 +2,18 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import { state as userState, getInfo } from '/src/store/user'
 import { globalRouteUpdateHook } from '/src/layout/components/useLayout'
 import { getToken } from '/src/utils/storage'
-import constantRoutes from './constant-routes'
-// [官方文档指路]:(https://next.router.vuejs.org/zh/guide/index.html)
+import constantRoutes from './constantRoutes'
+import { basicRoutes } from './basicRoutes'
+
+// [vue-router官方文档指路]:(https://next.router.vuejs.org/zh/guide/index.html)
 
 // 定义一个公共路径集合，任何用户及匿名者都能访问的到
-const PUBLIC_PATH = new Set(['/login', '/401', '/404', '/about'])
+const PUBLIC_PATH = new Set()
+
+!(function fillPublicPath() {
+  // 当前只处理一级，多层级就自己递归下
+  basicRoutes.forEach((item) => PUBLIC_PATH.add(item.path))
+})()
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -30,13 +37,13 @@ const router = createRouter({
 router.beforeEach(async (to) => {
   // 根据是否有 token 判断用户是否登录
   let token = getToken()
-  // 如果未登录且要访问不在公共路径集合里的路径时，跳转到登录页面并记录之前的页面用于重新访问
+  // 如果[未登录]且要访问不在公共路径集合里的路径时，跳转到登录页面并记录之前的页面用于重新访问
   if (!token && !PUBLIC_PATH.has(to.path))
     return { path: '/login', query: { redirect: to.fullPath } }
-  // 刷新页面之后，存在内存里的数据将会 丢失 ，需要发起请求来获取相关角色等信息
+  // 刷新页面之后，存在内存里的数据将会[丢失] ，需要发起请求来获取相关角色等信息
   // 然后并动态的添加到router上。roles有数据就直接pass
-  let roles = userState.roles && userState.roles.length > 0
-  if (!roles) {
+  let hasRoles = userState.roles && userState.roles.length > 0
+  if (!hasRoles && !PUBLIC_PATH.has(to.path)) {
     await getInfo() // await 是不能删除的，因为getInfo是 异步 函数
     return to
   }

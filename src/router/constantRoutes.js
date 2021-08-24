@@ -1,7 +1,7 @@
 import Layout from '/src/layout/index.vue'
-import Login from '/src/views/login/index.vue'
-import Redirect from '/src/views/redirect/index.vue'
+import { basicRoutes } from './basicRoutes'
 
+// 用于快速创建以及路由
 function dynamicLayoutWrapper(e) {
   // TODO 改成正则表达式提取并添加错误判断提示用户
   let path = '/' + /\/(.*)\//.exec(e.defaultPath)[1]
@@ -19,50 +19,22 @@ function dynamicLayoutWrapper(e) {
 /**
  * 通用路由表，不需要动态获取的默认路由
  * 所有被展示到sidebar的路由都要有唯一的name属性
+ * 当页面的name和组件的name重复时，会引发栈溢出ERROR
  */
 export default [
-  {
-    path: '/redirect',
-    component: Layout,
-    redirect: '/',
-    hidden: true,
-    children: [
-      {
-        path: '/redirect/:path(.*)',
-        name: 'redirect',
-        component: Redirect,
-        meta: { noCache: true },
-      },
-    ],
-  },
+  ...basicRoutes,
   {
     path: '/',
-    component: Layout,
     redirect: '/dashboard',
+    component: Layout,
     children: [
       {
-        path: 'dashboard',
+        path: '/dashboard',
         name: 'Dashboard',
         component: () => import('/src/views/dashboard/index.vue'),
         meta: { title: '首页', icon: 'el-icon-s-home' },
       },
     ],
-  },
-  {
-    path: '/login',
-    hidden: true,
-    component: Login,
-    meta: { noCache: true, title: 'Vue Admin 登录页' },
-  },
-  {
-    path: '/404',
-    component: () => import('/src/views/error-page/404.vue'),
-    hidden: true,
-  },
-  {
-    path: '/401',
-    component: () => import('/src/views/error-page/401.vue'),
-    hidden: true,
   },
   dynamicLayoutWrapper({
     defaultPath: '/icons/index',
@@ -73,21 +45,16 @@ export default [
       meta: { title: '图标展示', icon: 'el-icon-shopping-cart-full' },
     },
   }),
-  {
-    path: '/profile',
-    component: Layout,
-    redirect: '/profile/index',
-    children: [
-      {
-        path: 'index',
-        name: 'Profile',
-        component: () => import('/src/views/profile/index.vue'),
-        meta: { title: '个人中心' },
-      },
-    ],
-  },
-  // TODO 添加留言板页面
-  /** 示例功能 当页面的name和组件的name重复时，会引发栈溢出ERROR */
+  dynamicLayoutWrapper({
+    defaultPath: '/profile/index',
+    children: {
+      path: 'index',
+      name: 'Profile',
+      component: () => import('/src/views/profile/index.vue'),
+      meta: { title: '个人中心' },
+    },
+  }),
+  /** 示例功能 */
   {
     path: '/example',
     component: Layout,

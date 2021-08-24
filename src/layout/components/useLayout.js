@@ -4,7 +4,7 @@ import { debounce } from '/src/utils/util'
 
 // ===数据定义和初始化区=== 暂时没抽离先写一堆 unfold:展开、collapse:折叠...
 const state = reactive({
-  sUnfoldWidth: getSetting('sUnfoldWidth', 'int', 210),
+  sUnfoldWidth: getSetting('sUnfoldWidth', 'int', 180),
   unfoldSidebar: getSetting('unfoldSidebar', 'bool', true),
   fixedHeader: getSetting('fixedHeader', 'bool', false),
   showTabBar: getSetting('showTabBar', 'bool', true),

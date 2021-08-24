@@ -1,4 +1,5 @@
 import Layout from '/src/layout/index.vue'
+
 // from vue-element-admin (include views)
 export default {
   path: '/nested',

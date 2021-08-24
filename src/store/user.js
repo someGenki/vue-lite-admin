@@ -1,7 +1,7 @@
 import { login as _login, getInfo as _getInfo } from '/src/api/user'
 import { getToken, setToken } from '/src/utils/storage'
-import constantRoutes from '/src/router/constant-routes'
-import asyncRoutes from '/src/router/async-routes'
+import constantRoutes from '/src/router/constantRoutes'
+import asyncRoutes from '/src/router/asyncRoutes'
 import { reactive } from 'vue'
 import router from '/src/router'
 

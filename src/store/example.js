@@ -1,5 +1,5 @@
-// import { defineStore } from 'pinia'
-
+import { defineStore } from 'pinia'
+import { store } from '/src/store/pinia'
 /**
  * 如何使用pinia作为vue3的状态管理仓库呢？
  * docs: https://pinia.esm.dev/
@@ -8,7 +8,7 @@
  * 2. setup() 中访问 state、getters、actions 可直接 const store=useStore(); store.xxx
  * 3. 批量修改state参考：https://pinia.esm.dev/core-concepts/state.html#mutating-the-state
  */
-export const useExampleStore = defineStore('main', {
+export const useExampleStore = defineStore('example', {
   // 定义状态
   state: () => ({
     example: 'This is just an example',
@@ -24,6 +24,11 @@ export const useExampleStore = defineStore('main', {
     },
   },
 })
+
+// from vben-admin
+export function useAppStoreWithOut() {
+  return useExampleStore(store)
+}
 
 /**
  * 订阅state的改变

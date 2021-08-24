@@ -75,7 +75,7 @@ export default {
     const mySkills = [
       '熟练掌握HTML、CSS和JavaScript等前端技术',
       '熟练使用ES6的相关特性并了解过ES7~ES11的新增特性',
-      '熟练使用Vue.js搭配流行组件库Element、Antdv开发项目',
+      '熟练使用Vue.js框架并熟悉React框架的使用以及相关技术栈',
       '熟悉常见的数据结构与算法、设计模式和代码命名规范',
       '了解浏览器运行原理和HTTP(S)协议的通信过程',
       '掌握Linux系统的基本使用，能快速配置环境、部署项目和编写简易脚本',

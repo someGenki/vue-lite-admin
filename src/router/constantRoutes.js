@@ -1,7 +1,7 @@
-import {LAYOUT} from "./constant";
+import { LAYOUT } from './constant'
 import { basicRoutes } from './basicRoutes'
 
-// 用于快速创建以及路由
+// 用于快速创建单层路由
 function dynamicLayoutWrapper(e) {
   // TODO 改成正则表达式提取并添加错误判断提示用户
   let path = '/' + /\/(.*)\//.exec(e.defaultPath)[1]

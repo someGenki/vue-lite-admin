@@ -10,32 +10,32 @@
       :active-text-color="elMenuStyle.activeText"
       :background-color="elMenuStyle.background"
     >
-      <sidebar-item v-for="item in routers" :key="item.path" :item="item" />
+      <sidebar-item v-for="item in menus" :key="menus.path" :item="item" />
     </el-menu>
   </aside>
 </template>
 
 <script>
-import { useUserStore } from '/src/store/user'
+import { toRefs } from 'vue'
 import SidebarLogo from './SidebarLogo.vue'
 import SidebarItem from './SidebarItem.vue'
-import { toRaw, toRefs } from 'vue'
-import { useLayoutStore } from '../../../store/layout'
+import { useUserStore } from '/src/store/user'
+import { useLayoutStore } from '/src/store/layout'
+import { createMenuFromAddRoutes } from './useMenu'
 
 /**
  * 根据权限以及路由表动态生成侧边菜单栏 以及配置菜单栏相关样式
- * TODO 抽离创建菜单的方式，不直接从router创建，而是提供选择
  */
 export default {
   name: 'Sidebar',
   components: { SidebarLogo, SidebarItem },
   setup() {
     const store = useLayoutStore()
+    const menus = createMenuFromAddRoutes(useUserStore().addRoutes)
     const { showLogo, unfoldSidebar, sidebarWidth, elMenuStyle } = toRefs(store)
-    const routers = toRaw(useUserStore().addRoutes)
 
     return {
-      routers,
+      menus,
       showLogo,
       elMenuStyle,
       sidebarWidth,

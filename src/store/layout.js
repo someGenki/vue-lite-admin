@@ -3,16 +3,22 @@ import { getSetting } from '/src/utils/storage'
 
 const noRecordViewPath = ['/login']
 
-// TODO 监听key的变动
 export const useLayoutStore = defineStore('layout', {
   state: () => ({
-    sUnfoldWidth: getSetting('sUnfoldWidth', 'int', 180),
+    // 侧边菜单栏展开的默认宽度
+    sUnfoldWidth: getSetting('sUnfoldWidth', 'int', 190),
+    // 是否展开侧边菜单栏
     unfoldSidebar: getSetting('unfoldSidebar', 'bool', true),
+    // 是否固定头部
     fixedHeader: getSetting('fixedHeader', 'bool', false),
+    // 是否显示标签栏
     showTabBar: getSetting('showTabBar', 'bool', true),
+    // 是否显示侧边菜单栏中的Logo
     showLogo: getSetting('showLogo', 'bool', true),
-    sCollapseWidth: 64, // sidebar折叠后宽度
-    showSettings: false, // 是否显示设置面板
+    // 是否展示设置面板
+    showSettings: false,
+    // 侧边菜单栏折叠后宽度
+    sCollapseWidth: 64,
     isMobile: document.body.clientWidth < 768,
     themeColor: '#02BF6F',
     breadcrumbList: [],
@@ -25,22 +31,23 @@ export const useLayoutStore = defineStore('layout', {
       state.unfoldSidebar === true
         ? state.sUnfoldWidth + 'px'
         : (state.isMobile ? 0 : state.sCollapseWidth) + 'px',
-    //  // 当固定头部时，main-container的上边距值
+    // 当固定头部时，main-container的上边距值
     mainPaddingTopOnFixed: (state) => {
       if (!state.fixedHeader) return '0'
       else if (state.fixedHeader && state.showTabBar) return 42 + 34 + 'px'
       else return 42 + 'px'
     },
+    // 侧边菜单栏颜色样式
     elMenuStyle: (state) => ({
       text: '#dcdcdc',
       background: '#304156',
       activeText: state.themeColor,
     }),
+    //     getters 结束分割线
   },
   actions: {
     // 侧边栏切换
     toggleSidebar(bool) {
-      console.log('!!11')
       if (bool !== undefined) this.unfoldSidebar = bool
       else this.unfoldSidebar = !this.unfoldSidebar
     },
@@ -60,7 +67,7 @@ export const useLayoutStore = defineStore('layout', {
       this.breadcrumbList.length = 0
       this.breadcrumbList.push(...matched)
       this.addVisitedView(to)
-      // cachedVisitedView(to)
+      this.cachedVisitedView(to)
     },
     // 记录访问过的页面，用于生成tab-bar
     addVisitedView(view) {
@@ -92,6 +99,6 @@ export const useLayoutStore = defineStore('layout', {
       const index = this.cachedViews.indexOf(route.name)
       index > -1 && this.cachedViews.splice(index, 1)
     },
-    //     actions结束分割线
+    // ====actions 结束分割线
   },
 })

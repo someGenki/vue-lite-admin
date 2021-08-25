@@ -58,6 +58,7 @@ export default [
     hidden: true,
     component: () => import('/src/views/error-page/404.vue'),
   },
+  // 外链路由，主要是生成menu用的
   {
     path: '/ex-link',
     children: [

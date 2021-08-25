@@ -28,12 +28,14 @@
 import { toRefs } from 'vue'
 import { useLayoutStore } from '/src/store/layout'
 import { AppMain, NavBar, Settings, Sidebar, TabBar } from './components'
+import { saveSetting } from '../utils/storage'
 
 export default {
   name: 'Layout',
   components: { Settings, AppMain, Sidebar, NavBar, TabBar },
   setup() {
     const store = useLayoutStore()
+
     const {
       isMobile,
       showTabBar,
@@ -44,9 +46,9 @@ export default {
       mainPaddingTopOnFixed,
     } = toRefs(store)
 
-    setTimeout(() => {
-
-    })
+    store.$subscribe((mutation) =>
+      saveSetting(mutation.events.key, mutation.events.newValue)
+    )
 
     return {
       isMobile,

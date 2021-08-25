@@ -69,16 +69,19 @@
 </template>
 
 <script>
-import useTabBar from './useTabBar'
-import { useRouter } from 'vue-router'
 import { reactive, toRef, watch } from 'vue'
+import { useRouter } from 'vue-router'
+import useTabBar from './useTabBar'
+import { useLayoutStore } from '/src/store/layout'
 
 export default {
   name: 'TabBar',
   setup() {
     const router = useRouter()
 
-    const { delTabBarItem, removeCachedView, visitedViews } = useTabBar()
+    const store = useLayoutStore()
+
+    const { delTabBarItem, visitedViews } = useTabBar()
 
     const contextMenuProp = reactive({
       top: 0,
@@ -100,8 +103,8 @@ export default {
     const markedTab = (tab, bool) => (tab.mark = bool)
 
     const refreshView = () => {
-      let route = router.currentRoute.value
-      removeCachedView(route)
+      const route = router.currentRoute.value
+      store.removeCachedView(route)
       if (route.path.indexOf('/redirect') > -1) return
       router.replace({ path: '/redirect' + route.fullPath })
     }

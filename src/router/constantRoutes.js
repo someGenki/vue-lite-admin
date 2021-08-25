@@ -1,4 +1,4 @@
-import Layout from '/src/layout/index.vue'
+import {LAYOUT} from "./constant";
 import { basicRoutes } from './basicRoutes'
 
 // 用于快速创建以及路由
@@ -11,7 +11,7 @@ function dynamicLayoutWrapper(e) {
     meta: e.meta,
     hidden: e.hidden,
     redirect: e.defaultPath,
-    component: Layout,
+    component: LAYOUT,
     children,
   }
 }
@@ -26,7 +26,7 @@ export default [
   {
     path: '/',
     redirect: '/dashboard',
-    component: Layout,
+    component: LAYOUT,
     children: [
       {
         path: '/dashboard',
@@ -57,7 +57,7 @@ export default [
   /** 示例功能 */
   {
     path: '/example',
-    component: Layout,
+    component: LAYOUT,
     redirect: '/example/file-upload',
     meta: { title: '功能示例', icon: 'el-icon-copy-document' },
     children: [
@@ -108,7 +108,7 @@ export default [
   /** 示例页面  */
   {
     path: '/example-page',
-    component: Layout,
+    component: LAYOUT,
     redirect: '/example-page/404',
     meta: { title: '页面示例', icon: 'el-icon-document' },
     children: [

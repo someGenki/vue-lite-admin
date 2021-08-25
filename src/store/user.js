@@ -1,8 +1,8 @@
+import router from '../router'
 import { defineStore } from 'pinia'
 import { store } from './index'
 import { getToken, setToken } from '../utils/storage'
 import { login as _login, getInfo as _getInfo } from '/src/api/user'
-import router from '../router'
 import asyncRoutes from '../router/asyncRoutes'
 import constantRoutes from '../router/constantRoutes'
 

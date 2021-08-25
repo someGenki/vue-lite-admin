@@ -1,4 +1,4 @@
-import Layout from '/src/layout/index.vue'
+import { LAYOUT } from './constant'
 import Redirect from '/src/views/redirect/index.vue'
 import Login from '/src/views/login/index.vue'
 
@@ -6,7 +6,7 @@ import Login from '/src/views/login/index.vue'
 export const basicRoutes = [
   {
     path: '/redirect',
-    component: Layout,
+    component: LAYOUT,
     redirect: '/',
     hidden: true,
     children: [

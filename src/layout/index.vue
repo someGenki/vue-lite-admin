@@ -4,7 +4,7 @@
     <div
       class="mask-zIndex99"
       v-if="isMobile && unfoldSidebar"
-      @click.self.stop="handleSidebarToggle(false)"
+      @click.self.stop="toggleSidebar(false)"
     />
     <!-- ↑ 移动端模式展开侧边栏出现的遮罩层 ↑  -->
     <div
@@ -25,22 +25,27 @@
 </template>
 
 <script>
+import { toRefs } from 'vue'
+import { useLayoutStore } from '/src/store/layout'
 import { AppMain, NavBar, Settings, Sidebar, TabBar } from './components'
-import useLayout from './components/useLayout'
-import { computed, toRefs } from 'vue'
 
 export default {
   name: 'Layout',
   components: { Settings, AppMain, Sidebar, NavBar, TabBar },
   setup() {
-    const { state, sidebarWidth, handleSidebarToggle } = useLayout()
-    const { fixedHeader, isMobile, unfoldSidebar, showTabBar } = toRefs(state)
+    const store = useLayoutStore()
+    const {
+      isMobile,
+      showTabBar,
+      fixedHeader,
+      sidebarWidth,
+      toggleSidebar,
+      unfoldSidebar,
+      mainPaddingTopOnFixed,
+    } = toRefs(store)
 
-    // 当固定头部时，main-container的上边距值
-    const mainPaddingTopOnFixed = computed(() => {
-      if (!fixedHeader.value) return '0'
-      else if (fixedHeader.value && showTabBar.value) return 42 + 34 + 'px'
-      else return 42 + 'px'
+    setTimeout(() => {
+
     })
 
     return {
@@ -48,9 +53,9 @@ export default {
       showTabBar,
       fixedHeader,
       sidebarWidth,
+      toggleSidebar,
       unfoldSidebar,
       mainPaddingTopOnFixed,
-      handleSidebarToggle,
     }
   },
 }

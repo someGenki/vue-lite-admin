@@ -1,41 +1,41 @@
 <template>
-  <teleport to='body'>
+  <teleport to="body">
     <div
-      v-if='showSettings'
-      class='mask-zIndex99'
-      @click.stop.prevent.self='handleSettingsToggle(false)'
+      v-if="showSettings"
+      class="mask-zIndex99"
+      @click.stop.prevent.self="toggleSettings(false)"
     />
-    <transition name='show-transform'>
-      <div v-if='showSettings' class='settings-panel-content'>
-        <div class='settings-panel-header'>
+    <transition name="show-transform">
+      <div v-if="showSettings" class="settings-panel-content">
+        <div class="settings-panel-header">
           <span>项目配置</span>
           <button
-            @click='handleSettingsToggle(false)'
-            class='close-btn'
+            @click="toggleSettings(false)"
+            class="close-btn"
             v-text="'❌'"
           />
         </div>
-        <div class='settings-panel-body'>
-          <el-divider><span style='font-size: 16px'>界面显示</span></el-divider>
+        <div class="settings-panel-body">
+          <el-divider><span style="font-size: 16px">界面显示</span></el-divider>
           <setting-item
-            v-model='fixedHeader'
-            type='el-switch'
-            desc='固定头部'
+            v-model="fixedHeader"
+            type="el-switch"
+            desc="固定头部"
           />
-          <setting-item v-model='showLogo' type='el-switch' desc='侧边栏Logo' />
+          <setting-item v-model="showLogo" type="el-switch" desc="侧边栏Logo" />
           <setting-item
-            v-model='showTabBar'
-            type='el-switch'
-            desc='标签栏导航'
+            v-model="showTabBar"
+            type="el-switch"
+            desc="标签栏导航"
           />
           <setting-item
-            v-model='sUnfoldWidth'
-            :step='5'
-            :min='160'
-            :max='260'
-            type='el-input-number'
-            desc='侧边栏宽度'
-            size='mini'
+            v-model="sUnfoldWidth"
+            :step="5"
+            :min="160"
+            :max="260"
+            type="el-input-number"
+            desc="侧边栏宽度"
+            size="mini"
           />
         </div>
       </div>
@@ -48,18 +48,23 @@
 vue3 teleport组件 https://v3.cn.vuejs.org/api/built-in-components.html#teleport
 按键修饰符 https://v3.cn.vuejs.org/guide/events.html#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6
  */
-import useLayout from '../useLayout'
 import { toRefs, watch } from 'vue'
 import SettingItem from './SettingItem.vue'
+import { useLayoutStore } from '/src/store/layout'
 
 export default {
   name: 'Settings',
   components: { SettingItem },
   setup() {
-    const { handleSettingsToggle, state } = useLayout()
-
-    const { showSettings, fixedHeader, sUnfoldWidth, showLogo, showTabBar } =
-      toRefs(state)
+    const store = useLayoutStore()
+    const {
+      toggleSettings,
+      showSettings,
+      fixedHeader,
+      sUnfoldWidth,
+      showLogo,
+      showTabBar,
+    } = toRefs(store)
 
     function closeSettings(e) {
       if (e.keyCode === 27) showSettings.value = false
@@ -72,7 +77,7 @@ export default {
     })
 
     return {
-      handleSettingsToggle,
+      toggleSettings,
       showSettings,
       sUnfoldWidth,
       showTabBar,
@@ -83,7 +88,7 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 $setting-panel-width: 300px;
 
 .settings-panel-content {
@@ -113,8 +118,6 @@ $setting-panel-width: 300px;
     background-color: transparent;
   }
 }
-
-
 
 /* 过度动画 */
 .show-transform-enter-active,

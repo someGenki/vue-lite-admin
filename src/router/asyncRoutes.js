@@ -1,4 +1,4 @@
-import Layout from '/src/layout/index.vue'
+import { LAYOUT } from './constant'
 import nestedRouter from './modules/nested'
 
 /**
@@ -18,7 +18,7 @@ export default [
   {
     path: '/test',
     redirect: '/test/test1',
-    component: Layout,
+    component: LAYOUT,
     hidden: true,
     children: [
       {
@@ -32,7 +32,7 @@ export default [
   {
     path: '/permission',
     redirect: '/permission/page',
-    component: Layout,
+    component: LAYOUT,
     meta: { title: '权限页面', roles: ['admin', 'editor', 'test'] },
     children: [
       {
@@ -71,7 +71,7 @@ export default [
   {
     path: '/about',
     redirect: '/about/index',
-    component: Layout,
+    component: LAYOUT,
     children: [
       {
         path: 'index',

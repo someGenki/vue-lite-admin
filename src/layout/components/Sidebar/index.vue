@@ -16,27 +16,23 @@
 </template>
 
 <script>
-import { state as userState } from '/src/store/user'
+import { useUserStore } from '/src/store/user'
 import SidebarLogo from './SidebarLogo.vue'
 import SidebarItem from './SidebarItem.vue'
-import useLayout from '../useLayout.js'
 import { toRaw, toRefs } from 'vue'
+import { useLayoutStore } from '../../../store/layout'
 
 /**
  * 根据权限以及路由表动态生成侧边菜单栏 以及配置菜单栏相关样式
+ * TODO 抽离创建菜单的方式，不直接从router创建，而是提供选择
  */
 export default {
   name: 'Sidebar',
   components: { SidebarLogo, SidebarItem },
   setup() {
-    const { state, sidebarWidth } = useLayout()
-    const { showLogo, unfoldSidebar } = toRefs(state)
-    const routers = toRaw(userState.addRoutes)
-    const elMenuStyle = {
-      text: '#dcdcdc',
-      background: '#304156',
-      activeText: state.themeColor,
-    }
+    const store = useLayoutStore()
+    const { showLogo, unfoldSidebar, sidebarWidth, elMenuStyle } = toRefs(store)
+    const routers = toRaw(useUserStore().addRoutes)
 
     return {
       routers,

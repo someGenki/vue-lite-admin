@@ -13,7 +13,7 @@
     "@vueuse/core": "^6.0.0",
     "axios": "^0.21.1",
     "echarts": "^5.1.2",
-    "element-plus": "^1.0.2-beta.71",
+    "element-plus": "^1.1.0-beta.1",
     "js-cookie": "^3.0.0",
     "mockjs": "^1.1.0",
     "pinia": "^2.0.0-rc.6",

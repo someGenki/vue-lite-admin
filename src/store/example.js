@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
-import { store } from '/src/store/pinia'
+import { store } from '/src/store'
 /**
  * 如何使用pinia作为vue3的状态管理仓库呢？
  * docs: https://pinia.esm.dev/
- * 0. 前提须知：Pinia是模块化的，不像Vuex有根store！！！
+ * 0. 前提须知：Pinia是模块化的，不像Vuex有根store！！！其次，直接从state解构会失去响应式
  * 1. 引入pinia依赖、app.use(createPinia())、export const useStore=defineStore(...)
  * 2. setup() 中访问 state、getters、actions 可直接 const store=useStore(); store.xxx
  * 3. 批量修改state参考：https://pinia.esm.dev/core-concepts/state.html#mutating-the-state

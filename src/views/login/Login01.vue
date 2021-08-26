@@ -140,7 +140,7 @@ $login-btn-size: 64px;
   background-color: $bg-input;
   text-align: center; // 让光标和内容居中
   font-size: 1.3rem;
-  caret-color: $primary-color;
+  caret-color: var(--primary-color,#02bf6f);;
 
   &::placeholder {
     color: #a1a1a1;

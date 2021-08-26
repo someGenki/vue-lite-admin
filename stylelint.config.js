@@ -1,4 +1,5 @@
 // 与ESlint类似的CSS检测工具 https://cloud.tencent.com/developer/chapter/18030
+// TODO 添加css排序
 module.exports = {
   root: true,
   plugins: ['stylelint-order'],

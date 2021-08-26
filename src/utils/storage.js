@@ -20,13 +20,19 @@ export function saveSetting(key, val) {
   localStorage.setItem(KEY_PREFIX + key, val)
 }
 
+export function batchSaveSetting(keys, obj) {
+  keys.forEach((key) => {
+    saveSetting(key, obj[key])
+  })
+}
+
 // 从localStorage里那的东西是字符串要手动转
-export function getSetting(key, need,defaultValue=null) {
+export function getSetting(key, need, defaultValue = null) {
   let item = localStorage.getItem(KEY_PREFIX + key)
-  if (need==='int') {
+  if (need === 'int') {
     item = Number.parseInt(item)
     return Number.isInteger(item) ? item : defaultValue
-  } else if (need==='bool') {
+  } else if (need === 'bool') {
     item = JSON.parse(item)
     return item === true || item === false ? item : defaultValue
   }

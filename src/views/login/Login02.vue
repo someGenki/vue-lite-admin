@@ -99,6 +99,6 @@ $bg-button: #cfd3d7;
 
 .forget-password {
   font-size: 0.9rem;
-  color: $primary-text-color;
+  color: var(--primary-text-color,$primary-text-color);
 }
 </style>

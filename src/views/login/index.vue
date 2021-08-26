@@ -32,7 +32,7 @@ $bg-input: #f1f2f3;
 $bg-button: #cfd3d7;
 
 .login-container {
-  background: linear-gradient(226deg, #E0EAFC, #c6d5ec);
+  background: linear-gradient(226deg, #e0eafc, #c6d5ec);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -54,6 +54,6 @@ $bg-button: #cfd3d7;
 
 .forget-password {
   font-size: 0.9rem;
-  color: $primary-text-color;
+  color: var(--primary-text-color, $primary-text-color);
 }
 </style>

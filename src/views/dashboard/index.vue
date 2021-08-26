@@ -1,14 +1,22 @@
 <template>
   <div class="dashboard-container">
     <el-row :gutter="10">
-      <el-col :xs="24" :sm="12" :lg="6"><github /></el-col>
-      <el-col :xs="24" :sm="12" :lg="6"><bilibili /></el-col>
-      <el-col :xs="24" :sm="12" :lg="6"><earning /></el-col>
-      <el-col :xs="24" :sm="12" :lg="6"><we-chat /></el-col>
+      <el-col :xs="24" :sm="12" :lg="6">
+        <github />
+      </el-col>
+      <el-col :xs="24" :sm="12" :lg="6">
+        <bilibili />
+      </el-col>
+      <el-col :xs="24" :sm="12" :lg="6">
+        <earning />
+      </el-col>
+      <el-col :xs="24" :sm="12" :lg="6">
+        <we-chat />
+      </el-col>
     </el-row>
     <el-row :gutter="10">
       <el-col :xs="24" :sm="12" :lg="6">
-        <div style="height: 280px" ref="shop" />
+        <div style="height: 300px" ref="shop" />
       </el-col>
       <el-col class="quick-nav" :xs="24" :sm="12" :lg="6">
         <p style="font-weight: bold">快捷导航</p>
@@ -41,39 +49,28 @@
 // 数字增加 https://blog.csdn.net/sunny123x/article/details/102589067
 // 请求动画帧 https://github.com/PanJiaChen/vue-countTo/blob/master/src/requestAnimationFrame.js
 
-import { Earning, WeChat, Bilibili, Github } from './components/cards.js'
+import { onMounted, ref } from 'vue'
 import * as echarts from 'echarts'
-import { onMounted, reactive, ref} from 'vue'
+import { Earning, WeChat, Bilibili, Github } from './components/cards.js'
+import pie1option from './options/pie1option'
 
 export default {
   name: 'Dashboard',
+
   components: { Earning, WeChat, Bilibili, Github },
 
   setup() {
     const shop = ref(null)
-    const arr = reactive([1, 2])
     onMounted(() => {
       // 根据父元素的宽度来设置图表的宽度 （未添加resize事件处理）
       const parentWidth = shop.value.parentElement.clientWidth - 10
       shop.value.style.width = parentWidth + 'px'
       let myChart = echarts.init(shop.value)
-      // 指定图表的配置项和数据
-      let option = {
-        title: { text: 'ECharts' },
-        tooltip: { trigger: 'axis' },
-        legend: { data: ['收入', '利润'] },
-        xAxis: { data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'] },
-        yAxis: {},
-        series: [
-          { name: '收入', type: 'line', data: [15, 30, 46, 20, 20, 40] },
-          { name: '利润', type: 'bar', data: [5, 20, 36, 10, 10, 20] },
-        ],
-      }
       // 使用刚指定的配置项和数据显示图表。
-      myChart.setOption(option)
+      myChart.setOption(pie1option)
     })
 
-    return { shop, arr }
+    return { shop }
   },
 }
 </script>
@@ -87,6 +84,7 @@ export default {
 .el-row > .el-col {
   padding-bottom: 10px;
 }
+
 // 新版样式穿透写法:deep(选择器)
 :deep(.el-card__header) {
   padding: 5px 10px;
@@ -102,14 +100,19 @@ export default {
 }
 
 .quick-nav {
+  > p {
+    margin-top: 5px;
+  }
+
   &__card {
-    border: 1px solid #ccc;
     display: inline-flex;
-    flex-flow: column wrap;
     align-items: center;
-    text-align: center;
+    flex-flow: column wrap;
     margin: 6px;
-    padding: 4px;
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #d0d9e1;
+    text-align: center;
 
     > p {
       font-size: 1.1rem;
@@ -122,7 +125,7 @@ export default {
     }
 
     &:hover {
-      box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
+      box-shadow: 0 2px 6px 0 rgb(0 0 0 / 10%);
     }
   }
 }
@@ -133,20 +136,20 @@ export default {
 
     .visited-num {
       font-size: 1.1rem;
-      color: $primary-text-color-tinge;
+      color: var(--primary-text-color-tinge);
     }
   }
 
   > .icon-wrapper {
     cursor: pointer;
-    color: $primary-text-color;
+    color: var(--primary-text-color);
     transition: 0.3s;
     font-size: 4rem;
 
     &:hover {
       color: #fff;
       border-radius: 8px;
-      background-color: $primary-color-tinge;
+      background-color: var(--primary-color-tinge);
     }
   }
 }

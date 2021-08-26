@@ -113,7 +113,7 @@ export default {
     transition: color 0.5s;
 
     &:hover {
-      color: $primary-color;
+      color: var(--primary-color);
     }
 
     > span {

@@ -24,43 +24,40 @@
   </div>
 </template>
 
-<script>
+<script setup>
+// <script setup>教程：https://v3.cn.vuejs.org/api/sfc-script-setup.html
 import { toRefs } from 'vue'
+import { useStyleStore } from '../store/style'
 import { useLayoutStore } from '/src/store/layout'
+import { batchSaveSetting } from '/src/utils/storage'
 import { AppMain, NavBar, Settings, Sidebar, TabBar } from './components'
-import { saveSetting } from '../utils/storage'
 
-export default {
-  name: 'Layout',
-  components: { Settings, AppMain, Sidebar, NavBar, TabBar },
-  setup() {
-    const store = useLayoutStore()
+const layoutStore = useLayoutStore()
 
-    const {
-      isMobile,
-      showTabBar,
-      fixedHeader,
-      sidebarWidth,
-      toggleSidebar,
-      unfoldSidebar,
-      mainPaddingTopOnFixed,
-    } = toRefs(store)
+const styleStore = useStyleStore()
 
-    store.$subscribe((mutation) =>
-      saveSetting(mutation.events.key, mutation.events.newValue)
-    )
+const {
+  isMobile,
+  showTabBar,
+  fixedHeader,
+  sidebarWidth,
+  toggleSidebar,
+  unfoldSidebar,
+  mainPaddingTopOnFixed,
+} = toRefs(layoutStore)
 
-    return {
-      isMobile,
-      showTabBar,
-      fixedHeader,
-      sidebarWidth,
-      toggleSidebar,
-      unfoldSidebar,
-      mainPaddingTopOnFixed,
-    }
-  },
-}
+layoutStore.$subscribe((mutation, state) => {
+  const keys = [
+    'showLogo',
+    'showTabBar',
+    'fixedHeader',
+    'sUnfoldWidth',
+    'unfoldSidebar',
+  ]
+  batchSaveSetting(keys, state)
+})
+
+styleStore.injectCssVarToRoot()
 </script>
 
 <style lang="scss" scoped>
@@ -81,7 +78,7 @@ export default {
   top: 0;
   right: 0;
   width: 100%;
-  padding-left: inherit; /* 解决设置fixed之后，宽度100%会盖过侧边栏的问题 */
+  padding-left: inherit; // 解决设置fixed之后，宽度100%会盖过侧边栏的问题
   z-index: 10;
 }
 </style>

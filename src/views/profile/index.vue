@@ -178,7 +178,7 @@ $card-gap: 20px;
 .about-me-detail {
   list-style: none;
   padding-left: 0;
-  color: $primary-text-color;
+  color: var(--primary-text-color,$primary-text-color);
 
   > li {
     margin-bottom: 10px;
@@ -190,7 +190,7 @@ $card-gap: 20px;
 }
 
 .about-me-skills {
-  color: $primary-text-color;
+  color: var(--primary-text-color,$primary-text-color);
   padding-left: 18px;
 
   > li {

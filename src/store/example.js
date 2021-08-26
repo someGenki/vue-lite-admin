@@ -25,11 +25,6 @@ export const useExampleStore = defineStore('example', {
   },
 })
 
-// from vben-admin
-export function useAppStoreWithOut() {
-  return useExampleStore(store)
-}
-
 /**
  * 订阅state的改变
  * 1. store.$subscribe((mutation, state) => { ... })
@@ -37,6 +32,7 @@ export function useAppStoreWithOut() {
  *  他与watch不用的是vue patch执行完后才触发
  * 2. 回调函数的作用：当state发生改变时，将整个state存到localStorage中
  *  例：localStorage.setItem('cart', JSON.stringify(state))
+ * 3. 注意：回调函数中mutation.event在dev和prod环境下表现不同！
  */
 
 /**

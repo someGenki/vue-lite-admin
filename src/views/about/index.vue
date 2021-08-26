@@ -50,7 +50,7 @@ export default {
 }
 
 :deep(.el-descriptions__label.is-bordered-label) {
-  color: $primary-text-color;
+  color: var(--primary-text-color);
   font-size: 14px;
 }
 </style>

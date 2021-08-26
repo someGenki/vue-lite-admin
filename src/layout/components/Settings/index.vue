@@ -58,14 +58,15 @@ export default {
   setup() {
     const store = useLayoutStore()
     const {
-      toggleSettings,
-      showSettings,
-      fixedHeader,
-      sUnfoldWidth,
       showLogo,
       showTabBar,
+      fixedHeader,
+      showSettings,
+      sUnfoldWidth,
+      toggleSettings,
     } = toRefs(store)
 
+    // 按下ESC关闭设置面板的操作函数
     function closeSettings(e) {
       if (e.keyCode === 27) showSettings.value = false
     }
@@ -80,8 +81,8 @@ export default {
       toggleSettings,
       showSettings,
       sUnfoldWidth,
-      showTabBar,
       fixedHeader,
+      showTabBar,
       showLogo,
     }
   },

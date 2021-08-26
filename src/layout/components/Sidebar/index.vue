@@ -21,6 +21,7 @@ import SidebarLogo from './SidebarLogo.vue'
 import SidebarItem from './SidebarItem.vue'
 import { useUserStore } from '/src/store/user'
 import { useLayoutStore } from '/src/store/layout'
+import { useStyleStore } from '/src/store/style'
 import { createMenuFromAddRoutes } from './useMenu'
 
 /**
@@ -31,15 +32,16 @@ export default {
   components: { SidebarLogo, SidebarItem },
   setup() {
     const store = useLayoutStore()
+    const style = useStyleStore()
     const menus = createMenuFromAddRoutes(useUserStore().addRoutes)
-    const { showLogo, unfoldSidebar, sidebarWidth, elMenuStyle } = toRefs(store)
+    const { showLogo, unfoldSidebar, sidebarWidth } = toRefs(store)
 
     return {
       menus,
       showLogo,
-      elMenuStyle,
       sidebarWidth,
       unfoldSidebar,
+      elMenuStyle: style.elMenuStyle,
     }
   },
 }

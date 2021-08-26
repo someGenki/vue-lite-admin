@@ -2,15 +2,15 @@
   <p style="text-align: center">支持以下第三方登录</p>
   <ul class="third-party-list">
     <li id="tp-qq">
-      <app-icon size="26" icon="QQ"/>
+      <app-icon size="26" icon="QQ" />
       QQ
     </li>
     <li id="tp-wechat">
-     <app-icon size="26" icon="wechat"/>
+      <app-icon size="26" icon="wechat" />
       Wechat
     </li>
     <li id="tp-github">
-      <app-icon size="26" icon="github"/>
+      <app-icon size="26" icon="github" />
       github
     </li>
   </ul>
@@ -39,12 +39,12 @@ export default {
     display: flex;
     align-items: center;
 
-    :first-child{
+    :first-child {
       margin-right: 10px;
     }
 
     &:hover {
-      color: $primary-color;
+      color: var(--primary-color);
     }
   }
 }

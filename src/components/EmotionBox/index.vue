@@ -76,7 +76,7 @@ $hover-color: #aaa;
     border-radius: 7px;
 
     &:hover {
-      background-color: $primary-color;
+      background-color: var(--primary-color);
     }
   }
 

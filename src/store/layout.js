@@ -20,7 +20,6 @@ export const useLayoutStore = defineStore('layout', {
     // 侧边菜单栏折叠后宽度
     sCollapseWidth: 64,
     isMobile: document.body.clientWidth < 768,
-    themeColor: '#02BF6F',
     breadcrumbList: [],
     visitedViews: [],
     cachedViews: [],
@@ -37,12 +36,6 @@ export const useLayoutStore = defineStore('layout', {
       else if (state.fixedHeader && state.showTabBar) return 42 + 34 + 'px'
       else return 42 + 'px'
     },
-    // 侧边菜单栏颜色样式
-    elMenuStyle: (state) => ({
-      text: '#dcdcdc',
-      background: '#304156',
-      activeText: state.themeColor,
-    }),
     //     getters 结束分割线
   },
   actions: {

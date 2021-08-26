@@ -1,6 +1,6 @@
 <template>
   <div class="navbar" role="navigation">
-    <Hamburger :unfold="unfolded" @toggleClick="toggleSidebar" />
+    <Hamburger :unfold="unfoldSidebar" @toggleClick="toggleSidebar" />
     <breadcrumb :list="breadcrumbList" />
     <div class="right-menu-area">
       <app-icon class="right-menu-action" icon="el-icon-search" />
@@ -76,11 +76,11 @@ export default {
 
     return {
       DioAvatar /* 项目默认头像,来自assets文件夹,vite会自动解析返回公共路径 */,
-      dropdownItems,
       toggleFull,
+      dropdownItems,
+      unfoldSidebar,
       toggleSidebar,
       toggleSettings,
-      unfolded: unfoldSidebar,
       breadcrumbList,
     }
   },
@@ -116,6 +116,7 @@ export default {
     background-color: $hover-background-color;
   }
 }
+
 @media screen and (max-width: $sm-width) {
   .app-breadcrumb {
     display: none;

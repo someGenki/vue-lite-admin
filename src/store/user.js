@@ -1,6 +1,5 @@
 import router from '../router'
 import { defineStore } from 'pinia'
-import { store } from './index'
 import { getToken, setToken } from '../utils/storage'
 import { login as _login, getInfo as _getInfo } from '/src/api/user'
 import asyncRoutes from '../router/asyncRoutes'
@@ -29,7 +28,7 @@ export const useUserStore = defineStore('user', {
     },
 
     async getUserInfo() {
-      console.log('fetchInfo')
+      console.log('getUserInfo...')
       const res = await _getInfo()
       this.roles.push(...res.data.roles)
       this.addRoutes = this.generateRoutes()
@@ -39,7 +38,6 @@ export const useUserStore = defineStore('user', {
       const accessedRoutes = this.roles.includes('admin')
         ? asyncRoutes || [] // 是最高权限的admin则直接加入所有异步路由
         : filterAsyncRoutes(asyncRoutes, this.roles)
-
       // 将动态生成的可以访问路由加入 vue-router 中
       accessedRoutes.forEach((route) => router.addRoute(route))
       // 记录所有路由，它与router.getRoutes有所不同！
@@ -47,10 +45,6 @@ export const useUserStore = defineStore('user', {
     },
   },
 })
-
-export function useAppStoreWithOut() {
-  return useUserStore(store)
-}
 
 /**
  * 递归的根据已登录用户的roles来过滤异步路由表来生成专属的路由表

@@ -9,7 +9,7 @@
     </div>
     <div class="github-star">
       <i class="el-icon-star-off" />
-      <span>31</span>
+      <span>{{ star }}</span>
     </div>
     <div class="github-cat">
       <svg
@@ -86,6 +86,9 @@
 // 猫猫图标来自Github/profile页面 若有侵权 马上删除
 export default {
   name: 'GithubState',
+  data() {
+    return { star: 34 }
+  },
 }
 </script>
 

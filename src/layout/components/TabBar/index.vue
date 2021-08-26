@@ -158,7 +158,7 @@ export default {
 
   &.active {
     color: #fff;
-    background-color: $primary-color;
+    background-color: var(--primary-color);
   }
 
   .tab-close {

@@ -32,14 +32,14 @@ $bg-input: #f1f2f3;
 $bg-button: #cfd3d7;
 
 .login-container {
-  background: linear-gradient(226deg, #e0eafc, #c6d5ec);
   display: flex;
-  align-items: center;
   flex-direction: column;
-  overflow: hidden;
+  align-items: center;
   width: 100%;
   min-height: 100vh;
   padding-top: 10px;
+  overflow: hidden;
+  background: linear-gradient(226deg, #e0eafc, #c6d5ec);
 }
 
 .login-button {

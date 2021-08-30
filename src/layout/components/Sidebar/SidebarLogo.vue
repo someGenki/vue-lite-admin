@@ -34,8 +34,8 @@ export default {
   cursor: pointer;
 
   img {
-    height: 36px;
     width: 36px;
+    height: 36px;
   }
 
   h4 {

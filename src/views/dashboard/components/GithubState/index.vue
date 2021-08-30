@@ -3,7 +3,7 @@
     <div class="github-logo">
       <app-icon icon="github" color="#ffffff" size="32" />
       <div>
-        <span style="font-weight: bold; margin-bottom: 3px">Github</span>
+        <span style=" margin-bottom: 3px;font-weight: bold">Github</span>
         <span style="font-size: 0.8rem">资料卡</span>
       </div>
     </div>
@@ -97,11 +97,11 @@ $theme-color: #161b22;
 $card-height: 160px;
 
 .github-state {
+  position: relative;
   height: $card-height;
   padding: 10px;
-  border-radius: 8px;
   background-color: $theme-color;
-  position: relative;
+  border-radius: 8px;
 }
 
 .github-logo {
@@ -111,8 +111,8 @@ $card-height: 160px;
   > div {
     display: inline-flex;
     flex-direction: column;
-    color: white;
     margin-left: 10px;
+    color: white;
   }
 }
 
@@ -124,11 +124,11 @@ $card-height: 160px;
 
 .github-link {
   position: absolute;
-  left: 10px;
   bottom: 8px;
+  left: 10px;
   padding: 1px;
-  color: #eee;
   font-size: 0.8rem;
+  color: #eee;
 
   &:hover {
     border-bottom: 1px solid #eee;
@@ -139,8 +139,8 @@ $card-height: 160px;
   position: absolute;
   top: 10px;
   right: 20px;
-  color: #eee;
   font-size: 1.2rem;
+  color: #eee;
 
   span {
     margin-left: 6px;

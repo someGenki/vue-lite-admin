@@ -64,44 +64,44 @@ $theme-color: #fb7299;
 $card-height: 160px;
 
 .bilibili-state {
-  height: $card-height;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: $theme-color;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  height: $card-height;
+  padding: 10px;
+  background-color: $theme-color;
+  border-radius: 8px;
 }
 
 .avatar-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
   height: 80px;
   overflow: hidden;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
 
   img {
-    border-radius: 50%;
-    border: 2px solid #fff6;
     height: 100%;
+    border: 2px solid #fff6;
+    border-radius: 50%;
   }
 
   a {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 2px;
     width: 100%;
     height: 80px;
-    line-height: 80px;
-    text-align: center;
-    color: #eee;
-    background-color: #0009;
+    padding: 2px;
     font-size: 0.8rem;
+    line-height: 80px;
+    color: #eee;
+    text-align: center;
+    background-color: #0009;
     opacity: 0;
     transition: opacity 0.3s;
   }
@@ -124,9 +124,9 @@ $card-height: 160px;
   }
 
   .bilibili-num {
+    font-weight: bold;
     color: #fff4f5;
     text-align: center;
-    font-weight: bold;
   }
 }
 </style>

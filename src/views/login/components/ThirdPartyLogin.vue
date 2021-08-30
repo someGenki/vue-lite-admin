@@ -35,9 +35,9 @@ export default {
   margin-top: 20px;
 
   li {
-    cursor: pointer;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     :first-child {
       margin-right: 10px;

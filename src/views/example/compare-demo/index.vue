@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>图片对比组件</h2>
-    <compare-box style="transform: scale(1.3);margin: 20px">
+    <compare-box style="margin: 20px;transform: scale(1.3)">
       <template #lower>
         <img
           src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/33/338ad5584e4cdb714b0ec31f5ca2cf63666086e0_full.jpg"

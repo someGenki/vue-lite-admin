@@ -36,9 +36,9 @@ export default {
 .app-main {
   position: relative;
   width: 100%;
+  min-height: calc(100vh - #{$navbar-height + $tabBar-height});
   padding: 15px;
   background-color: #f1f2f3;
-  min-height: calc(100vh - #{$navbar-height + $tabBar-height});
 }
 
 /*

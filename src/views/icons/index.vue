@@ -81,13 +81,13 @@ export default {
 
 <style lang="scss" scoped>
 .icon-set {
-  list-style: none;
   padding: 0;
   margin-right: 20px;
-  border-radius: 4px;
+  list-style: none;
   background-color: white;
   border-top: 1px solid #eee;
   border-left: 1px solid #eee;
+  border-radius: 4px;
   @media screen and (max-width: $lg-width) {
     & > li {
       width: 16.6%;
@@ -100,14 +100,14 @@ export default {
   }
 
   li {
-    float: left;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center; /* 用于<i>标签的图标水平居中 */
+    justify-content: center;
+    float: left;
     width: 12.5%;
     height: 120px;
+    text-align: center; /* 用于<i>标签的图标水平居中 */
     border-right: 1px solid #eee;
     border-bottom: 1px solid #eee;
     transition: color 0.5s;
@@ -117,8 +117,8 @@ export default {
     }
 
     > span {
-      color: #99a9bb;
       margin-top: 8px;
+      color: #99a9bb;
     }
   }
 }

@@ -89,20 +89,20 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
+  position: relative;
   display: flex;
   align-items: center;
   height: $navbar-height;
   overflow: hidden;
-  position: relative;
   background: #fff;
   box-shadow: 0 2px 4px #00000114;
 }
 
 .right-menu-area {
-  display: flex;
-  align-items: center;
   position: absolute;
   right: 0;
+  display: flex;
+  align-items: center;
   height: 100%;
 }
 

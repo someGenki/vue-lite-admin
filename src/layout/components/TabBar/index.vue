@@ -137,23 +137,23 @@ export default {
 }
 
 .tabBar-item {
-  display: inline-block;
   position: relative;
+  display: inline-block;
   padding: 3px 2px 3px 4px;
   margin-right: 10px;
   font-size: 0.75rem;
-  cursor: pointer;
   color: #495060;
-  border: 1px solid #d4d4d4;
-  background-color: #fafafa;
+  cursor: pointer;
   user-select: none;
+  background-color: #fafafa;
+  border: 1px solid #d4d4d4;
 
   &.mark::after {
-    content: '😅';
     position: absolute;
-    font-size: 14px;
     top: -8px;
     right: -9px;
+    font-size: 14px;
+    content: '😅';
   }
 
   &.active {
@@ -162,8 +162,8 @@ export default {
   }
 
   .tab-close {
-    transform: scale(0.8);
     margin-left: 3px;
+    transform: scale(0.8);
   }
 
   .tab-close:hover {
@@ -173,13 +173,13 @@ export default {
 
 .tabBar-contextmenu {
   position: absolute;
-  padding: 5px;
-  min-width: 110px;
-  border-radius: 5px;
   z-index: 1000;
+  min-width: 110px;
+  padding: 5px;
   font-size: 12px;
   list-style-type: none;
   background-color: #fff;
+  border-radius: 5px;
   box-shadow: 2px 2px 2px 0 #0004;
 
   > li {
@@ -193,18 +193,18 @@ export default {
 }
 
 .tabBar-refresh {
-  display: inline-block;
   position: absolute;
   top: 0;
   right: 0;
-  padding: 0 5px;
+  display: inline-block;
   height: $tabBar-height;
-  line-height: $tabBar-height;
-  border-left: 1px solid #e7e7e7;
+  padding: 0 5px;
   font-size: 1.2rem;
+  line-height: $tabBar-height;
   color: #6a6a6a;
   cursor: pointer;
   background-color: inherit;
+  border-left: 1px solid #e7e7e7;
 
   &:hover {
     color: black;

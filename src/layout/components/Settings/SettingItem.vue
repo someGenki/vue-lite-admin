@@ -36,8 +36,8 @@ export default {
 <style lang="scss" scoped>
 .setting-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 4px 16px;
 }
 </style>

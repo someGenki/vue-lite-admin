@@ -62,10 +62,10 @@ styleStore.injectCssVarToRoot()
 
 <style lang="scss" scoped>
 .app-wrapper {
-  display: flex;
-  overflow: auto;
   position: relative;
+  display: flex;
   height: 100vh; // 固定容器高度，让滚动条出现在这一层
+  overflow: auto;
 }
 
 .main-container {
@@ -77,8 +77,8 @@ styleStore.injectCssVarToRoot()
   position: fixed;
   top: 0;
   right: 0;
+  z-index: 10;
   width: 100%;
   padding-left: inherit; // 解决设置fixed之后，宽度100%会盖过侧边栏的问题
-  z-index: 10;
 }
 </style>

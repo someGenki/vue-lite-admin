@@ -49,17 +49,17 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar-container {
+  position: fixed;
+  z-index: 100;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  overflow: hidden;
   height: 100%;
-  z-index: 100;
+  overflow: hidden;
 
   .el-menu {
     flex-grow: 1;
-    border-right: none;
     user-select: none;
+    border-right: none;
   }
 
   .el-submenu {

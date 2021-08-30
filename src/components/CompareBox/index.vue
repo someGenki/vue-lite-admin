@@ -37,9 +37,9 @@ export default {
 .image-slider > div {
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   width: 50%;
   overflow: hidden;
 }
@@ -55,8 +55,8 @@ export default {
 
 .image-slider input[type='range'] {
   position: absolute;
-  left: 0;
   bottom: 10px;
+  left: 0;
   width: 100%;
   margin: 0;
   filter: contrast(0.5);

@@ -67,9 +67,9 @@ $hover-color: #aaa;
   //默认展开表情盒子的按钮 or 触发Popover的按钮
   &__open-btn {
     height: 30px;
-    line-height: 30px;
     padding: 2px 4px;
     margin-right: 5px;
+    line-height: 30px;
     cursor: pointer;
     user-select: none;
     border: 1px solid #9c9a9a;
@@ -94,26 +94,26 @@ $hover-color: #aaa;
 
   //单个表情
   &__item {
-    cursor: pointer;
     display: inline-block;
-    margin: 2px;
     padding: 2px;
+    margin: 2px;
+    cursor: pointer;
 
     &:hover {
-      border-radius: 5px;
       background-color: $hover-color;
+      border-radius: 5px;
     }
   }
 
   // 切换表情的tab
   &__tabs {
-    font-size: 0.95rem;
     padding: 5px;
+    font-size: 0.95rem;
 
     > span {
-      cursor: pointer;
       padding: 3px;
       margin-right: 3px;
+      cursor: pointer;
       border-radius: 4px;
 
       &:hover {

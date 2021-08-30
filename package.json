@@ -13,7 +13,7 @@
     "@vueuse/core": "^6.0.0",
     "axios": "^0.21.1",
     "echarts": "^5.1.2",
-    "element-plus": "^1.1.0-beta.5",
+    "element-plus": "^1.1.0-beta.7",
     "js-cookie": "^3.0.0",
     "mockjs": "^1.1.0",
     "pinia": "^2.0.0-rc.6",
@@ -24,14 +24,15 @@
     "@vitejs/plugin-vue": "^1.6.0",
     "@vitejs/plugin-vue-jsx": "^1.1.7",
     "@vue/compiler-sfc": "^3.2.6",
+    "vite": "^2.5.1",
+    "sass": "^1.38.2",
     "prettier": "^2.3.2",
-    "sass": "^1.38.1",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",
+    "stylelint-config-recess-order": "^2.5.0",
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.20.1",
-    "vite": "^2.5.1",
     "vite-plugin-mock": "^2.9.6"
   }
 }

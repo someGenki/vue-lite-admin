@@ -19,7 +19,7 @@
         <div style="height: 300px" ref="shop" />
       </el-col>
       <el-col class="quick-nav" :xs="24" :sm="12" :lg="6">
-        <p style="font-weight: bold">快捷导航</p>
+        <p style=" font-size: 18px;font-weight: bolder">快捷导航</p>
         <a
           target="_blank"
           href="https://v3.cn.vuejs.org/"
@@ -39,6 +39,9 @@
           <span>Vue 3的桌面端组件库</span>
         </a>
       </el-col>
+      <el-col style="position: relative" :xs="24" :sm="12" :lg="6">
+        <Todo />
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -51,16 +54,18 @@
 
 import { onMounted, ref } from 'vue'
 import * as echarts from 'echarts'
+import Todo from '/src/components/Todo/index.vue'
 import { Earning, WeChat, Bilibili, Github } from './components/cards.js'
 import pie1option from './options/pie1option'
 
 export default {
   name: 'Dashboard',
 
-  components: { Earning, WeChat, Bilibili, Github },
+  components: { Earning, WeChat, Bilibili, Github, Todo },
 
   setup() {
     const shop = ref(null)
+
     onMounted(() => {
       // 根据父元素的宽度来设置图表的宽度 （未添加resize事件处理）
       const parentWidth = shop.value.parentElement.clientWidth - 10
@@ -69,6 +74,8 @@ export default {
       // 使用刚指定的配置项和数据显示图表。
       myChart.setOption(pie1option)
     })
+
+    // TODO 抽离 "quick-nav"成一个公共组件
 
     return { shop }
   },
@@ -87,16 +94,16 @@ export default {
 
 // 新版样式穿透写法:deep(选择器)
 :deep(.el-card__header) {
-  padding: 5px 10px;
-  height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 40px;
+  padding: 5px 10px;
 }
 
 :deep(.el-card__body) {
-  padding: 0;
   height: 120px;
+  padding: 0;
 }
 
 .quick-nav {
@@ -106,13 +113,15 @@ export default {
 
   &__card {
     display: inline-flex;
-    align-items: center;
     flex-flow: column wrap;
+    align-items: center;
+    padding: 10px;
     margin: 6px;
-    padding: 6px;
-    border-radius: 4px;
-    border: 1px solid #d0d9e1;
     text-align: center;
+    //border: 1px solid #d0d9e1;
+    background-color: white;
+    border-radius: 10px;
+    transition: box-shadow 0.25s;
 
     > p {
       font-size: 1.1rem;
@@ -125,7 +134,7 @@ export default {
     }
 
     &:hover {
-      box-shadow: 0 2px 6px 0 rgb(0 0 0 / 10%);
+      box-shadow: 4px 10px 16px rgb(36 37 38 / 13%);
     }
   }
 }
@@ -141,15 +150,15 @@ export default {
   }
 
   > .icon-wrapper {
-    cursor: pointer;
-    color: var(--primary-text-color);
-    transition: 0.3s;
     font-size: 4rem;
+    color: var(--primary-text-color);
+    cursor: pointer;
+    transition: 0.3s;
 
     &:hover {
       color: #fff;
-      border-radius: 8px;
       background-color: var(--primary-color-tinge);
+      border-radius: 8px;
     }
   }
 }

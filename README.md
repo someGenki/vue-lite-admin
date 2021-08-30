@@ -18,6 +18,7 @@
 目前还只是个大三的学生，会的技术和开发经验也不多，项目刚刚起步，非常欢迎提出意见~:heart:
 
 **在线预览地址**： http://fanyibar.top/vite/index.html   👈戳它戳他
+其他地址：https://somegenki.github.io
 
 ## 技术
 

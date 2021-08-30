@@ -136,8 +136,8 @@ $card-gap: 20px;
   float: left;
   width: 35%;
   max-width: 500px;
-  margin-right: $card-gap;
   padding: 20px;
+  margin-right: $card-gap;
   background-color: white;
 }
 
@@ -147,27 +147,27 @@ $card-gap: 20px;
   //创建bfc 使其不与浮动盒子区域重叠，因此会重新计算宽度。也可以用Flex布局配合flex:1;
   .article-text {
     > p {
-      font-weight: bold;
       margin: 6px 16px;
+      font-weight: bold;
     }
 
     > span {
-      font-size: 0.9rem;
       margin: 0 16px;
+      font-size: 0.9rem;
     }
   }
 }
 
 .avatar-me {
   display: block;
-  margin: 0 auto 20px;
   width: 100px;
+  margin: 0 auto 20px;
   border-radius: 50%;
 }
 
 .name-me {
-  text-align: center;
   font-weight: bold;
+  text-align: center;
 
   > i {
     font-weight: bold;
@@ -176,9 +176,9 @@ $card-gap: 20px;
 }
 
 .about-me-detail {
-  list-style: none;
   padding-left: 0;
   color: var(--primary-text-color,$primary-text-color);
+  list-style: none;
 
   > li {
     margin-bottom: 10px;
@@ -190,8 +190,8 @@ $card-gap: 20px;
 }
 
 .about-me-skills {
-  color: var(--primary-text-color,$primary-text-color);
   padding-left: 18px;
+  color: var(--primary-text-color,$primary-text-color);
 
   > li {
     margin-bottom: 10px;

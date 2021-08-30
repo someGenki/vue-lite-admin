@@ -149,11 +149,11 @@ export default {
   display: flex;
 
   > * {
-    background-color: white;
     position: relative;
+    flex: 1;
     padding: 5px 20px;
     margin: 10px;
-    flex: 1;
+    background-color: white;
   }
 }
 

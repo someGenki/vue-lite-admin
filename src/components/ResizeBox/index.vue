@@ -131,8 +131,8 @@ export default {
 
 <style lang="scss" scoped>
 .resize-box {
-  display: flex;
   position: relative;
+  display: flex;
 }
 
 .resize-box--horizontal {
@@ -142,17 +142,17 @@ export default {
     flex-direction: column;
     width: 2px;
     min-height: 100px;
-    cursor: w-resize;
     // 使文字纵向排列
     word-wrap: break-word;
+    cursor: w-resize;
     // 使用伪元素扩大可点击范围
     &::before {
-      content: '';
       position: absolute;
       top: 0;
-      bottom: 0;
       right: -6px;
+      bottom: 0;
       left: -6px;
+      content: '';
     }
   }
 
@@ -171,12 +171,12 @@ export default {
     cursor: n-resize;
     // 使用伪元素扩大可点击范围
     &::before {
-      content: '';
       position: absolute;
       top: -6px;
-      bottom: -6px;
       right: 0;
+      bottom: -6px;
       left: 0;
+      content: '';
     }
   }
 
@@ -186,18 +186,18 @@ export default {
 }
 
 .resize-box__line {
-  display: flex;
   position: relative;
+  display: flex;
 }
 
 .resize-box__left {
-  overflow: auto;
   flex-shrink: 0;
+  overflow: auto;
 }
 
 .resize-box__right {
-  overflow: auto;
   flex-grow: 1; /* 占满右边剩下宽度 */
+  overflow: auto;
 }
 </style>
 

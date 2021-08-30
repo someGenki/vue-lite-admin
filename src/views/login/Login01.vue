@@ -75,10 +75,10 @@ $bg-button: #cfd3d7;
 $login-btn-size: 64px;
 
 .login-form {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   width: 100%;
   max-width: 300px;
 }
@@ -86,16 +86,16 @@ $login-btn-size: 64px;
 .login-button {
   width: $login-btn-size;
   height: $login-btn-size;
-  line-height: $login-btn-size;
   font-size: 2rem;
-  border-radius: 50%;
-  background-color: $bg-button;
-  transition: 0.5s;
-  color: white;
-  border: none;
-  outline: none;
-  cursor: pointer;
   font-weight: bolder;
+  line-height: $login-btn-size;
+  color: white;
+  cursor: pointer;
+  background-color: $bg-button;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  transition: 0.5s;
 
   &.enable {
     background: linear-gradient(#1768ff, #a7bfe8);
@@ -114,32 +114,32 @@ $login-btn-size: 64px;
   position: absolute;
   top: 12px;
   right: 14px;
-  cursor: pointer;
-  color: #666;
   font-size: 1.4rem;
+  color: #666;
+  cursor: pointer;
 }
 // 给图标画一条斜线
 .password-see.slash::after {
-  content: '';
   position: absolute;
   right: 10px;
   width: 2px;
   height: 22px;
+  content: '';
   background-color: #666;
   transform: rotate(45deg);
 }
 // 原生输入框样式
 .login-input {
+  position: relative;
   width: 100%;
   height: 48px;
   padding: 10px 30px;
-  position: relative;
-  outline: none;
+  font-size: 1.3rem;
+  text-align: center; // 让光标和内容居中
+  background-color: $bg-input;
   border: none;
   border-radius: 1000px;
-  background-color: $bg-input;
-  text-align: center; // 让光标和内容居中
-  font-size: 1.3rem;
+  outline: none;
   caret-color: var(--primary-color,#02bf6f);;
 
   &::placeholder {

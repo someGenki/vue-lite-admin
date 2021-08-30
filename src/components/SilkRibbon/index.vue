@@ -32,122 +32,122 @@ export default {
 
 .silk-ribbon1::after {
   position: absolute;
-  content: '';
   display: block;
   width: 0;
   height: 0;
-  border-left: 50px solid transparent;
-  border-right: 40px solid transparent;
+  content: '';
   border-top: 10px solid #f8463f;
+  border-right: 40px solid transparent;
+  border-left: 50px solid transparent;
 }
 
 .silk-ribbon1 span {
   position: relative;
   display: inline-block;
-  text-align: center;
-  background: #f8463f;
+  width: 90px;
+  padding: 12px 8px 10px;
   font-size: 14px;
   line-height: 1;
-  padding: 12px 8px 10px;
+  text-align: center;
+  background: #f8463f;
   border-top-right-radius: 8px;
-  width: 90px;
 }
 
 .silk-ribbon1 span::before,
 .silk-ribbon1 span::after {
   position: absolute;
-  content: '';
   display: block;
+  content: '';
 }
 
 .silk-ribbon1 span::before {
-  background: #f8463f;
-  height: 6px;
-  width: 6px;
-  left: -6px;
   top: 0;
+  left: -6px;
+  width: 6px;
+  height: 6px;
+  background: #f8463f;
 }
 
 .silk-ribbon1 span::after {
-  background: #c02031;
-  height: 6px;
-  width: 8px;
-  border-radius: 8px 8px 0 0;
-  left: -8px;
   top: 0;
+  left: -8px;
+  width: 8px;
+  height: 6px;
+  background: #c02031;
+  border-radius: 8px 8px 0 0;
 }
 
 .silk-ribbon2 {
+  position: absolute;
+  top: -6px;
+  left: 25px;
   display: inline-block;
   width: 60px;
   padding: 10px 0;
-  background: #f47530;
-  top: -6px;
-  left: 25px;
-  position: absolute;
   text-align: center;
+  background: #f47530;
   border-top-left-radius: 3px;
 }
 
 .silk-ribbon2::before {
-  height: 0;
-  width: 0;
-  border-bottom: 6px solid #8d5a20;
-  border-right: 6px solid transparent;
-  right: -6px;
   top: 0;
+  right: -6px;
+  width: 0;
+  height: 0;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #8d5a20;
 }
 
 .silk-ribbon2::before,
 .silk-ribbon2::after {
-  content: '';
   position: absolute;
+  content: '';
 }
 
 .silk-ribbon2::after {
-  height: 0;
-  width: 0;
-  border-left: 30px solid #f47530;
-  border-right: 30px solid #f47530;
-  border-bottom: 30px solid transparent;
   bottom: -30px;
   left: 0;
+  width: 0;
+  height: 0;
+  border-right: 30px solid #f47530;
+  border-bottom: 30px solid transparent;
+  border-left: 30px solid #f47530;
 }
 
 .silk-ribbon3 {
-  display: inline-block;
   position: absolute;
+  top: 20px;
+  left: -8px;
+  display: inline-block;
   width: 150px;
   height: 50px;
-  line-height: 50px;
   padding-left: 15px;
+  line-height: 50px;
   background: #59324c;
-  left: -8px;
-  top: 20px;
 }
 
 .silk-ribbon3::before,
 .silk-ribbon3::after {
-  content: '';
   position: absolute;
+  content: '';
 }
 
 .silk-ribbon3::before {
-  height: 0;
-  width: 0;
-  border-bottom: 8px solid black;
-  border-left: 8px solid transparent;
   top: -8px;
   left: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 8px solid black;
+  border-left: 8px solid transparent;
 }
 
 .silk-ribbon3::after {
-  height: 0;
+  right: -15px;
   width: 0;
+  height: 0;
   border-top: 25px solid transparent;
   border-bottom: 25px solid transparent;
   border-left: 15px solid #59324c;
-  right: -15px;
 }
 
 .silk-ribbon4 {
@@ -162,26 +162,26 @@ export default {
 .silk-ribbon4::before,
 .silk-ribbon4::after {
   position: absolute;
-  content: '';
   display: block;
+  content: '';
 }
 
 .silk-ribbon4::before {
+  top: 0;
+  left: -7px;
   width: 7px;
   height: 100%;
   padding: 0 0 7px;
-  top: 0;
-  left: -7px;
   background: inherit;
   border-radius: 5px 0 0 5px;
 }
 
 .silk-ribbon4::after {
+  bottom: -5px;
+  left: -5px;
   width: 5px;
   height: 5px;
   background: rgba(0, 0, 0, 0.35);
-  bottom: -5px;
-  left: -5px;
   border-radius: 5px 0 0 5px;
 }
 </style>

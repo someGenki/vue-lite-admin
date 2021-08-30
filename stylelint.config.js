@@ -2,8 +2,12 @@
 // TODO 添加css排序
 module.exports = {
   root: true,
-  plugins: ['stylelint-order'],
-  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
+  plugins: ['stylelint-order','stylelint-scss'],
+  extends: [
+    'stylelint-config-standard',
+    'stylelint-config-prettier',
+    'stylelint-config-recess-order',
+  ],
   rules: {
     'selector-pseudo-class-no-unknown': null,
     'selector-pseudo-element-no-unknown': null,
@@ -41,24 +45,6 @@ module.exports = {
       },
     ],
     'unit-no-unknown': [true, { ignoreUnits: ['rpx'] }],
-    'order/order': [
-      [
-        'dollar-variables',
-        'custom-properties',
-        'at-rules',
-        'declarations',
-        {
-          type: 'at-rule',
-          name: 'supports',
-        },
-        {
-          type: 'at-rule',
-          name: 'media',
-        },
-        'rules',
-      ],
-      { severity: 'warning' },
-    ],
   },
   ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts'],
 }

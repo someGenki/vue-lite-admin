@@ -37,8 +37,8 @@ export default {
   height: calc(#{$navbar-height} - 4px);
   margin-top: 1px;
   margin-left: 4px;
-  border-radius: 8px;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .menu-nickname {

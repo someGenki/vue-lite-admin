@@ -96,16 +96,16 @@ $setting-panel-width: 300px;
   position: fixed;
   top: 0;
   right: 0;
-  height: 100%;
-  width: $setting-panel-width;
   z-index: 2001;
+  width: $setting-panel-width;
+  height: 100%;
   background-color: #fff;
   box-shadow: -2px 0 8px #7492b1f2;
 }
 
 .settings-panel-header {
-  padding: 16px;
   position: relative;
+  padding: 16px;
   user-select: none;
 
   .close-btn {
@@ -113,10 +113,10 @@ $setting-panel-width: 300px;
     top: 0;
     right: 0;
     padding: 16px;
-    border: none;
-    outline: none;
     cursor: pointer;
     background-color: transparent;
+    border: none;
+    outline: none;
   }
 }
 

@@ -8,7 +8,6 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import { viteMockServe } from 'vite-plugin-mock'
 import { svgLoader } from './src/plugin/svg-loader'
 
-
 const { dependencies, devDependencies, name, version } = pkg
 
 const __APP_INFO__ = {
@@ -32,13 +31,13 @@ export default ({ command }) => {
 
     plugins: [
       vue(),
-      vueJsx({}),
+      vueJsx(),
       svgLoader('/src/icons/'),
       viteMockServe({
         mockPath: 'mock',
         localEnabled: command === 'serve',
         prodEnabled: command !== 'serve' && true,
-        //  这样可以控制关闭mock的时候不让mock打包到最终代码内  默认注入为项目根目录下src/main.{ts,js}
+        // 这样可以控制关闭mock的时候不让mock打包到最终代码内  默认注入为项目根目录下src/main.{ts,js}
         injectCode: `
           import { setupProdMockServer } from '/mock/mockProdServer';
           setupProdMockServer();

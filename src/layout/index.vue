@@ -1,6 +1,7 @@
 <template>
   <div class="app-wrapper">
     <sidebar />
+    <!-- ↑ 侧边菜单栏 ↑  -->
     <div
       class="mask-zIndex99"
       v-if="isMobile && unfoldSidebar"
@@ -10,17 +11,20 @@
     <div
       class="main-container"
       :style="{
-        paddingLeft: isMobile ? 0 : sidebarWidth,
         paddingTop: mainPaddingTopOnFixed,
+        paddingLeft: isMobile ? 0 : sidebarWidth,
       }"
     >
+      <!-- ↑ 动态根据设置项控制左、上padding数值 ↑  -->
       <header :class="{ 'fixed-header': fixedHeader }">
         <nav-bar />
         <tab-bar v-if="showTabBar" />
       </header>
       <app-main />
+      <!-- ↑ 内容主题展示区域 ↑  -->
     </div>
     <settings />
+    <!-- ↑ 默认隐藏在右边的设置面板 ↑  -->
   </div>
 </template>
 
@@ -30,6 +34,7 @@ import { toRefs } from 'vue'
 import { useStyleStore } from '../store/style'
 import { useLayoutStore } from '/src/store/layout'
 import { batchSaveSetting } from '/src/utils/storage'
+// ide暂时无法识别使用情况，导致呈现灰色
 import { AppMain, NavBar, Settings, Sidebar, TabBar } from './components'
 
 const layoutStore = useLayoutStore()
@@ -46,6 +51,7 @@ const {
   mainPaddingTopOnFixed,
 } = toRefs(layoutStore)
 
+// 监听以下key的变动，并存储到LocalStorage
 layoutStore.$subscribe((mutation, state) => {
   const keys = [
     'showLogo',

@@ -1,43 +1,32 @@
 <template>
   <div class="dashboard-container">
+    <Cards :gutter="10" :style="{ marginBottom: '10px' }" />
     <el-row :gutter="10">
-      <el-col :xs="24" :sm="12" :lg="6">
-        <github />
-      </el-col>
-      <el-col :xs="24" :sm="12" :lg="6">
-        <bilibili />
-      </el-col>
-      <el-col :xs="24" :sm="12" :lg="6">
-        <earning />
-      </el-col>
-      <el-col :xs="24" :sm="12" :lg="6">
-        <we-chat />
-      </el-col>
-    </el-row>
-    <el-row :gutter="10">
-      <el-col :xs="24" :sm="12" :lg="6">
+      <el-col style="position: relative" :xs="24" :sm="12" :lg="6">
         <div style="height: 300px" ref="shop" />
       </el-col>
       <el-col class="quick-nav" :xs="24" :sm="12" :lg="6">
-        <p style=" font-size: 18px;font-weight: bolder">快捷导航</p>
-        <a
-          target="_blank"
-          href="https://v3.cn.vuejs.org/"
-          class="quick-nav__card"
-        >
-          <img width="80" src="https://v3.cn.vuejs.org/logo.png" />
-          <p>Vue.js3中文文档</p>
-          <span>渐进式 JavaScript 框架</span>
-        </a>
-        <a
-          target="_blank"
-          href="https://element-plus.gitee.io/#/zh-CN/"
-          class="quick-nav__card"
-        >
-          <img width="80" src="/src/assets/element-logo.svg" />
-          <p>Element Plus文档</p>
-          <span>Vue 3的桌面端组件库</span>
-        </a>
+        <p style="font-size: 18px; font-weight: bolder">快捷导航</p>
+        <div>
+          <a
+            target="_blank"
+            href="https://v3.cn.vuejs.org/"
+            class="quick-nav__card"
+          >
+            <img width="80" src="https://v3.cn.vuejs.org/logo.png" />
+            <p>Vue.js3中文文档</p>
+            <span>渐进式 JavaScript 框架</span>
+          </a>
+          <a
+            target="_blank"
+            href="https://element-plus.gitee.io/#/zh-CN/"
+            class="quick-nav__card"
+          >
+            <img width="80" src="/src/assets/element-logo.svg" />
+            <p>Element Plus文档</p>
+            <span>Vue 3的桌面端组件库</span>
+          </a>
+        </div>
       </el-col>
       <el-col style="position: relative" :xs="24" :sm="12" :lg="6">
         <Todo />
@@ -54,25 +43,20 @@
 
 import { onMounted, ref } from 'vue'
 import * as echarts from 'echarts'
+import Cards from './components/Cards.vue'
 import Todo from '/src/components/Todo/index.vue'
-import { Earning, WeChat, Bilibili, Github } from './components/cards.js'
 import pie1option from './options/pie1option'
 
 export default {
   name: 'Dashboard',
-
-  components: { Earning, WeChat, Bilibili, Github, Todo },
-
+  components: { Todo, Cards },
   setup() {
     const shop = ref(null)
 
     onMounted(() => {
-      // 根据父元素的宽度来设置图表的宽度 （未添加resize事件处理）
-      const parentWidth = shop.value.parentElement.clientWidth - 10
-      shop.value.style.width = parentWidth + 'px'
       let myChart = echarts.init(shop.value)
-      // 使用刚指定的配置项和数据显示图表。
       myChart.setOption(pie1option)
+      window.addEventListener('resize', () => myChart.resize())
     })
 
     // TODO 抽离 "quick-nav"成一个公共组件
@@ -86,24 +70,6 @@ export default {
 .dashboard-container {
   position: relative;
   //margin-right: 10px;
-}
-
-.el-row > .el-col {
-  padding-bottom: 10px;
-}
-
-// 新版样式穿透写法:deep(选择器)
-:deep(.el-card__header) {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 40px;
-  padding: 5px 10px;
-}
-
-:deep(.el-card__body) {
-  height: 120px;
-  padding: 0;
 }
 
 .quick-nav {

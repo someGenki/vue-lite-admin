@@ -8,9 +8,16 @@ import Bilibili from './BilibiliState/index.vue'
 
 const cards = [Github, Bilibili, Earning, WeChat]
 
+const ElColProps = {
+  xs: 24,
+  sm: 12,
+  lg: 6,
+  style: { paddingBottom: '10px' },
+}
+
 // 根据cards的数量生成N个被ElCol包裹的卡片组件
 const renderElColCard = cards.map((card) =>
-  h(ElCol, { xs: 24, sm: 12, lg: 6 }, { default: () => h(card) })
+  h(ElCol, ElColProps, { default: () => h(card) })
 )
 
 /**

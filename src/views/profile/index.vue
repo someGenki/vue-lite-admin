@@ -118,7 +118,7 @@ $card-gap: 20px;
 
 @media screen and (max-width: $sm-width) {
   .about-me {
-    width: 100%;
+    width: 100% !important;
     max-width: $sm-width;
     margin-bottom: $card-gap;
   }

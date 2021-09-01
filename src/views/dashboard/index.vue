@@ -7,7 +7,9 @@
       </el-col>
       <el-col class="quick-nav" :xs="24" :sm="12" :lg="6">
         <p style="font-size: 18px; font-weight: bolder">快捷导航</p>
-        <div>
+        <div
+          style="display: flex; flex-wrap: wrap; justify-content: space-around"
+        >
           <a
             target="_blank"
             href="https://v3.cn.vuejs.org/"
@@ -72,10 +74,6 @@ export default {
   //margin-right: 10px;
 }
 
-:global(.el-col){
-  margin-bottom: 6px;
-}
-
 .quick-nav {
   > p {
     margin-top: 5px;
@@ -110,7 +108,7 @@ export default {
 }
 
 .el-col {
- margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .visited-panel {

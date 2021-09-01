@@ -90,12 +90,12 @@ export default {
   border-radius: 4px;
   @media screen and (max-width: $lg-width) {
     & > li {
-      width: 16.6%;
+      width: 16.6% !important;
     }
   }
   @media screen and (max-width: $sm-width) {
     & > li {
-      width: 25%;
+      width: 25% !important;
     }
   }
 

@@ -72,6 +72,10 @@ export default {
   //margin-right: 10px;
 }
 
+:global(.el-col){
+  margin-bottom: 6px;
+}
+
 .quick-nav {
   > p {
     margin-top: 5px;
@@ -103,6 +107,10 @@ export default {
       box-shadow: 4px 10px 16px rgb(36 37 38 / 13%);
     }
   }
+}
+
+.el-col {
+ margin-bottom: 5px;
 }
 
 .visited-panel {

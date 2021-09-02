@@ -1,5 +1,5 @@
-import { LAYOUT } from './constant'
-import { basicRoutes } from './basicRoutes'
+import { LAYOUT } from '../CONSTANT'
+import { basicRoutes } from './basic'
 
 // 用于快速创建单层路由
 function dynamicLayoutWrapper(e) {
@@ -87,19 +87,19 @@ export default [
       },
       {
         path: 'text-editor',
-        component: () => import('/src/views/error-page/building.vue'),
+        component: () => import('/src/views/sys/error-page/building.vue'),
         name: 'TextEditor',
         meta: { title: '文本编辑器', icon: 'el-icon-edit' },
       },
       {
         path: 'image-cropper',
-        component: () => import('/src/views/error-page/building.vue'),
+        component: () => import('/src/views/sys/error-page/building.vue'),
         name: 'ImageCropper',
         meta: { title: '图片裁剪', icon: 'el-icon-picture-outline-round' },
       },
       {
         path: 'silk-ribbon',
-        component: () => import('/src/views/error-page/building.vue'),
+        component: () => import('/src/views/sys/error-page/building.vue'),
         name: 'SilkRibbon',
         meta: { title: '缎带组件', icon: 'el-icon-collection-tag' },
       },
@@ -114,13 +114,13 @@ export default [
     children: [
       {
         path: '404',
-        component: () => import('/src/views/error-page/404.vue'),
+        component: () => import('/src/views/sys/error-page/404.vue'),
         name: '404',
         meta: { title: '404页面', icon: 'el-icon-close' },
       },
       {
         path: '401',
-        component: () => import('/src/views/error-page/401.vue'),
+        component: () => import('/src/views/sys/error-page/401.vue'),
         name: '401',
         meta: { title: '401页面', icon: 'el-icon-close' },
       },
@@ -133,25 +133,25 @@ export default [
       {
         path: 'example-table',
         name: 'ExampleTable',
-        component: () => import('/src/views/error-page/building.vue'),
+        component: () => import('/src/views/sys/error-page/building.vue'),
         meta: { title: '表格 Table', icon: 'el-icon-date' },
       },
       {
         path: 'example-echarts',
         name: 'ExampleEcharts',
-        component: () => import('/src/views/error-page/building.vue'),
+        component: () => import('/src/views/sys/error-page/building.vue'),
         meta: { title: '图表 Echarts', icon: 'el-icon-pie-chart' },
       },
       {
         path: 'example-drag',
         name: 'ExampleDrag',
-        component: () => import('/src/views/error-page/building.vue'),
+        component: () => import('/src/views/sys/error-page/building.vue'),
         meta: { title: '拖拽 Drag', icon: 'el-icon-thumb' },
       },
       {
         path: 'online-chat',
         name: 'OnlineChat',
-        component: () => import('/src/views/error-page/building.vue'),
+        component: () => import('/src/views/sys/error-page/building.vue'),
         meta: { title: '即时通讯聊天', icon: 'el-icon-microphone' },
       },
     ],

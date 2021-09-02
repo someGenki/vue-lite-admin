@@ -50,9 +50,9 @@ export default {
   setup() {
     const biliInfo = {
       following: 63,
-      follower: 381,
-      likes: '1.3万',
-      plays: '47万',
+      follower: 400,
+      likes: '1.4万',
+      plays: '49.2万',
     }
     return { ...biliInfo }
   },

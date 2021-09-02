@@ -1,4 +1,4 @@
-import { LAYOUT } from '../constant.js'
+import { LAYOUT } from '../CONSTANT.js'
 
 // from vue-element-admin (include views)
 export default {

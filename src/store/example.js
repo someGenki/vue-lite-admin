@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { store } from '/src/store'
 /**
  * 如何使用pinia作为vue3的状态管理仓库呢？
  * docs: https://pinia.esm.dev/

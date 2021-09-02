@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { getToken } from '/src/utils/storage'
-import constantRoutes from './constantRoutes'
-import { basicRoutes } from './basicRoutes'
+import constantRoutes from './modules/constant'
+import { basicRoutes } from './modules/basic'
 import { useUserStore } from '/src/store/user'
 import { useLayoutStore } from '/src/store/layout'
 
@@ -19,7 +19,6 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: constantRoutes,
   strict: true, // 禁止尾随斜杠
-  scrollBehavior: () => ({ left: 0, top: 0 }),
 })
 
 /**

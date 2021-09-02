@@ -1,5 +1,5 @@
-import { LAYOUT } from './constant'
-import nestedRouter from './modules/nested'
+import { LAYOUT } from '../CONSTANT'
+import nestedRouter from './nested'
 
 /**
  * 异步路由表，由前端控制。 结合用户的roles过滤后添加到router中
@@ -56,7 +56,7 @@ export default [
     path: '/:catchAll(.*)*',
     name: 'NotFound',
     hidden: true,
-    component: () => import('/src/views/error-page/404.vue'),
+    component: () => import('/src/views/sys/error-page/404.vue'),
   },
   // 外链路由，主要是生成menu用的
   {

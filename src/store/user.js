@@ -2,8 +2,8 @@ import router from '../router'
 import { defineStore } from 'pinia'
 import { getToken, setToken } from '../utils/storage'
 import { login as _login, getInfo as _getInfo } from '/src/api/user'
-import asyncRoutes from '../router/asyncRoutes'
-import constantRoutes from '../router/constantRoutes'
+import asyncRoutes from '../router/modules/async'
+import constantRoutes from '../router/modules/constant'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -18,7 +18,7 @@ export const useUserStore = defineStore('user', {
   },
   actions: {
     async login({ username, password }) {
-      console.log('login...', username, password)
+      console.log('登录中...', username, password)
       const res = await _login({ username, password })
       this.token = res.data.token
       this.roles.push(...res.data.roles)
@@ -28,7 +28,7 @@ export const useUserStore = defineStore('user', {
     },
 
     async getUserInfo() {
-      console.log('getUserInfo...')
+      console.log('获取用户信息中...')
       const res = await _getInfo()
       this.roles.push(...res.data.roles)
       this.addRoutes = this.generateRoutes()

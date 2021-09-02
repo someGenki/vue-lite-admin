@@ -3,6 +3,7 @@
  *  @Better https://github.com/anncwb/vite-plugin-svg-icons
  *  svg的width和height属性 width="500" height="300" 表示SVG可见区域的大小(画布大小)，不带单位默认是px
  *  viewBox是可视区域，要尽可能铺满整个画布。里面元素的按照比例绘制到viewBox上
+ *  参考：https://blog.csdn.net/weixin_34080903/article/details/90158481
  */
 import { readFileSync, readdirSync } from 'fs'
 

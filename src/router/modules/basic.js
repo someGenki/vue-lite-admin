@@ -1,6 +1,6 @@
-import { LAYOUT } from './constant'
-import Redirect from '/src/views/redirect/index.vue'
-import Login from '/src/views/login/index.vue'
+import { LAYOUT } from '../CONSTANT'
+import Redirect from '/src/views/sys/redirect/index.vue'
+import Login from '/src/views/sys/login/index.vue'
 
 // 这里存放不需要登录，不需要权限都能访问到的路由
 export const basicRoutes = [
@@ -26,12 +26,12 @@ export const basicRoutes = [
   },
   {
     path: '/404',
-    component: () => import('/src/views/error-page/404.vue'),
+    component: () => import('/src/views/sys/error-page/404.vue'),
     hidden: true,
   },
   {
     path: '/401',
-    component: () => import('/src/views/error-page/401.vue'),
+    component: () => import('/src/views/sys/error-page/401.vue'),
     hidden: true,
   },
 ]

@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard-container">
+  <div style="position: relative">
     <Cards :gutter="10" :style="{ marginBottom: '10px' }" />
     <el-row :gutter="10">
       <el-col style="position: relative" :xs="24" :sm="12" :lg="6">
@@ -69,11 +69,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.dashboard-container {
-  position: relative;
-  //margin-right: 10px;
-}
-
 .quick-nav {
   > p {
     margin-top: 5px;
@@ -103,34 +98,6 @@ export default {
 
     &:hover {
       box-shadow: 4px 10px 16px rgb(36 37 38 / 13%);
-    }
-  }
-}
-
-.el-col {
-  margin-bottom: 5px;
-}
-
-.visited-panel {
-  > .show-visited {
-    font-weight: bold;
-
-    .visited-num {
-      font-size: 1.1rem;
-      color: var(--primary-text-color-tinge);
-    }
-  }
-
-  > .icon-wrapper {
-    font-size: 4rem;
-    color: var(--primary-text-color);
-    cursor: pointer;
-    transition: 0.3s;
-
-    &:hover {
-      color: #fff;
-      background-color: var(--primary-color-tinge);
-      border-radius: 8px;
     }
   }
 }

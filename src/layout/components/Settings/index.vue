@@ -25,7 +25,7 @@
           <setting-item v-model="showLogo" type="el-switch" desc="侧边栏Logo" />
           <setting-item
             v-model="showTabBar"
-            type="el-switch"
+            comp="el-switch"
             desc="标签栏导航"
           />
           <setting-item
@@ -33,10 +33,20 @@
             :step="5"
             :min="160"
             :max="260"
-            type="el-input-number"
+            comp="el-input-number"
             desc="侧边栏宽度"
             size="mini"
           />
+          <setting-item desc="主题颜色">
+            <el-color-picker
+              v-model="primaryColor"
+              @change="changePrimaryColor"
+            />
+          </setting-item>
+          <!--          <div style="display: flex;justify-content: space-around">
+            <span>主题颜色</span>
+            <input type="color">
+          </div>-->
         </div>
       </div>
     </transition>
@@ -48,15 +58,17 @@
 vue3 teleport组件 https://v3.cn.vuejs.org/api/built-in-components.html#teleport
 按键修饰符 https://v3.cn.vuejs.org/guide/events.html#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6
  */
-import { toRefs, watch } from 'vue'
+import { toRef, toRefs, watch } from 'vue'
 import SettingItem from './SettingItem.vue'
 import { useLayoutStore } from '/src/store/layout'
+import { useStyleStore } from '/src/store/style'
 
 export default {
   name: 'Settings',
   components: { SettingItem },
   setup() {
-    const store = useLayoutStore()
+    const layout = useLayoutStore()
+    const style = useStyleStore()
     const {
       showLogo,
       showTabBar,
@@ -64,7 +76,13 @@ export default {
       showSettings,
       sUnfoldWidth,
       toggleSettings,
-    } = toRefs(store)
+    } = toRefs(layout)
+
+    function changePrimaryColor(e) {
+      style.changePrimaryColor(e)
+    }
+
+    const primaryColor = toRef(style, 'primary-color')
 
     // 按下ESC关闭设置面板的操作函数
     function closeSettings(e) {
@@ -78,7 +96,9 @@ export default {
     })
 
     return {
+      changePrimaryColor,
       toggleSettings,
+      primaryColor,
       showSettings,
       sUnfoldWidth,
       fixedHeader,

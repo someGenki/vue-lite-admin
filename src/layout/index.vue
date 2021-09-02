@@ -31,6 +31,7 @@
 <script setup>
 // <script setup>教程：https://v3.cn.vuejs.org/api/sfc-script-setup.html
 import { toRefs } from 'vue'
+import { debounce } from '/src/utils/util'
 import { useStyleStore } from '../store/style'
 import { useLayoutStore } from '/src/store/layout'
 import { batchSaveSetting } from '/src/utils/storage'
@@ -62,6 +63,12 @@ layoutStore.$subscribe((mutation, state) => {
   ]
   batchSaveSetting(keys, state)
 })
+
+// 监听页面尺寸调整 动态改变state.isMobile的值判断是否是移动设备
+window.addEventListener(
+  'resize',
+  debounce(() => (layoutStore.isMobile = document.body.clientWidth < 768), 200)
+)
 
 styleStore.injectCssVarToRoot()
 </script>

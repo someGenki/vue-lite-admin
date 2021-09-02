@@ -16,15 +16,15 @@ const ElColProps = {
 }
 
 // 根据cards的数量生成N个被ElCol包裹的卡片组件
-const renderElColCard = cards.map((card) =>
-  h(ElCol, ElColProps, { default: () => h(card) })
-)
+const renderElColCards = cards.map((card) => {
+  return h(ElCol, ElColProps, { default: () => h(card) })
+})
 
 /**
- * 函数式组件用法示例，但不常用哦
+ * 函数式组件用法示例，但真实项目不常用哦
  * docs：https://v3.cn.vuejs.org/guide/migration/functional-components.html
  */
 export default function (props) {
-  return h(ElRow, props, { default: () => renderElColCard })
+  return h(ElRow, props, { default: () => renderElColCards })
 }
 </script>

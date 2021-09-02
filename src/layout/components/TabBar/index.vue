@@ -42,26 +42,26 @@
         class="tabBar-contextmenu"
       >
         <li @click="delTabBarItem(contextMenuProp.selectedTab, 'self')">
-          关闭所选标签页🤏
+          🤏关闭所选标签页
         </li>
         <li @click="delTabBarItem(contextMenuProp.selectedTab, 'left')">
-          关闭左侧标签页👈
+          👈关闭左侧标签页
         </li>
         <li @click="delTabBarItem(contextMenuProp.selectedTab, 'right')">
-          关闭右侧标签页👉
+          👉关闭右侧标签页
         </li>
         <li @click="delTabBarItem(contextMenuProp.selectedTab, 'other')">
-          关闭其他标签页👐
+          👐关闭其他标签页
         </li>
         <li @click="delTabBarItem(contextMenuProp.selectedTab, 'all')">
-          关闭所有标签页💥
+          💥关闭所有标签页
         </li>
         <hr />
         <li @click="markedTab(contextMenuProp.selectedTab, true)">
-          设置重要提醒
+          ⏰设置重要提醒
         </li>
         <li @click="markedTab(contextMenuProp.selectedTab, false)">
-          移除重要提醒
+          ❌移除重要提醒
         </li>
       </ul>
     </teleport>
@@ -73,7 +73,8 @@ import { reactive, toRef, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import useTabBar from './useTabBar'
 import { useLayoutStore } from '/src/store/layout'
-
+// TODO 封装context menu
+// 可参考 https://codepen.io/havardob/pen/YzwzQgm
 export default {
   name: 'TabBar',
   setup() {
@@ -139,12 +140,13 @@ export default {
 .tabBar-item {
   position: relative;
   display: inline-block;
-  padding: 3px 2px 3px 4px;
+  padding: 3px 2px 3px 3px;
   margin-right: 10px;
   font-size: 0.75rem;
   color: #495060;
   cursor: pointer;
   user-select: none;
+  border-radius: 4px;
   background-color: #fafafa;
   border: 1px solid #d4d4d4;
 
@@ -158,11 +160,12 @@ export default {
 
   &.active {
     color: #fff;
+    border: 0;
     background-color: var(--primary-color);
   }
 
   .tab-close {
-    margin-left: 3px;
+    margin-left: 1px;
     transform: scale(0.8);
   }
 
@@ -179,15 +182,15 @@ export default {
   font-size: 12px;
   list-style-type: none;
   background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px 0 #0004;
-
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(#404040, 0.15);
   > li {
     padding: 5px;
     cursor: pointer;
+    border-radius: 6px;
 
     &:hover {
-      background-color: #eee;
+      background-color: #f1f3f7;
     }
   }
 }

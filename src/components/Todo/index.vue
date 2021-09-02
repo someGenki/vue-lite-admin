@@ -61,7 +61,7 @@ function useFilteredTodos(todos) {
   padding: 4px 12px 12px;
   background-color: #f5f6fc; /* 淡紫灰色 */
   border-radius: 16px;
-  box-shadow: 0 0 24px #00000026;
+  box-shadow: 0 0 16px #00000026;
 }
 
 .todo-container > h3 {

@@ -1,10 +1,11 @@
 <template>
   <div>
-    <h2>app-icon组件自带图标展示</h2>
-    <p>
-      使用方式：&lt;app-icon icon="github" size="32" color="red"
-      /&gt;，使用svg图标需确保/src/assets/icon下存在对应文件名的svg文件
-    </p>
+    <app-explain title="app-icon组件自带图标展示">
+      <p>
+        使用方式：&lt;app-icon icon="github" size="32" color="red"
+        /&gt;，使用svg图标需确保/src/assets/icon下存在对应文件名的svg文件
+      </p>
+    </app-explain>
     <h3>assets/icon下的SVG图标展示</h3>
     <ul class="icon-set clearfix">
       <li v-for="s in svgArr" :key="s">

@@ -56,8 +56,9 @@ function useFilteredTodos(todos) {
 
 <style scoped>
 .todo-container {
-  /* width: 450px; */
   width: 100%;
+  max-width: 330px;
+  margin: 10px auto;
   padding: 4px 12px 12px;
   background-color: #f5f6fc; /* 淡紫灰色 */
   border-radius: 16px;

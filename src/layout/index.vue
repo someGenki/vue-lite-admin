@@ -8,14 +8,7 @@
       @click.self.stop="toggleSidebar(false)"
     />
     <!-- ↑ 移动端模式展开侧边栏出现的遮罩层 ↑  -->
-    <div
-      class="main-container"
-      :style="{
-        paddingTop: mainPaddingTopOnFixed,
-        paddingLeft: isMobile ? 0 : sidebarWidth,
-      }"
-    >
-      <!-- ↑ 动态根据设置项控制左、上padding数值 ↑  -->
+    <div class="main-container">
       <header :class="{ 'fixed-header': fixedHeader }">
         <nav-bar />
         <tab-bar v-if="showTabBar" />
@@ -30,25 +23,24 @@
 
 <script setup>
 // <script setup>教程：https://v3.cn.vuejs.org/api/sfc-script-setup.html
-import { toRefs } from 'vue'
+import { computed, ref, toRaw, toRefs, watch } from 'vue'
 import { debounce } from '/src/utils/util'
-import { useStyleStore } from '../store/style'
+import { useStyleStore } from '/src/store/style'
 import { useLayoutStore } from '/src/store/layout'
 import { batchSaveSetting } from '/src/utils/storage'
-// ide暂时无法识别使用情况，导致呈现灰色
-import { AppMain, NavBar, Settings, Sidebar, TabBar } from './components'
-
-const layoutStore = useLayoutStore()
+import { AppMain, NavBar, Settings, Sidebar, TabBar } from './components' // ide暂时无法识别使用情况，导致呈现灰色
 
 const styleStore = useStyleStore()
+const layoutStore = useLayoutStore()
 
 const {
   isMobile,
   showTabBar,
   fixedHeader,
-  sidebarWidth,
   toggleSidebar,
   unfoldSidebar,
+  checkIsMobile,
+  mainPaddingLeft,
   mainPaddingTopOnFixed,
 } = toRefs(layoutStore)
 
@@ -59,16 +51,14 @@ layoutStore.$subscribe((mutation, state) => {
     'showTabBar',
     'fixedHeader',
     'sUnfoldWidth',
+    'menuAccordion',
     'unfoldSidebar',
   ]
   batchSaveSetting(keys, state)
 })
 
 // 监听页面尺寸调整 动态改变state.isMobile的值判断是否是移动设备
-window.addEventListener(
-  'resize',
-  debounce(() => (layoutStore.isMobile = document.body.clientWidth < 768), 200)
-)
+window.addEventListener('resize', debounce(checkIsMobile.value, 200))
 
 styleStore.injectCssVarToRoot()
 </script>
@@ -82,7 +72,10 @@ styleStore.injectCssVarToRoot()
 }
 
 .main-container {
+  position: relative;
   flex-grow: 1; // 撑满页面右边的主体区域
+  padding-top: v-bind(mainPaddingTopOnFixed);
+  padding-left: v-bind(mainPaddingLeft);
 }
 
 // header变成固定模式时，给第二层router-view的容器加上 上边距
@@ -90,8 +83,8 @@ styleStore.injectCssVarToRoot()
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 10;
+  //z-index: 10;
   width: 100%;
-  padding-left: inherit; // 解决设置fixed之后，宽度100%会盖过侧边栏的问题
+  padding-left: v-bind(mainPaddingLeft);
 }
 </style>

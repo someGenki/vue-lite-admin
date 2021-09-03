@@ -28,6 +28,7 @@
             comp="el-switch"
             desc="标签栏导航"
           />
+
           <setting-item
             v-model="sUnfoldWidth"
             :step="5"
@@ -43,10 +44,12 @@
               @change="changePrimaryColor"
             />
           </setting-item>
-          <!--          <div style="display: flex;justify-content: space-around">
-            <span>主题颜色</span>
-            <input type="color">
-          </div>-->
+          <el-divider><span style="font-size: 16px">界面功能</span></el-divider>
+          <setting-item
+            v-model="menuAccordion"
+            comp="el-switch"
+            desc="菜单手风琴模式"
+          />
         </div>
       </div>
     </transition>
@@ -67,22 +70,22 @@ export default {
   name: 'Settings',
   components: { SettingItem },
   setup() {
-    const layout = useLayoutStore()
     const style = useStyleStore()
+    const layout = useLayoutStore()
+
     const {
       showLogo,
       showTabBar,
       fixedHeader,
       showSettings,
       sUnfoldWidth,
+      menuAccordion,
       toggleSettings,
     } = toRefs(layout)
 
-    function changePrimaryColor(e) {
-      style.changePrimaryColor(e)
-    }
-
     const primaryColor = toRef(style, 'primary-color')
+
+    const changePrimaryColor = toRef(style, 'changePrimaryColor')
 
     // 按下ESC关闭设置面板的操作函数
     function closeSettings(e) {
@@ -98,6 +101,7 @@ export default {
     return {
       changePrimaryColor,
       toggleSettings,
+      menuAccordion,
       primaryColor,
       showSettings,
       sUnfoldWidth,
@@ -120,7 +124,7 @@ $setting-panel-width: 300px;
   width: $setting-panel-width;
   height: 100%;
   background-color: #fff;
-  box-shadow: -2px 0 8px #7492b1f2;
+  box-shadow: -2px 0 8px #00000026;
 }
 
 .settings-panel-header {

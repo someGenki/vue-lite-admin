@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { toRaw } from 'vue'
 
 export const useStyleStore = defineStore('style', {
+  // TODO 增加缓存到localstorage中
   state: () => ({
     'primary-color': '#35A7FF',
     'primary-color-tinge': '#75d2de',
@@ -12,7 +13,7 @@ export const useStyleStore = defineStore('style', {
     // 侧边菜单栏颜色样式
     elMenuStyle: (state) => ({
       text: '#dcdcdc',
-      background: '#304156',
+      background: 'transparent',
       activeText: state['primary-color'],
     }),
   },

@@ -9,16 +9,20 @@ export const useLayoutStore = defineStore('layout', {
     sUnfoldWidth: getSetting('sUnfoldWidth', 'int', 190),
     // 是否展开侧边菜单栏
     unfoldSidebar: getSetting('unfoldSidebar', 'bool', true),
+    // 是否只保持一个子菜单的展开
+    menuAccordion: getSetting('menuAccordion', 'bool', true),
     // 是否固定头部
     fixedHeader: getSetting('fixedHeader', 'bool', false),
     // 是否显示标签栏
     showTabBar: getSetting('showTabBar', 'bool', true),
     // 是否显示侧边菜单栏中的Logo
     showLogo: getSetting('showLogo', 'bool', true),
-    // 是否展示设置面板
+
+    // 控制设置面板的显示隐藏
     showSettings: false,
     // 侧边菜单栏折叠后宽度
     sCollapseWidth: 64,
+    // 是否为移动端（小屏）
     isMobile: document.body.clientWidth < 768,
     breadcrumbList: [],
     visitedViews: [],
@@ -36,7 +40,11 @@ export const useLayoutStore = defineStore('layout', {
       else if (state.fixedHeader && state.showTabBar) return 42 + 34 + 'px'
       else return 42 + 'px'
     },
-    //     getters 结束分割线
+    // 内容区域的左边距,避免覆盖sidebar
+    mainPaddingLeft(state) {
+      return state.isMobile ? 0 : this.sidebarWidth
+    },
+    // getters 结束分割线
   },
   actions: {
     // 侧边栏切换
@@ -48,6 +56,10 @@ export const useLayoutStore = defineStore('layout', {
     toggleSettings(bool) {
       if (bool !== undefined) this.showSettings = bool
       else this.showSettings = !this.showSettings
+    },
+    // 注册于src/layout/index.vue 监听页面resize
+    checkIsMobile() {
+      this.isMobile = document.body.clientWidth < 768
     },
     /**
      * 记录每次访问的页面

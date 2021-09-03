@@ -30,7 +30,7 @@
           </a>
         </div>
       </el-col>
-      <el-col style="position: relative" :xs="24" :sm="12" :lg="6">
+      <el-col style="position: relative;" :xs="24" :sm="12" :lg="6">
         <Todo />
       </el-col>
     </el-row>

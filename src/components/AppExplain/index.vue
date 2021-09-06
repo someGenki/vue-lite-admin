@@ -21,9 +21,10 @@ export default {
 <style lang="scss" scoped>
 .app-explain {
   padding: 10px;
-  overflow: auto;
   margin: -15px -15px 0 -15px;
+  overflow: auto;
   background: v-bind('background');
+
   &__title {
     margin: 8px 8px 8px 0;
   }

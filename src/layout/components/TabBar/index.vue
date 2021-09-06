@@ -130,9 +130,9 @@ export default {
 <style lang="scss" scoped>
 .tabBar {
   position: relative;
-  overflow: hidden;
   height: $tabBar-height;
   padding-left: 10px;
+  overflow: hidden;
   background: #fff;
   //border-bottom: 1px solid #d8dce5;
   box-shadow: 0 1px 3px 0 #0000001e;
@@ -147,9 +147,9 @@ export default {
   color: #495060;
   cursor: pointer;
   user-select: none;
-  border-radius: 4px;
   background-color: #fafafa;
   border: 1px solid #d4d4d4;
+  border-radius: 4px;
 
   &.mark::after {
     position: absolute;
@@ -161,8 +161,8 @@ export default {
 
   &.active {
     color: #fff;
-    border: 0;
     background-color: var(--primary-color);
+    border: 0;
   }
 
   .tab-close {
@@ -185,6 +185,7 @@ export default {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(#404040, 0.15);
+
   > li {
     padding: 5px;
     cursor: pointer;

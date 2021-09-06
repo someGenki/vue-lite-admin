@@ -1,5 +1,9 @@
 <template>
-  <aside class="sidebar-container" :class="{ 'starry-sky': changeFlag }">
+  <aside
+    class="sidebar-container"
+    :class="{ 'starry-sky': changeFlag }"
+    :style="{ width: sidebarWidth }"
+  >
     <sidebar-logo
       v-show="showLogo"
       backgroundColor="transparent"
@@ -16,7 +20,9 @@
     >
       <sidebar-item v-for="item in menus" :key="menus.path" :item="item" />
     </el-menu>
-    <button @click="changeBackground">换背景</button>
+    <el-button type="primary" size="mini" @click="changeBackground"
+      >换背景
+    </el-button>
   </aside>
 </template>
 
@@ -63,9 +69,10 @@ export default {
 </script>
 <style>
 .el-menu-item:hover {
-  color: #2b5876 !important;
   font-weight: bold;
+  color: #2b5876 !important;
 }
+
 .el-menu--vertical li {
   color: #2b5876 !important;
 }
@@ -73,10 +80,11 @@ export default {
 <style lang="scss" scoped>
 // TODO 添加折叠时，弹出菜单的背景颜色
 .starry-sky {
-  background-position-x: 430px;
   background-image: url('https://images.pexels.com/photos/2644734/pexels-photo-2644734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
     linear-gradient(rgb(10, 30, 60) 0%, rgb(80, 120, 150) 100%) !important;
+  background-position-x: 430px;
 }
+
 .sidebar-container {
   position: fixed;
   z-index: 100; // 要大于遮罩层
@@ -86,7 +94,7 @@ export default {
   overflow: hidden;
   background-image: linear-gradient(rgb(10, 30, 60) 0%, rgb(80, 120, 150) 100%);
   background-size: auto 100%;
-  width: v-bind(sidebarWidth);
+
   .el-menu {
     flex-grow: 1;
     user-select: none;

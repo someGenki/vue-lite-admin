@@ -64,6 +64,7 @@ styleStore.injectCssVarToRoot()
 </script>
 
 <style lang="scss" scoped>
+/* 用单文件组件样式的特性（状态驱动的动态 CSS | v-bind(var) )时，值需要用引号包裹起来，避免被stylelint所格式化 */
 .app-wrapper {
   position: relative;
   display: flex;
@@ -74,8 +75,8 @@ styleStore.injectCssVarToRoot()
 .main-container {
   position: relative;
   flex-grow: 1; // 撑满页面右边的主体区域
-  padding-top: v-bind(mainPaddingTopOnFixed);
-  padding-left: v-bind(mainPaddingLeft);
+  padding-top: v-bind('mainPaddingTopOnFixed');
+  padding-left: v-bind('mainPaddingLeft');
 }
 
 // header变成固定模式时，给第二层router-view的容器加上 上边距
@@ -85,6 +86,6 @@ styleStore.injectCssVarToRoot()
   right: 0;
   //z-index: 10;
   width: 100%;
-  padding-left: v-bind(mainPaddingLeft);
+  padding-left: v-bind('mainPaddingLeft');
 }
 </style>

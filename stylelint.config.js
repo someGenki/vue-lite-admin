@@ -1,7 +1,8 @@
 // 与ESlint类似的CSS检测工具 https://cloud.tencent.com/developer/chapter/18030
+// 使用单文件组件样式的特性（状态驱动的动态 CSS | v-bind(var) )时，值需要用引号包裹起来，避免被stylelint所格式化
 module.exports = {
   root: true,
-  plugins: ['stylelint-order','stylelint-scss'],
+  plugins: ['stylelint-order', 'stylelint-scss'],
   extends: [
     'stylelint-config-standard',
     'stylelint-config-prettier',

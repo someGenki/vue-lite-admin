@@ -61,12 +61,17 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-:deep(.el-menu-item:hover) {
+<style>
+.el-menu-item:hover {
   color: #2b5876 !important;
   font-weight: bold;
 }
+.el-menu--vertical li {
+  color: #2b5876 !important;
+}
+</style>
+<style lang="scss" scoped>
+// TODO 添加折叠时，弹出菜单的背景颜色
 .starry-sky {
   background-position-x: 430px;
   background-image: url('https://images.pexels.com/photos/2644734/pexels-photo-2644734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),

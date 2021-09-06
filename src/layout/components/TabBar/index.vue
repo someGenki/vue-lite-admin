@@ -130,6 +130,7 @@ export default {
 <style lang="scss" scoped>
 .tabBar {
   position: relative;
+  overflow: hidden;
   height: $tabBar-height;
   padding-left: 10px;
   background: #fff;

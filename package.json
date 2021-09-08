@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "upload": "node auto-upload",
+    "upload": "node ./deploy/auto-upload",
     "lint:css": "stylelint **/*.{vue,css,sass,scss} --fix"
   },
   "dependencies": {
@@ -23,9 +23,9 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.6.1",
-    "@vitejs/plugin-vue-jsx": "^1.1.7",
-    "@vue/compiler-sfc": "^3.2.9",
-    "vite": "^2.5.3",
+    "@vitejs/plugin-vue-jsx": "^1.1.8",
+    "@vue/compiler-sfc": "^3.2.10",
+    "vite": "^2.5.5",
     "sass": "^1.39.0",
     "prettier": "^2.3.2",
     "stylelint": "^13.13.1",

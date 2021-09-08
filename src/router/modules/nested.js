@@ -1,6 +1,6 @@
 import { LAYOUT } from '../CONSTANT.js'
 
-// from vue-element-admin (include views)
+// 嵌套路由示例 from vue-element-admin (include views)
 export default {
   path: '/nested',
   component: LAYOUT,

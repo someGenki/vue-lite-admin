@@ -1,8 +1,5 @@
-// https://github.com/anncwb/vite-plugin-mock/blob/HEAD/README.zh_CN.md
-// 返回的响应结果标准化
-function result(data, code = 0, msg = 'msg') {
-  return { code, data, msg }
-}
+// 用法文档 https://github.com/anncwb/vite-plugin-mock/blob/HEAD/README.zh_CN.md
+import { Result } from './_utils'
 
 export default [
   {
@@ -15,7 +12,7 @@ export default [
   {
     url: '/api/user/login',
     method: 'post',
-    response: result({
+    response: Result.succ({
       name: 'jojo',
       token: 'THIS_IS_TOKEN',
       roles: ['admin'],
@@ -24,7 +21,7 @@ export default [
   {
     url: '/api/user/info',
     method: 'get',
-    response: result({
+    response: Result.succ({
       name: 'jojo',
       token: 'THIS_IS_TOKEN',
       roles: ['admin'],

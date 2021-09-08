@@ -52,7 +52,7 @@ export default {
       toRefs(store)
     // 头像下拉菜单项
     const dropdownItems = readonly([
-      { title: '个人中心', path: 'profile' },
+      { title: '个人中心', path: '/profile' },
       { title: '项目地址', path: 'https://github.com/someGenki' },
       { title: '不可点击', path: '/', disabled: true },
       {

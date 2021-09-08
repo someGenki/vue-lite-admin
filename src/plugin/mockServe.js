@@ -2,16 +2,14 @@
 // 使用说明 https://github.com/anncwb/vite-plugin-mock/blob/main/README.zh_CN.md
 import { viteMockServe } from 'vite-plugin-mock'
 
-// 关于模式 https://cn.vitejs.dev/guide/env-and-mode.html#modes
+// 关于vite启动项目模式文档 https://cn.vitejs.dev/guide/env-and-mode.html#modes
 const isDev = (command) => command === 'serve'
 
 const isProd = (command) => command === 'build'
 
-// TODO 使用fs模块遍历mock下的xxx.js文件
 const injectCode = `
-import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer'
-import data from '../mock/data.js'
-!function () { createProdMockServer([...data])}();
+import { setupProdMockServer } from '../mock/_mockProdServer.js'
+setupProdMockServer();
 `
 
 /**

@@ -13,7 +13,7 @@
           class="login-form"
         >
           <h1 style="margin-left: 4px; text-align: left">登录</h1>
-          <p>admin admin admin</p>
+          <p>这在个地方说点什么东西吧</p>
           <el-form-item required size="small" prop="username">
             <input
               class="login-input"
@@ -71,15 +71,12 @@
 </template>
 
 <script>
-// import Login01 from './Login01.vue'
-// import Login02 from './Login02.vue'
 import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 import useLogin from './useLogin'
 // https://element-plus.gitee.io/#/zh-CN/component/form
 export default {
   name: 'login',
-  // components: { Login01, Login02 },
   setup() {
     // 测试用，根据page参数来显示对应的登录页1
     const pageNo = ref(useRoute().query.page || '1')

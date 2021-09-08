@@ -18,7 +18,6 @@ export const useStyleStore = defineStore('style', {
     }),
   },
   actions: {
-    // TODO 监听state改变 or 设置添加改变state的action
     injectCssVarToRoot() {
       const styles = document.documentElement.style
       const vars = toRaw(this.$state)

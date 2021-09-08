@@ -8,10 +8,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   } @else {
+    display: -webkit-box;
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: -webkit-box;
     -webkit-line-clamp: $rowCount;
     -webkit-box-orient: vertical;
   }
@@ -19,8 +19,8 @@
 
 @mixin clearfix {
   &::after {
-    content: "";
     display: table;
     clear: both;
+    content: '';
   }
 }

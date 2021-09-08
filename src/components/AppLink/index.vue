@@ -20,11 +20,9 @@ export default {
   props: { to: { type: String, required: true } },
   setup(props) {
     let type = isExternal(props.to) ? 'a' : 'router-link'
-    let linkProps = null
     if (type === 'a') {
       return { type, linkProps: { href: props.to, target: '_blank' } }
     } else {
-      linkProps = { to: props.to }
       return { linkProps: { to: props.to }, type }
     }
   },

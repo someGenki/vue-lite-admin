@@ -22,15 +22,12 @@
 </template>
 
 <script>
-import AppLink from '/src/components/AppLink/index.vue'
 
 export default {
   name: 'AvatarMenu',
-  components: { AppLink },
   // 数组中的对象要有 title 属性，如果有path属性则会渲染成链接
   // 如果没有path属性，则会渲染成普通的item项，并在点击时触发item.handle函数
   props: { items: { type: Array, required: true }, avatar: {}, nickname: {} },
-
 }
 </script>
 
@@ -40,8 +37,8 @@ export default {
   height: calc(#{$navbar-height} - 4px);
   margin-top: 1px;
   margin-left: 4px;
-  border-radius: 8px;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .menu-nickname {

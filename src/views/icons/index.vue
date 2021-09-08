@@ -1,10 +1,11 @@
 <template>
   <div>
-    <h2>app-icon组件自带图标展示</h2>
-    <p>
-      使用方式：&lt;app-icon icon="github" size="32" color="red"
-      /&gt;，使用svg图标需确保/src/assets/icon下存在对应文件名的svg文件
-    </p>
+    <app-explain title="app-icon组件自带图标展示">
+      <p>
+        使用方式：&lt;app-icon icon="github" size="32" color="red"
+        /&gt;，使用svg图标需确保/src/assets/icon下存在对应文件名的svg文件
+      </p>
+    </app-explain>
     <h3>assets/icon下的SVG图标展示</h3>
     <ul class="icon-set clearfix">
       <li v-for="s in svgArr" :key="s">
@@ -38,13 +39,14 @@
 import { ElMessage } from 'element-plus'
 import icons from './icons.json'
 import { reactive, ref } from 'vue'
+
 export default {
   name: 'Icons',
   setup() {
     const svgArr = []
     const noMoreElIcon = ref(false)
     const iconsSpliceLength = icons.length / 4
-    const showElIcons = reactive(icons.splice(0, iconsSpliceLength))
+    const showElIcons = reactive(icons.slice(0, iconsSpliceLength))
     const child = document.getElementById('svgSpriteStats').children
     for (const c of child) {
       svgArr.push(c.id.replace('icon-', ''))
@@ -80,44 +82,44 @@ export default {
 
 <style lang="scss" scoped>
 .icon-set {
-  list-style: none;
   padding: 0;
   margin-right: 20px;
-  border-radius: 4px;
+  list-style: none;
   background-color: white;
   border-top: 1px solid #eee;
   border-left: 1px solid #eee;
+  border-radius: 4px;
   @media screen and (max-width: $lg-width) {
     & > li {
-      width: 16.6%;
+      width: 16.6% !important;
     }
   }
   @media screen and (max-width: $sm-width) {
     & > li {
-      width: 25%;
+      width: 25% !important;
     }
   }
 
   li {
-    float: left;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center; /* 用于<i>标签的图标水平居中 */
+    justify-content: center;
+    float: left;
     width: 12.5%;
     height: 120px;
+    text-align: center; /* 用于<i>标签的图标水平居中 */
     border-right: 1px solid #eee;
     border-bottom: 1px solid #eee;
     transition: color 0.5s;
 
     &:hover {
-      color: $primary-color;
+      color: var(--primary-color);
     }
 
     > span {
-      color: #99a9bb;
       margin-top: 8px;
+      color: #99a9bb;
     }
   }
 }

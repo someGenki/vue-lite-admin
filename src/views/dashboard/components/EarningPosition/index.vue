@@ -11,7 +11,7 @@
         总金额(元)
         <i
           @click="showTotalAmount = !showTotalAmount"
-          style="cursor: pointer; color: #eee"
+          style=" color: #eee;cursor: pointer"
           class="el-icon-view"
         />
       </p>
@@ -70,8 +70,8 @@ $card-height: 160px;
 .earning-position {
   height: $card-height;
   padding: 10px;
-  border-radius: 8px;
   background-color: $theme-color;
+  border-radius: 8px;
 }
 
 .earning-position__header {
@@ -80,16 +80,16 @@ $card-height: 160px;
 }
 
 .funds-totalAmount-title {
-  text-align: center;
   font-size: 0.8rem;
   color: $theme-text-color;
+  text-align: center;
 }
 
 .funds-totalAmount {
-  font-size: 1.5rem;
   margin: 10px;
-  text-align: center;
+  font-size: 1.5rem;
   color: #eee;
+  text-align: center;
 }
 
 .funds-details {
@@ -104,8 +104,8 @@ $card-height: 160px;
   }
 
   .earn-details__money {
-    color: #eee;
     font-weight: bold;
+    color: #eee;
     text-align: center;
   }
 }

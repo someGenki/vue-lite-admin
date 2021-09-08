@@ -1,6 +1,6 @@
 <template>
   <div class="navbar" role="navigation">
-    <Hamburger :unfold="unfolded" @toggleClick="handleSidebarToggle" />
+    <Hamburger :unfold="unfoldSidebar" @toggleClick="toggleSidebar" />
     <breadcrumb :list="breadcrumbList" />
     <div class="right-menu-area">
       <app-icon class="right-menu-action" icon="el-icon-search" />
@@ -28,30 +28,31 @@
         size="20"
         icon="el-icon-setting"
         class="right-menu-action"
-        @click.stop="handleSettingsToggle(true)"
+        @click.stop="toggleSettings(true)"
       />
     </div>
   </div>
 </template>
 
 <script>
+import { readonly, toRefs } from 'vue'
 import AvatarMenu from './AvatarMenu.vue'
 import Breadcrumb from './Breadcrumb.vue'
 import Hamburger from './Hamburger.vue'
 import DioAvatar from '/src/assets/dio.jpg'
-import useLayout from '../useLayout'
 import { removeToken } from '/src/utils/storage'
-import { readonly, toRef } from 'vue'
+import { useLayoutStore } from '/src/store/layout'
 
 export default {
   name: 'Navbar',
   components: { AvatarMenu, Breadcrumb, Hamburger },
   setup() {
-    const { handleSidebarToggle, handleSettingsToggle, state } = useLayout()
-
+    const store = useLayoutStore()
+    const { unfoldSidebar, breadcrumbList, toggleSidebar, toggleSettings } =
+      toRefs(store)
     // 头像下拉菜单项
     const dropdownItems = readonly([
-      { title: '个人中心', path: 'profile' },
+      { title: '个人中心', path: '/profile' },
       { title: '项目地址', path: 'https://github.com/someGenki' },
       { title: '不可点击', path: '/', disabled: true },
       {
@@ -75,12 +76,12 @@ export default {
 
     return {
       DioAvatar /* 项目默认头像,来自assets文件夹,vite会自动解析返回公共路径 */,
-      dropdownItems,
       toggleFull,
-      handleSidebarToggle,
-      handleSettingsToggle,
-      unfolded: toRef(state, 'unfoldSidebar'),
-      breadcrumbList: toRef(state, 'breadcrumbList'),
+      dropdownItems,
+      unfoldSidebar,
+      toggleSidebar,
+      toggleSettings,
+      breadcrumbList,
     }
   },
 }
@@ -88,20 +89,20 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
+  position: relative;
   display: flex;
   align-items: center;
   height: $navbar-height;
   overflow: hidden;
-  position: relative;
   background: #fff;
   box-shadow: 0 2px 4px #00000114;
 }
 
 .right-menu-area {
-  display: flex;
-  align-items: center;
   position: absolute;
   right: 0;
+  display: flex;
+  align-items: center;
   height: 100%;
 }
 
@@ -115,6 +116,7 @@ export default {
     background-color: $hover-background-color;
   }
 }
+
 @media screen and (max-width: $sm-width) {
   .app-breadcrumb {
     display: none;

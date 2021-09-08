@@ -1,4 +1,4 @@
-/**把一个组件变成可拖拽的组件 前提:position: absolute; */
+/**把一个组件变成可拖拽的组件 前提:position: absolute; 不用。。 */
 function drag(el, binding) {
   el.onmousedown = (e) => {
     let disx = e.pageX - el.offsetLeft

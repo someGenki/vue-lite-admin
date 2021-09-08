@@ -2,7 +2,7 @@
   <div>
     <div>权限相关页面</div>
     <div>
-      <p>当前权限用户拥有权限:{{$store.state.user.roles}}</p>
+      <p>当前权限用户拥有权限:...</p>
     </div>
   </div>
 </template>
@@ -16,4 +16,3 @@ export default {
 }
 </script>
 
-<style scoped></style>

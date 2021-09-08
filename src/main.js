@@ -1,19 +1,30 @@
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
+import { RouterView } from 'vue-router'
 import router from './router'
-import store from './store'
-import App from './App.vue'
 
-/* 引入Element Plus */
+// 引入Element Plus
+import 'element-plus/dist/index.css'
 import ElementPlus from 'element-plus'
-import 'element-plus/lib/theme-chalk/index.css'
-// import '/src/styles/element-variables.scss'
 
-/* 引入自己的样式、JS文和组件 */
+// 引入自己的样式、JS文和组件
 import '/src/styles/common.scss'
+import { setupStore } from './store'
 import appIcon from '/src/components/AppIcon/index.vue'
+import appLink from '/src/components/AppLink/index.vue'
+import appExplain from '/src/components/AppExplain/index.vue'
 
-const app = createApp(App)
+// 这里的替换掉了App.vue，因为里面暂时没啥东西，孤零零的就暂时把它放在这
+const app = createApp({ render: () => h(RouterView) })
+
+// \\ // \\  // \\ // \\  // \\ // \\
+
+setupStore(app)
+
+// \\ // \\  // \\ // \\  // \\ // \\
+
 app.use(router).use(ElementPlus)
+
 app.component('app-icon', appIcon)
-app.config.globalProperties.$store = store
+app.component('app-link', appLink)
+app.component('app-explain', appExplain)
 app.mount('#app')

@@ -1,65 +1,50 @@
+import router from '../router'
+import { defineStore } from 'pinia'
+import { getToken, setToken } from '../utils/storage'
 import { login as _login, getInfo as _getInfo } from '/src/api/user'
-import { getToken, setToken } from '/src/utils/storage'
-import constantRoutes from '/src/router/constant-routes'
-import asyncRoutes from '/src/router/async-routes'
-import { reactive } from 'vue'
-import router from '/src/router'
+import asyncRoutes from '../router/modules/async'
+import constantRoutes from '../router/modules/constant'
 
-export const state = reactive({
-  token: getToken(),
-  name: '',
-  avatar: '',
-  // 每次页面刷新之后 动态路由 就没了。
-  // 所以再每次刷新后要 重新获取 角色并再次生成动态路由
-  roles: [],
-  // 存放一级路由的集合
-  addRoutes: null,
+export const useUserStore = defineStore('user', {
+  state: () => ({
+    token: getToken(),
+    name: '',
+    avatar: '',
+    roles: [],
+    addRoutes: [],
+  }),
+  getters: {
+    hasUserInfo: (state) => state.roles && state.roles.length > 0,
+  },
+  actions: {
+    async login({ username, password }) {
+      console.log('登录中...', username, password)
+      const res = await _login({ username, password })
+      this.token = res.data.token
+      this.roles.push(...res.data.roles)
+      this.name = res.data.name || 'Yuan'
+      this.addRoutes = this.generateRoutes()
+      setToken(res.data.token)
+    },
+
+    async getUserInfo() {
+      console.log('获取用户信息中...')
+      const res = await _getInfo()
+      this.roles.push(...res.data.roles)
+      this.addRoutes = this.generateRoutes()
+    },
+
+    generateRoutes() {
+      const accessedRoutes = this.roles.includes('admin')
+        ? asyncRoutes || [] // 是最高权限的admin则直接加入所有异步路由
+        : filterAsyncRoutes(asyncRoutes, this.roles)
+      // 将动态生成的可以访问路由加入 vue-router 中
+      accessedRoutes.forEach((route) => router.addRoute(route))
+      // 记录所有路由，它与router.getRoutes有所不同！
+      return constantRoutes.concat(accessedRoutes)
+    },
+  },
 })
-
-// 登录请求后保存信息并动态添加路由 use in view/login
-export function login(loginForm) {
-  let { username, password } = loginForm
-  return _login({ username, password }).then((res) => {
-    state.token = res.data.token
-    state.roles.push(...res.data.roles)
-    state.name = res.data.name || 'Yuan'
-    setToken(res.data.token)
-    generateRoutes()
-    return res.data
-  })
-}
-
-// 获取用户信息并动态添加路由  use in router/beforeEach()
-export function getInfo() {
-  return _getInfo().then((res) => {
-    state.roles = res.data.roles
-    generateRoutes()
-  })
-}
-
-function generateRoutes() {
-  let accessedRoutes
-  if (state.roles.includes('admin')) {
-    accessedRoutes = asyncRoutes || []
-  } else {
-    accessedRoutes = filterAsyncRoutes(asyncRoutes, state.roles)
-  }
-  accessedRoutes.forEach((route) => {
-    // https://next.router.vuejs.org/zh/guide/advanced/dynamic-routing.html
-    router.addRoute(route)
-  })
-  state.addRoutes = constantRoutes.concat(accessedRoutes)
-  // console.log(router.getRoutes())
-  // console.log(state.addRoutes)
-}
-
-function hasPermission(roles, route) {
-  if (route.meta && route.meta.roles) {
-    return roles.some((role) => route.meta.roles.includes(role))
-  } else {
-    return true
-  }
-}
 
 /**
  * 递归的根据已登录用户的roles来过滤异步路由表来生成专属的路由表
@@ -67,19 +52,23 @@ function hasPermission(roles, route) {
  * @param routes asyncRoutes
  * @param roles 用户所有的角色数组
  */
-export function filterAsyncRoutes(routes, roles) {
+function filterAsyncRoutes(routes, roles) {
   const res = []
 
   routes.forEach((route) => {
     // 防止对象被修改
     const tmp = { ...route }
     if (hasPermission(roles, tmp)) {
-      if (tmp.children) {
-        tmp.children = filterAsyncRoutes(tmp.children, roles)
-      }
+      if (tmp.children) tmp.children = filterAsyncRoutes(tmp.children, roles)
       res.push(tmp)
     }
   })
 
   return res
+}
+
+function hasPermission(roles, route) {
+  return route.meta && route.meta.roles
+    ? roles.some((role) => route.meta.roles.includes(role))
+    : true // 当某个路由record没有设置roles属性则默认所有都可以访问，所以返回true
 }

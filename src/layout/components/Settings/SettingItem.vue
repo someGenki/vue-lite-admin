@@ -1,7 +1,7 @@
 <template>
   <div class="setting-item">
     <span style="font-size: 14px">{{ desc }}</span>
-    <component :is="type" v-bind="$attrs" v-model="value" />
+    <slot><component :is="comp" v-bind="$attrs" v-model="value" /></slot>
   </div>
 </template>
 
@@ -15,10 +15,12 @@ import { computed } from 'vue'
 
 export default {
   name: 'SettingItem',
+  inheritAttrs: false,
   props: {
     desc: { type: String, required: true },
-    modelValue: { type: [Boolean, String, Number], required: true },
-    type: { type: String, default: 'el-switch' },
+    modelValue: { type: [Boolean, String, Number] },
+    comp: { type: String, default: 'el-switch' },
+    typeProp: {},
     /* 暂不知道如何判断该组件已注册 */
   },
   emits: ['update:modelValue', 'change'],
@@ -36,8 +38,8 @@ export default {
 <style lang="scss" scoped>
 .setting-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 4px 16px;
 }
 </style>

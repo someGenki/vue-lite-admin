@@ -48,9 +48,9 @@ export default {
 .el-descriptions {
   margin-bottom: 20px;
 }
-
+// vue3样式穿透新写法
 :deep(.el-descriptions__label.is-bordered-label) {
-  color: $primary-text-color;
   font-size: 14px;
+  color: var(--primary-text-color);
 }
 </style>

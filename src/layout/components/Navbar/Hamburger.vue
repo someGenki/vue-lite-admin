@@ -31,9 +31,9 @@ export default {
 }
 
 .hamburger {
-  vertical-align: middle;
   width: 22px;
   height: 22px;
+  vertical-align: middle;
 }
 
 .unfold {

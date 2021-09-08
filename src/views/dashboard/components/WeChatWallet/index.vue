@@ -8,7 +8,7 @@
     <transition name="show-qrcode">
       <div v-if="showQrCode">
         <img
-          style="margin: auto; height: 150px; display: block"
+          style=" display: block; height: 150px;margin: auto"
           src="./wechat-receiving.jpg"
           alt="收款码"
         />
@@ -34,14 +34,14 @@ $theme-color: #29ac66;
 $card-height: 160px;
 
 .wechat-wallet {
+  position: relative;
   height: $card-height;
   padding: 10px;
-  border-radius: 8px;
-  background-color: $theme-color;
-  cursor: pointer;
-  position: relative;
-  user-select: none;
   overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  background-color: $theme-color;
+  border-radius: 8px;
 
   /* ---------- */
   p {
@@ -51,13 +51,13 @@ $card-height: 160px;
 
 .icon-wrapper {
   margin: 0;
-  color: #eee;
   font-size: 3rem;
+  color: #eee;
 }
 
 .wechat-wallet-title {
-  color: white;
   margin-bottom: 0;
+  color: white;
 }
 
 .wechat-wallet-money {
@@ -67,8 +67,8 @@ $card-height: 160px;
 
 .show-qrcode-enter-active,
 .show-qrcode-leave-active {
-  transition: all 0.5s;
   opacity: 0;
+  transition: all 0.5s;
 }
 
 /* 定义元素离开的动画效果 */

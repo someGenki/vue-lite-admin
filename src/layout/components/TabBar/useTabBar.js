@@ -1,10 +1,10 @@
-import router from '/src/router'
-import useLayout from '../useLayout'
 import { toRefs } from 'vue'
+import router from '/src/router'
+import { useLayoutStore } from '/src/store/layout'
 
 export default function useTabBar() {
-  const { state, removeCachedView } = useLayout()
-  const { visitedViews } = toRefs(state)
+  const { visitedViews } = toRefs(useLayoutStore())
+
   /**
    * 根据操作来删除符合的tab项
    * @param tabItem 被选中要操作tab项，
@@ -45,5 +45,5 @@ export default function useTabBar() {
     }
   }
 
-  return { visitedViews, removeCachedView, delTabBarItem }
+  return { visitedViews, delTabBarItem }
 }

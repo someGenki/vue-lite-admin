@@ -1,11 +1,11 @@
 <template>
   <div class="app-main">
     <router-view v-slot="{ Component }">
-<!--      <transition name="fade-transform" mode="out-in">-->
-        <keep-alive :include="cachedViewNames">
-          <component :is="Component" />
-        </keep-alive>
-<!--      </transition>-->
+      <!--      <transition name="fade-transform" mode="out-in">-->
+      <keep-alive :include="cachedViewNames">
+        <component :is="Component" />
+      </keep-alive>
+      <!--      </transition>-->
     </router-view>
   </div>
 </template>
@@ -21,13 +21,13 @@
  *
  * 这里是第二层 <router-view>
  */
-import useLayout from '../useLayout'
 import { toRef } from 'vue'
+import { useLayoutStore } from '/src/store/layout'
 
 export default {
   name: 'AppMain',
   setup() {
-    return { cachedViewNames: toRef(useLayout().state, 'cachedViews') }
+    return { cachedViewNames: toRef(useLayoutStore(), 'cachedViews') }
   },
 }
 </script>
@@ -36,9 +36,9 @@ export default {
 .app-main {
   position: relative;
   width: 100%;
-  padding: 15px;
-  background-color: #F1F2F3;
   min-height: calc(100vh - #{$navbar-height + $tabBar-height});
+  padding: 15px;
+  background-color: #f1f2f3;
 }
 
 /*

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import './element-plus.scss';
 @import './_variables.scss';
 
@@ -8,12 +7,12 @@
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 p {
-  color: $primary-text-color;
+  color: var(--primary-text-color, $primary-text-color);
 }
 
 body {
@@ -22,17 +21,17 @@ body {
 
 .clearfix::after {
   display: table;
-  content: '';
   clear: both;
+  content: '';
 }
 
 .mask-zIndex99 {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 99;
   width: 100%;
   height: 100%;
-  z-index: 99;
   background-color: #0003;
 }
 
@@ -57,16 +56,18 @@ body {
 
 // css3 自定义滚动条 https://www.jianshu.com/p/c2addb233acd 自定义滚动条介绍 https://www.cnblogs.com/ranyonsue/p/9487599.html
 ::-webkit-scrollbar {
+  z-index: 0;
+
   /* 滚动条整体样式 */
   width: 8px;
   height: 8px;
-  z-index: 0;
 }
 
 ::-webkit-scrollbar-thumb {
+  background-color: skyblue;
+
   /* 滚动条里面小方块 */
   border-radius: 6px;
-  background-color: skyblue;
 }
 
 ::-webkit-scrollbar-track {

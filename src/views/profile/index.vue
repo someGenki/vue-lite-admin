@@ -75,7 +75,7 @@ export default {
     const mySkills = [
       '熟练掌握HTML、CSS和JavaScript等前端技术',
       '熟练使用ES6的相关特性并了解过ES7~ES11的新增特性',
-      '熟练使用Vue.js搭配流行组件库Element、Antdv开发项目',
+      '熟练使用Vue.js框架并熟悉React框架的使用以及相关技术栈',
       '熟悉常见的数据结构与算法、设计模式和代码命名规范',
       '了解浏览器运行原理和HTTP(S)协议的通信过程',
       '掌握Linux系统的基本使用，能快速配置环境、部署项目和编写简易脚本',
@@ -118,7 +118,7 @@ $card-gap: 20px;
 
 @media screen and (max-width: $sm-width) {
   .about-me {
-    width: 100%;
+    width: 100% !important;
     max-width: $sm-width;
     margin-bottom: $card-gap;
   }
@@ -136,8 +136,8 @@ $card-gap: 20px;
   float: left;
   width: 35%;
   max-width: 500px;
-  margin-right: $card-gap;
   padding: 20px;
+  margin-right: $card-gap;
   background-color: white;
 }
 
@@ -147,27 +147,27 @@ $card-gap: 20px;
   //创建bfc 使其不与浮动盒子区域重叠，因此会重新计算宽度。也可以用Flex布局配合flex:1;
   .article-text {
     > p {
-      font-weight: bold;
       margin: 6px 16px;
+      font-weight: bold;
     }
 
     > span {
-      font-size: 0.9rem;
       margin: 0 16px;
+      font-size: 0.9rem;
     }
   }
 }
 
 .avatar-me {
   display: block;
-  margin: 0 auto 20px;
   width: 100px;
+  margin: 0 auto 20px;
   border-radius: 50%;
 }
 
 .name-me {
-  text-align: center;
   font-weight: bold;
+  text-align: center;
 
   > i {
     font-weight: bold;
@@ -176,9 +176,9 @@ $card-gap: 20px;
 }
 
 .about-me-detail {
-  list-style: none;
   padding-left: 0;
-  color: $primary-text-color;
+  color: var(--primary-text-color,$primary-text-color);
+  list-style: none;
 
   > li {
     margin-bottom: 10px;
@@ -190,8 +190,8 @@ $card-gap: 20px;
 }
 
 .about-me-skills {
-  color: $primary-text-color;
   padding-left: 18px;
+  color: var(--primary-text-color,$primary-text-color);
 
   > li {
     margin-bottom: 10px;

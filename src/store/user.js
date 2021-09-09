@@ -10,6 +10,11 @@ export const useUserStore = defineStore('user', {
     token: getToken(),
     name: '',
     avatar: '',
+    /**
+     * 项目只记录用户的角色，比如 admin,test之类的。之后将会封装v-role=""指令，
+     *  声明该组件/元素需要该角色才会出现。
+     * 如果还有`operateCode`&`menuCode`
+     */
     roles: [],
     addRoutes: [],
   }),

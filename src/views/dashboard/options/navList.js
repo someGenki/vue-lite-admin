@@ -1,4 +1,5 @@
 import eleLogo from '/src/assets/element-logo.svg'
+import vueLogo from '/src/assets/vlogo.png'
 // 如需使用src/assets中图片可以使用es6的导入功能 👆
 
 const navList = [
@@ -10,7 +11,7 @@ const navList = [
   },
   {
     link: 'https://v3.cn.vuejs.org/',
-    img: 'https://v3.cn.vuejs.org/logo.png',
+    img: vueLogo,
     title: 'Vue.js3中文文档',
     desc: '渐进式 JavaScript 框架',
   },

@@ -15,9 +15,9 @@
       <el-col
         style="
           height: 300px;
-          border-radius: 1rem;
-          overflow: hidden;
           padding: 12px;
+          overflow: hidden;
+          border-radius: 1rem;
         "
         :xs="24"
         :sm="12"
@@ -80,8 +80,8 @@ export default {
 
   .nav-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(100px, 1fr));
     grid-template-rows: repeat(auto-fit, 150px);
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
     grid-gap: 6px;
   }
 
@@ -89,8 +89,8 @@ export default {
     position: relative;
     display: inline-flex;
     flex-flow: column wrap;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     padding: 6px;
     text-align: center;
     background-color: white;
@@ -102,20 +102,20 @@ export default {
     }
 
     > p {
+      max-width: 100%;
+      margin: 6px 0;
+      overflow: hidden;
       font-size: 70%;
       font-weight: bold;
-      margin: 6px 0;
-      max-width: 100%;
       color: #337ab7; // 动态设置
-      overflow: hidden;
-      white-space: nowrap;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     > span {
-      font-size: 65%;
-      overflow: hidden;
       display: -webkit-box;
+      overflow: hidden;
+      font-size: 65%;
       text-overflow: ellipsis;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;

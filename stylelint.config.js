@@ -16,6 +16,8 @@ module.exports = {
       {
         ignoreAtRules: [
           'tailwind',
+          'return',
+          'at-root',
           'apply',
           'variants',
           'responsive',

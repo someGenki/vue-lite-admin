@@ -1,14 +1,21 @@
+$namespace: 'yuan';
+$element-separator: '__';
+$modifier-separator: '--';
+$state-prefix: 'is-';
+
 /* 定义全局scss变量,用于css var不生效时的默认值，主要还是使用css的变量来动态修改颜色 */
 $primary-color: #02bf6f;
 $primary-color-tinge: #75d2de;
 $primary-text-color: #000000a6;
 $primary-text-color-tinge: #00000070;
 
-// 由于部分js中使用了该数值，若要更改，需与js用到的地方同步修改
+/* 由于部分js中使用了该数值，若要更改，需与js用到的地方同步修改 */
 $hover-background-color: #f6f6f6;
 $sidebar-logo-height: 42px;
 $navbar-height: 42px;
 $tabBar-height: 34px;
 
-$lg-width: 1200px; //响应式布局 大屏幕桌面尺寸
-$sm-width: 768px; //响应式布局 小屏幕平板尺寸
+/* 响应式的断点 */
+$xl-width: 1920px; //  大大屏幕尺寸
+$lg-width: 1200px; // 大屏幕桌面尺寸
+$sm-width: 768px; // 小屏幕平板尺寸

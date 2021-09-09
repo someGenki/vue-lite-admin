@@ -1,5 +1,5 @@
 // 用法文档 https://github.com/anncwb/vite-plugin-mock/blob/HEAD/README.zh_CN.md
-import { Result } from './_utils'
+import { Result } from './_util'
 
 export default [
   {

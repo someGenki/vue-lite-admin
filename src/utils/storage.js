@@ -27,14 +27,14 @@ export function batchSaveSetting(keys, obj) {
 }
 
 // 从localStorage里那的东西是字符串要手动转
-export function getSetting(key, need, defaultValue = null) {
+export function getSetting(key, need, defVal = null) {
   let item = localStorage.getItem(KEY_PREFIX + key)
   if (need === 'int') {
     item = Number.parseInt(item)
-    return Number.isInteger(item) ? item : defaultValue
+    return Number.isInteger(item) ? item : defVal
   } else if (need === 'bool') {
     item = JSON.parse(item)
-    return item === true || item === false ? item : defaultValue
+    return item === true || item === false ? item : defVal
   }
   return item
 }

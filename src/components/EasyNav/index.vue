@@ -40,7 +40,7 @@ export default {
 <style lang="scss" scoped>
 .easy-nav-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  grid-template-columns: repeat(3, minmax(86px, 1fr));
   grid-gap: 6px;
 
   &__card {

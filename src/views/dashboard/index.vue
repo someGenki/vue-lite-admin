@@ -42,7 +42,6 @@
 // element-plus响应式布局分24栏, 为简化只关注xs,sm和lg。分别是小于768px,大于768px和大于1200px
 // 数字增加 https://blog.csdn.net/sunny123x/article/details/102589067
 // 请求动画帧 https://github.com/PanJiaChen/vue-countTo/blob/master/src/requestAnimationFrame.js
-
 import { onMounted, ref } from 'vue'
 import * as echarts from 'echarts'
 import Cards from './components/Cards.vue'
@@ -71,59 +70,5 @@ export default {
 <style lang="scss" scoped>
 .el-col {
   margin-bottom: 4px;
-}
-
-.quick-nav {
-  > p {
-    margin-top: 5px;
-  }
-
-  .nav-grid {
-    display: grid;
-    grid-template-rows: repeat(auto-fit, 150px);
-    grid-template-columns: repeat(3, minmax(100px, 1fr));
-    grid-gap: 6px;
-  }
-
-  &__card {
-    position: relative;
-    display: inline-flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: center;
-    padding: 6px;
-    text-align: center;
-    background-color: white;
-    border-radius: 12px;
-    transition: box-shadow 0.25s;
-
-    > img {
-      width: 60%;
-    }
-
-    > p {
-      max-width: 100%;
-      margin: 6px 0;
-      overflow: hidden;
-      font-size: 70%;
-      font-weight: bold;
-      color: #337ab7; // 动态设置
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    > span {
-      display: -webkit-box;
-      overflow: hidden;
-      font-size: 65%;
-      text-overflow: ellipsis;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-    }
-
-    &:hover {
-      box-shadow: 4px 10px 16px rgb(36 37 38 / 13%);
-    }
-  }
 }
 </style>

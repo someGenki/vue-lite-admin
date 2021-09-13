@@ -1,7 +1,9 @@
 import router from '/src/router'
-import {  useUserStore } from '/src/store/user'
+import { useUserStore } from '/src/store/user'
 import { computed, reactive, ref } from 'vue'
-
+/**
+ * @Deprecated 弃用，包括Login01,Login02
+ */
 // 登录表单校验
 const loginRules = {
   /* [another template]
@@ -34,11 +36,13 @@ function handleLogin() {
   loginFormRef.value.validate((valid) => {
     if (valid) {
       // 表单校验通过，发起ajax请求然后保存必要的token、roles最后路由跳转
-      useUserStore().login(form).then(() => {
-        router.push({
-          path: router.currentRoute.value.query.redirect || '/',
+      useUserStore()
+        .login(form)
+        .then(() => {
+          router.push({
+            path: router.currentRoute.value.query.redirect || '/',
+          })
         })
-      })
     } else {
       console.log('login fail because ', valid)
       return false

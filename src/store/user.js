@@ -1,6 +1,6 @@
-import router from '../router'
+import router from '/src/router'
 import { defineStore } from 'pinia'
-import { getToken, setToken } from '../utils/storage'
+import { getToken, setToken } from '/src/utils/storage'
 import { login as _login, getInfo as _getInfo } from '/src/api/user'
 import asyncRoutes from '../router/modules/async'
 import constantRoutes from '../router/modules/constant'

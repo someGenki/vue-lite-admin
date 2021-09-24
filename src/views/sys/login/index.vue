@@ -7,104 +7,157 @@
       </div>
       <div class="login-right">
         <el-form
-          :model="form"
+          :model="loginFormData"
           :rules="loginRules"
           ref="loginFormRef"
           class="login-form"
         >
           <h1 style="margin-left: 4px; text-align: left">登录</h1>
           <p>这在个地方说点什么东西吧</p>
+
           <el-form-item required size="small" prop="username">
             <input
-              class="login-input"
               required
-              v-model="form.username"
+              name="username"
+              class="login-input"
+              v-model="loginFormData.username"
               placeholder="用户名/邮箱"
             />
           </el-form-item>
 
           <el-form-item required prop="password">
             <input
+              required
+              name="password"
               class="login-input"
               :type="showPassword ? '' : 'password'"
-              required
-              v-model="form.password"
+              v-model="loginFormData.password"
               placeholder="请输入密码"
             />
             <i
-              @click="showPasswordToggle"
+              @click="toggleShowPasswd"
               :class="{ slash: showPassword }"
               class="el-icon-view password-see"
             />
           </el-form-item>
 
-          <div
-            style="
-              display: flex;
-              justify-content: space-between;
-              margin-bottom: 22px;
-            "
-          >
+          <el-form-item class="form-captcha">
             <input
               placeholder="验证码"
+              name="code"
               class="login-input"
-              style="width: 50%; height: 48px"
+              style="width: 60%; height: 44px; margin-right: 10px"
               type="text"
-              value="aaaa"
+              v-model="loginFormData.code"
             />
             <img
-              style="width: 120px; height: 44px"
+              style="width: 120px; height: 42px"
               src="http://www.webxml.com.cn/WebServices/ValidateCodeWebService.asmx/cnValidateImage?byString=aaaa"
               alt="验证码"
             />
-          </div>
+          </el-form-item>
+
           <el-button
+            @click.prevent="handleLogin"
+            :loading="btnLoading"
             style="width: 100%"
             type="primary"
-            @click.prevent="handleLogin"
             >登录
           </el-button>
         </el-form>
       </div>
+      <div class="login-footer"> Powered by 禾几元</div>
     </div>
   </div>
 </template>
 
 <script>
-import { useRoute } from 'vue-router'
-import { ref } from 'vue'
-import useLogin from './useLogin'
+import { reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '/src/store/user'
+import { ElMessage } from 'element-plus'
+
 // https://element-plus.gitee.io/#/zh-CN/component/form
+
+function useVarToggle(def = false) {
+  let val = ref(def)
+  const toggle = (bool) => {
+    if (bool !== undefined && typeof bool === 'boolean') val.value = bool
+    else val.value = !val.value
+  }
+  return [val, toggle]
+}
+
 export default {
   name: 'login',
   setup() {
-    // 测试用，根据page参数来显示对应的登录页1
-    const pageNo = ref(useRoute().query.page || '1')
-
-    const changeLoginStyle = () => {
-      if (pageNo.value === '1') pageNo.value = '2'
-      else pageNo.value = '1'
+    const router = useRouter()
+    const [showPassword, toggleShowPasswd] = useVarToggle()
+    const [btnLoading, toggleBtnLoading] = useVarToggle()
+    const loginFormRef = ref(null)
+    const loginFormData = reactive({
+      username: 'admin',
+      password: '123456',
+      code: 'aaaa',
+    })
+    const loginRules = {
+      // 表单验证规则 https://github.com/yiminghe/async-validator
+      /* [详细模板 | another template]
+        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
+        const validateUsername = (rule, value, callback) => {
+        if (value.length < 6) {
+          callback(new Error('The username can not be less than 6 digits'))
+        } else { callback() }} */
+      username: [{ required: true, message: '用户名不能为空' }],
+      password: [{ required: true, message: '密码不能为空' }],
     }
-    const showPassword = ref(false)
 
-    function showPasswordToggle() {
-      showPassword.value = !showPassword.value
+    // 表单验证通过时，调用store中的登录方法(抽离)
+    const formValidPassed = () => {
+      useUserStore()
+        .login(loginFormData)
+        // 模拟延迟100ms
+        .then(() => new Promise((res) => setTimeout(() => res(), 100)))
+        .then(() => {
+          router.push({ path: router.currentRoute.value.query.redirect || '/' })
+          ElMessage.success({
+            duration: 1000,
+            type: 'success',
+            message: '登录成功!',
+          })
+        })
+        .finally(() => toggleBtnLoading(false))
+    }
+
+    // 登录按钮触发的函数
+    const handleLogin = () => {
+      loginFormRef.value.validate((valid) => {
+        if (valid) {
+          toggleBtnLoading(true)
+          formValidPassed()
+        } else {
+          console.error('login fail in handleLogin')
+          return false
+        }
+      })
     }
 
     return {
-      pageNo,
-      showPasswordToggle,
+      loginRules,
+      loginFormRef,
+      loginFormData,
       showPassword,
-      changeLoginStyle,
-      ...useLogin(),
+      toggleShowPasswd,
+      btnLoading,
+      toggleBtnLoading,
+      handleLogin,
     }
   },
 }
 </script>
 
 <style lang="scss" scoped>
-$bg-input: #f1f2f3;
-$bg-button: #cfd3d7;
+$bg-input: #f1f2f3; // 输入框背景颜色
 
 .admin-login {
   position: relative;
@@ -120,7 +173,6 @@ $bg-button: #cfd3d7;
   align-items: center;
   justify-content: space-around;
   height: 100%;
-  // TODO 响应式
 }
 
 .login-left {
@@ -137,6 +189,16 @@ $bg-button: #cfd3d7;
   justify-content: flex-end;
   width: 50%;
   height: 500px;
+}
+
+.login-footer {
+  position: absolute;
+  bottom: 10px;
+  user-select: none;
+  font-size: 6px;
+  background: linear-gradient(to left, #0250c5 0%, #d43f8d 100%);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .login-form {
@@ -193,6 +255,12 @@ $bg-button: #cfd3d7;
   &:focus::placeholder {
     opacity: 0;
   }
+}
+
+:deep(.form-captcha .el-form-item__content) {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 22px;
 }
 
 @media screen and (max-width: $sm-width) {

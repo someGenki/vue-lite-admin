@@ -1,8 +1,27 @@
 export function debounce(fn, wait = 100) {
   let timer = null
-  return function (...args) {
+  return (...args) => {
     timer && clearTimeout(timer)
     timer = setTimeout(() => fn(...args), wait)
+  }
+}
+
+export function throttle(fn, delay = 200) {
+  let last = null
+  let timer = null
+  return (args) => {
+    let now = Date.now()
+    // 在时间间隔内，不触发，而且是取消定时器。当函数出发后要记录触发时间
+    if (last && now < last + delay) {
+      clearTimeout(timer)
+      timer = setTimeout(() => {
+        fn.call(this, args)
+        last = now
+      }, delay)
+    } else {
+      fn.call(this, args)
+      last = now
+    }
   }
 }
 

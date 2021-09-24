@@ -18,11 +18,10 @@
       </el-dropdown-menu>
     </template>
   </el-dropdown>
-  <p class="menu-nickname" v-show="nickname">{{nickname}}</p>
+  <p class="menu-nickname" v-show="nickname">{{ nickname }}</p>
 </template>
 
 <script>
-
 export default {
   name: 'AvatarMenu',
   // 数组中的对象要有 title 属性，如果有path属性则会渲染成链接
@@ -45,7 +44,7 @@ export default {
   margin: 0 8px;
   font-size: 14px;
   font-weight: bold;
-  //border-bottom: 2px solid #655959;
   color: #655959;
+  //border-bottom: 2px solid #655959;
 }
 </style>

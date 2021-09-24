@@ -22,7 +22,7 @@ export const basicRoutes = [
     path: '/login',
     hidden: true,
     component: Login,
-    meta: { noCache: true, title: 'Vue Admin 登录页' },
+    meta: { noCache: true, title: 'Vue Lite Admin 登录页' },
   },
   {
     path: '/404',

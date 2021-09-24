@@ -24,7 +24,7 @@
 <script setup>
 // <script setup>教程：https://v3.cn.vuejs.org/api/sfc-script-setup.html
 import { toRefs } from 'vue'
-import { debounce } from '/src/utils/util'
+import { throttle} from '/src/utils/util'
 import { useStyleStore } from '/src/store/style'
 import { useLayoutStore } from '/src/store/layout'
 import { batchSaveSetting } from '/src/utils/storage'
@@ -58,7 +58,7 @@ layoutStore.$subscribe((mutation, state) => {
 })
 
 // 监听页面尺寸调整 动态改变state.isMobile的值判断是否是移动设备
-window.addEventListener('resize', debounce(checkIsMobile.value, 200))
+window.addEventListener('resize', throttle(checkIsMobile.value, 200))
 
 styleStore.injectCssVarToRoot()
 </script>
@@ -84,7 +84,7 @@ styleStore.injectCssVarToRoot()
   position: fixed;
   top: 0;
   right: 0;
-  //z-index: 10;
+  z-index: 10;
   width: 100%;
   padding-left: v-bind('mainPaddingLeft');
 }

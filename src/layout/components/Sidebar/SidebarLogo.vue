@@ -4,7 +4,7 @@
     class="MutableLogo-wrapper"
     :style="{ backgroundColor, color: textColor }"
   >
-    <img src="~@/assets/logo2.ico" alt="logo" />
+    <img  class="shake" src="~@/assets/logo2.ico" alt="logo" />
     <h4 style="margin-left: 6px" v-show="isCollapse">{{ title }}</h4>
   </router-link>
 </template>

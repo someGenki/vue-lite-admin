@@ -1,6 +1,6 @@
-import router from '../router'
+import router from '/src/router'
 import { defineStore } from 'pinia'
-import { getToken, setToken } from '../utils/storage'
+import { getToken, setToken } from '/src/utils/storage'
 import { login as _login, getInfo as _getInfo } from '/src/api/user'
 import asyncRoutes from '../router/modules/async'
 import constantRoutes from '../router/modules/constant'
@@ -10,6 +10,11 @@ export const useUserStore = defineStore('user', {
     token: getToken(),
     name: '',
     avatar: '',
+    /**
+     * 项目只记录用户的角色，比如 admin,test之类的。之后将会封装v-role=""指令，
+     *  声明该组件/元素需要该角色才会出现。
+     * 如果还有`operateCode`&`menuCode`
+     */
     roles: [],
     addRoutes: [],
   }),

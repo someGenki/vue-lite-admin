@@ -6,7 +6,7 @@
       class="easy-nav-grid__card"
       v-for="nav in navs"
     >
-      <img :src="nav.img" />
+      <img :src="nav.img"  alt="Logo"/>
       <p>{{ nav.title }}</p>
       <span title="nav-desc">{{ nav.desc }}</span>
     </a>
@@ -40,16 +40,16 @@ export default {
 <style lang="scss" scoped>
 .easy-nav-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  grid-template-columns: repeat(3, minmax(86px, 1fr));
   grid-gap: 6px;
 
   &__card {
-    height: 150px;
     position: relative;
     display: inline-flex;
     flex-flow: column wrap;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: 150px;
     padding: 6px;
     text-align: center;
     background-color: white;
@@ -62,20 +62,20 @@ export default {
     }
 
     > p {
+      max-width: 100%;
+      margin: 6px 0;
+      overflow: hidden;
       font-size: 70%;
       font-weight: bold;
-      margin: 6px 0;
-      max-width: 100%;
       color: #337ab7; // 动态设置
-      overflow: hidden;
-      white-space: nowrap;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     > span {
-      font-size: 65%;
-      overflow: hidden;
       display: -webkit-box;
+      overflow: hidden;
+      font-size: 65%;
       text-overflow: ellipsis;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;

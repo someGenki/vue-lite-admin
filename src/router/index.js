@@ -10,6 +10,7 @@ import { useLayoutStore } from '/src/store/layout'
 // 定义一个公共路径集合，任何用户及匿名者都能访问的到
 const PUBLIC_PATH = new Set()
 
+// 添加路由白名单
 !(function fillPublicPath() {
   // 当前只处理一级，多层级就自己递归下
   basicRoutes.forEach((item) => PUBLIC_PATH.add(item.path))
@@ -22,15 +23,13 @@ const router = createRouter({
 })
 
 /**
+ * 前置路由首位钩子
  * 官网文档：https://next.router.vuejs.org/zh/guide/advanced/navigation-guards.html
  * 主要参考：https://juejin.cn/post/6844903478880370701
- * RouteLocationNormalized对象：https://next.router.vuejs.org/zh/api/#routelocationnormalized
+ * 参数类型:RouteLocationNormalized对象：https://next.router.vuejs.org/zh/api/#routelocationnormalized
  *
- * 返回false时 取消当前的导航，也可以返回 "/xxx" 等字符串路径 来进行路由跳转
- * 这可以在这里进行用户权限的跳转判断
- *
- *  vue3中使用 addRoute动态添加路由 应在动态新增后再进行跳转
- *  vue3 addRoute 页面刷新后 路由失效
+ * vue3中使用 addRoute 动态添加路由。并应在动态新增后再进行跳转
+ * 刷新页面后，动态添加的路由将会丢失，需要重新加载
  *  https://blog.csdn.net/weixin_43835425/article/details/116708448
  */
 router.beforeEach(async (to) => {
@@ -40,7 +39,8 @@ router.beforeEach(async (to) => {
   if (!token && !PUBLIC_PATH.has(to.path))
     return { path: '/login', query: { redirect: to.fullPath } }
   const userStore = useUserStore()
-  // 如果因为刷新后导致保存在内存中的数据(登录信息等)，需要再次发起请求重新获取
+  // 如果已登录但因为刷新后导致保存在内存中的数据(登录信息，动态添加的路由等)丢失，
+  // 需要再次发起请求重新获取用户信息，并动态添加路由
   if (userStore.hasUserInfo === false) {
     await userStore.getUserInfo()
     return to
@@ -48,12 +48,13 @@ router.beforeEach(async (to) => {
 })
 
 /**
- * 全局后置钩子 ： 它们对于分析、更改页面标题、声明页面等辅助功能以及许多其他事情都很有用。
+ * 全局后置钩子 ：它们对于分析、更改页面标题、声明页面等辅助功能以及许多其他事情都很有用。
  */
 router.afterEach((to) => {
   document.title =
     to.meta.title || import.meta.env.VITE_DEFAULT_TITLE || 'default title'
 
+  // 记录访问过的页面
   useLayoutStore().accessRecord(to)
 })
 

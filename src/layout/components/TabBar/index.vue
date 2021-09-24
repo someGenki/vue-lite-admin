@@ -29,7 +29,7 @@
         />
       </span>
     </el-scrollbar>
-    <span class="tabBar-refresh" @click="refreshView" title="refresh">
+    <span class="tabBar-refresh" @click="useRefresh" title="refresh">
       <i class="el-icon-refresh" />
     </span>
     <teleport to="body">
@@ -73,6 +73,7 @@ import { reactive, toRef, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import useTabBar from './useTabBar'
 import { useLayoutStore } from '/src/store/layout'
+import useRefresh from "../../../hooks/core/useRefresh";
 // TODO 封装context menu
 // 可参考 https://codepen.io/havardob/pen/YzwzQgm
 export default {
@@ -103,13 +104,6 @@ export default {
 
     const markedTab = (tab, bool) => (tab.mark = bool)
 
-    const refreshView = () => {
-      const route = router.currentRoute.value
-      store.removeCachedView(route)
-      if (route.path.indexOf('/redirect') > -1) return
-      router.replace({ path: '/redirect' + route.fullPath })
-    }
-
     watch(toRef(contextMenuProp, 'show'), (value) => {
       if (value) document.body.addEventListener('click', closeMenu)
       else document.body.removeEventListener('click', closeMenu)
@@ -119,7 +113,7 @@ export default {
       contextMenuProp,
       visitedViews,
       delTabBarItem,
-      refreshView,
+      useRefresh,
       markedTab,
       openMenu,
     }

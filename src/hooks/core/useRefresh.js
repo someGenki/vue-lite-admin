@@ -2,6 +2,7 @@ import router from '/src/router/index.js'
 import { useLayoutStore } from '../../store/layout'
 
 /**
+ * @deprecated
  * 刷新当前路由
  */
 export default function useRefresh() {

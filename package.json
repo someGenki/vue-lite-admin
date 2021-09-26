@@ -11,10 +11,10 @@
     "lint:css": "stylelint **/*.{vue,css,sass,scss} --fix"
   },
   "dependencies": {
-    "@vueuse/core": "^6.3.3",
+    "@vueuse/core": "^6.5.3",
     "axios": "^0.21.4",
-    "echarts": "^5.2.0",
-    "element-plus": "^1.1.0-beta.10",
+    "echarts": "^5.2.1",
+    "element-plus": "^1.1.0-beta.16",
     "js-cookie": "^3.0.1",
     "mockjs": "^1.1.0",
     "pinia": "^2.0.0-rc.7",
@@ -22,12 +22,12 @@
     "vue-router": "^4.0.11"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.6.2",
+    "@vitejs/plugin-vue": "^1.9.2",
     "@vitejs/plugin-vue-jsx": "^1.1.8",
-    "@vue/compiler-sfc": "^3.2.11",
-    "vite": "^2.5.7",
-    "sass": "^1.40.0",
-    "prettier": "^2.4.0",
+    "@vue/compiler-sfc": "^3.2.19",
+    "vite": "^2.5.10",
+    "sass": "^1.42.1",
+    "prettier": "^2.4.1",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",

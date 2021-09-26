@@ -37,13 +37,13 @@ export default [
     children: [
       {
         path: 'page',
-        component: () => import('/src/views/permission/page.vue'),
+        component: () => import('/src/views/demo/permission/page.vue'),
         name: 'PagePermission',
         meta: { title: '权限-页面', roles: ['admin'] },
       },
       {
         path: 'test',
-        component: () => import('/src/views/permission/test.vue'),
+        component: () => import('/src/views/demo/permission/test.vue'),
         name: 'TestPermission',
         meta: { title: '权限-测试', roles: ['admin', 'test'] },
       },

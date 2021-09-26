@@ -41,7 +41,7 @@ export default [
     children: {
       path: 'index',
       name: 'Icons',
-      component: () => import('/src/views/icons/index.vue'),
+      component: () => import('/src/views/demo/icons/index.vue'),
       meta: { title: '图标展示', icon: 'el-icon-shopping-cart-full' },
     },
   }),
@@ -50,7 +50,7 @@ export default [
     children: {
       path: 'index',
       name: 'Profile',
-      component: () => import('/src/views/profile/index.vue'),
+      component: () => import('/src/views/demo/profile/index.vue'),
       meta: { title: '个人中心' },
     },
   }),
@@ -63,25 +63,25 @@ export default [
     children: [
       {
         path: 'file-upload',
-        component: () => import('/src/views/example/file-upload/index.vue'),
+        component: () => import('/src/views/demo/example/file-upload/index.vue'),
         name: 'FileUpload',
         meta: { title: '文件上传', icon: 'el-icon-upload2' },
       },
       {
         path: 'file-download',
-        component: () => import('/src/views/example/file-download/index.vue'),
+        component: () => import('/src/views/demo/example/file-download/index.vue'),
         name: 'FileDownload',
         meta: { title: '文件下载', icon: 'el-icon-download' },
       },
       {
         path: 'emotion-demo',
-        component: () => import('/src/views/example/emotion-demo/index.vue'),
+        component: () => import('/src/views/demo/example/emotion-demo/index.vue'),
         name: 'EmotionDemo',
         meta: { title: '输入框表情', icon: 'el-icon-box' },
       },
       {
         path: 'compare-demo',
-        component: () => import('/src/views/example/compare-demo/index.vue'),
+        component: () => import('/src/views/demo/example/compare-demo/index.vue'),
         name: 'CompareDemo',
         meta: { title: '图片对比', icon: 'el-icon-picture-outline' },
       },
@@ -126,7 +126,7 @@ export default [
       },
       {
         path: 'scroll-page',
-        component: () => import('/src/views/example-page/scroll-page.vue'),
+        component: () => import('/src/views/demo/example-page/scroll-page.vue'),
         name: 'ScrollPage',
         meta: { title: '滚动页面', icon: 'el-icon-d-caret' },
       },

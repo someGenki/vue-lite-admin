@@ -24,7 +24,7 @@
 <script setup>
 // <script setup>教程：https://v3.cn.vuejs.org/api/sfc-script-setup.html
 import { toRefs } from 'vue'
-import { throttle} from '/src/utils/util'
+import { throttle } from '/src/utils/util'
 import { useStyleStore } from '/src/store/style'
 import { useLayoutStore } from '/src/store/layout'
 import { batchSaveSetting } from '/src/utils/storage'

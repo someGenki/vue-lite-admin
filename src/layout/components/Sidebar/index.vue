@@ -20,8 +20,8 @@
     >
       <sidebar-item v-for="item in menus" :key="menus.path" :item="item" />
     </el-menu>
-    <el-button type="primary" size="mini" @click="changeBackground"
-      >换背景
+    <el-button type="primary" size="mini" @click="changeBackground">
+      换背景
     </el-button>
   </aside>
 </template>
@@ -67,6 +67,7 @@ export default {
   },
 }
 </script>
+
 <style>
 .el-menu-item:hover {
   font-weight: bold;
@@ -91,10 +92,11 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: hidden;
-  transition: background 0.4s;
+  overflow-x: hidden;
+  overflow-y: auto;
   background-image: linear-gradient(rgb(10, 30, 60) 0%, rgb(80, 120, 150) 100%);
   background-size: auto 100%;
+  transition: background 0.4s;
 
   .el-menu {
     flex-grow: 1;

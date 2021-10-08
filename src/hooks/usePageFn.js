@@ -1,5 +1,5 @@
-import router from '../../router'
-import { useLayoutStore } from '../../store/layout'
+import router from '../router'
+import { useLayoutStore } from '../store/layout'
 
 export function usePageFn() {
   function refreshPage() {

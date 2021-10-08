@@ -1,70 +1,70 @@
 <template>
-  <div class='admin-login'>
-    <div class='login-container'>
-      <div class='login-left'>
+  <div class="admin-login">
+    <div class="login-container">
+      <div class="login-left">
         <h1>准备摆个LOGO</h1>
         <h2>其次是个大插画图，跟vben类似</h2>
       </div>
-      <div class='login-right'>
+      <div class="login-right">
         <el-form
-          :model='loginFormData'
-          :rules='loginRules'
-          ref='loginFormRef'
-          class='login-form'
+          :model="loginFormData"
+          :rules="loginRules"
+          ref="loginFormRef"
+          class="login-form"
         >
-          <h1 style='margin-left: 4px; text-align: left'>登录</h1>
+          <h1 style="margin-left: 4px; text-align: left">登录</h1>
           <p>这在个地方说点什么东西吧</p>
 
-          <el-form-item required size='small' prop='username'>
+          <el-form-item required size="small" prop="username">
             <el-input
               required
-              name='username'
-              class='login-input'
-              prefix-icon='el-icon-user'
-              v-model='loginFormData.username'
-              placeholder='用户名/邮箱'
+              name="username"
+              class="login-input"
+              prefix-icon="el-icon-user"
+              v-model="loginFormData.username"
+              placeholder="用户名/邮箱"
             />
           </el-form-item>
 
-          <el-form-item required prop='password'>
+          <el-form-item required prop="password">
             <el-input
               required
-              name='password'
-              class='login-input'
+              name="password"
+              class="login-input"
               show-password
-              prefix-icon='el-icon-lock'
-              v-model='loginFormData.password'
-              placeholder='请输入密码'
+              prefix-icon="el-icon-lock"
+              v-model="loginFormData.password"
+              placeholder="请输入密码"
             />
           </el-form-item>
 
-          <el-form-item class='form-captcha'>
+          <el-form-item class="form-captcha">
             <el-input
-              placeholder='验证码'
-              name='code'
+              placeholder="验证码"
+              name="code"
               prefix-icon="el-icon-c-scale-to-original"
-              class='login-input'
-              style='width: 60%; height: 44px; margin-right: 10px'
-              type='text'
-              v-model='loginFormData.code'
+              class="login-input"
+              style="width: 60%; height: 44px; margin-right: 10px"
+              type="text"
+              v-model="loginFormData.code"
             />
             <img
-              style='width: 120px; height: 42px'
-              src='http://www.webxml.com.cn/WebServices/ValidateCodeWebService.asmx/cnValidateImage?byString=aaaa'
-              alt='验证码'
+              style="width: 120px; height: 42px"
+              src="http://www.webxml.com.cn/WebServices/ValidateCodeWebService.asmx/cnValidateImage?byString=aaaa"
+              alt="验证码"
             />
           </el-form-item>
 
           <el-button
-            @click.prevent='handleLogin'
-            :loading='btnLoading'
-            style='width: 100%'
-            type='primary'
-          >登录
+            @click.prevent="handleLogin"
+            :loading="btnLoading"
+            style="width: 100%"
+            type="primary"
+            >登录
           </el-button>
         </el-form>
       </div>
-      <div class='login-footer'> Powered by 禾几元</div>
+      <div class="login-footer"> Powered by 禾几元</div>
     </div>
   </div>
 </template>
@@ -91,7 +91,6 @@ export default {
   name: 'login',
   setup() {
     const router = useRouter()
-    const [showPassword, toggleShowPasswd] = useVarToggle()
     const [btnLoading, toggleBtnLoading] = useVarToggle()
     const loginFormRef = ref(null)
     const loginFormData = reactive({
@@ -100,6 +99,7 @@ export default {
       code: 'aaaa',
     })
 
+    // 随机获取一款渐变背景色
     const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)]
 
     // 表单验证规则 https://github.com/yiminghe/async-validator
@@ -140,8 +140,6 @@ export default {
       loginRules,
       loginFormRef,
       loginFormData,
-      showPassword,
-      toggleShowPasswd,
       btnLoading,
       toggleBtnLoading,
       handleLogin,
@@ -150,7 +148,7 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 $bg-input: #f1f2f3; // 输入框背景颜色
 
 .admin-login {
@@ -189,11 +187,11 @@ $bg-input: #f1f2f3; // 输入框背景颜色
 .login-footer {
   position: absolute;
   bottom: 10px;
-  user-select: none;
   font-size: 6px;
+  color: transparent;
+  user-select: none;
   background: linear-gradient(to left, #0250c5 0%, #d43f8d 100%);
   -webkit-background-clip: text;
-  color: transparent;
 }
 
 .login-form {
@@ -206,24 +204,24 @@ $bg-input: #f1f2f3; // 输入框背景颜色
 }
 
 $input-height: 44px;
+
 .login-input {
   height: $input-height;
-  line-height: $input-height;
   font-size: 17px;
+  line-height: $input-height;
 
   :deep(.el-input__inner) {
-    padding-left: 34px;
     height: $input-height;
+    padding-left: 34px;
     line-height: $input-height;
-    border: 0;
     background: #f5f5f5;
-    &:focus+.el-input__prefix{
+    border: 0;
+
+    &:focus + .el-input__prefix {
       color: black;
     }
   }
 }
-
-
 
 :deep(.form-captcha .el-form-item__content) {
   display: flex;

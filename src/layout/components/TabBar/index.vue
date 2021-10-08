@@ -29,7 +29,7 @@
         />
       </span>
     </el-scrollbar>
-    <span class="tabBar-refresh" @click="useRefresh" title="refresh">
+    <span class="tabBar-refresh" @click="refreshPage" title="refresh">
       <i class="el-icon-refresh" />
     </span>
     <teleport to="body">
@@ -70,18 +70,15 @@
 
 <script>
 import { reactive, toRef, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { usePageFn } from '/src/hooks/usePageFn'
 import useTabBar from './useTabBar'
-import { useLayoutStore } from '/src/store/layout'
-import useRefresh from "../../../hooks/core/useRefresh";
+
 // TODO 封装context menu
 // 可参考 https://codepen.io/havardob/pen/YzwzQgm
 export default {
   name: 'TabBar',
   setup() {
-    const router = useRouter()
-
-    const store = useLayoutStore()
+    const { refreshPage } = usePageFn()
 
     const { delTabBarItem, visitedViews } = useTabBar()
 
@@ -111,9 +108,9 @@ export default {
 
     return {
       contextMenuProp,
-      visitedViews,
       delTabBarItem,
-      useRefresh,
+      visitedViews,
+      refreshPage,
       markedTab,
       openMenu,
     }

@@ -12,7 +12,7 @@
     </div>
     <span class="avatar-wrapper">
       <img src="~@/assets/dio.jpg" alt="" />
-      <a target="_blank" href="https://space.bilibili.com/2232379">禾几元</a>
+      <a target="_blank" :href="myLink">{{ myName }}</a>
     </span>
     <div class="state-row">
       <div>
@@ -49,12 +49,14 @@ export default {
   name: 'BilibiliState',
   setup() {
     const biliInfo = {
-      following: 63,
-      follower: 400,
-      likes: '1.4万',
-      plays: '49.2万',
+      following: 42,
+      follower: 422,
+      likes: '1.6万',
+      plays: '54.9万',
     }
-    return { ...biliInfo }
+    const myLink = 'https://space.bilibili.com/2232379'
+    const myName = 'myLink'
+    return { ...biliInfo, myLink, myName }
   },
 }
 </script>

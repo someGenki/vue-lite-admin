@@ -14,8 +14,7 @@ export function usePageFn() {
   }
 
   // 页面全屏
-  function fullScreen(){
-
+  function fullScreen() {
   }
 
   return {

@@ -11,8 +11,8 @@ module.exports = {
     'subject-empty': [2, 'never'],
     'type-empty': [2, 'never'],
     'type-enum': [
-      2,
-      'always',
+      2, // 报错级别 可选 0 ，1 ，2 0为disable，1为warning，2为error
+      'always', // 应用与否 可选always|never
       [
         'feat', // 新增特性
         'fix', // 修补bug

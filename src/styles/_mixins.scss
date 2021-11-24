@@ -3,7 +3,7 @@
 * @param {Number} 行数
 */
 @mixin ellipsis($rowCount: 1) {
-  @if $rowCount <=1 {
+  @if $rowCount <= 1 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

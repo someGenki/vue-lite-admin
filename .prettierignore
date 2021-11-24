@@ -1,10 +1,9 @@
-/dist/*
-.local
-.output.js
-/node_modules/**
+dist
+public
+**/assets
+node_modules
 
 **/*.svg
-**/*.sh
-
-/public/*
+yarn.lock
 index.html
+

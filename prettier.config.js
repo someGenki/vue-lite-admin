@@ -1,4 +1,4 @@
-// prettier前端代码格式化工具，需要配合插件
+// prettier前端代码格式化工具，需要配合插件 [官网] https://prettier.io/docs/en/index.html
 // 使用命令格式化所有文件  npx prettier --write .
 module.exports = {
   printWidth: 80, // 换行宽度

@@ -2,7 +2,6 @@
 // 如果使用git commit提交完，发现有东西还要该，且还未push。可以使用 git commit --amend -a进行附加
 // TODO 学习如何规范化git commit 和 生成CHANGELOG
 module.exports = {
-  ignores: [(commit) => commit.includes('init')],
   extends: ['@commitlint/config-conventional'],
   rules: {
     'body-leading-blank': [2, 'always'],

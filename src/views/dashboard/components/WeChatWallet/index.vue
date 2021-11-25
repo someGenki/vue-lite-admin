@@ -1,14 +1,16 @@
 <template>
   <div class="wechat-wallet" @click="showQrCode = !showQrCode">
     <div v-if="!showQrCode">
-      <p class="icon-wrapper"><i class="el-icon-s-finance" /></p>
+      <p class="icon-wrapper">
+        <app-icon color="#eee" size="48" icon="el-icon-wallet-filled" />
+      </p>
       <p class="wechat-wallet-title">钱包</p>
       <p class="wechat-wallet-money">￥137.63</p>
     </div>
     <transition name="show-qrcode">
       <div v-if="showQrCode">
         <img
-          style=" display: block; height: 150px;margin: auto"
+          style="display: block; height: 150px; margin: auto"
           src="./wechat-receiving.jpg"
           alt="收款码"
         />
@@ -19,6 +21,7 @@
 
 <script>
 import { ref } from 'vue'
+
 export default {
   name: 'WeChatWallet',
   setup() {
@@ -47,12 +50,6 @@ $card-height: 160px;
   p {
     text-align: center;
   }
-}
-
-.icon-wrapper {
-  margin: 0;
-  font-size: 3rem;
-  color: #eee;
 }
 
 .wechat-wallet-title {

@@ -1,55 +1,56 @@
+<template>
+  <i v-bind="$attrs" class="svg-icon">
+    <el-icon v-if="iconType === 'ElIcon'" v-bind="iconProp">
+      <component :is="iconName" />
+    </el-icon>
+    <svg v-else v-bind="iconProp">
+      <use :xlink:href.attr="iconName" />
+    </svg>
+  </i>
+</template>
+
 <script>
 /**
- * <app-icon icon="el-icon-right" />      el-开头将渲染成 <i/>
+ * <app-icon icon="el-icon-right" />      el-开头将渲染成 <i/> el图标支持小驼峰和中划线分割命名
  * <app-icon icon="github" size="32" />   其他则渲染成 <svg>
- * @tips:
- * 1. 渲染成<i/>标签时，图标是和具体宽度在::before中，需要时可以对app-icon使用style="width: 16px" 设置宽度
  */
-import {h} from 'vue'
+import { ElIcon } from 'element-plus'
 
 export default {
   name: 'AppIcon',
+  components: { ElIcon },
   props: {
-    icon: {type: String, required: true},
+    icon: { type: String, required: true },
     // 如果svg标签的path标签已设置fill="color" 则该path的颜色也不会被更改
-    color: {type: String},
-    size: {default: 16},
+    color: { type: String },
+    size: { default: 16 },
   },
   setup(props) {
-    // 如果以特定前缀 则使用i标签 如自带的el-icon
-    // 否则根据名字生成id使用svg>symbol里的svg(注入到index.html中body下的svg标签)
-    const {icon, color, size} = props
-    const sizePx = size + 'px'
-
-    // ElementPlus:Font Icon 将会在第一个正式发布被废弃，请尽快迁移
-    if (icon.startsWith('el-'))
-      return () =>
-        h('i', {
-          class: icon + ' app-icon',
-          style: {fontSize: sizePx, color},
-        })
-
-    else {
-      const style = {width: sizePx, height: sizePx}
-
+    const { icon, color, size } = props
+    let iconType, iconName, iconProp
+    if (icon.startsWith('el-icon-') || icon.startsWith('elIcon')) {
+      iconType = 'ElIcon'
+      iconName = icon
+      iconProp = { color, size: Number(size) }
+    } else {
+      // 根据名字生成id使用svg>symbol里的svg标签(已提前注入到index.html中body下的svg标签)
+      iconType = 'Custom'
+      iconName = '#icon-' + icon
+      const sizePx = size + 'px'
+      const style = { width: sizePx, height: sizePx }
       if (color) {
         style.color = color
         style.fill = 'currentColor'
       }
-
-      return () =>
-        h('i', null, h(
-          'svg',
-          {style, class: 'svg-icon app-icon'},
-          h('use', {'xlink:href': '#icon-' + icon})
-        ))
+      iconProp = { style }
     }
+    return { iconType, iconName, iconProp }
   },
 }
 </script>
 
 <style>
 .svg-icon {
-  vertical-align: sub;
+  display: inline-flex;
 }
 </style>

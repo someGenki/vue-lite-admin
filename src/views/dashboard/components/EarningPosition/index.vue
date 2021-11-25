@@ -3,16 +3,17 @@
     <div class="earning-position__header">
       <slot name="header">
         <span style="color: #eee">基金</span>
-        <i style="font-size: 1.6rem; color: #eee" class="el-icon-s-marketing" />
+        <app-icon size="18" color="#eee" icon="el-icon-trend-charts" />
       </slot>
     </div>
     <div class="earning-position__body">
       <p class="funds-totalAmount-title">
         总金额(元)
-        <i
+        <app-icon
+          color="#eee"
+          icon="el-icon-view"
+          style="margin-left: 4px;cursor: pointer"
           @click="showTotalAmount = !showTotalAmount"
-          style=" color: #eee;cursor: pointer"
-          class="el-icon-view"
         />
       </p>
       <p
@@ -80,6 +81,9 @@ $card-height: 160px;
 }
 
 .funds-totalAmount-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 0.8rem;
   color: $theme-text-color;
   text-align: center;

@@ -32,7 +32,7 @@ export default [
         path: '/dashboard',
         name: 'Dashboard',
         component: () => import('/src/views/dashboard/index.vue'),
-        meta: { title: '首页', icon: 'el-icon-s-home' },
+        meta: { title: '首页', icon: 'el-icon-house' },
       },
     ],
   },
@@ -65,7 +65,7 @@ export default [
         path: 'file-upload',
         component: () => import('/src/views/demo/example/file-upload/index.vue'),
         name: 'FileUpload',
-        meta: { title: '文件上传', icon: 'el-icon-upload2' },
+        meta: { title: '文件上传', icon: 'el-icon-upload-filled' },
       },
       {
         path: 'file-download',
@@ -83,7 +83,7 @@ export default [
         path: 'compare-demo',
         component: () => import('/src/views/demo/example/compare-demo/index.vue'),
         name: 'CompareDemo',
-        meta: { title: '图片对比', icon: 'el-icon-picture-outline' },
+        meta: { title: '图片对比', icon: 'el-icon-picture-filled' },
       },
       {
         path: 'text-editor',
@@ -95,7 +95,7 @@ export default [
         path: 'image-cropper',
         component: () => import('/src/views/sys/error-page/building.vue'),
         name: 'ImageCropper',
-        meta: { title: '图片裁剪', icon: 'el-icon-picture-outline-round' },
+        meta: { title: '图片裁剪', icon: 'el-icon-picture-rounded' },
       },
       {
         path: 'silk-ribbon',
@@ -134,7 +134,7 @@ export default [
         path: 'example-table',
         name: 'ExampleTable',
         component: () => import('/src/views/sys/error-page/building.vue'),
-        meta: { title: '表格 Table', icon: 'el-icon-date' },
+        meta: { title: '表格 Table', icon: 'el-icon-calendar' },
       },
       {
         path: 'example-echarts',
@@ -146,7 +146,7 @@ export default [
         path: 'example-drag',
         name: 'ExampleDrag',
         component: () => import('/src/views/sys/error-page/building.vue'),
-        meta: { title: '拖拽 Drag', icon: 'el-icon-thumb' },
+        meta: { title: '拖拽 Drag', icon: 'el-icon-pointer' },
       },
       {
         path: 'online-chat',

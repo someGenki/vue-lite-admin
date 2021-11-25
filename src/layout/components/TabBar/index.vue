@@ -30,7 +30,7 @@
       </span>
     </el-scrollbar>
     <span class="tabBar-refresh" @click="refreshPage" title="refresh">
-      <i class="el-icon-refresh" />
+     <app-icon icon="el-icon-refresh" />
     </span>
     <teleport to="body">
       <ul

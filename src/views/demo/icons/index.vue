@@ -2,31 +2,46 @@
   <div>
     <app-explain title="app-icon组件自带图标展示">
       <p>
-        使用方式：&lt;app-icon icon="github" size="32" color="red"
-        /&gt;，使用svg图标需确保/src/assets/icon下存在对应文件名的svg文件
+        使用方式：&lt;app-icon icon="github" size="32" color="red"/&gt;，
+        使用svg图标需确保/src/assets/icon下存在对应文件名的svg文件
       </p>
     </app-explain>
     <h3>assets/icon下的SVG图标展示</h3>
     <ul class="icon-set clearfix">
-      <li v-for="s in svgArr" :key="s">
+      <li v-for="s in svgArr" @click="copyIconTag(s)" :key="s">
         <app-icon size="36" :icon="s.replace('icon-', '')" />
-        <span @click="copyTag(s)">{{ s }}</span>
+        <span>{{ s }}</span>
       </li>
     </ul>
+
     <h3>
       <a
         target="_blank"
-        href="https://element-plus.gitee.io/#/zh-CN/component/icon"
+        href="https://element-plus.gitee.io/zh-CN/component/icon.html"
       >
-        element-plus自带图标展示,详细点击这里
+        element-plus自带图标展示
       </a>
     </h3>
+    <p>el-icon已全局注册，图标使用支持小驼峰和中划线分隔两个命名格式</p>
+    <p>
+      e.g:&lt;app-icon icon="elIconApple" /&gt; and &lt;app-icon
+      icon="el-icon-apple" /&gt;
+    </p>
     <ul class="icon-set clearfix">
-      <li v-for="name in showElIcons" :key="name">
-        <app-icon size="36" :icon="'el-icon-' + name" />
-        <span @click="copyTag('el-icon-' + name)">{{ 'el-icon-' + name }}</span>
+      <li
+        v-for="name in showElIcons"
+        :key="name"
+        @click="copyIconTag(name, true)"
+      >
+        <app-icon size="36" :icon="name" />
+        <span>{{ name.replace('elIcon', '') }}</span>
       </li>
-      <el-button @click="loadMoreElIcon" :disabled="noMoreElIcon" type="text">
+      <el-button
+        class="load-more-icon"
+        @click="loadMoreElIcon"
+        :disabled="noMoreElIcon"
+        type="text"
+      >
         加载更多
         <i class="el-icon-arrow-right" />
       </el-button>
@@ -37,46 +52,54 @@
 <script>
 // 相关参考 https://juejin.cn/post/6966491047257964575#heading-3
 import { ElMessage } from 'element-plus'
-import icons from './icons.json'
-import { reactive, ref } from 'vue'
+import { getCurrentInstance, reactive, ref } from 'vue'
 
 export default {
   name: 'Icons',
   setup() {
+    // 获取 body > svg#svgSpriteStats 标签下的svg图标
     const svgArr = []
-    const noMoreElIcon = ref(false)
-    const iconsSpliceLength = icons.length / 4
-    const showElIcons = reactive(icons.slice(0, iconsSpliceLength))
     const child = document.getElementById('svgSpriteStats').children
     for (const c of child) {
       svgArr.push(c.id.replace('icon-', ''))
     }
 
+    // 获取全局注册的el-icon图标
+    const {
+      appContext: { components: comps },
+    } = getCurrentInstance()
+    const noMoreElIcon = ref(false)
+    const elIcons = Object.keys(comps).filter((k) => k.startsWith('elIcon'))
+    const elIconsSpliceLength = elIcons.length / 4
+    const showElIcons = reactive(elIcons.slice(0, elIconsSpliceLength))
+
     function loadMoreElIcon() {
-      icons.length > 0
-        ? showElIcons.push(...icons.splice(0, iconsSpliceLength))
+      elIcons.length > 0
+        ? showElIcons.push(...elIcons.splice(0, elIconsSpliceLength))
         : (noMoreElIcon.value = true)
     }
 
-    // 优秀的复制内容到剪切板的库👉 https://clipboardjs.com/
-    function copyTag(str) {
-      const el = document.createElement('textarea')
-      const content = `<app-icon  :icon="${str}" />`
-      el.value = content
-      document.body.appendChild(el)
-      el.select()
-      document.execCommand('Copy')
-      el.remove()
-      el.setAttribute('readonly', '') //利用只读属性来防止弹出虚拟键盘
-      ElMessage.success({
-        message: `已复制到剪切板:${content}`,
-        type: 'success',
-        center: true,
-      })
-    }
-
-    return { svgArr, showElIcons, copyTag, loadMoreElIcon, noMoreElIcon }
+    return { svgArr, showElIcons, copyIconTag, loadMoreElIcon, noMoreElIcon }
   },
+}
+
+// 优秀的复制内容到剪切板的库👉 https://clipboardjs.com/
+function copyIconTag(str, toLine /*是否驼峰转中划线*/) {
+  const el = document.createElement('textarea')
+  const content = `<app-icon icon="${
+    toLine ? str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase() : str
+  }" />`
+  el.value = content
+  document.body.appendChild(el)
+  el.select()
+  document.execCommand('Copy')
+  el.remove()
+  el.setAttribute('readonly', '') //利用只读属性来防止弹出虚拟键盘
+  ElMessage.success({
+    message: `已复制到剪切板:${content}`,
+    type: 'success',
+    center: true,
+  })
 }
 </script>
 
@@ -109,18 +132,27 @@ export default {
     width: 12.5%;
     height: 120px;
     text-align: center; /* 用于<i>标签的图标水平居中 */
+    cursor: pointer;
     border-right: 1px solid #eee;
     border-bottom: 1px solid #eee;
     transition: color 0.5s;
 
     &:hover {
       color: var(--primary-color);
+      background-color: #f2f3f4;
     }
 
-    > span {
+    > .svg-icon {
       margin-top: 8px;
       color: #99a9bb;
     }
   }
+}
+
+.load-more-icon {
+  padding-left: 18px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>

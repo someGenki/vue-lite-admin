@@ -26,7 +26,6 @@ export function batchSaveSetting(keys, obj) {
   })
 }
 
-// 从localStorage里那的东西是字符串要手动转
 export function getSetting(key, need, defVal = null) {
   let item = localStorage.getItem(KEY_PREFIX + key)
   if (need === 'int') {

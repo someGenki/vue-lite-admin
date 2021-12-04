@@ -3,12 +3,12 @@
     <slot name="lower">
       <img class="gray" src="/src/assets/dio.jpg" />
     </slot>
-    <div ref="upperImg" class="upper-img">
+    <div ref="upperImg" class="upper-img" :style="{width:init+'%'}">
       <slot name="upper">
         <img src="/src/assets/dio.jpg" />
       </slot>
     </div>
-    <input @input="changeRange" type="range" />
+    <input :value="init" @input="changeRange" type="range" />
   </div>
 </template>
 
@@ -18,6 +18,10 @@ import { ref } from 'vue'
 
 export default {
   name: 'CompareBox',
+  props: {
+    // 初始上层图片宽度占比
+    init: { type:Number,default: 5 },
+  },
   setup() {
     const upperImg = ref(null)
     const changeRange = (e) => {
@@ -47,10 +51,6 @@ export default {
 .image-slider img {
   display: inline-block;
   user-select: none;
-}
-
-.image-slider .gray {
-  filter: blur(30px) opacity(0.6);
 }
 
 .image-slider input[type='range'] {

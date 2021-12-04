@@ -64,7 +64,7 @@ export default {
       svgArr.push(c.id.replace('icon-', ''))
     }
 
-    // 获取全局注册的el-icon图标
+    // 获取已经全局注册的el-icon图标
     const {
       appContext: { components: comps },
     } = getCurrentInstance()
@@ -84,17 +84,22 @@ export default {
 }
 
 // 优秀的复制内容到剪切板的库👉 https://clipboardjs.com/
-function copyIconTag(str, toLine /*是否驼峰转中划线*/) {
-  const el = document.createElement('textarea')
+function copyIconTag(str, toKebab) {
   const content = `<app-icon icon="${
-    toLine ? str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase() : str
+    /* 是否驼峰转中划线 */
+    toKebab ? str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase() : str
   }" />`
-  el.value = content
-  document.body.appendChild(el)
-  el.select()
+
+  const textarea = document.createElement('textarea')
+  textarea.value = content
+  textarea.addEventListener('focusin', (e) => e.stopPropagation())
+  textarea.setAttribute('readonly', '')
+  document.body.appendChild(textarea)
+
+  textarea.select()
   document.execCommand('Copy')
-  el.remove()
-  el.setAttribute('readonly', '') //利用只读属性来防止弹出虚拟键盘
+  textarea.remove()
+
   ElMessage.success({
     message: `已复制到剪切板:${content}`,
     type: 'success',

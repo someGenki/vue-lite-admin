@@ -1,8 +1,10 @@
 <template>
   <div class="file-download-demo">
-    <h1>FileDownload</h1>
+    <app-explain title="文件下载">
+      <p>简单演示3种用法</p>
+    </app-explain>
     <el-alert type="success" title="使用原生的download属性">
-      <a download="dio" href='/src/assets/dio.jpg'>点我</a>
+      <a download="dio" href="/src/assets/dio.jpg">点我</a>
       下载Dio.jpg，适用于静态资源，兼容性一般
     </el-alert>
     <el-alert type="success" title="使用文件流下载,生产模式生效">
@@ -17,6 +19,7 @@
 
 <script>
 import request from '/src/utils/request'
+
 export default {
   name: 'FileDownload',
   setup() {

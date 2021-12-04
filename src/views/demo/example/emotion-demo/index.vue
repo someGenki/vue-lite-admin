@@ -1,7 +1,9 @@
 <template>
+  <app-explain title="图片输入框">
+    <p>在左侧输入框输入标签，右侧实时将微信渲染成img标签 </p>
+  </app-explain>
   <resize-box>
     <template #left>
-      <h2>在左侧输入框输入标签，右侧实时将微信渲染成img标签</h2>
       <el-input
         type="textarea"
         :rows="4"

@@ -53,7 +53,7 @@ export default {
     // 头像下拉菜单项
     const dropdownItems = readonly([
       { title: '个人中心', path: '/profile' },
-      { title: '项目地址', path: 'https://github.com/someGenki' },
+      { title: '项目地址', path: 'https://github.com/someGenki/vue-lite-admin' },
       { title: '不可点击', path: '/', disabled: true },
       {
         title: '退出登录',

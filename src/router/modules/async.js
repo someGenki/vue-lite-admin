@@ -63,7 +63,7 @@ export default [
     path: '/ex-link',
     children: [
       {
-        path: 'https://github.com/someGenki',
+        path: 'https://github.com/someGenki/vue-lite-admin',
         name: 'ex-link-github',
         meta: { title: 'Github' },
       },

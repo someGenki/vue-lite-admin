@@ -8,7 +8,7 @@ import 'element-plus/dist/index.css'
 import ElementPlus from 'element-plus'
 import * as elIcon from '@element-plus/icons'
 
-// 引入自己的样式、JS和组件
+// 引入自己的CSS、JS和Component
 import '/src/styles/common.scss'
 import appIcon from '/src/components/AppIcon/index.vue'
 import appLink from '/src/components/AppLink/index.vue'
@@ -25,7 +25,9 @@ globalRegister(app, elIcon, { prefix: 'elIcon' })
 // \\ // \\  // \\ // \\  // \\ // \\
 
 app.use(router).use(ElementPlus)
+
 app.component('app-icon', appIcon)
 app.component('app-link', appLink)
 app.component('app-explain', appExplain)
+
 app.mount('#app')

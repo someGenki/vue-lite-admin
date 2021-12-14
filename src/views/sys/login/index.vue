@@ -42,7 +42,7 @@
             <el-input
               placeholder="验证码"
               name="code"
-              prefix-icon="el-icon-c-scale-to-original"
+              prefix-icon="el-icon-picture-filled"
               class="login-input"
               style="width: 60%; height: 44px; margin-right: 10px"
               type="text"

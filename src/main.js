@@ -20,7 +20,7 @@ const app = createApp({ render: () => h(RouterView) })
 
 // \\ // \\  // \\ // \\  // \\ // \\
 setupStore(app)
-// 难点：组件全局注册 globalRegister(注册表数组/对象(),是否添加前缀，替换表);
+
 globalRegister(app, elIcon, { prefix: 'elIcon' })
 // \\ // \\  // \\ // \\  // \\ // \\
 

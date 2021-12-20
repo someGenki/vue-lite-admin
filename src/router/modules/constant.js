@@ -63,31 +63,36 @@ export default [
     children: [
       {
         path: 'file-upload',
-        component: () => import('/src/views/demo/example/file-upload/index.vue'),
+        component: () =>
+          import('/src/views/demo/example/file-upload/index.vue'),
         name: 'FileUpload',
         meta: { title: '文件上传', icon: 'el-icon-upload-filled' },
       },
       {
         path: 'file-download',
-        component: () => import('/src/views/demo/example/file-download/index.vue'),
+        component: () =>
+          import('/src/views/demo/example/file-download/index.vue'),
         name: 'FileDownload',
         meta: { title: '文件下载', icon: 'el-icon-download' },
       },
       {
         path: 'emotion-demo',
-        component: () => import('/src/views/demo/example/emotion-demo/index.vue'),
+        component: () =>
+          import('/src/views/demo/example/emotion-demo/index.vue'),
         name: 'EmotionDemo',
         meta: { title: '输入框表情', icon: 'el-icon-box' },
       },
       {
         path: 'compare-demo',
-        component: () => import('/src/views/demo/example/compare-demo/index.vue'),
+        component: () =>
+          import('/src/views/demo/example/compare-demo/index.vue'),
         name: 'CompareDemo',
         meta: { title: '图片对比', icon: 'el-icon-picture-filled' },
       },
       {
         path: 'text-editor',
-        component: () => import('/src/views/sys/error-page/building.vue'),
+        component: () =>
+          import('/src/views/demo/example/text-editor/index.vue'),
         name: 'TextEditor',
         meta: { title: '文本编辑器', icon: 'el-icon-edit' },
       },

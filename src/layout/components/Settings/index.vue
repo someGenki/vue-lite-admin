@@ -36,7 +36,7 @@
             :max="260"
             comp="el-input-number"
             desc="侧边栏宽度"
-            size="mini"
+            size="small"
           />
           <setting-item desc="主题颜色">
             <el-color-picker

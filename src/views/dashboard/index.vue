@@ -6,7 +6,7 @@
         <div style="height: 300px" ref="shop" />
       </el-col>
       <el-col class="quick-nav" :xs="24" :sm="12" :lg="6">
-        <p style="font-size: 18px; font-weight: bolder">快捷导航</p>
+        <p style="margin-top: 0;font-size: 18px; font-weight: bolder;">快捷导航</p>
         <easy-nav :navs="navList" />
       </el-col>
       <el-col style="position: relative" :xs="24" :sm="12" :lg="6">

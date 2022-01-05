@@ -1,5 +1,5 @@
 <template>
-  <el-dropdown size="medium">
+  <el-dropdown>
     <img class="dropdown-avatar" :src="avatar" alt="avatar" />
     <template #dropdown>
       <el-dropdown-menu>

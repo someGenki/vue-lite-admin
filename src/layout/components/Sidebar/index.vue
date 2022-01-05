@@ -20,7 +20,7 @@
     >
       <sidebar-item v-for="item in menus" :key="menus.path" :item="item" />
     </el-menu>
-    <el-button type="primary" size="mini" @click="changeBackground">
+    <el-button type="primary" size="small" @click="changeBackground">
       换背景
     </el-button>
   </aside>

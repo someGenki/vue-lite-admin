@@ -18,6 +18,7 @@
 <script>
 // Using TinyMCE-Vue: https://www.tiny.cloud/docs/integrations/vue
 // language-packages: https://www.tiny.cloud/get-tiny/language-packages/
+// mavon-editor:      https://github.com/hinesboy/mavonEditor
 // TODO 将TinyMCE封装成组件
 import { ref } from 'vue'
 import me from 'mavon-editor'

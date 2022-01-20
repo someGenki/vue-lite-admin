@@ -40,7 +40,6 @@
 
 <script>
 // 卡片话仿支付宝基金收入页面
-// TODO 数字处理
 import { ref } from 'vue'
 
 export default {

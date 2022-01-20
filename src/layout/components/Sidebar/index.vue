@@ -79,7 +79,6 @@ export default {
 }
 </style>
 <style lang="scss" scoped>
-// TODO 添加折叠时，弹出菜单的背景颜色
 .starry-sky {
   background-image: url('https://images.pexels.com/photos/2644734/pexels-photo-2644734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
     linear-gradient(rgb(10, 30, 60) 0%, rgb(80, 120, 150) 100%) !important;

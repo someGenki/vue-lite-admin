@@ -1,12 +1,12 @@
 import { createApp, h } from 'vue'
 import { RouterView } from 'vue-router'
-import { setupStore } from './store'
+import store from './store'
 import router from './router'
 
-// 引入Element Plus
+// 引入Element Plus和Element icons
 import 'element-plus/dist/index.css'
 import ElementPlus from 'element-plus'
-import * as elIcon from '@element-plus/icons'
+import * as ElIcons from '@element-plus/icons'
 
 // 引入自己的CSS、JS和Component
 import '/src/styles/common.scss'
@@ -19,12 +19,10 @@ import { globalRegister } from './utils/compRegister'
 const app = createApp({ render: () => h(RouterView) })
 
 // \\ // \\  // \\ // \\  // \\ // \\
-setupStore(app)
-
-globalRegister(app, elIcon, { prefix: 'elIcon' })
+globalRegister(app, ElIcons, { prefix: 'elIcon' })
 // \\ // \\  // \\ // \\  // \\ // \\
 
-app.use(router).use(ElementPlus)
+app.use(router).use(store).use(ElementPlus)
 
 app.component('app-icon', appIcon)
 app.component('app-link', appLink)

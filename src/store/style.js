@@ -22,7 +22,7 @@ export const useStyleStore = defineStore('style', {
       const styles = document.documentElement.style
       const vars = toRaw(this.$state)
       Object.keys(vars).forEach((item) => {
-        styles.setProperty('--' + item, vars[item])
+        styles.setProperty(`--${item}`, vars[item])
       })
     },
     changePrimaryColor(val) {

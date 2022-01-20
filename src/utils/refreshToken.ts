@@ -1,4 +1,4 @@
-// 请求前根据时间来刷新token的方法 参考用
+// 请求前根据时间来刷新token的方法 [供参考用!]
 class RefreshToken {
   private refreshing: boolean
   private waitingQueue: any[]
@@ -25,13 +25,17 @@ class RefreshToken {
     })
     if (!this.refreshing) {
       this.refreshing = true
-      // 模拟请求刷新Token接口，当接口返回数据时执行then方法 TODO 添加catch捕获异常
-      doRefreshTokenApi().then(() => {
-        console.log('刷新token成功，放行队列中的请求')
-        this.refreshing = false
-        this.waitingQueue.forEach((cb) => cb())
-        this.waitingQueue.length = 0
-      })
+      // 模拟请求刷新Token接口，当接口返回数据时执行then方法
+      doRefreshTokenApi()
+        .then(() => {
+          console.log('刷新token成功，放行队列中的请求')
+          this.refreshing = false
+          this.waitingQueue.forEach((cb) => cb())
+          this.waitingQueue.length = 0
+        })
+        .catch((error) => {
+          console.error(error)
+        })
     }
     return promise
   }

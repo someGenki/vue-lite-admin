@@ -6,17 +6,17 @@ const noRecordViewPath = ['/login']
 export const useLayoutStore = defineStore('layout', {
   state: () => ({
     // 侧边菜单栏展开的默认宽度
-    sUnfoldWidth: getSetting('sUnfoldWidth', 'int', 190),
+    sUnfoldWidth: getSetting('sUnfoldWidth', 190),
     // 是否展开侧边菜单栏
-    unfoldSidebar: getSetting('unfoldSidebar', 'bool', true),
+    unfoldSidebar: getSetting('unfoldSidebar', true),
     // 是否只保持一个子菜单的展开
-    menuAccordion: getSetting('menuAccordion', 'bool', true),
+    menuAccordion: getSetting('menuAccordion', true),
     // 是否固定头部
-    fixedHeader: getSetting('fixedHeader', 'bool', false),
+    fixedHeader: getSetting('fixedHeader', false),
     // 是否显示标签栏
-    showTabBar: getSetting('showTabBar', 'bool', true),
+    showTabBar: getSetting('showTabBar', true),
     // 是否显示侧边菜单栏中的Logo
-    showLogo: getSetting('showLogo', 'bool', true),
+    showLogo: getSetting('showLogo', true),
 
     // 控制设置面板的显示隐藏
     showSettings: false,
@@ -24,6 +24,8 @@ export const useLayoutStore = defineStore('layout', {
     sCollapseWidth: 64,
     // 是否为移动端（小屏）
     isMobile: document.body.clientWidth < 768,
+
+    // 路由记录相关属性
     breadcrumbList: [],
     visitedViews: [],
     cachedViews: [],
@@ -44,18 +46,24 @@ export const useLayoutStore = defineStore('layout', {
     mainPaddingLeft(state) {
       return state.isMobile ? 0 : this.sidebarWidth
     },
-    // getters 结束分割线
+    // ==getters 结束分割线==
   },
   actions: {
     // 侧边栏切换
     toggleSidebar(bool) {
-      if (bool !== undefined) this.unfoldSidebar = bool
-      else this.unfoldSidebar = !this.unfoldSidebar
+      if (bool !== undefined) {
+        this.unfoldSidebar = bool
+      } else {
+        this.unfoldSidebar = !this.unfoldSidebar
+      }
     },
     // 设置面板切换
     toggleSettings(bool) {
-      if (bool !== undefined) this.showSettings = bool
-      else this.showSettings = !this.showSettings
+      if (bool !== undefined) {
+        this.showSettings = bool
+      } else {
+        this.showSettings = !this.showSettings
+      }
     },
     // 注册于src/layout/index.vue 监听页面resize
     checkIsMobile() {
@@ -80,7 +88,7 @@ export const useLayoutStore = defineStore('layout', {
         view.meta.title &&
         !this.visitedViews.some((v) => v.path === view.path) &&
         !noRecordViewPath.some((v) => view.path.includes(v))
-      )
+      ) {
         this.visitedViews.push({
           name: view.name,
           path: view.path,
@@ -88,22 +96,26 @@ export const useLayoutStore = defineStore('layout', {
           title: view.meta.title,
           fullPath: view.fullPath,
         })
+      }
     },
     // 根据条件缓存访问过的页面
     cachedVisitedView(view) {
       //  未设置不缓存 且 还没被缓存过 才缓存起来
       if (
-        view.name &&
         !view.meta.noCache &&
+        view.name &&
         !this.cachedViews.includes(view.name)
-      )
+      ) {
         this.cachedViews.push(view.name)
+      }
     },
     // 移除被缓存的页面
     removeCachedView(route) {
       const index = this.cachedViews.indexOf(route.name)
-      index > -1 && this.cachedViews.splice(index, 1)
+      if (index > -1) {
+        this.cachedViews.splice(index, 1)
+      }
     },
-    // ====actions 结束分割线
+    // ==actions 结束分割线==
   },
 })

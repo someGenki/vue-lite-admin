@@ -1,5 +1,5 @@
 <template>
-  <i v-bind="$attrs" class="svg-icon">
+  <i v-bind="$attrs" style="display: inline-flex">
     <el-icon v-if="iconType === 'ElIcon'" v-bind="iconProp">
       <component :is="iconName" />
     </el-icon>
@@ -52,14 +52,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.svg-icon {
-  display: inline-flex;
-}
-
-/* 解决element-plus<V^1.2.0-beta.4~V^1.2.0-beta.6>组件库中<el-icon>的样式更新导致size属性失效 */
-.el-icon {
-  font-size: var(--font-size);
-}
-</style>

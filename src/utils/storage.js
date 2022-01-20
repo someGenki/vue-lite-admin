@@ -17,23 +17,21 @@ export function removeToken() {
 }
 
 export function saveSetting(key, val) {
-  localStorage.setItem(KEY_PREFIX + key, val)
+  if (val === undefined) {
+    console.warn('dont use undefined as value!')
+  }
+  localStorage.setItem(KEY_PREFIX + key, JSON.stringify(val))
 }
 
 export function batchSaveSetting(keys, obj) {
-  keys.forEach((key) => {
-    saveSetting(key, obj[key])
-  })
+  keys.forEach((key) => saveSetting(key, obj[key]))
 }
 
-export function getSetting(key, need, defVal = null) {
+export function getSetting(key, defVal = undefined) {
   let item = localStorage.getItem(KEY_PREFIX + key)
-  if (need === 'int') {
-    item = Number.parseInt(item)
-    return Number.isInteger(item) ? item : defVal
-  } else if (need === 'bool') {
-    item = JSON.parse(item)
-    return item === true || item === false ? item : defVal
+  if (item === undefined || item === 'undefined') {
+    return defVal
+  } else {
+    return JSON.parse(item)
   }
-  return item
 }

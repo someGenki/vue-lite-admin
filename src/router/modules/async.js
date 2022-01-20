@@ -14,7 +14,7 @@ import nestedRouter from './nested'
  *    但是还没有这还没被加进去，会出现 [Vue Router warn]: No match found for location with path "/test/test1"
  *  https://blog.csdn.net/weixin_43835425/article/details/116708448
  */
-export default [
+export const asyncRoutes = [
   {
     path: '/test',
     redirect: '/test/test1',

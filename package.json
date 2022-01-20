@@ -1,6 +1,6 @@
 {
   "name": "vue-lite-admin",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": true,
   "author": "禾几元",
   "scripts": {
@@ -12,30 +12,30 @@
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
-    "@vueuse/core": "^7.5.1",
-    "axios": "^0.24.0",
+    "@vueuse/core": "^7.5.3",
+    "axios": "^0.25.0",
     "echarts": "^5.2.2",
-    "element-plus": "^1.3.0-beta.1",
+    "element-plus": "^1.3.0-beta.5",
     "js-cookie": "^3.0.1",
     "mavon-editor": "3.0.0-beta",
     "mockjs": "^1.1.0",
     "pinia": "^2.0.9",
-    "vue": "^3.2.22",
+    "vue": "^3.2.27",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.1",
     "@vitejs/plugin-vue-jsx": "^1.3.3",
-    "@vue/compiler-sfc": "^3.2.26",
+    "@vue/compiler-sfc": "^3.2.27",
     "postcss-html": "^1.3.0",
     "prettier": "^2.5.1",
-    "sass": "^1.45.2",
+    "sass": "^1.49.0",
     "stylelint": "^14.2.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-recommended-scss": "^5.0.2",
     "stylelint-config-recommended-vue": "^1.1.0",
-    "vite": "^2.7.10",
+    "vite": "^2.7.13",
     "vite-plugin-mock": "^2.9.6"
   },
   "engines": {

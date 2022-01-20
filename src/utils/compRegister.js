@@ -11,7 +11,7 @@ export function globalRegister(app, comps, opts) {
   const compsArr = Array.isArray(comps) ? comps : Object.values(comps)
   compsArr.forEach((comp) => {
     if (opts && opts.prefix) {
-      // TODO 前缀格式校验
+      // 前缀格式校验here
       // 如果有replace属性，则根据该属性来覆盖默认传进来的组件名
       const map = opts.replace
       if (map && map.size > 0 && map.has(comp.name)) {

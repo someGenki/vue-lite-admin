@@ -1,74 +1,69 @@
-export function debounce(fn, wait = 100) {
+const isObject = (obj) => (obj !== null && typeof obj === 'object')
+
+export function debounce(fn, delay = 1000) {
   let timer = null
-  return (...args) => {
-    timer && clearTimeout(timer)
-    timer = setTimeout(() => fn(...args), wait)
+  return function (...args) {
+    if (timer) clearTimeout(timer)
+    timer = setTimeout(() => {
+      fn.apply(this, args)
+      timer = null
+    }, delay)
   }
 }
 
 export function throttle(fn, delay = 200) {
   let last = null
   let timer = null
-  return (args) => {
+  return function (...args) {
     let now = Date.now()
     // 在时间间隔内，不触发，而且是取消定时器。当函数出发后要记录触发时间
     if (last && now < last + delay) {
       clearTimeout(timer)
       timer = setTimeout(() => {
-        fn.call(this, args)
+        fn.apply(this, args)
         last = now
       }, delay)
     } else {
-      fn.call(this, args)
+      fn.apply(this, args)
       last = now
     }
   }
 }
 
-/**
- * 合并树型对象的数组 （合并两棵树）
- * @example
- *   let result = recursionMerge( duplicateArray,
- *    (v1, v2) => v1.mid === v2.mid,  //对象之间的比较方法
- *    (c, p) => c.pid === p.mid )    //父子关系的判断方法
- *
- * @param { Array } objArr  需要合并的树型对象的数组
- * @param { Function } equalFn 对象的比较方法
- * @param { Function } isChildrenFn 对象间父子关系的判断
- * @returns { Object } 对象的key为层级,value为该层级的所有不重复节点（带子节点）。从'1'层开始
- **/
-export function recursionMerge(objArr, equalFn, isChildrenFn) {
-  const levelArrayObj = {}
+export function deepClone(target, map = new WeakMap()) {
+  if (!(target && typeof target === 'object'))
+    return target  // 非对象直接返回值
+  if (map.get(target))
+    return target  // 解决循环引用
+  if ([Date, RegExp, Set, Map].includes(target.constructor))
+    return (new target.constructor(target)) // 特殊类型克隆
 
-  // 分层，层级遍历
-  function recursion(arr, level) {
-    arr.forEach((v) => {
-      if (!Array.isArray(levelArrayObj[level]))
-        // 对obj.层级进行初始化（如果未初始化的话
-        levelArrayObj[level] = []
-      if (!levelArrayObj[level].some((value) => equalFn(value, v))) {
-        levelArrayObj[level].push(v) // 每层里面的节点保证唯一（根据传进来的比较方法作为回调函数来比较）
-      }
-      if (Array.isArray(v.children))
-        // 有子数组再去递归找下一层
-        recursion(v.children, level + 1)
-      v.children = [] // 如果这里删除原有的children，那下面的挂载操作就不用判断有没有在children出现过
-    })
+  const cloneTarget = Object.create(Object.getPrototypeOf(target)) // 继承原型
+  map.set(cloneTarget, true)
+  // Object.keys() 返回可枚举的属性,Reflect.ownKeys是所有的
+  Reflect.ownKeys(target).forEach(key => cloneTarget[key] = deepClone(target[key], map))
+
+  return cloneTarget;
+}
+
+
+export function deepEqual(o1, o2) {
+  // 类型不全为Object则直接使用 === 比较
+  if (!isObject(o1) || !isObject(o2)) return o1 === o2
+  // 地址值一样则是同一个对象
+  if (o1 === o2) return true
+  // 获取对象的keys
+  const keys1 = Object.keys(o1);
+  const keys2 = Object.keys(o2);
+  // keys长度不一致 提前返回 false
+  if (keys1.length !== keys2.length) return false;
+  // 递归比较2个 object 的key值
+  return keys1.every((k1, idx) => deepEqual(o1[k1], o2[keys2[idx]]))
+}
+
+// ==TEST==
+const obj1 = {
+  name: 'jojo', age: 18, addr: {
+    cite: 'London'
   }
-
-  recursion(objArr, 1)
-
-  // 子菜单挂载到父菜单上
-  for (let level in levelArrayObj) {
-    if (level === '1') continue // 第一层为父级菜单，固跳过从子菜单开始
-    levelArrayObj[level].forEach((c) => {
-      // 遍历所有level层的节点，去找对应的父节点
-      levelArrayObj[level - 1].forEach((p) => {
-        //遍历父节点 p.mid=m.pid证明找到爹了，然后还要判断没有再children中
-        if (isChildrenFn(c, p)) p.children.push(c)
-      })
-    })
-  }
-
-  return levelArrayObj
 }

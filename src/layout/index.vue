@@ -28,7 +28,7 @@ import { throttle } from '/src/utils/util'
 import { useStyleStore } from '/src/store/style'
 import { useLayoutStore } from '/src/store/layout'
 import { batchSaveSetting } from '/src/utils/storage'
-import { AppMain, NavBar, Settings, Sidebar, TabBar } from './components' // ide暂时无法识别使用情况，导致呈现灰色
+import { AppMain, NavBar, Settings, Sidebar, TabBar } from './components'
 
 const styleStore = useStyleStore()
 const layoutStore = useLayoutStore()

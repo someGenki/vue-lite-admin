@@ -1,27 +1,12 @@
-import { LAYOUT } from '../CONSTANT'
+import { LAYOUT, createLayoutWrapper } from '../CONSTANT'
 import { basicRoutes } from './basic'
-
-// 用于快速创建单层路由
-function dynamicLayoutWrapper(e) {
-  // TODO 改成正则表达式提取并添加错误判断提示用户
-  let path = '/' + /\/(.*)\//.exec(e.defaultPath)[1]
-  let children = Array.isArray(e.children) ? e.children : [].concat(e.children)
-  return {
-    path,
-    meta: e.meta,
-    hidden: e.hidden,
-    redirect: e.defaultPath,
-    component: LAYOUT,
-    children,
-  }
-}
 
 /**
  * 通用路由表，不需要动态获取的默认路由
  * 所有被展示到sidebar的路由都要有唯一的name属性
  * 当页面的name和组件的name重复时，会引发栈溢出ERROR
  */
-export default [
+export const constRoutes = [
   ...basicRoutes,
   {
     path: '/',
@@ -36,8 +21,7 @@ export default [
       },
     ],
   },
-  dynamicLayoutWrapper({
-    defaultPath: '/icons/index',
+  createLayoutWrapper('/icons', {
     children: {
       path: 'index',
       name: 'Icons',
@@ -45,8 +29,7 @@ export default [
       meta: { title: '图标展示', icon: 'el-icon-shopping-cart-full' },
     },
   }),
-  dynamicLayoutWrapper({
-    defaultPath: '/profile/index',
+  createLayoutWrapper('/profile', {
     children: {
       path: 'index',
       name: 'Profile',

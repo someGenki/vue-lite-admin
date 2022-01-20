@@ -1,6 +1,4 @@
-const fs = require('fs')
-
-const { readdirSync } = fs
+const { readdirSync } = require('fs')
 
 export function getFilesWithFullPath(dir, fileType = 'js', exclude = []) {
   function recursive(dir) {
@@ -10,13 +8,12 @@ export function getFilesWithFullPath(dir, fileType = 'js', exclude = []) {
       // 是目录则递归遍历目录
       if (dirent.isDirectory()) {
         res.push(...recursive(dir + dirent.name + '/'))
-      } else {
+      } else if (
+        dirent.name.endsWith(fileType) &&
+        exclude.some((value) => dirent.name.indexOf(value) > -1)
+      ) {
         // 排除指定文件,先排除不满足的文件后缀，再根据 exclude 数组排除
-        if (dirent.name.endsWith(fileType)) {
-          if (exclude.some((value) => dirent.name.indexOf(value) > -1)) continue
-        } else {
-          continue
-        }
+      } else {
         res.push(dir + '/' + dirent.name)
       }
     }
@@ -26,5 +23,5 @@ export function getFilesWithFullPath(dir, fileType = 'js', exclude = []) {
   return recursive(dir)
 }
 
-// test
+// ==TEST==
 //console.log(getFiles(process.cwd() + '/', 'js', ['_utils', 'test']))

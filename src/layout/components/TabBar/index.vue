@@ -30,7 +30,7 @@
       </span>
     </el-scrollbar>
     <span class="tabBar-refresh" @click="refreshPage" title="refresh">
-     <app-icon icon="el-icon-refresh" />
+      <app-icon icon="el-icon-refresh" />
     </span>
     <teleport to="body">
       <ul
@@ -74,7 +74,8 @@ import { usePageFn } from '/src/hooks/usePageFn'
 import useTabBar from './useTabBar'
 
 // TODO 封装context menu
-// 可参考 https://codepen.io/havardob/pen/YzwzQgm
+// 可参考 https://codepen.io/havardob/pen/YzwzQgm https://github.com/heynext/v-contextmenu
+// https://github.com/imengyu/vue3-context-menu  https://github.com/Hunlongyu/vue3-contextmenu  https://github.com/chiic/vue-contextmenu
 export default {
   name: 'TabBar',
   setup() {

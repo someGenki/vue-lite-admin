@@ -19,16 +19,17 @@ export const useUserStore = defineStore('user', {
     addRoutes: [],
   }),
   getters: {
+    // 根据roles是否不为空判断是否有用户信息
     hasUserInfo: (state) => state.roles && state.roles.length > 0,
   },
   actions: {
     async login({ username, password }) {
       const res = await _login({ username, password })
+      setToken(res.data.token)
       this.token = res.data.token
       this.roles.push(...res.data.roles)
       this.name = res.data.name || 'Yuan'
       this.addRoutes = this.generateRoutes()
-      setToken(res.data.token)
     },
 
     async getUserInfo() {
@@ -59,10 +60,11 @@ function filterAsyncRoutes(routes, roles) {
   const res = []
 
   routes.forEach((route) => {
-    // 防止对象被修改
-    const tmp = { ...route }
+    const tmp = { ...route } // 防止对象被修改
     if (hasPermission(roles, tmp)) {
-      if (tmp.children) tmp.children = filterAsyncRoutes(tmp.children, roles)
+      if (tmp.children) {
+        tmp.children = filterAsyncRoutes(tmp.children, roles)
+      }
       res.push(tmp)
     }
   })
@@ -70,6 +72,7 @@ function filterAsyncRoutes(routes, roles) {
   return res
 }
 
+// 比较当前roles和路由需要的role是否有交集
 function hasPermission(roles, route) {
   return route.meta && route.meta.roles
     ? roles.some((role) => route.meta.roles.includes(role))

@@ -10,9 +10,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest    # 指定虚拟机版本
     steps: # ★ 指定该任务有哪些步骤
-      - uses: actions/checkout@v2  # 1. 获取项目源码
+      - uses: actions/checkout@v2         # 1. 获取项目源码
 
-      - uses: actions/setup-node@v2.5.1 # 2. 设置 node.js 环境
+      - uses: actions/setup-node@v2.5.1   # 2. 设置 node.js 环境
         with:
           node-version: 16.x
 
@@ -28,10 +28,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - run: yarn install && npx vite build --base=/admin/   # 3. 安装依赖并打包构建
+      - run: yarn install && npx vite build --base=/admin/    # 3. 安装依赖并打包构建
 
-      - name: Deploy to Server (ALI SAS) 🚀 # 4. 部署到阿里轻量级服务器上
-        uses: easingthemes/ssh-deploy@v2.2.11 # 4. 使用别人写好的action https://github.com/easingthemes/ssh-deploy
+      - name: Deploy to Server (ALI SAS) 🚀        # 4. 部署到阿里轻量级服务器上
+        uses: easingthemes/ssh-deploy@v2.2.11     # 4. 使用别人写好的action https://github.com/easingthemes/ssh-deploy
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           REMOTE_USER: root
@@ -39,7 +39,9 @@ jobs:
           SOURCE: ./dist/
           TARGET: /www/html/admin/
 
-      - name: Deploy to Github page 🚀 # 5. 部署到github pages上
+      - run:  npx vite build --base=/vue-lite-admin/  # 5. 重新构建一份打包文件 指定base为 <project name>
+
+      - name: Deploy to Github page 🚀                 # 6. 部署到github pages上
         uses: JamesIves/github-pages-deploy-action@v4.2.3
         with:
           branch: gh-pages

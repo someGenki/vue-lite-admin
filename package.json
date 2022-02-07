@@ -3,7 +3,7 @@
   "version": "0.2.4",
   "private": true,
   "author": "禾几元",
-  "homepage": "https://somegenki.github.io/admin",
+  "homepage": "https://somegenki.github.io/vue-lite-admin",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

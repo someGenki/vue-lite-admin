@@ -25,7 +25,7 @@ export default ({ command }) => {
     },
 
     build: {
-      brotliSize: false, // 禁用 brotli 压缩大小报告,以提高大型项目的构建性能。
+      reportCompressedSize: false, // 禁用 压缩大小报告,以提高大型项目的构建性能。
     },
 
     plugins: [

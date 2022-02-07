@@ -1,0 +1,34 @@
+# 参考 https://docs.github.com/cn/get-started
+# 建立一个名为 CI 的工作流(非必要属性，默认值为文件名)  “在什么事件触发时，在哪个环境下，做哪些任务”
+name: ci
+# 监听Github仓库 main 分支上的push事件
+on:
+  push:
+    branches: [ main ]
+# 定义要做哪些任务 ★
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest    # 指定虚拟机版本
+    steps:
+      - uses: actions/checkout@v2  # 1. 获取项目源码
+
+      - uses: actions/setup-node@v2.5.1 # 2. 设置 node.js 环境
+        with:
+          node-version: 16.x
+
+      - run: yarn install && npx vite build --base=/admin/   # 3. 安装依赖并打包构建
+
+      - name: Deploy to Server (ALI SAS) # 4. 部署到阿里轻量级服务器上
+        uses: easingthemes/ssh-deploy@v2.2.11 # 4. 使用别人写好的action https://github.com/easingthemes/ssh-deploy
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          REMOTE_USER: root
+          REMOTE_HOST: 47.100.95.40
+          SOURCE: ./dist/
+          TARGET: /www/html/admin/
+      # 如果不使用 easingthemes/ssh-deploy ，可以自己实现，思路如下？(客户端发送文件到服务端)
+      # 1. 服务端生成密钥对(id_rsa & id_rsa.pub)，shell中输入：
+      #        ssh-keygen -m PEM -t rsa -b 4096  # -m PEM指定密钥格式为PEM
+      # 2. 在服务端中将 id_rsa.pub 文件追加到 authorized_keys 文件中
+      # 3. 将私钥文件 id_rsa 复制到客户端上，并修改该文件的权限为0600，降低权限，避免报错
+      # 4. 在使用 scp 命令传输文件(客户端->服务端)时 使用 -i 参数，指定刚刚复制下来的私钥文件的文件名作为参数即可传输

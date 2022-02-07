@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="github-star">
-      <i class="el-icon-star-off" />
+      <app-icon icon="el-icon-star" color="#ffffff" />
       <span>{{ star }}</span>
     </div>
     <div class="github-cat">
@@ -22,11 +22,11 @@
 
 <script>
 import cat from './githubCat.svg'
-// 猫猫图标来自Github/profile页面 若有侵权 马上删除
+// 猫猫图标来自Github/profile页面...
 export default {
   name: 'GithubState',
   data() {
-    return { star: 44, cat }
+    return { star: 47, cat }
   },
 }
 </script>

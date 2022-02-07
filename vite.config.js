@@ -15,7 +15,7 @@ const __APP_INFO__ = {
 // 官方文档 https://cn.vitejs.dev/config/
 export default ({ command }) => {
   return {
-    base: '/vite/',
+    base: '/admin/', // 可被命令行参数 --base=/xxx/ 覆盖
 
     server: {
       port: 8008,

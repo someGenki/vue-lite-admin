@@ -21,7 +21,8 @@ export const constRoutes = [
       },
     ],
   },
-  createLayoutWrapper('/icons', {
+  createLayoutWrapper({
+    path: '/icons',
     children: {
       path: 'index',
       name: 'Icons',
@@ -29,7 +30,8 @@ export const constRoutes = [
       meta: { title: '图标展示', icon: 'el-icon-shopping-cart-full' },
     },
   }),
-  createLayoutWrapper('/profile', {
+  createLayoutWrapper({
+    path: '/profile',
     children: {
       path: 'index',
       name: 'Profile',

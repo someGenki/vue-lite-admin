@@ -1,4 +1,5 @@
 import path from 'path'
+import dayjs from 'dayjs';
 import pkg from './package.json'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -9,7 +10,7 @@ const { dependencies, devDependencies, name, version } = pkg
 
 const __APP_INFO__ = {
   pkg: { dependencies, devDependencies, name, version },
-  lastBuildTime: new Date().toLocaleString(),
+  lastBuildTime: dayjs().format()
 }
 
 // 官方文档 https://cn.vitejs.dev/config/

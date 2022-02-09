@@ -1,8 +1,9 @@
 <template>
-  <component :is="type" v-bind="linkProps">
+  <component v-if="type" :is="type" v-bind="linkProps">
     <span v-if="sharp" class="app-link__sharp">#</span>
     <slot />
   </component>
+  <slot v-else />
 </template>
 
 <script>
@@ -19,16 +20,19 @@ export default {
   name: 'AppLink',
   props: {
     // 跳转路径
-    to: { type: String, required: true },
+    to: { type: String },
     // 是否显示 `#` 符号
     sharp: { type: Boolean, default: false },
   },
   setup(props) {
-    let type = isExternal(props.to) ? 'a' : 'router-link'
+    const { to } = props
+    const type = to ? (isExternal(to) ? 'a' : 'router-link') : null
     if (type === 'a') {
-      return { type, linkProps: { href: props.to, target: '_blank' } }
+      return { type, linkProps: { href: to, target: '_blank' } }
+    } else if (type === 'router-link') {
+      return { type, linkProps: { to } }
     } else {
-      return { linkProps: { to: props.to }, type }
+      return { type, linkProps: {} }
     }
   },
 }
@@ -46,5 +50,9 @@ function isExternal(path) {
 
 .app-link__sharp:hover {
   border-bottom: 2px solid var(--primary-color);
+}
+
+.app-link--disabled {
+  pointer-events: none;
 }
 </style>

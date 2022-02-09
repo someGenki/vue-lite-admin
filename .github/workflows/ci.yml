@@ -31,7 +31,7 @@ jobs:
       - run: yarn install && npx vite build --base=/admin/    # 3. 安装依赖并打包构建
 
       - name: Deploy to Server (ALI SAS) 🚀        # 4. 部署到阿里轻量级服务器上
-        uses: easingthemes/ssh-deploy@v2.2.11     # 4. 使用别人写好的action https://github.com/easingthemes/ssh-deploy
+        uses: easingthemes/ssh-deploy@v2.2.11     # https://github.com/easingthemes/ssh-deploy
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           REMOTE_USER: root
@@ -39,12 +39,12 @@ jobs:
           SOURCE: ./dist/
           TARGET: /www/html/admin/
 
-      - run:  npx vite build --base=/vue-lite-admin/  # 5. 重新构建一份打包文件 指定base为 <project name>
-
-      - name: Deploy to Github page 🚀                 # 6. 部署到github pages上
-        uses: JamesIves/github-pages-deploy-action@v4.2.3
-        with:
-          branch: gh-pages
-          folder: dist
-          single-commit: true
+#      - run:  npx vite build --base=/vue-lite-admin/  # 5. 重新构建一份打包文件 指定base为 <project name>
+#
+#      - name: Deploy to Github page 🚀                 # 6. 部署到github pages上
+#        uses: JamesIves/github-pages-deploy-action@v4.2.3
+#        with:
+#          branch: gh-pages
+#          folder: dist
+#          single-commit: true
 

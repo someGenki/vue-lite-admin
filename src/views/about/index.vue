@@ -38,7 +38,6 @@ export default {
   name: 'about',
   setup() {
     // 定义在vite.config.js中的全局常量，在启动/打包时生成
-    // TODO 修改构建时间格式本地化
     const { pkg, lastBuildTime } = __APP_INFO__
     return { pkg, lastBuildTime }
   },

@@ -15,7 +15,7 @@
           <h1 style="margin-left: 4px; text-align: left">登录</h1>
           <p>这在个地方说点什么东西吧</p>
 
-          <el-form-item required size="small" prop="username">
+          <el-form-item required prop="username">
             <el-input
               required
               name="username"
@@ -50,7 +50,7 @@
             />
             <img
               style="width: 120px; height: 42px"
-              src="http://www.webxml.com.cn/WebServices/ValidateCodeWebService.asmx/cnValidateImage?byString=aaaa"
+              src="http://www.webxml.com.cn/WebServices/ValidateCodeWebService.asmx/cnValidateImage?byString=4396"
               alt="验证码"
             />
           </el-form-item>
@@ -96,7 +96,7 @@ export default {
     const loginFormData = reactive({
       username: 'admin',
       password: '123456',
-      code: 'aaaa',
+      code: '4396',
     })
 
     // 随机获取一款渐变背景色

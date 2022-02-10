@@ -7,14 +7,14 @@
       v-if="isMobile && unfoldSidebar"
       @click.self.stop="toggleSidebar(false)"
     />
-    <!-- ↑ 移动端模式展开侧边栏出现的遮罩层 ↑  -->
+    <!-- ↑ 移动端模式下展开侧边栏所出现的遮罩层 ↑  -->
     <div class="main-container">
       <header :class="{ 'fixed-header': fixedHeader }">
         <nav-bar />
         <tab-bar v-if="showTabBar" />
       </header>
       <app-main />
-      <!-- ↑ 内容主题展示区域 ↑  -->
+      <!-- ↑ 内容主体展示区域 ↑  -->
     </div>
     <settings />
     <!-- ↑ 默认隐藏在右边的设置面板 ↑  -->
@@ -32,7 +32,6 @@ import { AppMain, NavBar, Settings, Sidebar, TabBar } from './components'
 
 const styleStore = useStyleStore()
 const layoutStore = useLayoutStore()
-
 const {
   isMobile,
   showTabBar,

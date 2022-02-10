@@ -26,7 +26,7 @@
   </aside>
 </template>
 
-<script>
+<script setup>
 import { ref, toRefs } from 'vue'
 import SidebarLogo from './SidebarLogo.vue'
 import SidebarItem from './SidebarItem.vue'
@@ -38,33 +38,18 @@ import { createMenuFromAddRoutes } from './useMenu'
 /**
  * 根据权限以及路由表动态生成侧边菜单栏 以及配置菜单栏相关样式
  */
-export default {
-  name: 'Sidebar',
-  components: { SidebarLogo, SidebarItem },
-  setup() {
-    const { elMenuStyle } = toRefs(useStyleStore())
-    const menus = createMenuFromAddRoutes(useUserStore().addRoutes)
-    const { showLogo, unfoldSidebar, sidebarWidth, menuAccordion } = toRefs(
-      useLayoutStore()
-    )
 
-    const changeFlag = ref(false)
+const { elMenuStyle } = toRefs(useStyleStore())
 
-    function changeBackground() {
-      changeFlag.value = !changeFlag.value
-    }
+const menus = createMenuFromAddRoutes(useUserStore().addRoutes)
 
-    return {
-      menus,
-      changeFlag,
-      showLogo,
-      elMenuStyle,
-      sidebarWidth,
-      unfoldSidebar,
-      menuAccordion,
-      changeBackground,
-    }
-  },
+const { showLogo, unfoldSidebar, sidebarWidth, menuAccordion } =
+  /* wrap */ toRefs(useLayoutStore())
+
+const changeFlag = ref(false)
+
+function changeBackground() {
+  changeFlag.value = !changeFlag.value
 }
 </script>
 

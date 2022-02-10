@@ -95,6 +95,7 @@ export const useLayoutStore = defineStore('layout', {
           query: view.query,
           title: view.meta.title,
           fullPath: view.fullPath,
+          timeStamp: Date.now(),
         })
       }
     },

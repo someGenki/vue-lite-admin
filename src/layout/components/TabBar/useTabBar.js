@@ -12,36 +12,36 @@ export default function useTabBar() {
    */
   function delTabBarItem(tabItem, operate = 'self') {
     const arr = visitedViews.value
-    let rest = null // 记录被 关闭/移除 的路由标签
-    for (const [i, v] of arr.entries()) {
-      if (v.path === tabItem.path) {
+    for (let i = 0, len = arr.length; i < len; i++) {
+      const item = arr[i]
+      if (item.timeStamp === tabItem.timeStamp) {
         switch (operate) {
           case 'self':
-            rest = arr.splice(i, 1)
+            arr.splice(i, 1)
+            // 删除tab item是当前路由时，尝试跳转到附近的tab item
+            if (router.currentRoute.value.fullPath === item.fullPath) {
+              const nearTab = arr[i - 1] || arr[i]
+              nearTab ? router.push(nearTab.fullPath) : router.push('/')
+            }
             break
           case 'all':
-            rest = arr.splice(0, arr.length)
+            arr.splice(0, len)
+            router.push('/')
             break
           case 'left':
-            rest = arr.splice(0, i)
+            arr.splice(0, i)
             break
           case 'other':
-            rest = arr.splice(0, arr.length, v)
+            arr.splice(0, arr.length, item)
             break
           case 'right':
-            rest = arr.splice(i + 1, arr.length)
+            arr.splice(i + 1, len)
             break
           default:
-            rest = arr.splice(i, 1) //  // 默认 'self' 只删除自身
+            break
         }
         break
       }
-    }
-    // 如果当前的路由被关闭了，应该跳转到最后一页或者首页
-    if (rest && rest.some((e) => e.name === router.currentRoute.value.name)) {
-      // 尝试获取被删的除view之外最新访问的view，如果它存在则跳转到这个页面，否则跳转到首页（默认）
-      const latestView = visitedViews.value.slice(-1)[0]
-      latestView ? router.push(latestView.fullPath) : router.push('/')
     }
   }
 

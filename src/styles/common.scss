@@ -58,8 +58,8 @@ body {
 // 自定义滚动条介绍 https://www.cnblogs.com/ranyonsue/p/9487599.html
 ::-webkit-scrollbar {
   z-index: 0;
-  width: 8px;
-  height: 8px;
+  width: $scrollbar-width;
+  height: $scrollbar-width;
 }
 
 ::-webkit-scrollbar-thumb {

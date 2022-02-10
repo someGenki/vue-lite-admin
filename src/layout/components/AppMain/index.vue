@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 /**
  * 被缓存页面的name属性要和routes中的name属性一致
  * https://panjiachen.gitee.io/vue-element-admin-site/zh/guide/essentials/tags-view.html
@@ -24,12 +24,7 @@
 import { toRef } from 'vue'
 import { useLayoutStore } from '/src/store/layout'
 
-export default {
-  name: 'AppMain',
-  setup() {
-    return { cachedViewNames: toRef(useLayoutStore(), 'cachedViews') }
-  },
-}
+const cachedViewNames = toRef(useLayoutStore(), 'cachedViews')
 </script>
 
 <style lang="scss" scoped>

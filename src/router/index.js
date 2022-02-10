@@ -19,7 +19,7 @@ const router = createRouter({
 })
 
 /**
- * 前置路由首位钩子
+ * 前置路由守卫钩子
  * 官网文档：https://next.router.vuejs.org/zh/guide/advanced/navigation-guards.html
  * 主要参考：https://juejin.cn/post/6844903478880370701
  * 参数类型:RouteLocationNormalized对象：https://next.router.vuejs.org/zh/api/#routelocationnormalized

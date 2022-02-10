@@ -58,8 +58,9 @@
           <el-button
             @click.prevent="handleLogin"
             :loading="btnLoading"
-            style="width: 100%"
+            class="login-btn"
             type="primary"
+            size="large"
             >登录
           </el-button>
         </el-form>
@@ -223,6 +224,12 @@ $input-height: 44px;
   }
 }
 
+.login-btn{
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing:16px;
+}
 :deep(.form-captcha .el-form-item__content) {
   display: flex;
   justify-content: space-between;

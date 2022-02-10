@@ -5,7 +5,7 @@
     <div class="right-menu-area">
       <app-icon class="right-menu-action" icon="el-icon-search" />
       <app-icon
-        @click="toggleFull"
+        @click="fullScreen"
         class="right-menu-action"
         icon="el-icon-full-screen"
       />
@@ -34,7 +34,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { readonly, toRefs } from 'vue'
 import AvatarMenu from './AvatarMenu.vue'
 import Breadcrumb from './Breadcrumb.vue'
@@ -42,49 +42,35 @@ import Hamburger from './Hamburger.vue'
 import DioAvatar from '/src/assets/dio.jpg'
 import { removeToken } from '/src/utils/storage'
 import { useLayoutStore } from '/src/store/layout'
+import { usePageFn } from '/src/hooks/usePageFn'
 
-export default {
-  name: 'Navbar',
-  components: { AvatarMenu, Breadcrumb, Hamburger },
-  setup() {
-    const store = useLayoutStore()
-    const { unfoldSidebar, breadcrumbList, toggleSidebar, toggleSettings } =
-      toRefs(store)
-    // 头像下拉菜单项
-    const dropdownItems = readonly([
-      { title: '个人中心', path: '/profile' },
-      { title: '项目地址', path: 'https://github.com/someGenki/vue-lite-admin' },
-      { title: '不可点击', path: '/', disabled: true },
-      {
-        title: '退出登录',
-        divided: true,
-        handle: () => {
-          alert('您选择了登出')
-          removeToken()
-          location.reload()
-        },
-      },
-    ])
+const { fullScreen } = usePageFn()
 
-    // 全屏功能(兼容性未测试): https://www.cnblogs.com/heihei-haha/p/14638325.html
-    function toggleFull() {
-      //判断dom元素是否全屏 没有则请求全屏
-      if (!document.fullscreenElement)
-        document.documentElement.requestFullscreen()
-      else if (document.exitFullscreen) document.exitFullscreen() //退出全屏
-    }
+const {
+  unfoldSidebar,
+  breadcrumbList,
+  toggleSidebar,
+  toggleSettings,
+} /* wrap */ = toRefs(useLayoutStore())
 
-    return {
-      DioAvatar /* 项目默认头像,来自assets文件夹,vite会自动解析返回公共路径 */,
-      toggleFull,
-      dropdownItems,
-      unfoldSidebar,
-      toggleSidebar,
-      toggleSettings,
-      breadcrumbList,
-    }
+// TEMP:头像下拉菜单项
+const dropdownItems = readonly([
+  { title: '个人中心', path: '/profile' },
+  {
+    title: '项目地址',
+    path: 'https://github.com/someGenki/vue-lite-admin',
   },
-}
+  { title: '不可点击', path: '/', disabled: true },
+  {
+    title: '退出登录',
+    divided: true,
+    handle: () => {
+      alert('您选择了登出')
+      removeToken()
+      location.reload()
+    },
+  },
+])
 </script>
 
 <style lang="scss" scoped>

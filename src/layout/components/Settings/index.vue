@@ -56,7 +56,7 @@
   </teleport>
 </template>
 
-<script>
+<script setup>
 /*
 vue3 teleport组件 https://v3.cn.vuejs.org/api/built-in-components.html#teleport
 按键修饰符 https://v3.cn.vuejs.org/guide/events.html#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6
@@ -66,51 +66,32 @@ import SettingItem from './SettingItem.vue'
 import { useLayoutStore } from '/src/store/layout'
 import { useStyleStore } from '/src/store/style'
 
-export default {
-  name: 'Settings',
-  components: { SettingItem },
-  setup() {
-    const style = useStyleStore()
-    const layout = useLayoutStore()
+const {
+  showLogo,
+  showTabBar,
+  fixedHeader,
+  showSettings,
+  sUnfoldWidth,
+  menuAccordion,
+  toggleSettings,
+} = toRefs(useLayoutStore())
 
-    const {
-      showLogo,
-      showTabBar,
-      fixedHeader,
-      showSettings,
-      sUnfoldWidth,
-      menuAccordion,
-      toggleSettings,
-    } = toRefs(layout)
+const style = useStyleStore()
 
-    const primaryColor = toRef(style, 'primary-color')
+const primaryColor = toRef(style, 'primary-color')
 
-    const changePrimaryColor = toRef(style, 'changePrimaryColor')
+const changePrimaryColor = toRef(style, 'changePrimaryColor')
 
-    // 按下ESC关闭设置面板的操作函数
-    function closeSettings(e) {
-      if (e.keyCode === 27) showSettings.value = false
-    }
-
-    // 当settings面板打开时，监听ESC按下事件，以此关闭settings面板
-    watch(showSettings, (newVal) => {
-      if (newVal === true) document.addEventListener('keydown', closeSettings)
-      else document.removeEventListener('keydown', closeSettings)
-    })
-
-    return {
-      changePrimaryColor,
-      toggleSettings,
-      menuAccordion,
-      primaryColor,
-      showSettings,
-      sUnfoldWidth,
-      fixedHeader,
-      showTabBar,
-      showLogo,
-    }
-  },
+// 按下ESC关闭设置面板的操作函数
+const closeSettings = (e) => {
+  if (e.keyCode === 27) showSettings.value = false
 }
+
+// 当settings面板打开时，监听ESC按下事件，以此关闭settings面板
+watch(showSettings, (newVal) => {
+  if (newVal === true) document.addEventListener('keydown', closeSettings)
+  else document.removeEventListener('keydown', closeSettings)
+})
 </script>
 
 <style lang="scss" scoped>

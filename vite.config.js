@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import pkg from './package.json'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { svgLoader } from './src/plugin/svgLoader'
+import { preloadSvg } from './src/plugin/preloadSvg'
 import { mockServe } from './src/plugin/mockServe'
 
 const { dependencies, devDependencies, name, version } = pkg
@@ -32,7 +32,7 @@ export default ({ command }) => {
     plugins: [
       vue(),
       vueJsx(), // 文档 https://github.com/vuejs/jsx-next/blob/dev/packages/babel-plugin-jsx/README-zh_CN.md
-      svgLoader('/src/icons/'),
+      preloadSvg('/src/icons/'),
       mockServe(command),
     ],
 

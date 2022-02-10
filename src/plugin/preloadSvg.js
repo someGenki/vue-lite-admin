@@ -51,7 +51,7 @@ function findSvgFile(dir) {
 }
 
 // 加载指定目录下的svg图片并注入到html标签中
-export const svgLoader = (path, prefix = 'icon') => {
+export const preloadSvg = (path, prefix = 'icon') => {
   if (path === '') return
   idPrefix = prefix
   const res = findSvgFile(process.cwd() + path)

@@ -24,21 +24,22 @@
 
 <script>
 import { computed, onMounted, ref, toRefs } from 'vue'
+
 /**
  * 这个破组件写的有点复杂了。。。
  * 关于元素位置/大小 可看文章 http://www.ruanyifeng.com/blog/2009/09/find_element_s_position_using_javascript.html
  基础用法 ↓
-<resize-box>
+ <resize-box>
  <template #left>
-    <h1>left-content</h1>
+ <h1>left-content</h1>
  </template>
  <template #line>
-    <app-icon icon="el-icon-right"/>
+ <app-icon icon="el-icon-right"/>
  </template>
  <template #right>
-    <h1>right-content</h1>
+ <h1>right-content</h1>
  </template>
-</resize-box>
+ </resize-box>
  关于line中间的提示文本(文案)的使用,推荐使用自带的app-icon组件
  如果是自己的内容，可以自行transform: translateX(-200%) 来定位
  **/
@@ -98,12 +99,14 @@ export default {
       const rb = resizeBox.value
       isHorizontal = direction.value === 'horizontal'
       if (isHorizontal) {
-        /* resize-box左顶点距离整张页面左顶点的绝对距离之水平距离 */ rbInfo.left =
+        /* resize-box左顶点距离整张页面左顶点的绝对距离之水平距离 */
+        rbInfo.left =
           rb.getBoundingClientRect().left + document.documentElement.scrollLeft
         rbInfo.styleWidth = rb.style.width // 记录原始的style属性
         rb.style.width = rb.offsetWidth + 'px' // 指定父容器宽度样式防止父容器变大
       } else {
-        /* resize-box左顶点距离整张页面左顶点的绝对距离之垂直距离 */ rbInfo.top =
+        /* resize-box左顶点距离整张页面左顶点的绝对距离之垂直距离 */
+        rbInfo.top =
           rb.getBoundingClientRect().top + document.documentElement.scrollTop
         rbInfo.styleHeight = rb.style.height
         rb.style.height = rb.offsetHeight + 'px'
@@ -112,7 +115,7 @@ export default {
       rb.style.userSelect = 'none'
       rb.style.cursor = isHorizontal ? 'w-resize' : 'n-resize'
       /** @移动事件：修改left-box容器的尺寸 */
-      rb.addEventListener('mousemove', resizeStart)
+      rb.addEventListener('mousemove', resizeStart, { passive: true })
       /*
         设置 passive=true 解决警告，具体为什么可查看MDN的addEventListener文档
         Added non-passive event listener to a scroll-blocking 'mousewheel' event.

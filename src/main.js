@@ -16,7 +16,7 @@ import AppLink from '/src/components/AppLink/index.vue'
 import AppExplain from '/src/components/AppExplain/index.vue'
 import { globalRegister } from './utils/compRegister'
 
-// 这里的替换掉了App.vue，因为里面暂时没啥东西，孤零零的就暂时把它放在这
+// 这里的替换掉了App.vue，因为里面暂时没啥东西，孤零零的就暂时把它放在这 addEventListener
 const app = createApp({ render: () => h(RouterView) })
 
 // \\ // \\  // \\ // \\  // \\ // \\

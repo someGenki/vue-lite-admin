@@ -3,6 +3,7 @@ import Cookies from 'js-cookie'
 
 const KEY_PREFIX = 'YUAN-'
 const KEY_TOKEN = 'ADMIN-TOKEN'
+const invalids = [undefined, null, 'undefined', 'null']
 
 export function getToken() {
   return Cookies.get(KEY_TOKEN)
@@ -17,8 +18,8 @@ export function removeToken() {
 }
 
 export function saveSetting(key, val) {
-  if (val === undefined) {
-    console.warn('dont use undefined as value!')
+  if(invalids.includes(val)){
+    console.warn('dont use invalid value!')
   }
   localStorage.setItem(KEY_PREFIX + key, JSON.stringify(val))
 }
@@ -29,7 +30,7 @@ export function batchSaveSetting(keys, obj) {
 
 export function getSetting(key, defVal = undefined) {
   let item = localStorage.getItem(KEY_PREFIX + key)
-  if (item === undefined || item === 'undefined') {
+  if (invalids.includes(item)) {
     return defVal
   } else {
     return JSON.parse(item)

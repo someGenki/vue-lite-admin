@@ -26,7 +26,5 @@ export const mockServe = function (mode, option = null) {
     injectCode,
   }
 
-  const mergedOption = Object.assign(_option, option)
-
-  return viteMockServe(mergedOption)
+  return viteMockServe(Object.assign(_option, option))
 }

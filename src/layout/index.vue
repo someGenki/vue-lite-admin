@@ -57,7 +57,9 @@ layoutStore.$subscribe((mutation, state) => {
 })
 
 // 监听页面尺寸调整 动态改变state.isMobile的值判断是否是移动设备
-window.addEventListener('resize', throttle(checkIsMobile.value, 200))
+window.addEventListener('resize', throttle(checkIsMobile.value, 200), {
+  passive: true,
+})
 
 styleStore.injectCssVarToRoot()
 </script>

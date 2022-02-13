@@ -45,6 +45,7 @@
 - 常用组件 组件源码内自带详细的使用案例
 - 花里胡哨，但又没那么花里胡哨
 - Github Action 自动部署
+- SVGSprites 插件
 - Mock数据
 - 权限功能
 - 快捷导航
@@ -84,5 +85,15 @@
 git clone https://github.com/someGenki/vue-lite-admin.git
 # 对于上不了github的用户可以使用fastgit
 git clone https://hub.fastgit.org/someGenki/vue-lite-admin.git
+````
+- 添加上游仓库
+````sh
+git remote add upstream https://github.com/someGenki/vue-lite-admin.git
+````
+- Fetch 上游仓库的新的提交并merge更变
+````sh
+git fetch upstream
+git checkout main
+git merge upstream/main
 ````
 

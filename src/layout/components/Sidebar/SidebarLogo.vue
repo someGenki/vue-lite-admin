@@ -4,7 +4,7 @@
     class="MutableLogo-wrapper"
     :style="{ backgroundColor, color: textColor }"
   >
-    <img  class="shake" src="~@/assets/logo2.ico" alt="logo" />
+    <img width="32" height="32" src="~@/assets/logo2.ico" alt="logo" />
     <h4 style="margin-left: 6px" v-show="isCollapse">{{ title }}</h4>
   </router-link>
 </template>
@@ -32,11 +32,6 @@ export default {
   height: $sidebar-logo-height;
   overflow: hidden;
   cursor: pointer;
-
-  img {
-    width: 36px;
-    height: 36px;
-  }
 
   h4 {
     @include ellipsis(1);

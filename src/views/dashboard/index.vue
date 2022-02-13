@@ -59,7 +59,7 @@ export default {
     onMounted(() => {
       let myChart = echarts.init(shop.value)
       myChart.setOption(pie1option)
-      window.addEventListener('resize', () => myChart.resize())
+      window.addEventListener('resize', () => myChart.resize(),{ passive: true } )
     })
 
     return { shop, navList }

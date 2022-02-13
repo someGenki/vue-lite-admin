@@ -5,7 +5,7 @@
         <app-icon color="#eee" size="48" icon="el-icon-wallet-filled" />
       </p>
       <p class="wechat-wallet-title">钱包</p>
-      <p class="wechat-wallet-money">￥137.63</p>
+      <p class="wechat-wallet-money">￥37.63</p>
     </div>
     <transition name="show-qrcode">
       <div v-if="showQrCode">

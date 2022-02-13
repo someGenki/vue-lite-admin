@@ -39,12 +39,12 @@ jobs:
           SOURCE: ./dist/
           TARGET: /www/html/admin/
 
-#      - run:  npx vite build --base=/vue-lite-admin/  # 5. 重新构建一份打包文件 指定base为 <project name>
-#
-#      - name: Deploy to Github page 🚀                 # 6. 部署到github pages上
-#        uses: JamesIves/github-pages-deploy-action@v4.2.3
-#        with:
-#          branch: gh-pages
-#          folder: dist
-#          single-commit: true
+      - run:  npx vite build --base=/vue-lite-admin/  # 5. 重新构建一份打包文件 指定base为 <project name>
+
+      - name: Deploy to Github page 🚀                 # 6. 部署到github pages上
+        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        with:
+          branch: gh-pages
+          folder: dist
+          single-commit: true
 

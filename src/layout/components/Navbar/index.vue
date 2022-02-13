@@ -56,6 +56,7 @@ const {
 // TEMP:头像下拉菜单项
 const dropdownItems = readonly([
   { title: '个人中心', path: '/profile' },
+  { title: '测试页面', path: '/test' },
   {
     title: '项目地址',
     path: 'https://github.com/someGenki/vue-lite-admin',

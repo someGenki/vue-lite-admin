@@ -9,6 +9,7 @@ import ElementPlus from 'element-plus'
 import * as ElIcons from '@element-plus/icons'
 
 // 引入自己的CSS、JS和Component
+import 'virtual:svg-sprites-create'
 import '/src/styles/common.scss'
 import AppIcon from '/src/components/AppIcon/index.vue'
 import AppLink from '/src/components/AppLink/index.vue'

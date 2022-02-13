@@ -16,7 +16,7 @@
 目前大四，会的技术和开发经验也不多，项目刚刚起步，非常欢迎提出意见~:heart:
 
 **在线预览地址**： http://fanyibar.top/admin/index.html   👈戳它戳他
-其他地址：https://somegenki.github.io
+其他地址：https://somegenki.github.io/vue-lite-admin/
 
 ## 技术
 

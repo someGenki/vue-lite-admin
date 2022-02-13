@@ -1,16 +1,16 @@
 import path from 'path'
-import dayjs from 'dayjs';
+import dayjs from 'dayjs'
 import pkg from './package.json'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { preloadSvg } from './src/plugin/preloadSvg'
+import { createSVGSprites } from './src/plugin/createSVGSprites'
 import { mockServe } from './src/plugin/mockServe'
 
 const { dependencies, devDependencies, name, version } = pkg
 
 const __APP_INFO__ = {
   pkg: { dependencies, devDependencies, name, version },
-  lastBuildTime: dayjs().format()
+  lastBuildTime: dayjs().format(),
 }
 
 // 官方文档 https://cn.vitejs.dev/config/
@@ -32,8 +32,8 @@ export default ({ command }) => {
     plugins: [
       vue(),
       vueJsx(), // 文档 https://github.com/vuejs/jsx-next/blob/dev/packages/babel-plugin-jsx/README-zh_CN.md
-      preloadSvg('/src/icons/'),
       mockServe(command),
+      createSVGSprites(),
     ],
 
     resolve: {
@@ -57,13 +57,15 @@ export default ({ command }) => {
         plugins: [
           {
             postcssPlugin: 'internal:charset-removal',
-            AtRule: { // 去除 warning: "@charset" must be the first rule in the file
+            AtRule: {
+              // 去除 warning: "@charset" must be the first rule in the file
               charset: (atRule) => atRule.name === 'charset' && atRule.remove(),
             },
           },
         ],
       },
     },
+
     // 定义全局常量替换方式,其中每项在开发环境下会被定义在全局，而在构建时被静态替换
     define: {
       __APP_INFO__: JSON.stringify(__APP_INFO__),

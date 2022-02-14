@@ -5,16 +5,28 @@ import { useUserStore } from '/src/store/user'
 const userStore = useUserStore()
 const concat = Array.prototype.concat.bind([])
 
-const roleDirective = {
-  mounted: (el, binding) => {
-    const value = binding.value
-    if (!value) return
-    // 字母全大写比较
-    if (!hasPermission(value)) {
+const roleDirective = (el, binding) => {
+  const { value, modifiers } = binding
+  if (!value) return
+  // 字母全大写比较，不满足权限则隐藏或者添加禁用样式
+  if (!hasPermission(value)) {
+    if (modifiers.keep) {
+      el.style.textDecoration = 'line-through'
+      el.style.color = '#d0d0d0'
+      el.style.cursor = 'not-allowed'
+      el.style.pointerEvents = 'none'
+    } else {
       el.remove()
     }
-  },
+  }
 }
+
+/*
+const roleDirective1 = {
+  mounted: directiveHook,
+  updated: directiveHook,
+}
+*/
 
 /**
  *
@@ -27,8 +39,9 @@ function hasPermission(value, defVal = true) {
 
   // 基于getPermCodeList ... (差不多)
   //   ...
+
   // 基于store/user.roles[]
-  // 判断value跟user.roles是否有交集(全大写比较) /利用concat将非数组变成数组
+  // 判断value跟user.roles是否有交集(全大写比较)  利用concat将非数组变成数组
   return hasIntersection(concat(value), userStore['roles'])
 }
 

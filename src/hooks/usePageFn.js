@@ -11,8 +11,7 @@ export function usePageFn() {
   }
 
   // 打印当前页面
-  function printPage() {
-  }
+  function printPage() {}
 
   // 页面全屏
   function fullScreen() {
@@ -23,6 +22,7 @@ export function usePageFn() {
   }
 
   return {
-    refreshPage,fullScreen
+    refreshPage,
+    fullScreen,
   }
 }

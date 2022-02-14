@@ -21,13 +21,13 @@
       <sidebar-item v-for="item in menus" :key="menus.path" :item="item" />
     </el-menu>
     <el-button type="primary" size="small" @click="changeBackground">
-      换背景
+      换背景{{ menus.length }}
     </el-button>
   </aside>
 </template>
 
 <script setup>
-import { ref, toRefs } from 'vue'
+import { reactive, ref, toRefs, watch } from 'vue'
 import SidebarLogo from './SidebarLogo.vue'
 import SidebarItem from './SidebarItem.vue'
 import { useUserStore } from '/src/store/user'
@@ -40,8 +40,15 @@ import { createMenuFromAddRoutes } from './useMenu'
  */
 
 const { elMenuStyle } = toRefs(useStyleStore())
+const { addRoutes } = toRefs(useUserStore())
+const menus = reactive([])
 
-const menus = createMenuFromAddRoutes(useUserStore().addRoutes)
+menus.push(...createMenuFromAddRoutes(addRoutes.value))
+
+watch(addRoutes, (newRoutes) => {
+  menus.length = 0
+  menus.push(...createMenuFromAddRoutes(newRoutes))
+})
 
 const { showLogo, unfoldSidebar, sidebarWidth, menuAccordion } =
   /* wrap */ toRefs(useLayoutStore())

@@ -11,9 +11,9 @@ export const useUserStore = defineStore('user', {
     name: '',
     avatar: '',
     /**
-     * 项目只记录用户的角色，比如 admin,test之类的。之后将会封装v-role=""指令，
+     * 项目只记录用户的角色，比如 admin,test之类的。
      *  声明该组件/元素需要该角色才会出现。
-     * 如果还有`operateCode`&`menuCode`
+     * 如果还有`operateCode`&`menuCode`再说
      */
     roles: [],
     addRoutes: [],
@@ -46,6 +46,12 @@ export const useUserStore = defineStore('user', {
       accessedRoutes.forEach((route) => router.addRoute(route))
       // 记录所有路由，它与router.getRoutes有所不同！
       return constRoutes.concat(accessedRoutes)
+    },
+
+    changeRoles(roles) {
+      this.roles.length = 0
+      this.roles.push(...roles)
+      this.addRoutes = this.generateRoutes()
     },
   },
 })

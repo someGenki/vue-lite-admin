@@ -26,12 +26,10 @@
 
 <script>
 import { useRouter } from 'vue-router'
-import { Location } from '@element-plus/icons'
 
 export default {
   name: 'SidebarItem',
   props: { item: { type: Object, required: true } },
-  components: { Location },
   setup(props) {
     const menu = props.item
     const router = useRouter()

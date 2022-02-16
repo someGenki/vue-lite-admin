@@ -39,7 +39,7 @@ export const useLayoutStore = defineStore('layout', {
     // 当固定头部时，main-container的上边距值
     mainPaddingTopOnFixed: (state) => {
       if (!state.fixedHeader) return '0'
-      else if (state.fixedHeader && state.showTabBar) return 42 + 34 + 'px'
+      else if (state.fixedHeader && state.showTabBar) return 42 + 30 + 'px'
       else return 42 + 'px'
     },
     // 内容区域的左边距,避免覆盖sidebar

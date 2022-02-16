@@ -117,14 +117,24 @@ function copyIconTag(str, toKebab) {
   border-top: 1px solid #eee;
   border-left: 1px solid #eee;
   border-radius: 4px;
+  color: #606060;
+
   @media screen and (max-width: $lg-width) {
     & > li {
       width: 16.6% !important;
+      font-size: 0.9rem;
     }
   }
   @media screen and (max-width: $sm-width) {
     & > li {
       width: 25% !important;
+      font-size: 0.8rem;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    & > li {
+      width: 33.3% !important;
+      font-size: 0.85rem;
     }
   }
 
@@ -141,6 +151,8 @@ function copyIconTag(str, toKebab) {
     border-right: 1px solid #eee;
     border-bottom: 1px solid #eee;
     transition: color 0.5s;
+    overflow: hidden;
+    overflow-wrap: anywhere;
 
     &:hover {
       color: var(--primary-color);

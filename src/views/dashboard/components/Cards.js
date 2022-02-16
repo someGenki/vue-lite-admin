@@ -1,4 +1,3 @@
-<script>
 import { h } from 'vue'
 import { ElRow, ElCol } from 'element-plus'
 import Github from './GithubState/index.vue'
@@ -21,10 +20,9 @@ const renderElColCards = cards.map((card) => {
 })
 
 /**
- * 函数式组件用法示例，但真实项目不常用哦
+ * 函数式组件用法示例，但真实项目不常用...
  * docs：https://v3.cn.vuejs.org/guide/migration/functional-components.html
  */
 export default function (props) {
   return h(ElRow, props, { default: () => renderElColCards })
 }
-</script>

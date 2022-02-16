@@ -34,6 +34,7 @@
         /></el-tooltip>
       </el-col>
     </el-row>
+    <h3>Nothing</h3>
   </div>
 </template>
 
@@ -44,7 +45,7 @@
 // 请求动画帧 https://github.com/PanJiaChen/vue-countTo/blob/master/src/requestAnimationFrame.js
 import { onMounted, ref } from 'vue'
 import * as echarts from 'echarts'
-import Cards from './components/Cards.vue'
+import Cards from './components/Cards.js'
 import Todo from '/src/components/Todo/index.vue'
 import EasyNav from '/src/components/EasyNav/index.vue'
 import pie1option from './options/pie1option'

@@ -50,9 +50,9 @@ export default {
   setup() {
     const biliInfo = {
       following: 32,
-      follower: 430,
+      follower: 432,
       likes: '1.6万',
-      plays: '57.3万',
+      plays: '57.4万',
     }
     const myLink = 'https://space.bilibili.com/2232379'
     const myName = '禾几元'

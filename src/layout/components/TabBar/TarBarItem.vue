@@ -35,9 +35,9 @@ const props = defineProps({
   color: #495060;
   cursor: pointer;
   user-select: none;
-  background-color: #fafafa;
+  background-color: #fdfdfd;
   border: 1px solid #d4d4d4;
-  border-radius: 4px;
+  border-radius: 3px;
 
   &.mark::after {
     position: absolute;

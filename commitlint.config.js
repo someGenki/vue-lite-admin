@@ -1,5 +1,7 @@
 // git commit 提交检查 git commit -m 'feat(login): remember user name'
 // 如果使用git commit提交完，发现有东西还要该，且还未push。可以使用 git commit --amend -a进行附加
+// 校验最新一条commit-msg是否正确     npx commitlint --from HEAD~1 --to HEAD --verbose
+// 如果要撤回一次commit，且原来的代码保留  git reset --soft HEAD^
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {

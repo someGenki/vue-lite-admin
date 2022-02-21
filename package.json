@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
+    "prepare": "husky install",
     "upload": "node ./deploy/auto-upload",
     "lint:css": "stylelint **/*.{vue,css,sass,scss} --fix"
   },
@@ -43,11 +44,6 @@
     "stylelint-config-recommended-vue": "^1.3.0",
     "vite": "^2.8.4",
     "vite-plugin-mock": "^2.9.6"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "engines": {
     "node": ">= 12.0.0"

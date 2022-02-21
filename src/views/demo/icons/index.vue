@@ -112,12 +112,12 @@ function copyIconTag(str, toKebab) {
 .icon-set {
   padding: 0;
   margin-right: 20px;
+  color: #606060;
   list-style: none;
   background-color: white;
   border-top: 1px solid #eee;
   border-left: 1px solid #eee;
   border-radius: 4px;
-  color: #606060;
 
   @media screen and (max-width: $lg-width) {
     & > li {
@@ -146,13 +146,13 @@ function copyIconTag(str, toKebab) {
     float: left;
     width: 12.5%;
     height: 120px;
+    overflow: hidden;
     text-align: center; /* 用于<i>标签的图标水平居中 */
+    overflow-wrap: anywhere;
     cursor: pointer;
     border-right: 1px solid #eee;
     border-bottom: 1px solid #eee;
     transition: color 0.5s;
-    overflow: hidden;
-    overflow-wrap: anywhere;
 
     &:hover {
       color: var(--primary-color);

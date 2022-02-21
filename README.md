@@ -35,6 +35,7 @@
 - [SCSS](https://www.sass.hk/docs/) ：动态样式语言，是强化CSS的辅助工具
 - [prettier](https://prettier.io/) ：可配置化的代码格式化工具，支持多种语言
 - [stylelint](https://stylelint.io/) : CSS代码检查规范工具
+- [commitlint](https://commitlint.js.org/) : 帮助团队遵守commit约定
 
 ## 特性
 
@@ -46,7 +47,9 @@
 - 常用组件 组件源码内自带详细的使用案例
 - 花里胡哨，但又没那么花里胡哨
 - Github Action 自动部署
-- SVGSprites 插件
+- 代码规范以及commit消息规范
+- 自动生成CHANGELOG.md
+- SVG Sprites 插件
 - Mock数据
 - 权限功能
 - 快捷导航
@@ -72,9 +75,7 @@
 - [ ] 功能-更改动态菜单生成方式
 - [ ] 优化-图片懒加载 https://juejin.cn/post/7004460061984555021
 
-## 更新日志
 
-**TODO**
 
 ## 启动项目
 

@@ -1,6 +1,5 @@
 // git commit 提交检查 git commit -m 'feat(login): remember user name'
 // 如果使用git commit提交完，发现有东西还要该，且还未push。可以使用 git commit --amend -a进行附加
-// TODO 生成CHANGELOG
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {

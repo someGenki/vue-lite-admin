@@ -1,8 +1,9 @@
-## 0.3.1 (2022-02-21)
+## 0.3.2 (2022-02-21)
 
 
 ### Bug Fixes
 
+* 补全commitlint.config.js的注释说明 ([c439107](https://github.com/someGenki/vue-lite-admin/commit/c4391075e04398cb568f8e248176c05ce3d7fafe))
 * 局部刷新页面导致icons页面el图标丢失 ([4a84825](https://github.com/someGenki/vue-lite-admin/commit/4a84825f4247111d1ade5dc097bfbc3b772bc16a))
 * 修复登录页验证码图标无法正常显示 ([4d54dc5](https://github.com/someGenki/vue-lite-admin/commit/4d54dc59e01115511c3d8c6f11b52e69545fa177))
 * 修复头部下拉菜单显示异常和编译时间格式化 ([7be2b0a](https://github.com/someGenki/vue-lite-admin/commit/7be2b0a7831f2861b91f548596e5586022f83db7))
@@ -29,11 +30,11 @@
 * 在设置面板更改主题色 ([f0966dd](https://github.com/someGenki/vue-lite-admin/commit/f0966dd7f6976cd82fc61fdc10af4f2b8965cfeb))
 * add md-editor demo ([8e75fc7](https://github.com/someGenki/vue-lite-admin/commit/8e75fc7bf26bba344ab2351856bbab9a40ef8e44))
 * add useRefresh hook ([2cba00a](https://github.com/someGenki/vue-lite-admin/commit/2cba00ab10f0d6bbc4fe65d2d9c0b3e5653b6004))
+* changelog自动化生成工具 ([7120345](https://github.com/someGenki/vue-lite-admin/commit/712034594d777751896fcd5d2a18a83bb29568a2))
 
 
 ### Performance Improvements
 
 * 优化登录页面 ([e326b04](https://github.com/someGenki/vue-lite-admin/commit/e326b0459fdc9101104d3f28e88906f25ffca7bc))
-
 
 

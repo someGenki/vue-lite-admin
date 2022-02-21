@@ -48,7 +48,7 @@
 - 花里胡哨，但又没那么花里胡哨
 - Github Action 自动部署
 - 代码规范以及commit消息规范
-- 自动生成CHANGELOG.md
+- 自动生成CHANGELOG.md  (🐞)
 - SVG Sprites 插件
 - Mock数据
 - 权限功能

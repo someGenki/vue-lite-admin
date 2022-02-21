@@ -53,7 +53,6 @@ export default {
   name: 'Profile',
   setup() {
     const myIntroduce = [
-      { i: 'el-icon-user', t: '模仿专家' },
       { i: 'el-icon-school', t: '二本带学就读' },
       { i: 'el-icon-house', t: '来自福建厦门' },
       { i: 'el-icon-monitor', t: '联想小新Pro16' },
@@ -73,16 +72,13 @@ export default {
     ]
 
     const mySkills = [
-      '熟练掌握HTML、CSS和JavaScript等前端技术',
-      '熟练使用ES6的相关特性并了解过ES7~ES11的新增特性',
-      '熟练使用Vue.js框架并熟悉React框架的使用以及相关技术栈',
-      '熟悉常见的数据结构与算法、设计模式和代码命名规范',
-      '了解浏览器运行原理和HTTP(S)协议的通信过程',
-      '掌握Linux系统的基本使用，能快速配置环境、部署项目和编写简易脚本',
+      '熟练掌握HTML、CSS和JavaScript，熟悉TypeScript',
+      '熟练使用Vue.js框架且了解React框架和React Hooks的使用',
+      '在工作中能够灵活的使用ES6语法进行开发，并熟练使用异步编程',
+      '熟悉Nodejs和浏览器的运行、渲染原理以及HTTP(S)协议的通信过程',
+      '熟悉常见的数据结构与算法、设计模式、函数式编程和代码格式规范',
       '熟悉Webpack、Vite等构建工具以及了解Git，Nginx和Docker的使用',
-      '后端掌握Java语言，有足够的Mysql使用和Springboot项目编写经验',
-      '对JVM有基本的了解，包括内存结构以及JMM和GC',
-      '了解Redis、Mybatis、Maven、消息队列等后端相关技术',
+      '后端开发熟悉Java语言，有Mysql使用和Springboot项目相关编写经验',
     ]
 
     const myArticle = [

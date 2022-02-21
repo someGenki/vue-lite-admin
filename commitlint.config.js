@@ -1,4 +1,4 @@
-// git commit提交检查 git commit -m 'feat(login): remember user name'
+// git commit 提交检查 git commit -m 'feat(login): remember user name'
 // 如果使用git commit提交完，发现有东西还要该，且还未push。可以使用 git commit --amend -a进行附加
 // TODO 学习如何规范化git commit 和 生成CHANGELOG
 module.exports = {
@@ -9,6 +9,7 @@ module.exports = {
     'header-max-length': [2, 'always', 108],
     'subject-empty': [2, 'never'],
     'type-empty': [2, 'never'],
+    'subject-case': [0],
     'type-enum': [
       2, // 报错级别 可选 0 ，1 ，2 0为disable，1为warning，2为error
       'always', // 应用与否 可选always|never

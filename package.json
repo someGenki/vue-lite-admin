@@ -1,6 +1,6 @@
 {
   "name": "vue-lite-admin",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "author": "禾几元",
   "homepage": "https://somegenki.github.io/vue-lite-admin",
@@ -10,7 +10,9 @@
     "serve": "vite preview",
     "prepare": "husky install",
     "upload": "node ./deploy/auto-upload",
-    "lint:css": "stylelint **/*.{vue,css,sass,scss} --fix"
+    "lint:css": "stylelint **/*.{vue,css,sass,scss} --fix",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "changelog:init": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
@@ -32,6 +34,7 @@
     "@vitejs/plugin-vue": "^2.2.2",
     "@vitejs/plugin-vue-jsx": "^1.3.7",
     "@vue/compiler-sfc": "^3.2.31",
+    "conventional-changelog-cli": "^2.2.2",
     "cross-env": "^7.0.3",
     "husky": "^7.0.4",
     "postcss-html": "^1.3.0",

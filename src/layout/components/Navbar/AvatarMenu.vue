@@ -2,7 +2,7 @@
   <el-dropdown>
     <img class="dropdown-avatar" :src="avatar" alt="avatar" />
     <template #dropdown>
-      <el-dropdown-menu>
+      <el-dropdown-menu >
         <el-dropdown-item
           v-for="item in items"
           :key="item.title"

@@ -115,6 +115,12 @@ export const constRoutes = [
         meta: { title: '401页面', icon: 'el-icon-close' },
       },
       {
+        path: 'watermark-page',
+        component: () => import('/src/views/demo/example-page/watermark-page.vue'),
+        name: 'WatermarkPage',
+        meta: { title: '页面水印', icon: 'el-icon-flag' },
+      },
+      {
         path: 'scroll-page',
         component: () => import('/src/views/demo/example-page/scroll-page.vue'),
         name: 'ScrollPage',

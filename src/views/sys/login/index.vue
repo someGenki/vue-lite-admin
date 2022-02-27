@@ -2,8 +2,8 @@
   <div class="admin-login">
     <div class="login-container">
       <div class="login-left">
-        <h1>准备摆个LOGO</h1>
-        <h2>其次是个大插画图，跟vben类似</h2>
+        <div title="未设计" class="login-logo">LOGO</div>
+        <img width="450" src="~@/assets/year2022.svg" alt="" />
       </div>
       <div class="login-right">
         <el-form
@@ -52,6 +52,7 @@
               style="width: 120px; height: 42px"
               src="http://www.webxml.com.cn/WebServices/ValidateCodeWebService.asmx/cnValidateImage?byString=4396"
               alt="验证码"
+              title="验证码"
             />
           </el-form-item>
 
@@ -195,6 +196,16 @@ $bg-input: #f1f2f3; // 输入框背景颜色
   -webkit-background-clip: text;
 }
 
+.login-logo {
+  font-size: 60px;
+  letter-spacing: 12px;
+  background-image: v-bind('randomBg');
+  /* stylelint-disable-next-line */
+  filter: invert(100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .login-form {
   align-self: center;
   width: 450px;
@@ -224,12 +235,13 @@ $input-height: 44px;
   }
 }
 
-.login-btn{
+.login-btn {
   width: 100%;
   font-size: 16px;
   font-weight: bold;
-  letter-spacing:16px;
+  letter-spacing: 16px;
 }
+
 :deep(.form-captcha .el-form-item__content) {
   display: flex;
   justify-content: space-between;

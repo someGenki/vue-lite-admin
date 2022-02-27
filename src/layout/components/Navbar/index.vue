@@ -64,7 +64,7 @@ const dropdownItems = readonly([
   { title: '不可点击', path: '/', disabled: true },
   {
     title: '退出登录',
-    divided: true,
+    // divided: true,
     handle: () => {
       alert('您选择了登出')
       removeToken()

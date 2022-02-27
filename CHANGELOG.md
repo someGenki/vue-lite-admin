@@ -1,4 +1,4 @@
-## 0.3.2 (2022-02-21)
+## 0.3.3 (2022-02-27)
 
 
 ### Bug Fixes
@@ -21,6 +21,7 @@
 * 便捷导航组件 ([f294408](https://github.com/someGenki/vue-lite-admin/commit/f294408c08fad8673d9a958005e627a82f2f05c7))
 * 使用pinia代替以前的store ([1f235ae](https://github.com/someGenki/vue-lite-admin/commit/1f235ae068788729bb35e6589de0ce87a42fab61))
 * 添加了一些无用的特性，同时修复layout的八阿哥 ([6faef2b](https://github.com/someGenki/vue-lite-admin/commit/6faef2b41517ef2a97d952a2a2e1ec647cb10a55))
+* 添加水印功能 ([84c1b21](https://github.com/someGenki/vue-lite-admin/commit/84c1b214582adb5321762b225631eb385a81c14e))
 * 添加commitlint规范git commit ([2ae709b](https://github.com/someGenki/vue-lite-admin/commit/2ae709be9ed22aa6025eca109adc75962c7b6a6a))
 * 添加github action 工作流功能 ([fa82c80](https://github.com/someGenki/vue-lite-admin/commit/fa82c8026ebbd0d74219df1237b4f767793f4013))
 * 添加husky在git执行操作时触发对应钩子 ([a8d048a](https://github.com/someGenki/vue-lite-admin/commit/a8d048a9b190add0b9fbd9d02972deb2c62edce2))
@@ -36,5 +37,3 @@
 ### Performance Improvements
 
 * 优化登录页面 ([e326b04](https://github.com/someGenki/vue-lite-admin/commit/e326b0459fdc9101104d3f28e88906f25ffca7bc))
-
-

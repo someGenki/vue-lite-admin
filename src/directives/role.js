@@ -1,4 +1,5 @@
 // 自定义指令 https://v3.cn.vuejs.org/guide/custom-directive.html
+// 其他使用指令 https://juejin.cn/post/7067051410671534116
 // v-role="'ADMIN'" | v-role="['ADMIN','TEST']"
 import { useUserStore } from '/src/store/user'
 

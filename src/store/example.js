@@ -1,11 +1,14 @@
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
+
 /**
  * 如何使用pinia作为vue3的状态管理仓库呢？
- * docs: https://pinia.esm.dev/
+ * docs: https://pinia.vuejs.org/
  * 0. 前提须知：Pinia是模块化的，不像Vuex有根store！！！其次，直接从state解构会失去响应式
- * 1. 引入pinia依赖、app.use(createPinia())、export const useStore=defineStore(...)
- * 2. setup() 中访问 state、getters、actions 可直接 const store=useStore(); store.xxx
- * 3. 批量修改state参考：https://pinia.esm.dev/core-concepts/state.html#mutating-the-state
+ * 1. 引入Pinia依赖、app.use(createPinia()); export const useStore = defineStore(...);
+ * 2. setup() 中访问 state、getters、actions 可直接 const store = useStore(); store.xxx
+ * 3. 批量修改state参考：https://pinia.vuejs.org/core-concepts/state.html#mutating-the-state
+ * 4. 定义store有选项式(options)语法和宽松的setup语法
  */
 export const useExampleStore = defineStore('example', {
   // 定义状态
@@ -24,6 +27,15 @@ export const useExampleStore = defineStore('example', {
   },
 })
 
+export const useExampleStore2 = defineStore('example2', () => {
+  const count = ref(0)
+
+  function increment() {
+    count.value++
+  }
+
+  return { count, increment }
+})
 /**
  * 订阅state的改变
  * 1. store.$subscribe((mutation, state) => { ... })
@@ -35,6 +47,8 @@ export const useExampleStore = defineStore('example', {
  */
 
 /**
- * 批量修改state参考：https://pinia.esm.dev/core-concepts/state.html#mutating-the-state
- * 订阅actions的触发：https://pinia.esm.dev/core-concepts/actions.html#subscribing-to-actions
+ * 批量修改state参考：https://pinia.vuejs.org/core-concepts/state.html#mutating-the-state
+ * 订阅actions的触发：https://pinia.vuejs.org/core-concepts/actions.html#subscribing-to-actions
+ * // 持久化插件
+ * // https://github.com/prazdevs/pinia-plugin-persistedstate
  */

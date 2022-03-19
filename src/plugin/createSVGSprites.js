@@ -13,8 +13,8 @@
  *  svg中的width和height属性即是SVG的画布大小，亦可使用 style="width: 36px;height: 36px;"
  *
  *  <b>参考链接</b>：
- *    关于SVG的viewBox https://blog.csdn.net/weixin_34080903/article/details/90158481
- *    <symbol> 概念：https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/symbol
+ *    关于SVG viewBox： https://blog.csdn.net/weixin_34080903/article/details/90158481
+ *    <symbol> 文档：https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/symbol
  *    Vite插件 API：https://cn.vitejs.dev/guide/api-plugin.html
  */
 import { readFileSync, readdirSync } from 'fs'
@@ -120,12 +120,13 @@ export function createSVGSprites(option) {
   )
 
   return {
+    // 必须的，将会显示在 warning 和 error 中
     name: pluginName,
-    // required! 模块加载机制：解析文件地址，返回文件的ID来让rollup加载
+    // 必须的，Rollup模块加载机制：解析模块时，返回模块ID来让rollup加载
     resolveId(id) {
       if (id === virtualModuleId) return resolvedVirtualModuleId
     },
-    // 加载对应模块时，返回模块内容，感觉类似webpack loader
+    // 加载对应模块时(带着模块ID)，返回模块内容，感觉类似webpack loader
     load(id) {
       if (id === resolvedVirtualModuleId)
         return moduleStringify(

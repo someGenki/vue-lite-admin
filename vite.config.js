@@ -25,9 +25,9 @@ const manualChunks = (id) => {
       case 'mavon-editor':
       case 'element-plus':
       case '@element-plus':
-        return '_' + libName
+        return libName
       default:
-        return '__vendor'
+        return 'vendor'
     }
   }
 }

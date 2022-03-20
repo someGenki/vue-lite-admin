@@ -3,14 +3,33 @@ import dayjs from 'dayjs'
 import pkg from './package.json'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { createSVGSprites } from './src/plugin/createSVGSprites'
 import { mockServe } from './src/plugin/mockServe'
+import { createSVGSprites } from './src/plugin/createSVGSprites'
 
 const { dependencies, devDependencies, name, version } = pkg
 
 const __APP_INFO__ = {
   pkg: { dependencies, devDependencies, name, version },
   lastBuildTime: dayjs().format(),
+}
+
+const libNameReg = /\/node_modules\/([^/]+)\//
+
+const manualChunks = (id) => {
+  if (libNameReg.test(id.toString())) {
+    const libName = RegExp.$1
+    switch (libName) {
+      case '@vue':
+      case 'echarts':
+      case '@popperjs':
+      case 'mavon-editor':
+      case 'element-plus':
+      case '@element-plus':
+        return '_' + libName
+      default:
+        return '__vendor'
+    }
+  }
 }
 
 // 官方文档 https://cn.vitejs.dev/config/
@@ -21,17 +40,18 @@ export default ({ command }) => {
     server: {
       port: 8008,
       open: true,
-      // 关于本地反向代理解决跨域
-      // 戳文档：https://cn.vitejs.dev/config/#server-proxy
+      // 关于本地反向代理解决跨域 戳文档：https://cn.vitejs.dev/config/#server-proxy
     },
 
     build: {
       reportCompressedSize: false, // 禁用 压缩大小报告,以提高大型项目的构建性能。
+      // https://www.zhihu.com/question/518443897/answer/2397938046
+      rollupOptions: { manualChunks },
     },
 
     plugins: [
       vue(),
-      vueJsx(), // 文档 https://github.com/vuejs/jsx-next/blob/dev/packages/babel-plugin-jsx/README-zh_CN.md
+      vueJsx(), // 文档 https://github.com/vuejs/babel-plugin-jsx/blob/dev/packages/babel-plugin-jsx/README-zh_CN.md
       mockServe(command),
       createSVGSprites(),
     ],
@@ -49,10 +69,11 @@ export default ({ command }) => {
       preprocessorOptions: {
         scss: {
           additionalData: `
-            @import "@/styles/_variables";
+            @import "/src/styles/_variables";
           `,
         },
       },
+
       postcss: {
         plugins: [
           {

@@ -31,6 +31,7 @@ function createWaterMarkImage(str, option) {
         transform="rotate(${o.rotate})"
       >${str}</text>
       </svg>`
+  // 如果使用utf-代替base64，则出现 # 符号会导致内容无效
   return `url(data:image/svg+xml;base64,${window.btoa(
     unescape(encodeURIComponent(SVGTemplate))
   )})`

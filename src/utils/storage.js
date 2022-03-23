@@ -18,7 +18,7 @@ export function removeToken() {
 }
 
 export function saveSetting(key, val) {
-  if(invalids.includes(val)){
+  if (invalids.includes(val)) {
     console.warn('dont use invalid value!')
   }
   localStorage.setItem(KEY_PREFIX + key, JSON.stringify(val))

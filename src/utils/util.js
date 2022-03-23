@@ -1,5 +1,6 @@
 const isObject = (obj) => (obj !== null && typeof obj === 'object')
 
+// 延时执行版防抖  使用场景：按钮点击、输入框验证
 export function debounce(fn, delay = 1000) {
   let timer = null
   return function (...args) {
@@ -10,42 +11,31 @@ export function debounce(fn, delay = 1000) {
     }, delay)
   }
 }
-
-export function throttle(fn, delay = 200) {
-  let last = null
+// 定时器版立即执行节流 使用场景: input输入 页面滚动 窗口缩放 按键长按 联想搜索 滚动加载更多
+export function throttle(fn, interval = 1000) {
   let timer = null
-  return function (...args) {
-    let now = Date.now()
-    // 在时间间隔内，不触发，而且是取消定时器。当函数出发后要记录触发时间
-    if (last && now < last + delay) {
-      clearTimeout(timer)
-      timer = setTimeout(() => {
-        fn.apply(this, args)
-        last = now
-      }, delay)
-    } else {
-      fn.apply(this, args)
-      last = now
+  return function(...args) {
+    if (timer === null) {
+      fn(...args)
+      // timer为null时，有空可执行。并设置timer，interval之后再置为null
+      timer = setTimeout(() => timer = null, interval);
     }
   }
 }
 
 export function deepClone(target, map = new WeakMap()) {
-  if (!(target && typeof target === 'object'))
-    return target  // 非对象直接返回值
-  if (map.get(target))
-    return target  // 解决循环引用
-  if ([Date, RegExp, Set, Map].includes(target.constructor))
+  if (target === null || typeof target !== 'object') return target // 基本类型返回
+  if ([Date, RegExp, Set, Map, Function].includes(target.constructor))
     return (new target.constructor(target)) // 特殊类型克隆
-
-  const cloneTarget = Object.create(Object.getPrototypeOf(target)) // 继承原型
-  map.set(cloneTarget, true)
-  // Object.keys() 返回可枚举的属性,Reflect.ownKeys是所有的
-  Reflect.ownKeys(target).forEach(key => cloneTarget[key] = deepClone(target[key], map))
-
-  return cloneTarget;
+  if (map.get(target)) return map.get(target)
+  const newTarget = Array.isArray(target) ? [] : {}
+  map.set(target, newTarget)
+  for (let prop in target) {
+    if (target.hasOwnProperty(prop))
+      newTarget[prop] = deepClone(target[prop], map)
+  }
+  return newTarget
 }
-
 
 export function deepEqual(o1, o2) {
   // 类型不全为Object则直接使用 === 比较
@@ -59,11 +49,4 @@ export function deepEqual(o1, o2) {
   if (keys1.length !== keys2.length) return false;
   // 递归比较2个 object 的key值
   return keys1.every((k1, idx) => deepEqual(o1[k1], o2[keys2[idx]]))
-}
-
-// ==TEST==
-const obj1 = {
-  name: 'jojo', age: 18, addr: {
-    cite: 'London'
-  }
 }

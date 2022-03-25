@@ -16,7 +16,7 @@ const navList = [
     desc: '渐进式 JavaScript 框架',
   },
   {
-    link: 'https://pinia.esm.dev/',
+    link: 'https://pinia.vuejs.org/',
     img: 'https://d33wubrfki0l68.cloudfront.net/ddd72aa8248a5c2f77429b9496e6e3e4da2a4e26/8afc0/logo.svg',
     title: 'Pinia官方文档',
     desc: 'Vuex的替代者，采用模块化设计',

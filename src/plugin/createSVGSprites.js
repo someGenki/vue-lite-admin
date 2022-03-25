@@ -1,13 +1,15 @@
 /**
- *  加载目标目录下的所有SVG文件，生成一个个 <symbol> 标签来组成 SVG Sprites。
+ *  加载指定目录下的所有.svg文件，生成一个个 <symbol> 标签来组成 SVG Sprites。
+ *  利用虚拟模块机制加载一个模块文件，该模块文件包含上面所说的SVG Sprites字符串。
+ *  并使用模块内的mount方法创建一个SVG标签并设置其内容为该字符串，并注入到DOM中。
 
  *  <b>使用方法</b>：
- *  import { createSVGSprites } from './src/plugin/createSVGSprites'    // at vite.config.js
- *  plugins: [ createSVGSprites() ]                                     // 注册该插件
+ *  // at vite.config.js
+ *  import { createSVGSprites } from './src/plugin/createSVGSprites'
+ *  plugins: [ createSVGSprites() ]     // 注册该插件
+ *  // at /src/main.js
+ *  import 'virtual:svg-symbol-create'  //导入注册脚本即可加载该虚拟模块(ESM格式)
  *
- *  import 'virtual:svg-symbol-create'    // 在 /src/main.js 中导入注册脚本就完事了哈
- *
- *  导入该脚本返回一个ESM模块文件，并自动执行相关代码以生成一个个 <symbol> 标签插入到 document.body 中
  *  使用 <svg width="xx" height="xx"> <use xlink:href="#icon-icon1"></use> </svg>，
  *    即可对已经生成的<symbol>标签进行ID引用并展示 SVG 图标。
  *  svg中的width和height属性即是SVG的画布大小，亦可使用 style="width: 36px;height: 36px;"
@@ -17,7 +19,7 @@
  *    <symbol> 文档：https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/symbol
  *    Vite插件 API：https://cn.vitejs.dev/guide/api-plugin.html
  */
-import { readFileSync, readdirSync } from 'fs'
+import {readFileSync, readdirSync} from 'fs'
 import path from 'path'
 
 const pluginName = 'rollup:svg-sprites-create'
@@ -36,7 +38,7 @@ const defaultOption = {
 /**
  * 将对象内的属性视为模块的导出属性，生成一个字符串化的模块脚本
  * @example
- *   const res = moduleStringify( {fn: function(){}} );
+ *   const res = moduleStringify( {fn: function(arg){ ... }} );
  *   res === 'export const fn=function(){};export default {}'; // true
  * @param {object} module 对象中的属性视为要导出模块的属性
  * @param {string} runNow 声明完导出属性后，立即执行的代码段
@@ -51,10 +53,10 @@ function moduleStringify(module, runNow = '') {
       return `export const ${key}=${JSON.stringify(target)};`
     }
   }
-  const code = Object.keys(module).reduce(
-    (prev, key) => prev + stringify(key),
-    ''
-  )
+
+  const code = Object.keys(module).
+    reduce((prev, key) => prev + stringify(key), '')
+
   return `${code}\n${runNow}\n` + 'export default {}'
 }
 
@@ -70,23 +72,18 @@ function preloadSVGToHTML(path, prefix, separator) {
   const getSVGFile = (_path) => {
     const dirs = readdirSync(_path, { withFileTypes: true }) // 读取目录的内容
     for (const dir of dirs) {
-      if (dir.isDirectory()) {
-        // 如果是目录则进进入下一层级进行递归处理
+      if (dir.isDirectory()) { // 如果是目录则进进入下一层级进行递归处理
         getSVGFile(_path + dir.name + '/')
-      } else {
-        // 非svg后缀的文件跳过
+      } else { // 非svg后缀的文件跳过
         if (!dir.name.endsWith('.svg')) continue
         // 根据前缀、分隔符和文件名生成标签ID
         const symbolId = prefix + separator + dir.name.replace('.svg', '')
         // 读取文件内，提取出<svg>标签内容，并换成<symbol>标签添加上属性，便于项目代码中引用
-        const content = readFileSync(_path + dir.name)
-          .toString()
+        SVGInnerHTML += readFileSync(_path + dir.name).toString()
           .replace(svgTagExtract, (substr, viewBoxAttr) => {
             return `<symbol id="${symbolId}" viewBox="${viewBoxAttr}">`
-          })
-          .replace('</svg>', '</symbol>')
-
-        SVGInnerHTML += content
+          }).
+          replace('</svg>', '</symbol>')
       }
     }
   }
@@ -116,7 +113,7 @@ export function createSVGSprites(option) {
   const svgHtml = preloadSVGToHTML(
     path.join(process.cwd(), opt.path),
     opt.symbolIdPrefix,
-    opt.separator
+    opt.separator,
   )
 
   return {
@@ -131,7 +128,7 @@ export function createSVGSprites(option) {
       if (id === resolvedVirtualModuleId)
         return moduleStringify(
           { mountSVG: mountSVG, innerHTML: svgHtml },
-          `mountSVG(${JSON.stringify(opt)},innerHTML);`
+          `mountSVG(${JSON.stringify(opt)},innerHTML);`,
         )
     },
   }

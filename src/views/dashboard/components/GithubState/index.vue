@@ -26,7 +26,7 @@ import cat from './githubCat.svg'
 export default {
   name: 'GithubState',
   data() {
-    return { star: 48, cat }
+    return { star: 51, cat }
   },
 }
 </script>

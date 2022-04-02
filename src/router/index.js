@@ -46,7 +46,7 @@ router.beforeEach(async (to) => {
   // 如果已登录但因为刷新后导致保存在内存中的数据(登录信息，动态添加的路由等)丢失，
   // 需要再次发起请求重新获取用户信息，并动态添加路由
   if (!userStore['hasUserInfo']) {
-    await userStore['hasUserInfo']()
+    await userStore['getUserInfo']()
     // 要添加个catch处理错误
     return to
   }

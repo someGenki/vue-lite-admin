@@ -22,7 +22,6 @@ const manualChunks = (id) => {
       case '@vue':
       case 'echarts':
       case '@popperjs':
-      case 'mavon-editor':
       case 'element-plus':
       case '@element-plus':
         return libName

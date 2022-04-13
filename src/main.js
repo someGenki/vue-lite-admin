@@ -6,7 +6,7 @@ import router from './router'
 // 引入Element Plus和Element icons
 import 'element-plus/dist/index.css'
 import ElementPlus from 'element-plus'
-import * as ElIcons from '@element-plus/icons'
+import * as ElIcons from '@element-plus/icons-vue'
 
 // 引入自己的CSS、JS和Component
 import 'virtual:svg-sprites-create'

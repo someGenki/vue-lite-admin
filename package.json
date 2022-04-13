@@ -16,7 +16,7 @@
     "changelog:init": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "dependencies": {
-    "@element-plus/icons": "^0.0.11",
+    "@element-plus/icons-vue": "^1.1.4",
     "@vueuse/core": "^8.2.5",
     "axios": "^0.26.1",
     "dayjs": "^1.11.0",

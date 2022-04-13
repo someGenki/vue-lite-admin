@@ -3,7 +3,7 @@
   "version": "0.3.4",
   "private": true,
   "author": "禾几元",
-  "homepage": "https://somegenki.github.io/vue-lite-admin",
+  "homepage": "http://fanyibar.top/admin",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -17,16 +17,16 @@
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
-    "@vueuse/core": "^8.2.3",
+    "@vueuse/core": "^8.2.5",
     "axios": "^0.26.1",
     "dayjs": "^1.11.0",
     "echarts": "^5.3.2",
-    "element-plus": "^2.1.7",
+    "element-plus": "^2.1.9",
     "js-cookie": "^3.0.1",
     "mavon-editor": "3.0.0-beta",
     "mockjs": "^1.1.0",
     "pinia": "^2.0.13",
-    "vue": "^3.2.31",
+    "vue": "^3.2.32",
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
@@ -34,13 +34,13 @@
     "@commitlint/config-conventional": "^16.2.1",
     "@vitejs/plugin-vue": "^2.3.1",
     "@vitejs/plugin-vue-jsx": "^1.3.9",
-    "@vue/compiler-sfc": "^3.2.31",
+    "@vue/compiler-sfc": "^3.2.32",
     "conventional-changelog-cli": "^2.2.2",
     "cross-env": "^7.0.3",
     "husky": "^7.0.4",
-    "postcss-html": "^1.3.0",
-    "prettier": "^2.6.1",
-    "sass": "^1.49.11",
+    "postcss-html": "^1.3.1",
+    "prettier": "^2.6.2",
+    "sass": "^1.50.0",
     "stylelint": "^14.6.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recess-order": "^3.0.0",
@@ -48,6 +48,10 @@
     "stylelint-config-recommended-vue": "^1.4.0",
     "vite": "2.9.1",
     "vite-plugin-mock": "^2.9.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/someGenki/vue-lite-admin"
   },
   "engines": {
     "node": ">= 12.0.0"

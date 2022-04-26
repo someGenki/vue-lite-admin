@@ -1,6 +1,6 @@
 <template>
   <div class="app-wrapper">
-    <sidebar />
+    <sidebar/>
     <!-- ↑ 侧边菜单栏 ↑  -->
     <div
       class="mask-zIndex99"
@@ -10,25 +10,25 @@
     <!-- ↑ 移动端模式下展开侧边栏所出现的遮罩层 ↑  -->
     <div class="main-container">
       <header :class="{ 'fixed-header': fixedHeader }">
-        <nav-bar />
-        <tab-bar v-if="showTabBar" />
+        <nav-bar/>
+        <tab-bar v-if="showTabBar"/>
       </header>
-      <app-main />
+      <app-main/>
       <!-- ↑ 内容主体展示区域 ↑  -->
     </div>
-    <settings />
+    <settings/>
     <!-- ↑ 默认隐藏在右边的设置面板 ↑  -->
   </div>
 </template>
 
 <script setup>
 // <script setup>教程：https://v3.cn.vuejs.org/api/sfc-script-setup.html
-import { toRefs } from 'vue'
-import { throttle } from '/src/utils/util'
-import { useStyleStore } from '/src/store/style'
-import { useLayoutStore } from '/src/store/layout'
-import { batchSaveSetting } from '/src/utils/storage'
-import { AppMain, NavBar, Settings, Sidebar, TabBar } from './components'
+import {toRefs} from 'vue'
+import {throttle} from '/src/utils/util'
+import {useStyleStore} from '/src/store/style'
+import {useLayoutStore} from '/src/store/layout'
+import {batchSaveSetting} from '/src/utils/storage'
+import {AppMain, NavBar, Settings, Sidebar, TabBar} from './components'
 
 const styleStore = useStyleStore()
 const layoutStore = useLayoutStore()

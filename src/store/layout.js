@@ -1,5 +1,6 @@
-import { defineStore } from 'pinia'
-import { getSetting } from '/src/utils/storage'
+import {defineStore} from 'pinia'
+import {getSetting} from '/src/utils/storage'
+// import variables from '/src/styles/vars.module.scss'
 
 const noRecordViewPath = ['/login']
 

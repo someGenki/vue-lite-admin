@@ -1,0 +1,11 @@
+$sidebar-logo-height: 42px;
+$navbar-height: 42px;
+$tabBar-height: 30px;
+$sm-width: 768px;
+
+:export {
+  smWidth: $sm-width;
+  navbarHeight: $navbar-height;
+  tabBarHeight: $tabBar-height;
+  sidebarLogoHeight: $sidebar-logo-height;
+}

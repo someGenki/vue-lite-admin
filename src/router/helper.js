@@ -17,7 +17,7 @@ export const redirectRoute = {
   name: 'Redirect',
   hidden: true,
   component: redirectComponent,
-  meta: {title: '...'},
+  meta: {title: '...',noCache: true},
   beforeEnter: (to, from) => {
     to.query = from.query
     to.params.path = from.fullPath

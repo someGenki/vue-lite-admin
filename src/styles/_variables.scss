@@ -20,3 +20,27 @@ $scrollbar-width: 8px;
 $xl-width: 1920px; //  大大屏幕尺寸
 $lg-width: 1200px; // 大屏幕桌面尺寸
 $sm-width: 768px; // 小屏幕平板尺寸
+
+
+/* 字体 */
+$title-text-color: #1d2129; // 显示标题的颜色
+$content-text-color: #171819; // 正文/评论展示的颜色
+$name-text-color: #515767; // 用于展示的名字的颜色
+$deep-blue: #1d7dfa; // 深蓝色，用于字体hover时的颜色
+$mild-gray: #949494; // 中等灰，用于显示次要信息的颜色
+$deep-gray: #4a545f; // 深灰色，用于显示卡片里描述的颜色
+
+/* 边框 */
+$divide-thin-border: 1px solid #e6e6e6; // 卡片之间分割
+$blue-btn-border: 1px solid #1e80ff; // 按钮的边框
+
+/* 阴影 */
+$box-shadow-base: 0 2px 6px rgba(0, 0, 0, 0.15); // 浮层阴影
+$popover-shadow: 0 12px 12px 0 #6e78824c; // 气泡卡片的阴影
+$card-shadow: 12px 12px 20px rgba(0, 0, 0, 0.05);
+
+/* 背景 */
+$hover-bg: #e3e4e5;
+$card-bg: #ffffff;
+$button-bg: #40a9ff;
+$disabled-bg: #bbbbbb;

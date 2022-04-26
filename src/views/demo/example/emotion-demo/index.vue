@@ -6,33 +6,40 @@
     <template #left>
       <el-input
         type="textarea"
+        ref="textareaRef"
         :rows="4"
         placeholder="请输入内容"
         v-model="text1"
       />
-      <emotion-box @emotion-add="(e) => (text1 += e)" />
+      <app-emotion @emotion="(text)=>text1+=text"/>
+      <!--新版本vs旧版本-->
+      <emotion-box @emotion-add="(e) => (text1 += e)"/>
     </template>
     <template #right>
-      <div v-html="processText" />
+      <div style="min-height: 90px;padding: 8px;background: #fff;border-radius: 6px" v-html="processText"/>
     </template>
     <template #line>
-      <app-icon icon="el-icon-right" />
+      <app-icon icon="el-icon-right"/>
     </template>
   </resize-box>
 </template>
 
 <script>
+import {computed, provide, ref} from 'vue'
 import EmotionBox from '/src/components/EmotionBox/index.vue'
 import ResizeBox from '/src/components/ResizeBox/index.vue'
-import { processEmotionText } from '/src/components/EmotionBox/useEmotions'
-import { computed, ref } from 'vue'
+import AppEmotion from '/src/components/AppEmotion/index.vue'
+import {processEmotionText} from '/src/components/EmotionBox/useEmotions'
+
 export default {
   name: 'EmotionDemo',
-  components: { EmotionBox, ResizeBox },
+  components: {EmotionBox, ResizeBox, AppEmotion},
   setup() {
     const text1 = ref('')
+    const textareaRef = ref(null)
+    provide('textarea', textareaRef)
     const processText = computed(() => processEmotionText(text1.value))
-    return { text1, processText }
+    return {text1, processText, textareaRef}
   },
 }
 </script>

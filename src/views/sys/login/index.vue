@@ -2,17 +2,17 @@
   <div class="admin-login">
     <div class="login-container">
       <div class="login-left">
-        <div title="未设计" class="login-logo">LOGO</div>
-        <img width="450" src="~@/assets/year2022.svg" alt="" />
+        <!--<div title="未设计" class="login-logo"></div>-->
+        <img width="450" src="/src/assets/year2022.svg" alt=""/>
       </div>
       <div class="login-right">
         <el-form
-          :model="loginFormData"
+          :model="loginForm"
           :rules="loginRules"
           ref="loginFormRef"
           class="login-form"
         >
-          <h1 style="margin-left: 4px; text-align: left">登录</h1>
+          <h1 class="login-title">登录</h1>
           <p>这在个地方说点什么东西吧</p>
 
           <el-form-item required prop="username">
@@ -21,7 +21,7 @@
               name="username"
               class="login-input"
               prefix-icon="el-icon-user"
-              v-model="loginFormData.username"
+              v-model="loginForm.username"
               placeholder="用户名/邮箱"
             />
           </el-form-item>
@@ -33,7 +33,7 @@
               class="login-input"
               show-password
               prefix-icon="el-icon-lock"
-              v-model="loginFormData.password"
+              v-model="loginForm.password"
               placeholder="请输入密码"
             />
           </el-form-item>
@@ -44,13 +44,13 @@
               name="code"
               prefix-icon="el-icon-picture-filled"
               class="login-input"
-              style="width: 60%; height: 44px; margin-right: 10px"
+              style="height: 44px; margin-right: 12px"
               type="text"
-              v-model="loginFormData.code"
+              v-model="loginForm.code"
             />
             <img
               style="width: 120px; height: 42px"
-              src="http://www.webxml.com.cn/WebServices/ValidateCodeWebService.asmx/cnValidateImage?byString=4396"
+              :src="captchaSrc"
               alt="验证码"
               title="验证码"
             />
@@ -58,100 +58,45 @@
 
           <el-button
             @click.prevent="handleLogin"
-            :loading="btnLoading"
+            :loading="loading"
             class="login-btn"
             type="primary"
             size="large"
-            >登录
+          >登录
           </el-button>
         </el-form>
       </div>
-      <div class="login-footer"> Powered by 禾几元</div>
+      <div class="login-footer">Powered by 禾几元</div>
     </div>
   </div>
 </template>
 
-<script>
-import { reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
-import backgrounds from './loginBackgronds'
-import { useUserStore } from '/src/store/user'
-import { ElMessage } from 'element-plus'
 
-// https://element-plus.gitee.io/#/zh-CN/component/form
+<script setup>
+import {ref} from 'vue'
+import {useLogin} from './useLogin'
+import backgrounds from "./loginBackgronds";
 
-function useVarToggle(def = false) {
-  let val = ref(def)
-  const toggle = (bool) => {
-    if (bool !== undefined && typeof bool === 'boolean') val.value = bool
-    else val.value = !val.value
-  }
-  return [val, toggle]
-}
-
-export default {
-  name: 'login',
-  setup() {
-    const router = useRouter()
-    const [btnLoading, toggleBtnLoading] = useVarToggle()
-    const loginFormRef = ref(null)
-    const loginFormData = reactive({
-      username: 'admin',
-      password: '123456',
-      code: '4396',
-    })
-
-    // 随机获取一款渐变背景色
-    const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)]
-
-    // 表单验证规则 https://github.com/yiminghe/async-validator
-    const loginRules = {
-      username: [{ required: true, message: '用户名不能为空' }],
-      password: [{ required: true, message: '密码不能为空' }],
+const loading = ref(false)
+const loginFormRef = ref(null)
+const {loginForm, loginRules, code, loginPassed} = useLogin()
+const captchaSrc = `http://www.webxml.com.cn/WebServices/ValidateCodeWebService.asmx/cnValidateImage?byString=${code}`
+const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)]
+const handleLogin = () => {
+  loginFormRef.value.validate((valid) => {
+    if (valid) {
+      loading.value = true
+      loginPassed().finally(() => (loading.value = false))
     }
-
-    // 表单验证通过时，调用store中的登录方法(抽离)
-    const formValidPassed = () => {
-      useUserStore()
-        .login(loginFormData)
-        // 模拟延迟100ms
-        .then(() => new Promise((res) => setTimeout(() => res(), 100)))
-        .then(() => {
-          router.push({ path: router.currentRoute.value.query.redirect || '/' })
-          ElMessage.success({
-            duration: 1000,
-            type: 'success',
-            message: '登录成功!',
-          })
-        })
-        .finally(() => toggleBtnLoading(false))
-    }
-
-    // 登录按钮触发的函数
-    const handleLogin = () => {
-      loginFormRef.value.validate((valid) => {
-        if (valid) {
-          toggleBtnLoading(true)
-          formValidPassed()
-        }
-      })
-    }
-
-    return {
-      randomBg,
-      loginRules,
-      loginFormRef,
-      loginFormData,
-      btnLoading,
-      toggleBtnLoading,
-      handleLogin,
-    }
-  },
+  })
 }
 </script>
 
+
 <style lang="scss" scoped>
 $bg-input: #f1f2f3; // 输入框背景颜色
+$sm-width: 768px; // 小屏幕平板尺寸
+$input-height: 44px;
 
 .admin-login {
   position: relative;
@@ -160,23 +105,42 @@ $bg-input: #f1f2f3; // 输入框背景颜色
   overflow: hidden;
   //background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
   background-image: v-bind('randomBg');
+
+  & > .login-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+  }
 }
 
-.login-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 100%;
-}
 
 .login-left {
   width: 25%;
   min-width: 300px;
   max-width: 500px;
   height: 500px;
+  user-select: none;
   background-size: 100%;
-  //background-image: url('https://mixkit.imgix.net/art/preview/mixkit-i-love-you-hand-gesture-419-original-large.png?q=80&auto=format%2Ccompress');
+
+  .login-logo {
+    font-size: 60px;
+    letter-spacing: 12px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  // 暂无设计logo!
+  .login-logo--deprecated {
+    font-size: 60px;
+    letter-spacing: 12px;
+    background-image: v-bind('randomBg');
+    /* stylelint-disable-next-line */
+    //filter: invert(100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 .login-right {
@@ -184,6 +148,13 @@ $bg-input: #f1f2f3; // 输入框背景颜色
   justify-content: flex-end;
   width: 50%;
   height: 500px;
+  margin-top: 16px;
+
+  :deep(.form-captcha .el-form-item__content) {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
 }
 
 .login-footer {
@@ -196,57 +167,52 @@ $bg-input: #f1f2f3; // 输入框背景颜色
   -webkit-background-clip: text;
 }
 
-.login-logo {
-  font-size: 60px;
-  letter-spacing: 12px;
-  background-image: v-bind('randomBg');
-  /* stylelint-disable-next-line */
-  filter: invert(100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
+// 表单主体样式！
 .login-form {
-  align-self: center;
+  position: relative;
+  align-self: flex-start;
   width: 450px;
-  padding: 0 2rem 3rem;
+  height: 380px;
+  padding: 1rem 2rem 2rem;
+  overflow: hidden;
   background: white;
   border-radius: 1rem;
   box-shadow: 4px 10px 16px rgb(36 37 38 / 13%);
-}
 
-$input-height: 44px;
+  & > .login-title {
+    display: inline-block;
+    height: 32px;
+    color: #333;
+    margin: 8px;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+  }
 
-.login-input {
-  height: $input-height;
-  font-size: 17px;
-  line-height: $input-height;
-
-  :deep(.el-input__inner) {
+  // 输入框样式
+  .login-input {
     height: $input-height;
-    padding-left: 34px;
+    font-size: 16px;
     line-height: $input-height;
-    background: #f5f5f5;
-    border: 0;
+    --el-input-bg-color: #f8f5f5;
+  }
 
-    &:focus + .el-input__prefix {
-      color: black;
-    }
+  // 登录按钮 使用绝对定位让动画效果正常点
+  .login-btn {
+    position: absolute;
+    bottom: 2rem;
+    max-width: 386px;
+    width: 86%;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 16px;
+  }
+
+  :deep(.el-form-item__content) {
+    flex-wrap: nowrap;
   }
 }
 
-.login-btn {
-  width: 100%;
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 16px;
-}
-
-:deep(.form-captcha .el-form-item__content) {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 22px;
-}
 
 @media screen and (max-width: $sm-width) {
   .login-left {

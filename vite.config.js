@@ -3,14 +3,14 @@ import dayjs from 'dayjs'
 import pkg from './package.json'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { mockServe } from './src/plugin/mockServe'
-import { createSVGSprites } from './src/plugin/createSVGSprites'
+import {mockServe} from './src/plugin/mockServe'
+import {createSVGSprites} from './src/plugin/createSVGSprites'
 
-const { dependencies, devDependencies, name, version } = pkg
+const {dependencies, devDependencies, name, version} = pkg
 
 const __APP_INFO__ = {
-  pkg: { dependencies, devDependencies, name, version },
-  lastBuildTime: dayjs().format(),
+  pkg: {dependencies, devDependencies, name, version},
+  lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
 }
 
 const libNameReg = /\/node_modules\/([^/]+)\//
@@ -31,8 +31,8 @@ const manualChunks = (id) => {
   }
 }
 
-// 官方文档 https://cn.vitejs.dev/config/
-export default ({ command }) => {
+// 官方文档 https://cn.vitejs.dev/config/ dio
+export default ({command}) => {
   return {
     base: '/admin/', // 可被命令行参数 --base=/xxx/ 覆盖
 
@@ -45,7 +45,8 @@ export default ({ command }) => {
     build: {
       reportCompressedSize: false, // 禁用 压缩大小报告,以提高大型项目的构建性能。
       // https://www.zhihu.com/question/518443897/answer/2397938046
-      rollupOptions: { manualChunks },
+      rollupOptions: {manualChunks},
+      cssCodeSplit: false,
     },
 
     plugins: [

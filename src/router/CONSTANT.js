@@ -20,6 +20,9 @@ export const LAYOUT = () => import('/src/layout/index.vue')
  * @return RouteLocationRaw  最外层以Layout组件包裹的路由RouteRecordRaw对象
  */
 export function createLayoutWrapper(raw, defaultChild = 'index') {
+  if (!raw.path) {
+    throw TypeError('Param ‘raw’ need path property！')
+  }
   const children = [].concat(raw.children)
   const redirect = children.length === 1 ? children[0].path : defaultChild
   return {

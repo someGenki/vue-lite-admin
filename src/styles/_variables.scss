@@ -20,10 +20,3 @@ $scrollbar-width: 8px;
 $xl-width: 1920px; //  大大屏幕尺寸
 $lg-width: 1200px; // 大屏幕桌面尺寸
 $sm-width: 768px; // 小屏幕平板尺寸
-
-:export {
-  smWidth: $sm-width;
-  navbarHeight: $navbar-height;
-  tabBarHeight: $tabBar-height;
-  sidebarLogoHeight: $sidebar-logo-height;
-}

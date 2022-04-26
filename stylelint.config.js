@@ -10,9 +10,11 @@ module.exports = {
     'stylelint-config-recess-order',
   ],
   rules: {
-    'at-rule-no-unknown': null,
     'no-empty-source': null,
+    'property-no-unknown':null,
+    'at-rule-no-unknown': null,
     'no-descending-specificity': null,
+    'selector-pseudo-class-no-unknown':null,
     'scss/at-import-partial-extension': null,
     'scss/at-import-no-partial-leading-underscore': null,
   },
@@ -21,8 +23,8 @@ module.exports = {
     '**/*.jsx',
     '**/*.ts',
     '**/*.tsx',
-    'index.html',
     'dist/**',
     'public/**',
+    'index.html',
   ],
 }

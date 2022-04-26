@@ -1,23 +1,11 @@
 import { LAYOUT } from '../CONSTANT'
 import Redirect from '/src/views/sys/redirect/index.vue'
 import Login from '/src/views/sys/login/index.vue'
+import {redirectRoute} from "../helper";
 
 // 这里存放不需要登录，不需要权限都能访问到的路由
 export const basicRoutes = [
-  {
-    path: '/redirect',
-    component: LAYOUT,
-    redirect: '/',
-    hidden: true,
-    children: [
-      {
-        path: '/redirect/:path(.*)',
-        name: 'redirect',
-        component: Redirect,
-        meta: { noCache: true },
-      },
-    ],
-  },
+  redirectRoute,
   {
     path: '/login',
     hidden: true,

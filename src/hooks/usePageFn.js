@@ -43,7 +43,7 @@ export function usePageFn() {
     const route = router.currentRoute.value
     useLayoutStore().removeCachedView(route)
     if (route.path.indexOf('/redirect') > -1) return
-    router.replace({ path: '/redirect' + route.fullPath, query: route.query })
+    router.replace('/redirect')
   }
 
   // 打印当前页面

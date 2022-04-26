@@ -17,6 +17,18 @@ export function removeToken() {
   return Cookies.remove(KEY_TOKEN)
 }
 
+export function get(key) {
+  return localStorage.getItem(KEY_PREFIX + key)
+}
+
+export function set(key, val) {
+  localStorage.setItem(KEY_PREFIX + key, val)
+}
+
+export function remove(key) {
+  localStorage.removeItem(KEY_PREFIX + key)
+}
+
 export function saveSetting(key, val) {
   if (invalids.includes(val)) {
     console.warn('dont use invalid value!')

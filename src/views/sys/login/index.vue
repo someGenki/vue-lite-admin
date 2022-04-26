@@ -182,8 +182,8 @@ $input-height: 44px;
   & > .login-title {
     display: inline-block;
     height: 32px;
-    color: #333;
     margin: 8px;
+    color: #333;
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
@@ -201,8 +201,8 @@ $input-height: 44px;
   .login-btn {
     position: absolute;
     bottom: 2rem;
-    max-width: 386px;
     width: 86%;
+    max-width: 386px;
     font-size: 16px;
     font-weight: bold;
     letter-spacing: 16px;

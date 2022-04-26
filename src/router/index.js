@@ -22,7 +22,7 @@ basicRoutes.forEach((item) => PUBLIC_PATH.add(item.path))
 // [vue-router官方文档指路]:(https://next.router.vuejs.org/zh/guide/index.html)
 const router = createRouter({
   history: historyMode,
-  routes: constRoutes,
+  routes: constRoutes, // 写的有点臃肿了哈
   strict: true, // 禁止尾随斜杠
 })
 
@@ -53,7 +53,8 @@ router.beforeEach(async (to) => {
 })
 
 /**
- * 全局后置钩子 ：它们对于分析、更改页面标题、声明页面等辅助功能以及许多其他事情都很有用。
+ * 后置路由守卫钩子
+ * 对于分析、更改页面标题、声明页面等辅助功能以及许多其他事情都很有用。
  */
 router.afterEach((to) => {
   document.title = to.meta.title || pageTitle

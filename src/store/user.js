@@ -21,6 +21,7 @@ export const useUserStore = defineStore('user', {
   getters: {
     // 根据roles是否不为空判断是否有用户信息
     hasUserInfo: (state) => state.roles && state.roles.length > 0,
+    hadLogin: (state) => !!state.token,
   },
   actions: {
     async login({ username, password }) {

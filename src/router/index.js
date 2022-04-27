@@ -1,13 +1,9 @@
-import {
-  createRouter,
-  createWebHashHistory,
-  createWebHistory,
-} from 'vue-router'
-import { getToken } from '/src/utils/storage'
-import { constRoutes } from './modules/const'
-import { basicRoutes } from './modules/basic'
-import { useUserStore } from '/src/store/user'
-import { useLayoutStore } from '/src/store/layout'
+import {createRouter, createWebHashHistory, createWebHistory,} from 'vue-router'
+import {getToken} from '/src/utils/storage'
+import {constRoutes} from './modules/const'
+import {basicRoutes} from './modules/basic'
+import {useUserStore} from '/src/store/user'
+import {useLayoutStore} from '/src/store/layout'
 
 const base = import.meta.env.BASE_URL
 const mode = import.meta.env.VITE_ROUTER_HISTORY
@@ -41,11 +37,11 @@ router.beforeEach(async (to) => {
   const token = getToken()
   // 如果[未登录]且要访问[不在]公共路径集合里的路径时，跳转到登录页面并记录之前的页面用于重新访问
   if (!token && !PUBLIC_PATH.has(to.path))
-    return { path: '/login', query: { redirect: to.fullPath } }
+    return {path: '/login', query: {redirect: to.fullPath}}
   const userStore = useUserStore()
   // 如果已登录但因为刷新后导致保存在内存中的数据(登录信息，动态添加的路由等)丢失，
   // 需要再次发起请求重新获取用户信息，并动态添加路由
-  if (!userStore['hasUserInfo']) {
+  if (token && !userStore['hasUserInfo']) {
     await userStore['getUserInfo']()
     // 要添加个catch处理错误
     return to

@@ -23,7 +23,7 @@
     "echarts": "^5.3.2",
     "element-plus": "^2.2.2",
     "js-cookie": "^3.0.1",
-    "mavon-editor": "3.0.0-beta",
+    "md-editor-v3": "^2.0.1",
     "mockjs": "^1.1.0",
     "pinia": "^2.0.14",
     "vue": "^3.2.36",

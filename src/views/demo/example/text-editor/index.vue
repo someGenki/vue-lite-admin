@@ -1,42 +1,38 @@
 <template>
   <div>
     <app-explain title="文本编辑器">
-      <p>在左侧输入框输入标签，右侧实时将微信渲染成img标签 </p>
+      <p>推荐md-editor-v3</p>
     </app-explain>
     <h2>
-      <app-link sharp to="https://github.com/originjs/mavonEditor-next" />
-      mavonEditor- A markdown editor
-      <el-tag type="danger">Beta</el-tag>
+      <app-link sharp to="https://github.com/imzbf/md-editor-v3">
+        md-editor-v3
+      </app-link>
+      <el-tag type="info">@2.0.1</el-tag>
     </h2>
     <div class="md-editor-container">
-      <mavon-editor ref="me1" v-model="mdText" />
+      <md-editor no-prettier no-katex no-mermaid v-model="mdText"/>
     </div>
-    <el-button @click="printMdText">print origin text</el-button>
+    <el-button @click="printMdText">print origin text to console</el-button>
   </div>
 </template>
 
 <script>
-// Using TinyMCE-Vue: https://www.tiny.cloud/docs/integrations/vue
-// language-packages: https://www.tiny.cloud/get-tiny/language-packages/
-// mavon-editor:      https://github.com/hinesboy/mavonEditor
-// TODO 将TinyMCE封装成组件
-import { ref } from 'vue'
-import me from 'mavon-editor'
-import 'mavon-editor/dist/css/index.css'
+import {ref} from 'vue'
+import MdEditor from 'md-editor-v3'
+import 'md-editor-v3/lib/style.css'
 
 export default {
   name: 'TextEditor',
-  components: { mavonEditor: me.mavonEditor },
+  components: {MdEditor},
   setup() {
     const mdText = ref('Hello,world!')
 
-    const me1 = ref(null)
 
     function printMdText() {
       console.log(mdText.value)
     }
 
-    return { mdText, me1, printMdText }
+    return {mdText, printMdText}
   },
 }
 </script>
@@ -45,9 +41,5 @@ export default {
 .md-editor-container {
   margin: 4px;
   overflow: auto;
-}
-
-.v-note-wrapper {
-  z-index: 10;
 }
 </style>

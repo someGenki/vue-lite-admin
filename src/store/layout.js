@@ -2,7 +2,7 @@ import {defineStore} from 'pinia'
 import {getSetting} from '/src/utils/storage'
 // import variables from '/src/styles/vars.module.scss'
 
-const noRecordViewPath = ['/login']
+const noRecordViewPath = ['/login','/redirect']
 
 export const useLayoutStore = defineStore('layout', {
   state: () => ({

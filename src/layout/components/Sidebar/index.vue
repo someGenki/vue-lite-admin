@@ -21,7 +21,7 @@
       <sidebar-item v-for="item in menus" :key="menus.path" :item="item" />
     </el-menu>
     <el-button type="primary" size="small" @click="changeBackground">
-      换背景{{ menus.length }}
+      换背景 {{ menus.length }}
     </el-button>
   </aside>
 </template>
@@ -63,10 +63,6 @@ function changeBackground() {
 <style>
 .el-menu-item:hover {
   font-weight: bold;
-  color: #2b5876 !important;
-}
-
-.el-menu--vertical li {
   color: #2b5876 !important;
 }
 </style>

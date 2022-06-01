@@ -49,10 +49,10 @@ export default {
   name: 'BilibiliState',
   setup() {
     const biliInfo = {
-      following: 33,
-      follower: 429,
+      following: 35,
+      follower: 432,
       likes: '1.7万',
-      plays: '58.4万',
+      plays: '58.9万',
     }
     const myLink = 'https://space.bilibili.com/2232379'
     const myName = '禾几元'

@@ -40,7 +40,7 @@
         class="load-more-icon"
         @click="loadMoreElIcon"
         :disabled="noMoreElIcon"
-        type="text"
+        link
       >
         加载更多
         <i class="el-icon-arrow-right" />

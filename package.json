@@ -1,8 +1,9 @@
 {
   "name": "vue-lite-admin",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "private": true,
   "author": "禾几元",
+  "packageManager": "yarn@1.0.0",
   "homepage": "http://fanyibar.top/admin",
   "scripts": {
     "dev": "vite",
@@ -16,37 +17,37 @@
     "changelog:init": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.0.1",
-    "@vueuse/core": "^8.6.0",
+    "@element-plus/icons-vue": "^2.0.6",
+    "@vueuse/core": "^9.0.2",
     "axios": "^0.27.2",
-    "dayjs": "^1.11.2",
-    "echarts": "^5.3.2",
-    "element-plus": "^2.2.2",
+    "dayjs": "^1.11.4",
+    "echarts": "^5.3.3",
+    "element-plus": "^2.2.11",
     "js-cookie": "^3.0.1",
-    "md-editor-v3": "^2.0.1",
+    "md-editor-v3": "^2.2.1",
     "mockjs": "^1.1.0",
-    "pinia": "^2.0.14",
-    "vue": "^3.2.36",
-    "vue-router": "^4.0.15"
+    "pinia": "^2.0.17",
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.2",
-    "@commitlint/config-conventional": "^17.0.2",
-    "@vitejs/plugin-vue": "^2.3.3",
-    "@vitejs/plugin-vue-jsx": "^1.3.10",
-    "@vue/compiler-sfc": "^3.2.36",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@vitejs/plugin-vue": "^3.0.1",
+    "@vitejs/plugin-vue-jsx": "^2.0.0",
+    "@vue/compiler-sfc": "^3.2.37",
     "conventional-changelog-cli": "^2.2.2",
     "cross-env": "^7.0.3",
     "husky": "^8.0.1",
-    "postcss-html": "^1.4.1",
-    "prettier": "^2.6.2",
-    "sass": "^1.52.1",
-    "stylelint": "^14.8.5",
+    "postcss-html": "^1.5.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.54.0",
+    "stylelint": "^14.9.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recess-order": "^3.0.0",
-    "stylelint-config-recommended-scss": "^6.0.0",
+    "stylelint-config-recommended-scss": "^7.0.0",
     "stylelint-config-recommended-vue": "^1.4.0",
-    "vite": "2.9.9",
+    "vite": "3.0.4",
     "vite-plugin-mock": "^2.9.6"
   },
   "repository": {
@@ -54,9 +55,6 @@
     "url": "https://github.com/someGenki/vue-lite-admin"
   },
   "engines": {
-    "node": ">= 12.0.0"
-  },
-  "package-manager": {
-    "yarn": ">=1.10.0"
+    "node": ">= 14.0.0"
   }
 }
